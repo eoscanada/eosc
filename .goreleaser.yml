@@ -1,0 +1,89 @@
+project_name: eos-vault
+release:
+  github:
+    owner: eoscanada
+    name: eos-vault
+  name_template: '{{.Tag}}'
+brew:
+  name: eos-vault
+  commit_author:
+    name: Alexandre Bourget
+    email: alex@eoscanada.com
+  install: bin.install "eos-vault"
+scoop:
+  commit_author:
+    name: Charles Billette
+    email: charles@eoscanada.com
+builds:
+- goos:
+  - linux
+  - darwin
+  - windows
+  goarch:
+  - amd64
+  - "386"
+  targets:
+  - linux_amd64
+  - darwin_amd64
+  - windows_amd64
+  - windows_386
+  main: ./eos-vault
+  ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+  binary: eos-vault
+  env:
+  - CGO_ENABLED=0
+  lang: go
+archive:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
+    }}v{{ .Arm }}{{ end }}'
+  replacements:
+    "386": i386
+    amd64: x86_64
+    darwin: macOS
+    linux: linux
+    windows: windows
+  format: tar.gz
+  format_overrides:
+  - goos: windows
+    format: zip
+  files:
+  - licence*
+  - LICENCE*
+  - license*
+  - LICENSE*
+  - readme*
+  - README*
+  - changelog*
+  - CHANGELOG*
+nfpm:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
+    }}v{{ .Arm }}{{ end }}'
+  bindir: /usr/local/bin
+snapcraft:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
+    }}v{{ .Arm }}{{ end }}'
+snapshot:
+  name_template: '{{ .Tag }}-next'
+checksum:
+  name_template: checksums.txt
+changelog:
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
+  sort: asc
+dist: dist
+sign:
+  cmd: keybase
+  args:
+  - sign
+  - --infile
+  - $artifact
+  - --binary
+  - --outfile
+  - $signature
+  - --detached
+  signature: ${artifact}.sig
+  artifacts: checksum
+env_files:
+  github_token: ~/.config/goreleaser/github_token
