@@ -58,6 +58,10 @@ Sample usage
     - EOS234234
     - EOS345345
 
+Planned:
+
+    $ eosc vault merge wallet1.json wallet2.json --shares 2/3
+    $ eosc vault split EOS123123123 --shares 2/3
     $ eosc vault export
     Opening "eosc-vault.json".
     Public keys stored within:
@@ -68,10 +72,6 @@ Sample usage
     Enter first password:
     Enter second password:
 
-Planned:
-
-    $ eosc vault merge wallet1.json wallet2.json --shares 2/3
-    $ eosc vault split EOS123123123 --shares 2/3
 
 Other features:
 
