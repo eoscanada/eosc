@@ -1,15 +1,15 @@
-project_name: eos-vault
+project_name: eosc
 release:
   github:
     owner: eoscanada
-    name: eos-vault
+    name: eosc
   name_template: '{{.Tag}}'
 brew:
-  name: eos-vault
+  name: eosc
   commit_author:
     name: Alexandre Bourget
     email: alex@eoscanada.com
-  install: bin.install "eos-vault"
+  install: bin.install "eosc"
 scoop:
   commit_author:
     name: Charles Billette
@@ -27,9 +27,9 @@ builds:
   - darwin_amd64
   - windows_amd64
   - windows_386
-  main: ./eos-vault
+  main: ./eosc
   ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
-  binary: eos-vault
+  binary: eosc
   env:
   - CGO_ENABLED=0
   lang: go
