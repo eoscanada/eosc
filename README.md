@@ -14,27 +14,27 @@ to launch the EOS mainnet.
 eosc vault
 ----------
 
-The `eosc` Vault is a simple yet powerful EOS wallet.
+The `eosc vault` is a simple yet powerful EOS wallet.
 
 
 Sample usage
 ------------
 
-    $ eos-vault create --keys 1 --shares 2/3
+    $ eosc vault create --keys 1 --shares 2/3
     EOS Vault starting
-    "eos-vault-wallet.json" already exists, manage that before running `eos-vault create`.
+    "eosc-vault.json" already exists, manage that before running `eosc vault create`.
 
-    $ eos-vault create --keys 1 --shares 2/3
+    $ eosc vault create --keys 1 --shares 2/3
     Creating 1 new keypair(s):
     - EOS123123
     Encrypting with 3 shares, 2 required for unlocking.
     Enter password for share 1:
     Enter password for share 2:
     Enter password for share 3:
-    Encrypting to "eos-vault-wallet.json"  done.  Please back that up.
+    Encrypting to "eosc-vault.json"  done.  Please back that up.
 
-    $ eos-vault serve
-    Opening "eos-vault-wallet.json".
+    $ eosc vault serve
+    Opening "eosc-vault.json".
     Public keys stored within:
     - EOS123123
 
@@ -43,7 +43,7 @@ Sample usage
     Enter second password:
     Listening on port :6666
 
-    $ eos-vault serve -t 30s
+    $ eosc vault serve -t 30s
     ...
     Listening on port :6666
 
@@ -51,15 +51,15 @@ Sample usage
     Enter unlock code: 7823
     Listening on port :6666
 
-    $ eos-vault list
-    Opening "eos-vault-wallet.json".
+    $ eosc vault list
+    Opening "eosc-vault.json".
     Public keys stored within:
     - EOS123123
     - EOS234234
     - EOS345345
 
-    $ eos-vault export
-    Opening "eos-vault-wallet.json".
+    $ eosc vault export
+    Opening "eosc-vault.json".
     Public keys stored within:
     - EOS123123
     - EOS234234
@@ -70,11 +70,10 @@ Sample usage
 
 Planned:
 
-    $ eos-vault merge wallet1.json wallet2.json --shares 2/3
-    $ eos-vault split EOS123123123 --shares 2/3
+    $ eosc vault merge wallet1.json wallet2.json --shares 2/3
+    $ eosc vault split EOS123123123 --shares 2/3
 
-Other features
---------------
+Other features:
 
 Support `--accept` which will ask you to confirm any signature on the command-line.
-  It will print what it can print..
+*  It will print what it can print..
