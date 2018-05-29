@@ -24,7 +24,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var bpsRegproducerCmd = &cobra.Command{
+var bpsRegisterProducerCmd = &cobra.Command{
 	Use:   "register [account_name] [public_key] [website_url]",
 	Short: "Register account as a block producer",
 	Long:  `Register account as a block producer`,
@@ -60,5 +60,5 @@ var bpsRegproducerCmd = &cobra.Command{
 }
 
 func init() {
-	bpsCmd.AddCommand(bpsRegproducerCmd)
+	bpsCmd.AddCommand(bpsRegisterProducerCmd)
 }

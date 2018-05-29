@@ -12,7 +12,11 @@ import (
 )
 
 var voteCmd = &cobra.Command{
-	Use:   "vote [voter name] [producer list]",
+	Use:   "vote",
+	Short: "Command to vote for block producers or proxy",
+}
+var voteProducersCmd = &cobra.Command{
+	Use:   "producers [voter name] [producer list]",
 	Short: "Command to vote for block producers",
 	Long:  `Command to vote for block producers`,
 	Args:  cobra.MinimumNArgs(2),
@@ -56,6 +60,43 @@ var voteCmd = &cobra.Command{
 	},
 }
 
+var voteProxyCmd = &cobra.Command{
+	Use:   "proxy [voter name] [proxy name]",
+	Short: "Command to vote for a proxy",
+	Long:  `Command to vote for a proxy`,
+	Args:  cobra.ExactArgs(2),
+	Run: func(cmd *cobra.Command, args []string) {
+
+		proxyName := eos.AccountName(args[1])
+
+		api, err := api()
+		if err != nil {
+			fmt.Printf("Error initiating api, %s\n", err.Error())
+			os.Exit(1)
+		}
+
+		voterName := args[0]
+
+		fmt.Printf("Voter [%s] voting for proxy: %s\n", voterName, proxyName)
+		_, err = api.SignPushActions(
+			system.NewVoteProducer(
+				eos.AccountName(voterName),
+				proxyName,
+				[]eos.AccountName{}...,
+			),
+		)
+
+		if err != nil {
+			fmt.Printf("Error during vote, %s\n", err.Error())
+			os.Exit(1)
+		}
+
+		fmt.Println("Vote sent to chain.")
+	},
+}
+
 func init() {
 	RootCmd.AddCommand(voteCmd)
+	voteCmd.AddCommand(voteProducersCmd)
+	voteCmd.AddCommand(voteProxyCmd)
 }
