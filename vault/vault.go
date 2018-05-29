@@ -84,6 +84,12 @@ func (v *Vault) NewKeyPair() (pub ecc.PublicKey, err error) {
 	return
 }
 
+func (v *Vault) AddPrivateKey(privateKey *ecc.PrivateKey) (pub ecc.PublicKey) {
+	v.KeyBag.Keys = append(v.KeyBag.Keys, privateKey)
+	pub = privateKey.PublicKey()
+	return
+}
+
 func (v *Vault) PrintPublicKeys() {
 	fmt.Printf("Public keys contained within (%d in total):\n", len(v.KeyBag.Keys))
 	for _, key := range v.KeyBag.Keys {
