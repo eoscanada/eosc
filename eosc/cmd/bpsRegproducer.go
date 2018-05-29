@@ -16,12 +16,16 @@ package cmd
 import (
 	"fmt"
 
+	"os"
+
+	"github.com/eoscanada/eos-go"
+	"github.com/eoscanada/eos-go/ecc"
+	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
 
-// bpsRegproducerCmd represents the bpsRegproducer command
 var bpsRegproducerCmd = &cobra.Command{
-	Use:   "regproducer [account_name] [public_key] [website_url]",
+	Use:   "register [account_name] [public_key] [website_url]",
 	Short: "Sign a `regproducer` call",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -31,28 +35,35 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Args: cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
-		// Create an `eos.New`, baesd on `--url` or `-u` or some
-		// built-in addresses that we tried.
+		api, err := api()
+		if err != nil {
+			fmt.Printf("Error initiating api, %s\n", err.Error())
+			os.Exit(1)
+		}
 
-		// Setup the signing, using a local vault, or a remote wallet.
+		accountName := eos.AccountName(args[0])
+		publicKey, err := ecc.NewPublicKey(args[1])
+		if err != nil {
+			fmt.Printf("Error public key, %s\n", err.Error())
+			os.Exit(1)
+		}
+		websiteURL := args[2]
 
 		// Validate the input params
 
-		// SignPushAction Call system.regproducer
-		fmt.Println("regproducer called")
+		_, err = api.SignPushActions(
+			system.NewRegProducer(accountName, publicKey, websiteURL),
+		)
+
+		if err != nil {
+			fmt.Printf("Producer registration , %s\n", err.Error())
+			os.Exit(1)
+		}
+
+		fmt.Println("Producer registration sent to chain")
 	},
 }
 
 func init() {
 	bpsCmd.AddCommand(bpsRegproducerCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// bpsRegproducerCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// bpsRegproducerCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

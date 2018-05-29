@@ -40,8 +40,9 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	RootCmd.PersistentFlags().StringP("vault-file", "", "./eosc-vault.json", "Wallet file that contains encrypted key material")
+	RootCmd.PersistentFlags().StringP("api-address", "u", "http://localhost:8888", "server api address")
 
-	for _, flag := range []string{"vault-file"} {
+	for _, flag := range []string{"vault-file", "api-address"} {
 		if err := viper.BindPFlag(flag, RootCmd.PersistentFlags().Lookup(flag)); err != nil {
 			panic(err)
 		}
