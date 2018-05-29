@@ -100,10 +100,10 @@ securely sign transactions.
 
 func init() {
 	vaultCmd.AddCommand(vaultImportCmd)
-	vaultCreateCmd.Flags().StringP("comment", "c", "", "Label or comment about this key vault")
+	vaultImportCmd.Flags().StringP("comment", "c", "", "Label or comment about this key vault")
 
 	for _, flag := range []string{"comment"} {
-		if err := viper.BindPFlag(flag, vaultCreateCmd.Flags().Lookup(flag)); err != nil {
+		if err := viper.BindPFlag(flag, vaultImportCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
