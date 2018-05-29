@@ -26,14 +26,9 @@ import (
 
 var bpsRegproducerCmd = &cobra.Command{
 	Use:   "register [account_name] [public_key] [website_url]",
-	Short: "Sign a `regproducer` call",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Args: cobra.ExactArgs(3),
+	Short: "Register account as a block producer",
+	Long:  `Register account as a block producer`,
+	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		api, err := api()
 		if err != nil {
