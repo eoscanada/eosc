@@ -34,13 +34,42 @@ securely sign transactions.
 
 `,
 	Run: func(cmd *cobra.Command, args []string) {
+
 		walletFile := viper.GetString("vault-file")
+		vault := &eosvault.Vault{}
+		var passphrase string
 		if _, err := os.Stat(walletFile); err == nil {
-			fmt.Printf("Wallet file %q already exists, rename it before running `eosc vault create`.\n", walletFile)
-			os.Exit(1)
+
+			fmt.Println("Loading existing vault from file: ", walletFile)
+			vault, err = eosvault.NewVaultFromWalletFile(walletFile)
+			if err != nil {
+				fmt.Println("ERROR: loading vault from file, ", err)
+				os.Exit(1)
+			}
+
+			passphrase, err = getpass.GetPassword("Enter passphrase to unlock vault: ")
+			if err != nil {
+				fmt.Printf("ERROR: reading passphrase: %s", err)
+				os.Exit(1)
+			}
+			switch vault.SecretBoxWrap {
+			case "passphrase":
+				err = vault.OpenWithPassphrase(passphrase)
+				if err != nil {
+					fmt.Printf("ERROR: reading passphrase: %s", err)
+					os.Exit(1)
+				}
+			default:
+				fmt.Printf("ERROR: unsupported secretbox wrapping method: %q", vault.SecretBoxWrap)
+				os.Exit(1)
+			}
+
+			vault.PrintPublicKeys()
+
+		} else {
+			vault = eosvault.NewVault()
 		}
 
-		vault := eosvault.NewVault()
 		vault.Comment = viper.GetString("comment")
 
 		privateKeys, err := capturePrivateKeys()
@@ -62,21 +91,24 @@ securely sign transactions.
 
 		fmt.Println("Keys imported. Let's secure them before showing the public keys.")
 
-		passphrase, err := getpass.GetPassword("Enter passphrase to encrypt your keys: ")
-		if err != nil {
-			fmt.Println("ERROR reading password:", err)
-			os.Exit(1)
-		}
+		if passphrase == "" {
+			passphrase, err = getpass.GetPassword("Enter passphrase to encrypt your keys: ")
+			if err != nil {
+				fmt.Println("ERROR reading password:", err)
+				os.Exit(1)
+			}
 
-		passphraseConfirm, err := getpass.GetPassword("Confirm passphrase: ")
-		if err != nil {
-			fmt.Println("ERROR reading confirmation password:", err)
-			os.Exit(1)
-		}
+			passphraseConfirm, err := getpass.GetPassword("Confirm passphrase: ")
+			if err != nil {
+				fmt.Println("ERROR reading confirmation password:", err)
+				os.Exit(1)
+			}
 
-		if passphrase != passphraseConfirm {
-			fmt.Println("ERROR: passphrase mismatch!")
-			os.Exit(1)
+			if passphrase != passphraseConfirm {
+				fmt.Println("ERROR: passphrase mismatch!")
+				os.Exit(1)
+			}
+
 		}
 
 		err = vault.SealWithPassphrase(passphrase)
