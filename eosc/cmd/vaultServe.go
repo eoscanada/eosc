@@ -20,7 +20,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/dgiagio/getpass"
 	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 	eosvault "github.com/eoscanada/eosc/vault"
@@ -39,29 +38,9 @@ It is to be used with tools such as 'cleos' or 'eos-vote' that need
 transactions signed before submitting them to an EOS network.
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		walletFile := viper.GetString("vault-file")
-
-		vault, err := eosvault.NewVaultFromWalletFile(walletFile)
+		vault, err := setupWallet()
 		if err != nil {
-			fmt.Println("ERROR reading wallet file:", err)
-			os.Exit(1)
-		}
-
-		passphrase, err := getpass.GetPassword("Enter passphrase to unlock vault: ")
-		if err != nil {
-			fmt.Println("ERROR reading passphrase:", err)
-			os.Exit(1)
-		}
-
-		switch vault.SecretBoxWrap {
-		case "passphrase":
-			err = vault.OpenWithPassphrase(passphrase)
-			if err != nil {
-				fmt.Println("ERROR reading passphrase:", err)
-				os.Exit(1)
-			}
-		default:
-			fmt.Printf("ERROR unsupported secretbox wrapping method: %q\n", vault.SecretBoxWrap)
+			fmt.Println("ERROR:", err)
 			os.Exit(1)
 		}
 

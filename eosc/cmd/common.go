@@ -10,8 +10,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func api() (*eos.API, error) {
-
+func setupWallet() (*eosvault.Vault, error) {
 	walletFile := viper.GetString("vault-file")
 	if _, err := os.Stat(walletFile); err != nil {
 		return nil, fmt.Errorf("Wallet file %q missing, ", walletFile)
@@ -41,11 +40,16 @@ func api() (*eos.API, error) {
 
 	}
 
-	//vault.PrintPublicKeys()
-	fmt.Printf("Initiation api with [%s]\n", viper.GetString("api-address"))
-	api := eos.New(
-		viper.GetString("api-address"),
-	)
+	return vault, nil
+}
+func api() (*eos.API, error) {
+	vault, err := setupWallet()
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Printf("Initiation api with [%s]\n", viper.GetString("api-url"))
+	api := eos.New(viper.GetString("api-url"))
 
 	api.SetSigner(vault.KeyBag)
 

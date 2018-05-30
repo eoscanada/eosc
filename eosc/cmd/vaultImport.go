@@ -67,6 +67,7 @@ securely sign transactions.
 			vault.PrintPublicKeys()
 
 		} else {
+			fmt.Println("Vault file not found, creating a new wallet")
 			vault = eosvault.NewVault()
 		}
 
@@ -74,14 +75,11 @@ securely sign transactions.
 
 		privateKeys, err := capturePrivateKeys()
 		if err != nil {
-			fmt.Println("ERROR: importing private key:", err)
+			fmt.Println("ERROR: entering private key:", err)
 			os.Exit(1)
 		}
 
-		if err != nil {
-			fmt.Println("ERROR: retreiving private key:", err)
-			os.Exit(1)
-		}
+		// Got the new keys now
 
 		var newKeys []ecc.PublicKey
 		for _, privateKey := range privateKeys {
@@ -109,6 +107,7 @@ securely sign transactions.
 				os.Exit(1)
 			}
 
+			// TODO: make this thing loop.. instead of restarting the whole process..
 		}
 
 		err = vault.SealWithPassphrase(passphrase)
@@ -123,7 +122,7 @@ securely sign transactions.
 			os.Exit(1)
 		}
 
-		fmt.Printf("Wallet file %q created. Here are your public keys:\n", walletFile)
+		fmt.Printf("Wallet file %q written. Here are your public keys:\n", walletFile)
 		for _, pub := range newKeys {
 			fmt.Printf("- %s\n", pub.String())
 		}
@@ -143,7 +142,6 @@ func init() {
 }
 
 func capturePrivateKeys() ([]*ecc.PrivateKey, error) {
-
 	privateKeys, err := capturePrivateKey(true)
 	if err != nil {
 		return privateKeys, fmt.Errorf("keys capture, %s", err.Error())
@@ -153,14 +151,14 @@ func capturePrivateKeys() ([]*ecc.PrivateKey, error) {
 }
 func capturePrivateKey(isFirst bool) (privateKeys []*ecc.PrivateKey, err error) {
 
-	prompt := "Type your first private key : "
+	prompt := "Type your first private key: "
 	if !isFirst {
-		prompt = "Type your next private key or just enter if you are done : "
+		prompt = "Type your next private key or hit ENTER if you are done: "
 	}
 
 	enteredKey, err := getpass.GetPassword(prompt)
 	if err != nil {
-		return privateKeys, fmt.Errorf("key capture, %s", err.Error())
+		return privateKeys, fmt.Errorf("get password: %s", err.Error())
 	}
 
 	if enteredKey == "" {
@@ -169,13 +167,13 @@ func capturePrivateKey(isFirst bool) (privateKeys []*ecc.PrivateKey, err error) 
 
 	key, err := ecc.NewPrivateKey(enteredKey)
 	if err != nil {
-		return privateKeys, fmt.Errorf("new private key, %s", err.Error())
+		return privateKeys, fmt.Errorf("new private key: %s", err.Error())
 	}
 
 	privateKeys = append(privateKeys, key)
 	nextPrivateKeys, err := capturePrivateKey(false)
 	if err != nil {
-		return privateKeys, fmt.Errorf("next capture, %s", err.Error())
+		return privateKeys, err
 	}
 
 	privateKeys = append(privateKeys, nextPrivateKeys...)
