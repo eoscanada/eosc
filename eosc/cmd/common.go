@@ -42,16 +42,21 @@ func setupWallet() (*eosvault.Vault, error) {
 
 	return vault, nil
 }
-func api() (*eos.API, error) {
+
+func apiWithWallet() (*eos.API, error) {
 	vault, err := setupWallet()
 	if err != nil {
 		return nil, err
 	}
 
-	fmt.Printf("Initiation api with [%s]\n", viper.GetString("api-url"))
 	api := eos.New(viper.GetString("api-url"))
 
 	api.SetSigner(vault.KeyBag)
 
 	return api, nil
+
+}
+
+func api() *eos.API {
+	return eos.New(viper.GetString("api-url"))
 }
