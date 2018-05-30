@@ -21,11 +21,7 @@ var getAccountCmd = &cobra.Command{
 	Long:  `retrieve account information`,
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		api, err := api()
-		if err != nil {
-			fmt.Printf("Error initiating api, %s\n", err.Error())
-			os.Exit(1)
-		}
+		api := api()
 
 		account, err := api.GetAccount(eos.AccountName(args[0]))
 		if err != nil {
@@ -42,6 +38,6 @@ var getAccountCmd = &cobra.Command{
 }
 
 func init() {
-	RootCmd.AddCommand(accountCmd)
-	accountCmd.AddCommand(getAccountCmd)
+	// RootCmd.AddCommand(accountCmd)
+	// accountCmd.AddCommand(getAccountCmd)
 }

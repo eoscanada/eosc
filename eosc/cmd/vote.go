@@ -34,7 +34,7 @@ var voteProducersCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		api, err := api()
+		api, err := apiWithWallet()
 		if err != nil {
 			fmt.Printf("Error initiating api, %s\n", err.Error())
 			os.Exit(1)
@@ -69,7 +69,7 @@ var voteProxyCmd = &cobra.Command{
 
 		proxyName := eos.AccountName(args[1])
 
-		api, err := api()
+		api, err := apiWithWallet()
 		if err != nil {
 			fmt.Printf("Error initiating api, %s\n", err.Error())
 			os.Exit(1)

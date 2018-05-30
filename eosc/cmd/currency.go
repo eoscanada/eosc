@@ -23,12 +23,7 @@ var getCurrencyBalanceCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 
-		api, err := api()
-
-		if err != nil {
-			fmt.Printf("Error initiating api, %s\n", err.Error())
-			os.Exit(1)
-		}
+		api := api()
 
 		balances, err := api.GetCurrencyBalance(eos.AccountName(args[0]), viper.GetString("currencyCmd.symbol"), eos.AccountName(viper.GetString("currencyCmd.currency-account")))
 		if err != nil {
@@ -50,8 +45,8 @@ var getCurrencyBalanceCmd = &cobra.Command{
 }
 
 func init() {
-	RootCmd.AddCommand(currencyCmd)
-	currencyCmd.AddCommand(getCurrencyBalanceCmd)
+	// RootCmd.AddCommand(currencyCmd)
+	// currencyCmd.AddCommand(getCurrencyBalanceCmd)
 
 	currencyCmd.Flags().StringP("currency-account", "", "eosio.token", "account owning the currency")
 	currencyCmd.Flags().StringP("symbol", "", "EOS", "symbol representing the currency")

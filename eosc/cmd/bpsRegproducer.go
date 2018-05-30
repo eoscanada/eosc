@@ -30,7 +30,7 @@ var bpsRegisterProducerCmd = &cobra.Command{
 	Long:  `Register account as a block producer`,
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
-		api, err := api()
+		api, err := apiWithWallet()
 		if err != nil {
 			fmt.Printf("Error initiating api, %s\n", err.Error())
 			os.Exit(1)

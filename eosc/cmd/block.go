@@ -29,11 +29,7 @@ var getBlockCmd = &cobra.Command{
 	Short: "get block info",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		api, err := api()
-		if err != nil {
-			fmt.Printf("Error initiating api, %s\n", err.Error())
-			os.Exit(1)
-		}
+		api := api()
 
 		block, err := api.GetBlockByNumOrID(args[0])
 		if err != nil {
@@ -60,8 +56,8 @@ var blockCmd = &cobra.Command{
 }
 
 func init() {
-	RootCmd.AddCommand(blockCmd)
-	blockCmd.AddCommand(getBlockCmd)
+	// RootCmd.AddCommand(blockCmd)
+	// blockCmd.AddCommand(getBlockCmd)
 
 	getBlockCmd.Flags().BoolP("json", "", false, "return producers info in json")
 

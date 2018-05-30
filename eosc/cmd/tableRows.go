@@ -30,11 +30,7 @@ var tableRowsCmd = &cobra.Command{
 	Long:  `List the producers`,
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
-		api, err := api()
-		if err != nil {
-			fmt.Printf("Error initiating api, %s\n", err.Error())
-			os.Exit(1)
-		}
+		api := api()
 
 		response, err := api.GetTableRows(
 			eos.GetTableRowsRequest{
@@ -67,8 +63,8 @@ var tableCmd = &cobra.Command{
 }
 
 func init() {
-	RootCmd.AddCommand(tableCmd)
-	tableCmd.AddCommand(tableRowsCmd)
+	// RootCmd.AddCommand(tableCmd)
+	// tableCmd.AddCommand(tableRowsCmd)
 
 	tableRowsCmd.Flags().IntP("limit", "", 50, "maximum producers that will be return")
 

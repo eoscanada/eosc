@@ -29,11 +29,7 @@ var bpsListProducerCmd = &cobra.Command{
 	Short: "List the producers",
 	Long:  `List the producers`,
 	Run: func(cmd *cobra.Command, args []string) {
-		api, err := api()
-		if err != nil {
-			fmt.Printf("Error initiating api, %s\n", err.Error())
-			os.Exit(1)
-		}
+		api := api()
 
 		response, err := api.GetTableRows(
 			eos.GetTableRowsRequest{

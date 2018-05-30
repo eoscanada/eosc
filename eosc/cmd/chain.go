@@ -27,11 +27,7 @@ var chainInfoCmd = &cobra.Command{
 	Use:   "info",
 	Short: "blockchain information",
 	Run: func(cmd *cobra.Command, args []string) {
-		api, err := api()
-		if err != nil {
-			fmt.Printf("Error initiating api, %s\n", err.Error())
-			os.Exit(1)
-		}
+		api := api()
 
 		info, err := api.GetInfo()
 		if err != nil {
