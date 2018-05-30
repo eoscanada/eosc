@@ -22,7 +22,6 @@ var getAccountCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		api, err := api()
-		api.Debug = true
 		if err != nil {
 			fmt.Printf("Error initiating api, %s\n", err.Error())
 			os.Exit(1)

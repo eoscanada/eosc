@@ -64,6 +64,5 @@ var ChainFreezeHandler = p2p.HandlerFunc(func(msg p2p.Message) {
 		}
 	default:
 		fmt.Println("found type: Default")
-
 	}
 })
