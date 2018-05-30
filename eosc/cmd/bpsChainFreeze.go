@@ -12,16 +12,14 @@ import (
 
 var bpsChainFreezeCmd = &cobra.Command{
 	Use:   "chain-freeze",
-	Short: "freeze the chain on a given action",
+	Short: "Freeze the chain by proxying p2p blocks until a block including updateauth actions is passed through, then block/shutdown.",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		proxy := p2p.Proxy{
 			Routes: []*p2p.Route{
 				{From: viper.GetString("listening-address"), To: viper.GetString("target-p2p-address")},
 			},
-			Handlers: []p2p.Handler{
-				ChainFreezeHandler,
-			},
+			Handlers: []p2p.Handler{chainFreezeHandler},
 		}
 
 		proxy.Start()
@@ -42,11 +40,10 @@ func init() {
 	}
 }
 
-var ChainFreezeHandler = p2p.HandlerFunc(func(msg p2p.Message) {
+var chainFreezeHandler = p2p.HandlerFunc(func(msg p2p.Message) {
 	p2pMsg := msg.Envelope.P2PMessage
-	switch p2pMsg.GetType() {
-	case eos.SignedBlockType:
-		m := p2pMsg.(*eos.SignedBlock)
+	switch m := p2pMsg.(type) {
+	case *eos.SignedBlock:
 		fmt.Printf("Receiving block %d sign from %s\n", m.BlockNumber(), m.Producer)
 		for _, tx := range m.Transactions {
 			signTransaction, err := tx.Transaction.Packed.Unpack()
@@ -55,14 +52,15 @@ var ChainFreezeHandler = p2p.HandlerFunc(func(msg p2p.Message) {
 			}
 			for _, action := range signTransaction.Actions {
 				fmt.Printf("\tReceived action %s::%s\n", action.Account, action.Name)
+
+				// ACTION on which to close connection.
 				if action.Name == "updateauth" {
 					fmt.Println("Closing connection, enjoy your frozen chain.")
 					os.Exit(0)
 				}
-
 			}
 		}
 	default:
-		fmt.Println("found type: Default")
+		//fmt.Println("found type: Default")
 	}
 })

@@ -77,3 +77,16 @@ Other features:
 
 Support `--accept` which will ask you to confirm any signature on the command-line.
 *  It will print what it can print..
+
+
+
+FAQ
+---
+
+Why not use `cleos` instead ?
+
+* hard to compile
+* uses sha512 as key derivation, Argon2 is stronger.
+* not work on Windows
+* no need to run `keosd` separately and manage your keys on a Linux or Mac machine.
+* single binary that brings `keosd` and `cleos` together
