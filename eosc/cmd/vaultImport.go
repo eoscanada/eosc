@@ -71,7 +71,9 @@ securely sign transactions.
 			vault = eosvault.NewVault()
 		}
 
-		vault.Comment = viper.GetString("comment")
+		if comment := viper.GetString("comment"); comment != "" {
+			vault.Comment = comment
+		}
 
 		privateKeys, err := capturePrivateKeys()
 		if err != nil {
@@ -150,7 +152,6 @@ func capturePrivateKeys() ([]*ecc.PrivateKey, error) {
 
 }
 func capturePrivateKey(isFirst bool) (privateKeys []*ecc.PrivateKey, err error) {
-
 	prompt := "Type your first private key: "
 	if !isFirst {
 		prompt = "Type your next private key or hit ENTER if you are done: "
