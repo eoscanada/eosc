@@ -3,12 +3,6 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "jU5joa+AbO57DTCJXdckOxsaXVk=",
-			"path": "github.com/dgiagio/getpass",
-			"revision": "ee9b272d814714e1cc78ab8dd59b521730333b12",
-			"revisionTime": "2014-12-21T02:10:26Z"
-		},
-		{
 			"checksumSHA1": "TBLTwVd1Xy/RQ+quv4KgI62ffQI=",
 			"path": "github.com/eoscanada/eos-go",
 			"revision": "22a573c16e8dd5d111da4c5cc0f9b90e73ed7059",
@@ -219,6 +213,12 @@
 			"revisionTime": "2018-04-30T17:54:52Z"
 		},
 		{
+			"checksumSHA1": "BGm8lKZmvJbf/YOJLeL1rw2WVjA=",
+			"path": "golang.org/x/crypto/ssh/terminal",
+			"revision": "ae8bce0030810cf999bb2b9868ae5c7c58e6343b",
+			"revisionTime": "2018-04-30T17:54:52Z"
+		},
+		{
 			"checksumSHA1": "hgMzrmP2ui9O0+y5w8lQQdGnPLE=",
 			"path": "golang.org/x/sys/cpu",
 			"revision": "4adea008a5e5f820b6028611ae0b6b3fbcec534b",
@@ -227,6 +227,12 @@
 		{
 			"checksumSHA1": "5BAifTvbu6TCdgOEKRabDIIjcp4=",
 			"path": "golang.org/x/sys/unix",
+			"revision": "4adea008a5e5f820b6028611ae0b6b3fbcec534b",
+			"revisionTime": "2018-04-13T21:37:15Z"
+		},
+		{
+			"checksumSHA1": "Dfz4tGItokMvHZENCsBmPPB8FGQ=",
+			"path": "golang.org/x/sys/windows",
 			"revision": "4adea008a5e5f820b6028611ae0b6b3fbcec534b",
 			"revisionTime": "2018-04-13T21:37:15Z"
 		},
