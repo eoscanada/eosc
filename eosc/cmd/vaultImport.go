@@ -17,7 +17,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/dgiagio/getpass"
 	"github.com/eoscanada/eos-go/ecc"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/cobra"
@@ -47,7 +46,7 @@ securely sign transactions.
 				os.Exit(1)
 			}
 
-			passphrase, err = getpass.GetPassword("Enter passphrase to unlock vault: ")
+			passphrase, err = eosvault.GetPassword("Enter passphrase to unlock vault: ")
 			if err != nil {
 				fmt.Printf("ERROR: reading passphrase: %s", err)
 				os.Exit(1)
@@ -92,13 +91,13 @@ securely sign transactions.
 		fmt.Println("Keys imported. Let's secure them before showing the public keys.")
 
 		if passphrase == "" {
-			passphrase, err = getpass.GetPassword("Enter passphrase to encrypt your keys: ")
+			passphrase, err = eosvault.GetPassword("Enter passphrase to encrypt your keys: ")
 			if err != nil {
 				fmt.Println("ERROR reading password:", err)
 				os.Exit(1)
 			}
 
-			passphraseConfirm, err := getpass.GetPassword("Confirm passphrase: ")
+			passphraseConfirm, err := eosvault.GetPassword("Confirm passphrase: ")
 			if err != nil {
 				fmt.Println("ERROR reading confirmation password:", err)
 				os.Exit(1)
@@ -157,7 +156,7 @@ func capturePrivateKey(isFirst bool) (privateKeys []*ecc.PrivateKey, err error) 
 		prompt = "Type your next private key or hit ENTER if you are done: "
 	}
 
-	enteredKey, err := getpass.GetPassword(prompt)
+	enteredKey, err := eosvault.GetPassword(prompt)
 	if err != nil {
 		return privateKeys, fmt.Errorf("get password: %s", err.Error())
 	}

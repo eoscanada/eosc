@@ -17,7 +17,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/dgiagio/getpass"
 	"github.com/eoscanada/eos-go/ecc"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/cobra"
@@ -60,13 +59,13 @@ securely sign transactions.
 
 		fmt.Printf("Created %d keys. Let's secure them before showing the public keys.\n", len(newKeys))
 
-		passphrase, err := getpass.GetPassword("Enter passphrase to encrypt your keys: ")
+		passphrase, err := eosvault.GetPassword("Enter passphrase to encrypt your keys: ")
 		if err != nil {
 			fmt.Println("ERROR reading password:", err)
 			os.Exit(1)
 		}
 
-		passphraseConfirm, err := getpass.GetPassword("Confirm passphrase: ")
+		passphraseConfirm, err := eosvault.GetPassword("Confirm passphrase: ")
 		if err != nil {
 			fmt.Println("ERROR reading confirmation password:", err)
 			os.Exit(1)

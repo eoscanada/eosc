@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/dgiagio/getpass"
 	"github.com/eoscanada/eos-go"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
@@ -23,7 +22,7 @@ func setupWallet() (*eosvault.Vault, error) {
 
 	}
 
-	passphrase, err := getpass.GetPassword("Enter passphrase to unlock vault: ")
+	passphrase, err := eosvault.GetPassword("Enter passphrase to unlock vault: ")
 	if err != nil {
 		return nil, fmt.Errorf("reading passphrase: %s", err)
 
