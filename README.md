@@ -65,11 +65,11 @@ Cryptography used
 =================
 
 The cryptography used is NaCl
-([Javascript](https://github.com/dchest/tweetnacl-js),
-[Go version which we use](https://godoc.org/golang.org/x/crypto/nacl/secretbox)). And
+([C implementation](https://tweetnacl.cr.yp.to/), [Javascript port](https://github.com/dchest/tweetnacl-js),
+[Go version, which we use](https://godoc.org/golang.org/x/crypto/nacl/secretbox)). And
 key derivation is [Argon2](https://en.wikipedia.org/wiki/Argon2),
-using the [https://godoc.org/golang.org/x/crypto/argon2](Go library
-here).
+using the [Go library
+here](https://godoc.org/golang.org/x/crypto/argon2).
 
 You can inspect the crypto code in our codebase,
 [it is 79 lines](./vault/passphrase.go), including blanks and
