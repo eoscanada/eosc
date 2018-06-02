@@ -15,6 +15,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -23,22 +24,23 @@ import (
 var vaultListCmd = &cobra.Command{
 	Use:   "list",
 	Short: "List public keys inside an eosc vault.",
+	Long: `List public keys inside an eosc vault.
+
+The wallet file contains a lits of public keys for easy reference, but
+you cannot trust that these public keys have their counterpart in the
+wallet, unless you check with the "list" command.
+`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list called")
-		// FIXME: the file should contain the list of public keys within...
+		vault, err := setupWallet()
+		if err != nil {
+			fmt.Println("ERROR:", err)
+			os.Exit(1)
+		}
+
+		vault.PrintPublicKeys()
 	},
 }
 
 func init() {
 	vaultCmd.AddCommand(vaultListCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// vaultListCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// vaultListCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

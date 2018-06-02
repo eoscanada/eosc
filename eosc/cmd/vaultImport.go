@@ -123,10 +123,11 @@ securely sign transactions.
 			os.Exit(1)
 		}
 
-		fmt.Printf("Wallet file %q written. Here are your public keys:\n", walletFile)
+		fmt.Printf("Wallet file %q written. These public keys were ADDED:\n", walletFile)
 		for _, pub := range newKeys {
 			fmt.Printf("- %s\n", pub.String())
 		}
+		fmt.Printf("Total keys stored: %d\n", len(vault.KeyBag.Keys))
 	},
 }
 
