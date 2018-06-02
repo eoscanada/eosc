@@ -141,7 +141,7 @@ func listen(v *eosvault.Vault) {
 	// })
 
 	port := viper.GetInt("port")
-	fmt.Printf("Listening for wallet operations on port %d\n", port)
+	fmt.Printf("Listening for wallet operations on 127.0.0.1:%d\n", port)
 	if err := http.ListenAndServe(fmt.Sprintf("127.0.0.1:%d", port), nil); err != nil {
 		log.Println("Failed listening on port %d: %s\n", port, err)
 	}
