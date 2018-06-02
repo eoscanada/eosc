@@ -51,6 +51,5 @@ var chainCmd = &cobra.Command{
 }
 
 func init() {
-	// RootCmd.AddCommand(chainCmd)
-	// chainCmd.AddCommand(chainInfoCmd)
+	RootCmd.AddCommand(chainInfoCmd)
 }
