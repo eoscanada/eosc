@@ -20,7 +20,7 @@ import (
 	"net/http"
 	"os"
 
-	eos "github.com/eoscanada/eos-go"
+	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/cobra"
@@ -98,6 +98,10 @@ func listen(v *eosvault.Vault) {
 			return
 		}
 
+		for _, action := range tx.Actions {
+			action.SetToServer(true)
+		}
+
 		err = json.Unmarshal(inputs[1], &requiredKeys)
 		if err != nil {
 			http.Error(w, "decoding required keys", 500)
@@ -111,7 +115,6 @@ func listen(v *eosvault.Vault) {
 		}
 
 		// Ask for permission on the command line
-
 		signed, err := v.KeyBag.Sign(tx, chainID, requiredKeys...)
 		if err != nil {
 			http.Error(w, fmt.Sprintf("error signing: %s", err), 500)
@@ -131,7 +134,6 @@ func listen(v *eosvault.Vault) {
 			http.Error(w, "couldn't decode input", 500)
 			return
 		}
-
 	})
 	// when trying to import a key, we should instruct them to use the `eosc vault` command
 	// to create and import new keys.
