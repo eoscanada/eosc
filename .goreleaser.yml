@@ -31,7 +31,7 @@ builds:
   ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
   binary: eosc
   env:
-  - CGO_ENABLED=1
+  - CGO_ENABLED=0
   lang: go
 archive:
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm

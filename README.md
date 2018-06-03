@@ -53,7 +53,7 @@ keys on Ethereum, to be ported to mainnet.
 Importing keys
 ==============
 
-Or import an existing private key.  This key will be encrypted to disk with your password in the default `vault-wallet.json` file:
+Or import an existing private key.  This key will be encrypted to disk with your password in the default `eosc-vault.json` file:
 
 ```
 $ eosc vault import
