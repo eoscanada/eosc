@@ -15,7 +15,7 @@ type P2PMessage interface {
 
 type HandshakeMessage struct {
 	// net_plugin/protocol.hpp handshake_message
-	NetworkVersion           int16         `json:"network_version"`
+	NetworkVersion           uint16        `json:"network_version"`
 	ChainID                  SHA256Bytes   `json:"chain_id"`
 	NodeID                   SHA256Bytes   `json:"node_id"` // sha256
 	Key                      ecc.PublicKey `json:"key"`     // can be empty, producer key, or peer key
@@ -287,7 +287,7 @@ func (t *TransactionWithID) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-type IDListMode uint8
+type IDListMode byte
 
 const (
 	none IDListMode = iota

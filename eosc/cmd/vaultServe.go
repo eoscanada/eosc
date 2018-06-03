@@ -98,10 +98,6 @@ func listen(v *eosvault.Vault) {
 			return
 		}
 
-		for _, action := range tx.Actions {
-			action.SetToServer(true)
-		}
-
 		err = json.Unmarshal(inputs[1], &requiredKeys)
 		if err != nil {
 			http.Error(w, "decoding required keys", 500)
@@ -114,8 +110,11 @@ func listen(v *eosvault.Vault) {
 			return
 		}
 
-		// Ask for permission on the command line
 		signed, err := v.KeyBag.Sign(tx, chainID, requiredKeys...)
+		for _, action := range signed.Transaction.Actions {
+			action.SetToServer(false)
+		}
+
 		if err != nil {
 			http.Error(w, fmt.Sprintf("error signing: %s", err), 500)
 			return

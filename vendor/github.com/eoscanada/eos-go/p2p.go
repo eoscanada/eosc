@@ -23,8 +23,8 @@ const (
 	TimeMessageType
 	NoticeMessageType // 4
 	RequestMessageType
-	SyncRequestMessageType // 6
-	SignedBlockType
+	SyncRequestMessageType       // 6
+	SignedBlockType              // 7
 	PackedTransactionMessageType // 8
 )
 
@@ -88,13 +88,15 @@ type P2PMessageEnvelope struct {
 	Type       P2PMessageType `json:"type"`
 	Payload    []byte         `json:"-"`
 	P2PMessage P2PMessage     `json:"message" eos:"-"`
+	Raw        []byte         `json:"-"`
 }
 
 func ReadP2PMessageData(r io.Reader) (envelope *P2PMessageEnvelope, err error) {
 	data := make([]byte, 0)
 
 	lengthBytes := make([]byte, 4, 4)
-	_, err = r.Read(lengthBytes)
+	//_, err = r.Read(lengthBytes)
+	_, err = io.ReadFull(r, lengthBytes)
 	if err != nil {
 		return
 	}
@@ -112,7 +114,7 @@ func ReadP2PMessageData(r io.Reader) (envelope *P2PMessageEnvelope, err error) {
 	}
 
 	if err != nil {
-		fmt.Println("Connection error: ", err)
+		fmt.Println("ReadFull, error: ", err)
 		return
 	}
 
@@ -125,5 +127,6 @@ func ReadP2PMessageData(r io.Reader) (envelope *P2PMessageEnvelope, err error) {
 	if err != nil {
 		fmt.Println("Failing data: ", hex.EncodeToString(data))
 	}
+	envelope.Raw = data
 	return
 }
