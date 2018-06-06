@@ -13,31 +13,19 @@ func setupWallet() (*eosvault.Vault, error) {
 	walletFile := viper.GetString("vault-file")
 	if _, err := os.Stat(walletFile); err != nil {
 		return nil, fmt.Errorf("Wallet file %q missing, ", walletFile)
-
 	}
 
 	vault, err := eosvault.NewVaultFromWalletFile(walletFile)
 	if err != nil {
 		return nil, fmt.Errorf("loading vault, %s", err)
-
 	}
 
-	passphrase, err := eosvault.GetPassword("Enter passphrase to unlock vault: ")
+	boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap)
 	if err != nil {
-		return nil, fmt.Errorf("reading passphrase: %s", err)
-
+		return nil, fmt.Errorf("secret boxer, %s", err)
 	}
 
-	switch vault.SecretBoxWrap {
-	case "passphrase":
-		err = vault.OpenWithPassphrase(passphrase)
-		if err != nil {
-			return nil, fmt.Errorf("reading passphrase: %s", err)
-		}
-	default:
-		return nil, fmt.Errorf("ERROR unsupported secretbox wrapping method: %q", vault.SecretBoxWrap)
-
-	}
+	vault.Open(boxer)
 
 	return vault, nil
 }
@@ -58,4 +46,11 @@ func apiWithWallet() (*eos.API, error) {
 
 func api() *eos.API {
 	return eos.New(viper.GetString("api-url"))
+}
+
+func errorCheck(err error) {
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }

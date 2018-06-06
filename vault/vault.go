@@ -23,8 +23,6 @@ type Vault struct {
 	SecretBoxWrap       string `json:"secretbox_wrap"`
 	SecretBoxCiphertext string `json:"secretbox_ciphertext"`
 
-	PublicKeys []string `json:"public_keys"`
-
 	KeyBag *eos.KeyBag `json:"-"`
 }
 
@@ -100,11 +98,6 @@ func (v *Vault) PrintPublicKeys() {
 // WriteToFile writes the Vault to disk. You need to encrypt before
 // writing to file, otherwise you might lose much :)
 func (v *Vault) WriteToFile(filename string) error {
-	v.PublicKeys = []string{}
-	for _, key := range v.KeyBag.Keys {
-		v.PublicKeys = append(v.PublicKeys, key.PublicKey().String())
-	}
-
 	cnt, err := json.MarshalIndent(v, "", "  ")
 	if err != nil {
 		return err
@@ -122,4 +115,34 @@ func (v *Vault) WriteToFile(filename string) error {
 	}
 
 	return fl.Close()
+}
+
+func (v *Vault) Open(boxer SecretBoxer) error {
+	data, err := boxer.Open(v.SecretBoxCiphertext)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(data, v.KeyBag)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (v *Vault) Seal(boxer SecretBoxer) error {
+	payload, err := json.Marshal(v.KeyBag)
+	if err != nil {
+		return err
+	}
+
+	v.SecretBoxWrap = boxer.WrapType()
+	cipherText, err := boxer.Seal(payload)
+	if err != nil {
+		return err
+	}
+
+	v.SecretBoxCiphertext = cipherText
+	return nil
 }

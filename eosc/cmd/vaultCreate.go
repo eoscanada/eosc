@@ -34,18 +34,17 @@ securely sign transactions.
 
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO: check if the viper.GetString("vault-file") exists.
-		//   WARN and quit, that's it.
 		walletFile := viper.GetString("vault-file")
+
 		if _, err := os.Stat(walletFile); err == nil {
 			fmt.Printf("Wallet file %q already exists, rename it before running `eosc vault create`.\n", walletFile)
 			os.Exit(1)
 		}
 
 		vault := eosvault.NewVault()
-		vault.Comment = viper.GetString("comment")
+		vault.Comment = viper.GetString("vaultCreateCmd-comment")
 
-		numKeys := viper.GetInt("keys")
+		numKeys := viper.GetInt("vaultCreateCmd-keys")
 		var newKeys []ecc.PublicKey
 		for i := 0; i < numKeys; i++ {
 			pubKey, err := vault.NewKeyPair()
@@ -59,34 +58,19 @@ securely sign transactions.
 
 		fmt.Printf("Created %d keys. Let's secure them before showing the public keys.\n", len(newKeys))
 
-		passphrase, err := eosvault.GetPassword("Enter passphrase to encrypt your keys: ")
-		if err != nil {
-			fmt.Println("ERROR reading password:", err)
-			os.Exit(1)
+		var boxerType = "passphrase-create"
+		if viper.GetBool("vaultCreateCmd-kms-gcp") {
+			boxerType = "kms-gcp"
 		}
 
-		passphraseConfirm, err := eosvault.GetPassword("Confirm passphrase: ")
-		if err != nil {
-			fmt.Println("ERROR reading confirmation password:", err)
-			os.Exit(1)
-		}
+		boxer, err := eosvault.SecretBoxerForType(boxerType)
+		errorCheck(err)
 
-		if passphrase != passphraseConfirm {
-			fmt.Println("ERROR: passphrase mismatch!")
-			os.Exit(1)
-		}
-
-		err = vault.SealWithPassphrase(passphrase)
-		if err != nil {
-			fmt.Println("ERROR sealing keys:", err)
-			os.Exit(1)
-		}
+		err = vault.Seal(boxer)
+		errorCheck(err)
 
 		err = vault.WriteToFile(walletFile)
-		if err != nil {
-			fmt.Printf("ERROR writing to file %q: %s\n", walletFile, err)
-			os.Exit(1)
-		}
+		errorCheck(err)
 
 		fmt.Printf("Wallet file %q created. Here are your public keys:\n", walletFile)
 		for _, pub := range newKeys {
@@ -100,9 +84,10 @@ func init() {
 
 	vaultCreateCmd.Flags().IntP("keys", "k", 1, "Number of keypairs to create")
 	vaultCreateCmd.Flags().StringP("comment", "c", "", "Label or comment about this key vault")
+	vaultCreateCmd.Flags().BoolP("kms-gcp", "", false, "")
 
-	for _, flag := range []string{"keys", "comment"} {
-		if err := viper.BindPFlag(flag, vaultCreateCmd.Flags().Lookup(flag)); err != nil {
+	for _, flag := range []string{"keys", "comment", "kms-gcp"} {
+		if err := viper.BindPFlag("vaultCreateCmd-"+flag, vaultCreateCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}

@@ -124,16 +124,6 @@ func listen(v *eosvault.Vault) {
 		_ = json.NewEncoder(w).Encode(signed)
 	})
 
-	http.HandleFunc("/v1/wallet/sign_digest", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("Handling sign_digest")
-
-		var inputs []json.RawMessage
-		if err := json.NewDecoder(r.Body).Decode(&inputs); err != nil {
-			fmt.Println("sign_digest: error:", err)
-			http.Error(w, "couldn't decode input", 500)
-			return
-		}
-	})
 	// when trying to import a key, we should instruct them to use the `eosc vault` command
 	// to create and import new keys.
 	//

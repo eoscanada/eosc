@@ -18,6 +18,7 @@ import (
 	"os"
 
 	"github.com/eoscanada/eos-go/ecc"
+	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -36,7 +37,9 @@ securely sign transactions.
 
 		walletFile := viper.GetString("vault-file")
 		vault := &eosvault.Vault{}
-		var passphrase string
+
+		var boxer eosvault.SecretBoxer
+
 		if _, err := os.Stat(walletFile); err == nil {
 
 			fmt.Println("Loading existing vault from file: ", walletFile)
@@ -46,20 +49,15 @@ securely sign transactions.
 				os.Exit(1)
 			}
 
-			passphrase, err = eosvault.GetPassword("Enter passphrase to unlock vault: ")
+			boxer, err = eosvault.SecretBoxerForType(vault.SecretBoxWrap)
 			if err != nil {
-				fmt.Printf("ERROR: reading passphrase: %s", err)
+				fmt.Println(err)
 				os.Exit(1)
 			}
-			switch vault.SecretBoxWrap {
-			case "passphrase":
-				err = vault.OpenWithPassphrase(passphrase)
-				if err != nil {
-					fmt.Printf("ERROR: reading passphrase: %s", err)
-					os.Exit(1)
-				}
-			default:
-				fmt.Printf("ERROR: unsupported secretbox wrapping method: %q", vault.SecretBoxWrap)
+
+			err = vault.Open(boxer)
+			if err != nil {
+				fmt.Println(err)
 				os.Exit(1)
 			}
 
@@ -70,7 +68,7 @@ securely sign transactions.
 			vault = eosvault.NewVault()
 		}
 
-		if comment := viper.GetString("comment"); comment != "" {
+		if comment := viper.GetString("vaultImportCmd-comment"); comment != "" {
 			vault.Comment = comment
 		}
 
@@ -80,38 +78,27 @@ securely sign transactions.
 			os.Exit(1)
 		}
 
-		// Got the new keys now
-
 		var newKeys []ecc.PublicKey
 		for _, privateKey := range privateKeys {
 			vault.AddPrivateKey(privateKey)
 			newKeys = append(newKeys, privateKey.PublicKey())
 		}
 
-		fmt.Println("Keys imported. Let's secure them before showing the public keys.")
+		if boxer == nil {
+			vault.SecretBoxWrap = "passphrase-create"
+			if viper.GetBool("vaultImportCmd-kms-gcp") {
+				vault.SecretBoxWrap = "kms-gcp"
+			}
 
-		if passphrase == "" {
-			passphrase, err = eosvault.GetPassword("Enter passphrase to encrypt your keys: ")
+			boxer, err = eosvault.SecretBoxerForType(vault.SecretBoxWrap)
 			if err != nil {
-				fmt.Println("ERROR reading password:", err)
+				fmt.Println(err)
 				os.Exit(1)
 			}
-
-			passphraseConfirm, err := eosvault.GetPassword("Confirm passphrase: ")
-			if err != nil {
-				fmt.Println("ERROR reading confirmation password:", err)
-				os.Exit(1)
-			}
-
-			if passphrase != passphraseConfirm {
-				fmt.Println("ERROR: passphrase mismatch!")
-				os.Exit(1)
-			}
-
 			// TODO: make this thing loop.. instead of restarting the whole process..
 		}
 
-		err = vault.SealWithPassphrase(passphrase)
+		err = vault.Seal(boxer)
 		if err != nil {
 			fmt.Println("ERROR sealing keys:", err)
 			os.Exit(1)
@@ -134,13 +121,13 @@ securely sign transactions.
 func init() {
 	vaultCmd.AddCommand(vaultImportCmd)
 	vaultImportCmd.Flags().StringP("comment", "c", "", "Label or comment about this key vault")
+	vaultImportCmd.Flags().BoolP("kms-gcp", "", false, "")
 
-	for _, flag := range []string{"comment"} {
-		if err := viper.BindPFlag(flag, vaultImportCmd.Flags().Lookup(flag)); err != nil {
+	for _, flag := range []string{"comment", "kms-gcp"} {
+		if err := viper.BindPFlag("vaultImportCmd-"+flag, vaultImportCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
-
 }
 
 func capturePrivateKeys() ([]*ecc.PrivateKey, error) {
@@ -157,7 +144,7 @@ func capturePrivateKey(isFirst bool) (privateKeys []*ecc.PrivateKey, err error) 
 		prompt = "Type your next private key or hit ENTER if you are done: "
 	}
 
-	enteredKey, err := eosvault.GetPassword(prompt)
+	enteredKey, err := cli.GetPassword(prompt)
 	if err != nil {
 		return privateKeys, fmt.Errorf("get password: %s", err.Error())
 	}
