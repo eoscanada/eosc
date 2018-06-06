@@ -83,15 +83,34 @@ func NewKMSCGPBoxer(keyRing string) *KMSGCPBoxer {
 }
 
 func (b *KMSGCPBoxer) Seal(in []byte) (string, error) {
-	panic("implement me")
-	//mgr, err := NewKMSGCPManager("/key/ring/here")
-	//if err != nil {
-	//	fmt.Errorf("new kms gcp manager, %s", err)
-	//}
+	mgr, err := NewKMSGCPManager("projects/eoscanada-sandbox-fproulx2/locations/global/keyRings/sandbox-keyring/cryptoKeys/block-signing-kek")
+	if err != nil {
+		return "", fmt.Errorf("new kms gcp manager, %s", err)
+	}
+
+	encrypted, err := mgr.Encrypt(in)
+	if err != nil {
+		return "", fmt.Errorf("kms encryption, %s", err)
+	}
+
+	return base64.RawStdEncoding.EncodeToString(encrypted), nil
+
 }
 
 func (b *KMSGCPBoxer) Open(in string) ([]byte, error) {
-	panic("implement me")
+	mgr, err := NewKMSGCPManager("projects/eoscanada-sandbox-fproulx2/locations/global/keyRings/sandbox-keyring/cryptoKeys/block-signing-kek")
+	if err != nil {
+		return []byte{}, fmt.Errorf("new kms gcp manager, %s", err)
+	}
+	data, err := base64.RawStdEncoding.DecodeString(in)
+	if err != nil {
+		return []byte{}, fmt.Errorf("base 64 decode, %s", err)
+	}
+	out, err := mgr.Decrypt(data)
+	if err != nil {
+		return []byte{}, fmt.Errorf("base 64 decode, %s", err)
+	}
+	return out, nil
 }
 
 func (b *KMSGCPBoxer) WrapType() string {

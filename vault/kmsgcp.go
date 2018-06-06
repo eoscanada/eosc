@@ -8,17 +8,17 @@ import (
 	"io"
 	"sync"
 
+	"encoding/json"
+
 	"golang.org/x/crypto/nacl/secretbox"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/cloudkms/v1"
-	"encoding/json"
 )
 
 type KMSManager interface {
 	Encrypt([]byte) ([]byte, error)
 	Decrypt([]byte) ([]byte, error)
 }
-
 
 func NewKMSGCPManager(keyRing string) (*KMSGCPManager, error) {
 	ctx := context.Background()
@@ -37,6 +37,9 @@ func NewKMSGCPManager(keyRing string) (*KMSGCPManager, error) {
 		keyRing: keyRing,
 	}
 
+	if err := manager.setupEncryption(); err != nil {
+		return nil, err
+	}
 
 	return manager, nil
 }
@@ -59,6 +62,7 @@ func (k *KMSGCPManager) setupEncryption() error {
 	req := &cloudkms.EncryptRequest{
 		Plaintext: base64.StdEncoding.EncodeToString(k.localDEK[:]),
 	}
+
 	resp, err := k.service.Projects.Locations.KeyRings.CryptoKeys.Encrypt(k.keyRing, req).Do()
 	if err != nil {
 		return err
@@ -106,9 +110,6 @@ type BlobV1 struct {
 }
 
 func (k *KMSGCPManager) Encrypt(in []byte) ([]byte, error) {
-	if err := k.setupEncryption(); err != nil {
-		return nil, err
-	}
 
 	var nonce [24]byte
 	if _, err := io.ReadFull(rand.Reader, nonce[:]); err != nil {
