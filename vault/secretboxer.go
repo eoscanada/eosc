@@ -9,7 +9,7 @@ import (
 	"fmt"
 
 	"github.com/eoscanada/eosc/cli"
-	"github.com/spf13/viper"
+	"github.com/pkg/errors"
 	"golang.org/x/crypto/argon2"
 	"golang.org/x/crypto/nacl/secretbox"
 )
@@ -83,7 +83,7 @@ func NewKMSCGPBoxer(keyRing string) *KMSGCPBoxer {
 }
 
 func (b *KMSGCPBoxer) Seal(in []byte) (string, error) {
-	mgr, err := NewKMSGCPManager("projects/eoscanada-sandbox-fproulx2/locations/global/keyRings/sandbox-keyring/cryptoKeys/block-signing-kek")
+	mgr, err := NewKMSGCPManager(b.keyRing)
 	if err != nil {
 		return "", fmt.Errorf("new kms gcp manager, %s", err)
 	}
@@ -98,7 +98,7 @@ func (b *KMSGCPBoxer) Seal(in []byte) (string, error) {
 }
 
 func (b *KMSGCPBoxer) Open(in string) ([]byte, error) {
-	mgr, err := NewKMSGCPManager("projects/eoscanada-sandbox-fproulx2/locations/global/keyRings/sandbox-keyring/cryptoKeys/block-signing-kek")
+	mgr, err := NewKMSGCPManager(b.keyRing)
 	if err != nil {
 		return []byte{}, fmt.Errorf("new kms gcp manager, %s", err)
 	}
@@ -131,11 +131,14 @@ func deriveKey(passphrase string, salt []byte) [keyLength]byte {
 	return secretKey
 }
 
-func SecretBoxerForType(boxerType string) (SecretBoxer, error) {
+func SecretBoxerForType(boxerType string, keyring string) (SecretBoxer, error) {
 
 	switch boxerType {
 	case "kms-gcp":
-		return NewKMSCGPBoxer(viper.GetString("kms-keyring")), nil
+		if keyring == "" {
+			return nil, errors.New("--kms-keyring is required when using --kms-gcp")
+		}
+		return NewKMSCGPBoxer(keyring), nil
 	case "passphrase":
 		password, err := cli.GetPassphrase()
 		if err != nil {

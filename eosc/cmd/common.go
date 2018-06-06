@@ -20,7 +20,7 @@ func setupWallet() (*eosvault.Vault, error) {
 		return nil, fmt.Errorf("loading vault, %s", err)
 	}
 
-	boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap)
+	boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("kms-keyring"))
 	if err != nil {
 		return nil, fmt.Errorf("secret boxer, %s", err)
 	}

@@ -59,11 +59,11 @@ securely sign transactions.
 		fmt.Printf("Created %d keys. Let's secure them before showing the public keys.\n", len(newKeys))
 
 		var boxerType = "passphrase-create"
-		if viper.GetBool("vaultCreateCmd-kms-gcp") {
+		if viper.GetBool("kms-gcp") {
 			boxerType = "kms-gcp"
 		}
 
-		boxer, err := eosvault.SecretBoxerForType(boxerType)
+		boxer, err := eosvault.SecretBoxerForType(boxerType, viper.GetString("kms-keyring"))
 		errorCheck(err)
 
 		err = vault.Seal(boxer)
@@ -84,9 +84,8 @@ func init() {
 
 	vaultCreateCmd.Flags().IntP("keys", "k", 1, "Number of keypairs to create")
 	vaultCreateCmd.Flags().StringP("comment", "c", "", "Label or comment about this key vault")
-	vaultCreateCmd.Flags().BoolP("kms-gcp", "", false, "")
 
-	for _, flag := range []string{"keys", "comment", "kms-gcp"} {
+	for _, flag := range []string{"keys", "comment"} {
 		if err := viper.BindPFlag("vaultCreateCmd-"+flag, vaultCreateCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}

@@ -49,7 +49,7 @@ securely sign transactions.
 				os.Exit(1)
 			}
 
-			boxer, err = eosvault.SecretBoxerForType(vault.SecretBoxWrap)
+			boxer, err = eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("kms-keyring"))
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
@@ -86,11 +86,11 @@ securely sign transactions.
 
 		if boxer == nil {
 			vault.SecretBoxWrap = "passphrase-create"
-			if viper.GetBool("vaultImportCmd-kms-gcp") {
+			if viper.GetBool("kms-gcp") {
 				vault.SecretBoxWrap = "kms-gcp"
 			}
 
-			boxer, err = eosvault.SecretBoxerForType(vault.SecretBoxWrap)
+			boxer, err = eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("vaultImportCmd-kms-keyring"))
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
@@ -121,9 +121,8 @@ securely sign transactions.
 func init() {
 	vaultCmd.AddCommand(vaultImportCmd)
 	vaultImportCmd.Flags().StringP("comment", "c", "", "Label or comment about this key vault")
-	vaultImportCmd.Flags().BoolP("kms-gcp", "", false, "")
 
-	for _, flag := range []string{"comment", "kms-gcp"} {
+	for _, flag := range []string{"comment"} {
 		if err := viper.BindPFlag("vaultImportCmd-"+flag, vaultImportCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
