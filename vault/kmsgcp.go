@@ -10,11 +10,11 @@ import (
 
 	"encoding/json"
 
+	"golang.org/x/crypto/argon2"
 	"golang.org/x/crypto/nacl/secretbox"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/cloudkms/v1"
 )
-
 
 ///
 /// Boxer implementation.
@@ -79,11 +79,9 @@ func deriveKey(passphrase string, salt []byte) [keyLength]byte {
 	return secretKey
 }
 
-
 ///
 /// Manager implementation
 ///
-
 
 func NewKMSGCPManager(keyPath string) (*KMSGCPManager, error) {
 	ctx := context.Background()

@@ -55,14 +55,12 @@ securely sign transactions.
 
 		case "passphrase":
 			password, err := cli.GetEncryptPassphrase()
-			if err != nil {
-				fmt.Println("Error with password input:", err)
-				os.Exit(1)
-			}
+			errorCheck("password input", err)
+
 			boxer = eosvault.NewPassphraseBoxer(password)
 
 		default:
-			fmt.Printf(`Invalid vault type: %q, please use one of: "passphrase", "kms-gcp"\n`, wraptype)
+			fmt.Printf(`Invalid vault type: %q, please use one of: "passphrase", "kms-gcp"\n`, wrapType)
 			os.Exit(1)
 		}
 

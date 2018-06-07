@@ -1,6 +1,7 @@
 package vault
 
 import (
+	crypto_rand "crypto/rand"
 	"encoding/base64"
 	"fmt"
 	"io"

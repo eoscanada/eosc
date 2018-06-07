@@ -15,7 +15,6 @@ package cmd
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eosc/cli"
