@@ -32,8 +32,9 @@ func init() {
 
 	bpsChainFreezeCmd.Flags().StringP("target-p2p-address", "t", "localhost:9876", "return producers info in json")
 	bpsChainFreezeCmd.Flags().StringP("listening-address", "", ":19876", "return producers info in json")
+	bpsChainFreezeCmd.Flags().IntP("block-num", "n", 0, "Last block to let through before exiting.")
 
-	for _, flag := range []string{"target-p2p-address", "listening-address"} {
+	for _, flag := range []string{"target-p2p-address", "listening-address", "block-num"} {
 		if err := viper.BindPFlag(flag, bpsChainFreezeCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
@@ -41,26 +42,15 @@ func init() {
 }
 
 var chainFreezeHandler = p2p.HandlerFunc(func(msg p2p.Message) {
+	maxBlock := viper.GetInt("block-num")
+
 	p2pMsg := msg.Envelope.P2PMessage
 	switch m := p2pMsg.(type) {
 	case *eos.SignedBlock:
 		fmt.Printf("Receiving block %d sign from %s\n", m.BlockNumber(), m.Producer)
-		for _, tx := range m.Transactions {
-			signTransaction, err := tx.Transaction.Packed.Unpack()
-			if err != nil {
-				fmt.Println("Error: unpack, ", err.Error())
-			}
-			for _, action := range signTransaction.Actions {
-				fmt.Printf("\tReceived action %s::%s\n", action.Account, action.Name)
-
-				// ACTION on which to close connection.
-				if action.Name == "updateauth" {
-					fmt.Println("Closing connection, enjoy your frozen chain.")
-					os.Exit(0)
-				}
-			}
+		if m.BlockNumber() >= uint32(maxBlock) {
+			fmt.Println("Closing connection, enjoy your frozen chain.")
+			os.Exit(0)
 		}
-	default:
-		//fmt.Println("found type: Default")
 	}
 })
