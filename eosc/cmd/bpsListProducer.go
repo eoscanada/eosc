@@ -86,7 +86,7 @@ var run = func(cmd *cobra.Command, args []string) {
 
 		fmt.Println("List of producers registered to receive votes:")
 		for _, p := range producers {
-			fmt.Printf("- %s (key: %s) %s\n", p["owner"], p["producer_key"], p["total_vote"])
+			fmt.Printf("- %s (key: %s)\n", p["owner"], p["producer_key"])
 		}
 		fmt.Printf("Total of %d registered producers\n", len(producers))
 
