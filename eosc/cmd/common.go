@@ -25,7 +25,9 @@ func setupWallet() (*eosvault.Vault, error) {
 		return nil, fmt.Errorf("secret boxer, %s", err)
 	}
 
-	vault.Open(boxer)
+	if err := vault.Open(boxer); err != nil {
+		return nil, err
+	}
 
 	return vault, nil
 }
