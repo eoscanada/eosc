@@ -9,16 +9,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var accountCmd = &cobra.Command{
-	Use:   "account",
-	Short: "account related commands",
-	Long:  `account related commands`,
-}
-
 var getAccountCmd = &cobra.Command{
-	Use:   "get",
-	Short: "retrieve account information",
-	Long:  `retrieve account information`,
+	Use:   "account [account name]",
+	Short: "retrieve account information for a given name",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := api()
@@ -35,9 +28,4 @@ var getAccountCmd = &cobra.Command{
 		}
 		fmt.Println(string(data))
 	},
-}
-
-func init() {
-	// RootCmd.AddCommand(accountCmd)
-	// accountCmd.AddCommand(getAccountCmd)
 }

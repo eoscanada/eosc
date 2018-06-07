@@ -16,69 +16,96 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-
 	"os"
+
+	"sort"
+
+	"strconv"
 
 	"github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
-var bpsListProducerCmd = &cobra.Command{
+var voteListProducerCmd = &cobra.Command{
 	Use:   "list",
-	Short: "List the producers",
-	Long:  `List the producers`,
-	Run: func(cmd *cobra.Command, args []string) {
-		api := api()
+	Short: "Retrieve registered producers",
+	Run:   run,
+}
+var bpsListProducerCmd = &cobra.Command{
+	Use:   "producers",
+	Short: "Retrieve registered producers",
+	Run:   run,
+}
 
-		response, err := api.GetTableRows(
-			eos.GetTableRowsRequest{
-				Scope: "eosio",
-				Code:  "eosio",
-				Table: "producers",
-				JSON:  true,
-				Limit: uint32(viper.GetInt("limit")),
-			},
-		)
+type producers []map[string]interface{}
 
+func (p producers) Len() int      { return len(p) }
+func (p producers) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
+func (p producers) Less(i, j int) bool {
+	iv, _ := strconv.ParseFloat(p[i]["total_votes"].(string), 64)
+	jv, _ := strconv.ParseFloat(p[j]["total_votes"].(string), 64)
+	return iv > jv
+}
+
+var run = func(cmd *cobra.Command, args []string) {
+	api := api()
+
+	response, err := api.GetTableRows(
+		eos.GetTableRowsRequest{
+			Scope: "eosio",
+			Code:  "eosio",
+			Table: "producers",
+			JSON:  true,
+			Limit: 5000,
+		},
+	)
+
+	if err != nil {
+		fmt.Printf("Get table rows , %s\n", err.Error())
+		os.Exit(1)
+	}
+
+	if viper.GetBool("get-producers-cmd-json") {
+		data, err := json.MarshalIndent(response.Rows, "", "    ")
 		if err != nil {
-			fmt.Printf("Get table rows , %s\n", err.Error())
+			fmt.Printf("JSON generation , %s\n", err.Error())
+			os.Exit(1)
+		}
+		fmt.Println(string(data))
+	} else {
+		var producers producers
+		if err := json.Unmarshal(response.Rows, &producers); err != nil {
+			fmt.Printf("JSON unmarshall , %s\n", err.Error())
 			os.Exit(1)
 		}
 
-		if viper.GetBool("json") {
-			data, err := json.MarshalIndent(response.Rows, "", "    ")
-			if err != nil {
-				fmt.Printf("JSON generation , %s\n", err.Error())
-				os.Exit(1)
-			}
-			fmt.Println(string(data))
-		} else {
-			var producers []interface{}
-			if err := json.Unmarshal(response.Rows, &producers); err != nil {
-				fmt.Printf("JSON unmarshall , %s\n", err.Error())
-				os.Exit(1)
-			}
-
-			for _, p := range producers {
-				producerMap := p.(map[string]interface{})
-				fmt.Printf("Producer [%s]: total vote [%s]\n", producerMap["owner"], producerMap["total_votes"])
-			}
-
+		if viper.GetBool("get-producers-cmd-sort") {
+			sort.Slice(producers, producers.Less)
 		}
-	},
+
+		fmt.Println("List of producers registered to receive votes:")
+		for _, p := range producers {
+			fmt.Printf("- %s (key: %s) %s\n", p["owner"], p["producer_key"], p["total_vote"])
+		}
+		fmt.Printf("Total of %d registered producers\n", len(producers))
+
+	}
 }
 
 func init() {
-	bpsCmd.AddCommand(bpsListProducerCmd)
+	//getCmd.AddCommand(bpsListProducerCmd)
+	voteCmd.AddCommand(voteListProducerCmd)
 
-	bpsListProducerCmd.Flags().BoolP("json", "", false, "return producers info in json")
-	bpsListProducerCmd.Flags().IntP("limit", "", 50, "maximum producers that will be return")
+	//bpsListProducerCmd.Flags().BoolP("sort", "s", false, "sort producers")
+	//bpsListProducerCmd.Flags().BoolP("json", "j", false, "return producers info in json")
 
-	for _, flag := range []string{"json", "limit"} {
-		if err := viper.BindPFlag(flag, bpsListProducerCmd.Flags().Lookup(flag)); err != nil {
+	voteListProducerCmd.Flags().BoolP("sort", "s", false, "sort producers")
+	voteListProducerCmd.Flags().BoolP("json", "j", false, "return producers info in json")
+
+	for _, flag := range []string{"json", "sort"} {
+		if err := viper.BindPFlag("get-producers-cmd-"+flag, voteListProducerCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
-
 }
