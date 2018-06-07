@@ -160,6 +160,12 @@ func (k *KMSGCPManager) fetchPlainDEK(wrappedDEK string) (out [32]byte, err erro
 
 	copy(out[:], plainKey)
 
+	if k.dekCache == nil {
+		k.dekCache = map[string][32]byte{}
+	}
+	if k.localWrappedDEK == "" {
+		k.localWrappedDEK = wrappedDEK
+	}
 	k.dekCache[wrappedDEK] = out
 
 	return
