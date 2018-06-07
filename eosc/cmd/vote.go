@@ -17,8 +17,7 @@ var voteCmd = &cobra.Command{
 }
 var voteProducersCmd = &cobra.Command{
 	Use:   "producers [voter name] [producer list]",
-	Short: "Command to vote for block producers",
-	Long:  `Command to vote for block producers`,
+	Short: "Cast your vote for 1 to 30 producers. View them with 'list'",
 	Args:  cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		var producerNames = make([]eos.AccountName, 0, 0)
@@ -62,8 +61,7 @@ var voteProducersCmd = &cobra.Command{
 
 var voteProxyCmd = &cobra.Command{
 	Use:   "proxy [voter name] [proxy name]",
-	Short: "Command to vote for a proxy",
-	Long:  `Command to vote for a proxy`,
+	Short: "Cast your vote for a proxy voter",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 

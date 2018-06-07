@@ -100,10 +100,6 @@ func NewKMSGCPManager(keyPath string) (*KMSGCPManager, error) {
 		keyPath: keyPath,
 	}
 
-	if err := manager.setupEncryption(); err != nil {
-		return nil, err
-	}
-
 	return manager, nil
 }
 
@@ -117,6 +113,10 @@ type KMSGCPManager struct {
 }
 
 func (k *KMSGCPManager) setupEncryption() error {
+	if k.dekCache != nil {
+		return nil
+	}
+
 	_, err := rand.Read(k.localDEK[:])
 	if err != nil {
 		return err
@@ -160,6 +160,12 @@ func (k *KMSGCPManager) fetchPlainDEK(wrappedDEK string) (out [32]byte, err erro
 
 	copy(out[:], plainKey)
 
+	if k.dekCache == nil {
+		k.dekCache = map[string][32]byte{}
+	}
+	if k.localWrappedDEK == "" {
+		k.localWrappedDEK = wrappedDEK
+	}
 	k.dekCache[wrappedDEK] = out
 
 	return
@@ -173,6 +179,9 @@ type BlobV1 struct {
 }
 
 func (k *KMSGCPManager) Encrypt(in []byte) ([]byte, error) {
+	if err := k.setupEncryption(); err != nil {
+		return nil, err
+	}
 
 	var nonce [24]byte
 	if _, err := io.ReadFull(rand.Reader, nonce[:]); err != nil {
