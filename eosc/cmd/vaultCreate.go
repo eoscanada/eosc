@@ -33,7 +33,17 @@ var vaultCreateCmd = &cobra.Command{
 A vault contains encrypted private keys, and with 'eosc', can be used to
 securely sign transactions.
 
-`,
+You can create a passphrase protected vault with:
+
+    eosc vault create --keys=2
+
+This uses the default --vault-type=passphrase
+
+You can create a Google Cloud Platform KMS-wrapped vault with:
+
+    eosc vault create --keys=2 --vault-type=kms-gcp --kms-gcp-keypath projects/.../locations/.../keyRings/.../cryptoKeys/name
+
+You can then use this vault for the different eosc operations.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		walletFile := viper.GetString("global-vault-file")
 
@@ -47,11 +57,11 @@ securely sign transactions.
 
 		switch wrapType {
 		case "kms-gcp":
-			keyring := viper.GetString("kms-gcp-keyring")
-			if keyring == "" {
-				errorCheck("missing parameter", fmt.Errorf("--kms-gcp-keyring is required with --vault-type=kms-gcp"))
+			keypath := viper.GetString("global-kms-gcp-keypath")
+			if keypath == "" {
+				errorCheck("missing parameter", fmt.Errorf("--kms-gcp-keypath is required with --vault-type=kms-gcp"))
 			}
-			boxer = eosvault.NewKMSGCPBoxer(keyring)
+			boxer = eosvault.NewKMSGCPBoxer(keypath)
 
 		case "passphrase":
 			password, err := cli.GetEncryptPassphrase()

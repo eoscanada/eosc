@@ -41,7 +41,7 @@ func init() {
 
 	RootCmd.PersistentFlags().StringP("vault-file", "", "./eosc-vault.json", "Wallet file that contains encrypted key material")
 	RootCmd.PersistentFlags().StringP("api-url", "u", "http://localhost:8888", "server api address")
-	RootCmd.PersistentFlags().StringP("kms-gcp-keypath", "", "", "Path to the cryptoKey within a keyRing on GCP")
+	RootCmd.PersistentFlags().StringP("kms-gcp-keypath", "", "", "Path to the cryptoKeys within a keyRing on GCP")
 
 	for _, flag := range []string{"vault-file", "api-url", "kms-gcp-keypath"} {
 		if err := viper.BindPFlag("global-"+flag, RootCmd.PersistentFlags().Lookup(flag)); err != nil {

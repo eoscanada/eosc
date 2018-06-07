@@ -25,7 +25,7 @@ import (
 
 var vaultAddCmd = &cobra.Command{
 	Use:   "add",
-	Short: "Add private keys to vault from command line input.",
+	Short: "Add private keys to an existing vault taking input from the shell",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		walletFile := viper.GetString("global-vault-file")
@@ -34,7 +34,7 @@ var vaultAddCmd = &cobra.Command{
 		vault, err := eosvault.NewVaultFromWalletFile(walletFile)
 		errorCheck("loading vault from file", err)
 
-		boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("vault-cmd-kms-gcp-keypath"))
+		boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("global-kms-gcp-keypath"))
 		errorCheck("missing parameters", err)
 
 		err = vault.Open(boxer)
