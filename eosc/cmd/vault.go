@@ -21,7 +21,7 @@ import (
 var vaultCmd = &cobra.Command{
 	Use:   "vault",
 	Short: "The eosc vault is a secure EOS key vault and a wallet server",
-	Long:  `It is a drop-in replacement for keosd with hardened security and additional features.`,
+	Long:  `It is a drop-in replacement for keosd with additional features.`,
 }
 
 func init() {

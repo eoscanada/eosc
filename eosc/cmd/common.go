@@ -10,7 +10,7 @@ import (
 )
 
 func setupWallet() (*eosvault.Vault, error) {
-	walletFile := viper.GetString("vault-file")
+	walletFile := viper.GetString("global-vault-file")
 	if _, err := os.Stat(walletFile); err != nil {
 		return nil, fmt.Errorf("Wallet file %q missing, ", walletFile)
 	}
@@ -20,7 +20,7 @@ func setupWallet() (*eosvault.Vault, error) {
 		return nil, fmt.Errorf("loading vault, %s", err)
 	}
 
-	boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("kms-keyring"))
+	boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("global-kms-gcp-keypath"))
 	if err != nil {
 		return nil, fmt.Errorf("secret boxer, %s", err)
 	}
@@ -36,7 +36,7 @@ func apiWithWallet() (*eos.API, error) {
 		return nil, err
 	}
 
-	api := eos.New(viper.GetString("api-url"))
+	api := eos.New(viper.GetString("global-api-url"))
 
 	api.SetSigner(vault.KeyBag)
 
@@ -45,12 +45,12 @@ func apiWithWallet() (*eos.API, error) {
 }
 
 func api() *eos.API {
-	return eos.New(viper.GetString("api-url"))
+	return eos.New(viper.GetString("global-api-url"))
 }
 
-func errorCheck(err error) {
+func errorCheck(prefix string, err error) {
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("ERROR: %s: %s\n", prefix, err)
 		os.Exit(1)
 	}
 }

@@ -24,59 +24,27 @@ import (
 	"github.com/spf13/viper"
 )
 
-var vaultImportCmd = &cobra.Command{
-	Use:   "import",
-	Short: "Import a private keys to vault",
-	Long: `Import a private keys to vault
-
-A vault contains encrypted private keys, and with 'eosc', can be used to
-securely sign transactions.
-
-`,
+var vaultAddCmd = &cobra.Command{
+	Use:   "add",
+	Short: "Add private keys to vault from command line input.",
 	Run: func(cmd *cobra.Command, args []string) {
 
-		walletFile := viper.GetString("vault-file")
-		vault := &eosvault.Vault{}
+		walletFile := viper.GetString("global-vault-file")
 
-		var boxer eosvault.SecretBoxer
+		fmt.Println("Loading existing vault from file:", walletFile)
+		vault, err := eosvault.NewVaultFromWalletFile(walletFile)
+		errorCheck("loading vault from file", err)
 
-		if _, err := os.Stat(walletFile); err == nil {
+		boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("vault-cmd-kms-gcp-keypath"))
+		errorCheck("missing parameters", err)
 
-			fmt.Println("Loading existing vault from file: ", walletFile)
-			vault, err = eosvault.NewVaultFromWalletFile(walletFile)
-			if err != nil {
-				fmt.Println("ERROR: loading vault from file, ", err)
-				os.Exit(1)
-			}
+		err = vault.Open(boxer)
+		errorCheck("opening vault", err)
 
-			boxer, err = eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("kms-keyring"))
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
-			}
-
-			err = vault.Open(boxer)
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
-			}
-
-			vault.PrintPublicKeys()
-
-		} else {
-			fmt.Println("Vault file not found, creating a new wallet")
-			vault = eosvault.NewVault()
-		}
-
-		if comment := viper.GetString("vaultImportCmd-comment"); comment != "" {
-			vault.Comment = comment
-		}
+		vault.PrintPublicKeys()
 
 		privateKeys, err := capturePrivateKeys()
-		if err != nil {
-			fmt.Println("ERROR: entering private key:", err)
-			os.Exit(1)
-		}
+		errorCheck("entering private keys", err)
 
 		var newKeys []ecc.PublicKey
 		for _, privateKey := range privateKeys {
@@ -84,33 +52,13 @@ securely sign transactions.
 			newKeys = append(newKeys, privateKey.PublicKey())
 		}
 
-		if boxer == nil {
-			vault.SecretBoxWrap = "passphrase-create"
-			if viper.GetBool("kms-gcp") {
-				vault.SecretBoxWrap = "kms-gcp"
-			}
-
-			boxer, err = eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("vaultImportCmd-kms-keyring"))
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
-			}
-			// TODO: make this thing loop.. instead of restarting the whole process..
-		}
-
 		err = vault.Seal(boxer)
-		if err != nil {
-			fmt.Println("ERROR sealing keys:", err)
-			os.Exit(1)
-		}
+		errorCheck("sealing vault", err)
 
 		err = vault.WriteToFile(walletFile)
-		if err != nil {
-			fmt.Printf("ERROR writing to file %q: %s\n", walletFile, err)
-			os.Exit(1)
-		}
+		errorCheck("writing vault file", err)
 
-		fmt.Printf("Wallet file %q written. These public keys were ADDED:\n", walletFile)
+		fmt.Printf("Wallet file %q written. These keys were ADDED:\n", walletFile)
 		for _, pub := range newKeys {
 			fmt.Printf("- %s\n", pub.String())
 		}
@@ -119,14 +67,7 @@ securely sign transactions.
 }
 
 func init() {
-	vaultCmd.AddCommand(vaultImportCmd)
-	vaultImportCmd.Flags().StringP("comment", "c", "", "Label or comment about this key vault")
-
-	for _, flag := range []string{"comment"} {
-		if err := viper.BindPFlag("vaultImportCmd-"+flag, vaultImportCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
+	vaultCmd.AddCommand(vaultAddCmd)
 }
 
 func capturePrivateKeys() ([]*ecc.PrivateKey, error) {

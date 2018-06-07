@@ -15,12 +15,77 @@ import (
 	"google.golang.org/api/cloudkms/v1"
 )
 
-type KMSManager interface {
-	Encrypt([]byte) ([]byte, error)
-	Decrypt([]byte) ([]byte, error)
+
+///
+/// Boxer implementation.
+///
+
+type KMSGCPBoxer struct {
+	keyPath string
 }
 
-func NewKMSGCPManager(keyRing string) (*KMSGCPManager, error) {
+func NewKMSGCPBoxer(keyPath string) *KMSGCPBoxer {
+	return &KMSGCPBoxer{
+		keyPath: keyPath,
+	}
+}
+
+func (b *KMSGCPBoxer) Seal(in []byte) (string, error) {
+	mgr, err := NewKMSGCPManager(b.keyPath)
+	if err != nil {
+		return "", fmt.Errorf("new kms gcp manager, %s", err)
+	}
+
+	encrypted, err := mgr.Encrypt(in)
+	if err != nil {
+		return "", fmt.Errorf("kms encryption, %s", err)
+	}
+
+	return base64.RawStdEncoding.EncodeToString(encrypted), nil
+
+}
+
+func (b *KMSGCPBoxer) Open(in string) ([]byte, error) {
+	mgr, err := NewKMSGCPManager(b.keyPath)
+	if err != nil {
+		return []byte{}, fmt.Errorf("new kms gcp manager, %s", err)
+	}
+	data, err := base64.RawStdEncoding.DecodeString(in)
+	if err != nil {
+		return []byte{}, fmt.Errorf("base 64 decode, %s", err)
+	}
+	out, err := mgr.Decrypt(data)
+	if err != nil {
+		return []byte{}, fmt.Errorf("base 64 decode, %s", err)
+	}
+	return out, nil
+}
+
+func (b *KMSGCPBoxer) WrapType() string {
+	return "kms-gcp"
+}
+
+const (
+	saltLength         = 16
+	nonceLength        = 24
+	keyLength          = 32
+	shamirSecretLength = 32
+)
+
+func deriveKey(passphrase string, salt []byte) [keyLength]byte {
+	secretKeyBytes := argon2.IDKey([]byte(passphrase), salt, 4, 64*1024, 4, 32)
+	var secretKey [keyLength]byte
+	copy(secretKey[:], secretKeyBytes)
+	return secretKey
+}
+
+
+///
+/// Manager implementation
+///
+
+
+func NewKMSGCPManager(keyPath string) (*KMSGCPManager, error) {
 	ctx := context.Background()
 	client, err := google.DefaultClient(ctx, cloudkms.CloudPlatformScope)
 	if err != nil {
@@ -34,7 +99,7 @@ func NewKMSGCPManager(keyRing string) (*KMSGCPManager, error) {
 
 	manager := &KMSGCPManager{
 		service: kmsService,
-		keyRing: keyRing,
+		keyPath: keyPath,
 	}
 
 	if err := manager.setupEncryption(); err != nil {
@@ -50,7 +115,7 @@ type KMSGCPManager struct {
 	localDEK        [32]byte
 	localWrappedDEK string
 	service         *cloudkms.Service
-	keyRing         string
+	keyPath         string
 }
 
 func (k *KMSGCPManager) setupEncryption() error {
@@ -63,7 +128,7 @@ func (k *KMSGCPManager) setupEncryption() error {
 		Plaintext: base64.StdEncoding.EncodeToString(k.localDEK[:]),
 	}
 
-	resp, err := k.service.Projects.Locations.KeyRings.CryptoKeys.Encrypt(k.keyRing, req).Do()
+	resp, err := k.service.Projects.Locations.KeyRings.CryptoKeys.Encrypt(k.keyPath, req).Do()
 	if err != nil {
 		return err
 	}
@@ -85,7 +150,7 @@ func (k *KMSGCPManager) fetchPlainDEK(wrappedDEK string) (out [32]byte, err erro
 	req := &cloudkms.DecryptRequest{
 		Ciphertext: wrappedDEK,
 	}
-	resp, err := k.service.Projects.Locations.KeyRings.CryptoKeys.Decrypt(k.keyRing, req).Do()
+	resp, err := k.service.Projects.Locations.KeyRings.CryptoKeys.Decrypt(k.keyPath, req).Do()
 	if err != nil {
 		return
 	}
@@ -156,14 +221,3 @@ func (k *KMSGCPManager) Decrypt(in []byte) ([]byte, error) {
 
 	return plainData, nil
 }
-
-// Passthrough encryption (no encryption, that is)
-
-func NewPassthroughKeyManager() *PassthroughKeyManager {
-	return &PassthroughKeyManager{}
-}
-
-type PassthroughKeyManager struct{}
-
-func (k PassthroughKeyManager) Encrypt(in []byte) ([]byte, error) { return in, nil }
-func (k PassthroughKeyManager) Decrypt(in []byte) ([]byte, error) { return in, nil }

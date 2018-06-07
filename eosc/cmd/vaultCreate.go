@@ -18,6 +18,7 @@ import (
 	"os"
 
 	"github.com/eoscanada/eos-go/ecc"
+	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -34,43 +35,67 @@ securely sign transactions.
 
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		walletFile := viper.GetString("vault-file")
+		walletFile := viper.GetString("global-vault-file")
 
 		if _, err := os.Stat(walletFile); err == nil {
 			fmt.Printf("Wallet file %q already exists, rename it before running `eosc vault create`.\n", walletFile)
 			os.Exit(1)
 		}
 
-		vault := eosvault.NewVault()
-		vault.Comment = viper.GetString("vaultCreateCmd-comment")
+		var wrapType = viper.GetString("vault-create-cmd-vault-type")
+		var boxer eosvault.SecretBoxer
 
-		numKeys := viper.GetInt("vaultCreateCmd-keys")
-		var newKeys []ecc.PublicKey
-		for i := 0; i < numKeys; i++ {
-			pubKey, err := vault.NewKeyPair()
+		switch wrapType {
+		case "kms-gcp":
+			keyring := viper.GetString("kms-gcp-keyring")
+			if keyring == "" {
+				errorCheck("missing parameter", fmt.Errorf("--kms-gcp-keyring is required with --vault-type=kms-gcp"))
+			}
+			boxer = eosvault.NewKMSGCPBoxer(keyring)
+
+		case "passphrase":
+			password, err := cli.GetEncryptPassphrase()
 			if err != nil {
-				fmt.Println("ERROR: creating new keypair:", err)
+				fmt.Println("Error with password input:", err)
 				os.Exit(1)
 			}
+			boxer = eosvault.NewPassphraseBoxer(password)
 
-			newKeys = append(newKeys, pubKey)
+		default:
+			fmt.Printf(`Invalid vault type: %q, please use one of: "passphrase", "kms-gcp"\n`, wraptype)
+			os.Exit(1)
 		}
 
-		fmt.Printf("Created %d keys. Let's secure them before showing the public keys.\n", len(newKeys))
+		vault := eosvault.NewVault()
+		vault.Comment = viper.GetString("vault-create-cmd-comment")
 
-		var boxerType = "passphrase-create"
-		if viper.GetBool("kms-gcp") {
-			boxerType = "kms-gcp"
+		var newKeys []ecc.PublicKey
+
+		doImport := viper.GetBool("vault-create-cmd-import")
+		if doImport {
+			privateKeys, err := capturePrivateKeys()
+			errorCheck("entering private key", err)
+
+			for _, privateKey := range privateKeys {
+				vault.AddPrivateKey(privateKey)
+				newKeys = append(newKeys, privateKey.PublicKey())
+			}
+
+			fmt.Printf("Imported %d keys. Let's secure them before showing the public keys.\n", len(newKeys))
+
+		} else {
+			numKeys := viper.GetInt("vault-create-cmd-keys")
+			for i := 0; i < numKeys; i++ {
+				pubKey, err := vault.NewKeyPair()
+				errorCheck("creating new keypair", err)
+
+				newKeys = append(newKeys, pubKey)
+			}
+			fmt.Printf("Created %d keys. Let's secure them before showing the public keys.\n", len(newKeys))
 		}
 
-		boxer, err := eosvault.SecretBoxerForType(boxerType, viper.GetString("kms-keyring"))
-		errorCheck(err)
-
-		err = vault.Seal(boxer)
-		errorCheck(err)
-
-		err = vault.WriteToFile(walletFile)
-		errorCheck(err)
+		errorCheck("sealing vault", vault.Seal(boxer))
+		errorCheck("writing wallet file", vault.WriteToFile(walletFile))
 
 		fmt.Printf("Wallet file %q created. Here are your public keys:\n", walletFile)
 		for _, pub := range newKeys {
@@ -83,10 +108,12 @@ func init() {
 	vaultCmd.AddCommand(vaultCreateCmd)
 
 	vaultCreateCmd.Flags().IntP("keys", "k", 1, "Number of keypairs to create")
-	vaultCreateCmd.Flags().StringP("comment", "c", "", "Label or comment about this key vault")
+	vaultCreateCmd.Flags().BoolP("import", "i", false, "Whether to import keys instead of creating them. This takes precedence over --keys, and private keys will be inputted on the command line.")
+	vaultCreateCmd.Flags().StringP("comment", "c", "", "Comment field in the vault's json file.")
+	vaultCreateCmd.Flags().StringP("vault-type", "t", "passphrase", "Vault type. One of: passphrase, kms-gcp")
 
-	for _, flag := range []string{"keys", "comment"} {
-		if err := viper.BindPFlag("vaultCreateCmd-"+flag, vaultCreateCmd.Flags().Lookup(flag)); err != nil {
+	for _, flag := range []string{"keys", "comment", "vault-type", "import"} {
+		if err := viper.BindPFlag("vault-create-cmd-"+flag, vaultCreateCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
