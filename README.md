@@ -29,6 +29,32 @@ Installation
 
 
 
+Vote now!
+---------
+
+Once installed run:
+
+```
+eosc vault create --import
+```
+
+to import your keys and follow instructions.
+
+Then run:
+
+```
+eosc vote --help
+```
+
+and run somethig like this:
+
+```
+eosc vote producers [your account] [producer1] [producer2] [producer3]
+```
+
+Read more below for details.
+
+
 eosc vault
 ----------
 
