@@ -53,8 +53,12 @@ Wallet file "./eosc-vault.json" created. Here are your public keys:
 If you are still within the ERC-20 periods, you could register such
 keys on Ethereum, to be ported to mainnet.
 
-You can import externally generated private keys with `--import` to
-the `create` call.
+You can **import externally generated private keys** with `--import`
+to the `create` call.  You will then be asked to paste your private
+key in an interactive prompt.  The private key is **not shown** on
+screen during the import. You will get confirmation that it was
+properly imported when the corresponding public key is shown to you
+right after.
 
 ```
 $ eosc vault create --import -c "Imported key"
@@ -76,7 +80,7 @@ To add an externally generated private key to an existing vault, use:
 ```
 $ eosc vault add
 Vault file not found, creating a new wallet
-Type your first private key:        [insert your private key here]
+Type your first private key:        [insert your private key here, NOT shown]
 Type your next private key or hit ENTER if you are done:
 Keys imported. Let's secure them before showing the public keys.
 Enter passphrase to encrypt your keys:
@@ -116,9 +120,10 @@ Voter [youraccount] voting for: [eoscanadacom]
 Done
 ```
 
-This will sign your vote transaction locally, and submit the transaction to the network through the `https://mainnet.eoscanada.com` endpoint.  You can also point to some other endpoints that are on the main network.
-
-NOTE: This will not work before mainnet launches!
+This will sign your vote transaction locally, and submit the
+transaction to the network through the `https://mainnet.eoscanada.com`
+endpoint.  You can also point to some other endpoints that are on the
+main network with `-u` or `--api-url`.
 
 
 Features in the work
