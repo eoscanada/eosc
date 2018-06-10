@@ -49,22 +49,26 @@ Wallet file "./eosc-vault.json" created. Here are your public keys:
 If you are still within the ERC-20 periods, you could register such
 keys on Ethereum, to be ported to mainnet.
 
+You can import externally generated private keys with `--import` to
+the `create` call.
 
-Importing keys
-==============
 
-Or import an existing private key.  This key will be encrypted to disk with your password in the default `eosc-vault.json` file:
+Add keys to an existing vault
+=============================
+
+To add an externally generated private key to an existing vault, use:
 
 ```
-$ eosc vault import
+$ eosc vault add
 Vault file not found, creating a new wallet
 Type your first private key:        [insert your private key here]
 Type your next private key or hit ENTER if you are done:
 Keys imported. Let's secure them before showing the public keys.
 Enter passphrase to encrypt your keys:
 Confirm passphrase:
-Wallet file "./eosc-vault.json" written. Here are your public keys:
+Wallet file "./eosc-vault.json" written. Here are your ADDED public keys:
 - EOS5tb61aZMAfQqKDsnkscFq76JXxNdi7ZhkUmkVZUkU4zPzfeAFx
+Total keys writteN: 3
 ```
 
 The vault operations do zero network calls and can be done offline.
@@ -91,7 +95,7 @@ eosc vote
 With a vault defined locally, you can vote:
 
 ```
-$ eosc vote producers youraccount eoscanadacom someotherfavo riteproducer -u http://mainnet.eoscanada.com
+$ eosc vote producers youraccount eoscanadacom someotherfavo riteproducer
 Enter passphrase to unlock vault:
 Voter [youraccount] voting for: [eoscanadacom]
 Done
