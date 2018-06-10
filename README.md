@@ -19,7 +19,11 @@ in this repository.
 Installation
 ------------
 
-Install from https://github.com/eoscanada/eosc/releases or build from source with:
+1. Install from https://github.com/eoscanada/eosc/releases
+
+**or**
+
+2. Build from source with:
 
     go get -u -v github.com/eoscanada/eosc/eosc
 
