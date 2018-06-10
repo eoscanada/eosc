@@ -4,16 +4,6 @@ release:
     owner: eoscanada
     name: eosc
   name_template: '{{.Tag}}'
-brew:
-  name: eosc
-  commit_author:
-    name: Alexandre Bourget
-    email: alex@eoscanada.com
-  install: bin.install "eosc"
-scoop:
-  commit_author:
-    name: Charles Billette
-    email: charles@eoscanada.com
 builds:
 - goos:
   - linux
@@ -24,6 +14,7 @@ builds:
   - "386"
   targets:
   - linux_amd64
+  - linux_386
   - darwin_amd64
   - windows_amd64
   - windows_386
@@ -34,8 +25,7 @@ builds:
   - CGO_ENABLED=0
   lang: go
 archive:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
-    }}v{{ .Arm }}{{ end }}'
+  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
   replacements:
     "386": i386
     amd64: x86_64

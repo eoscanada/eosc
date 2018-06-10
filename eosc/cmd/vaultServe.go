@@ -22,6 +22,7 @@ import (
 
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
+	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -54,9 +55,10 @@ func init() {
 	vaultCmd.AddCommand(vaultServeCmd)
 
 	vaultServeCmd.Flags().IntP("port", "p", 6666, "Listen port")
+	vaultServeCmd.Flags().BoolP("auto-accept", "", false, "Whether to auto accept all signature requests, or to ask for a security code on the command line.")
 
-	for _, flag := range []string{"port"} {
-		if err := viper.BindPFlag(flag, vaultServeCmd.Flags().Lookup(flag)); err != nil {
+	for _, flag := range []string{"port", "auto-accept"} {
+		if err := viper.BindPFlag("vault-serve-cmd-"+flag, vaultServeCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
@@ -64,7 +66,7 @@ func init() {
 
 func listen(v *eosvault.Vault) {
 	http.HandleFunc("/v1/wallet/get_public_keys", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("Handling get_public_keys")
+		//fmt.Println("Service /v1/wallet/get_public_keys")
 
 		var out []string
 		for _, key := range v.KeyBag.Keys {
@@ -74,7 +76,7 @@ func listen(v *eosvault.Vault) {
 	})
 
 	http.HandleFunc("/v1/wallet/sign_transaction", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("Handling sign_transaction")
+		fmt.Println("Incoming signature request")
 
 		var inputs []json.RawMessage
 		if err := json.NewDecoder(r.Body).Decode(&inputs); err != nil {
@@ -110,6 +112,23 @@ func listen(v *eosvault.Vault) {
 			return
 		}
 
+		if !viper.GetBool("vault-serve-cmd-auto-accept") {
+			res, err := cli.GetConfirmation(`- Enter the code "%d" to allow signature: `)
+			if err != nil {
+				fmt.Println("sign_transaction: error reading confirmation from command line:", err)
+				http.Error(w, "error reading confirmation from command line", 500)
+				return
+			}
+
+			if !res {
+				fmt.Println("sign_transaction: security code invalid, not signing request")
+				http.Error(w, "security code invalid, not signing request", 401)
+				return
+			}
+		} else {
+			fmt.Println("- Auto-signing request")
+		}
+
 		signed, err := v.KeyBag.Sign(tx, chainID, requiredKeys...)
 		for _, action := range signed.Transaction.Actions {
 			action.SetToServer(false)
@@ -142,7 +161,7 @@ func listen(v *eosvault.Vault) {
 	// 	w.Write([]byte("{}"))
 	// })
 
-	port := viper.GetInt("port")
+	port := viper.GetInt("vault-serve-cmd-port")
 	fmt.Printf("Listening for wallet operations on 127.0.0.1:%d\n", port)
 	if err := http.ListenAndServe(fmt.Sprintf("127.0.0.1:%d", port), nil); err != nil {
 		log.Println("Failed listening on port %d: %s\n", port, err)

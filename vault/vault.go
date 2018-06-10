@@ -18,19 +18,17 @@ type Vault struct {
 	Version int    `json:"version"`
 	Comment string `json:"comment"`
 
-	Shamir *ShamirWrapping `json:"shamir,omitempty"`
-
 	SecretBoxWrap       string `json:"secretbox_wrap"`
 	SecretBoxCiphertext string `json:"secretbox_ciphertext"`
 
 	KeyBag *eos.KeyBag `json:"-"`
 }
 
-type ShamirWrapping struct {
-	Shares    int      `json:"shares"`
-	Threshold int      `json:"threshold"`
-	Parts     [][]byte `json:"parts"`
-}
+// type ShamirWrapping struct {
+// 	Shares    int      `json:"shares"`
+// 	Threshold int      `json:"threshold"`
+// 	Parts     [][]byte `json:"parts"`
+// }
 
 func NewVaultFromWalletFile(filename string) (*Vault, error) {
 	v := NewVault()
