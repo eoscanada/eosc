@@ -24,7 +24,6 @@ func (b *PassphraseBoxer) WrapType() string {
 }
 
 func (b *PassphraseBoxer) Seal(in []byte) (string, error) {
-
 	var nonce [nonceLength]byte
 	if _, err := io.ReadFull(crypto_rand.Reader, nonce[:]); err != nil {
 		return "", err
