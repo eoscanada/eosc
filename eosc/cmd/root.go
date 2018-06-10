@@ -23,9 +23,7 @@ network. Source code is available at: https://github.com/eoscanada/eosc
 
 The 'vault' acts as a keosd-compatible wallet (the one developed by
 Block.one), while allowing you to manage your keys, and unlock it from
-the command line.
-
-Version ` + Version,
+the command line.`,
 }
 
 func Execute() {
