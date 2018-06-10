@@ -52,6 +52,12 @@ and run somethig like this:
 eosc vote producers [your account] [producer1] [producer2] [producer3]
 ```
 
+Make sure you have version `v0.7.0` or higher:
+
+```
+eosc version
+```
+
 Read more below for details.
 
 
