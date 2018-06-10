@@ -57,7 +57,7 @@ $ eosc vault create --import -c "Imported key"
 Enter passphrase to encrypt your vault: ****
 Confirm passphrase: ****
 Type your first private key: ****
-Type your next private key or hit ENTER if you are done: 
+Type your next private key or hit ENTER if you are done:
 Imported 1 keys. Let's secure them before showing the public keys.
 Wallet file "./eosc-vault.json" created. Here are your public keys:
 - EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
@@ -112,7 +112,7 @@ Voter [youraccount] voting for: [eoscanadacom]
 Done
 ```
 
-This will sign your vote transaction locally, and submit the transaction to the network through the `http://mainnet.eoscanada.com` endpoint.  You can also point to some other endpoints that are on the main network.
+This will sign your vote transaction locally, and submit the transaction to the network through the `https://mainnet.eoscanada.com` endpoint.  You can also point to some other endpoints that are on the main network.
 
 NOTE: This will not work before mainnet launches!
 
