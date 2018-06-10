@@ -55,23 +55,9 @@ You can then use this vault for the different eosc operations.`,
 		var wrapType = viper.GetString("vault-create-cmd-vault-type")
 		var boxer eosvault.SecretBoxer
 
-		switch wrapType {
-		case "kms-gcp":
-			keypath := viper.GetString("global-kms-gcp-keypath")
-			if keypath == "" {
-				errorCheck("missing parameter", fmt.Errorf("--kms-gcp-keypath is required with --vault-type=kms-gcp"))
-			}
-			boxer = eosvault.NewKMSGCPBoxer(keypath)
-
-		case "passphrase":
-			password, err := cli.GetEncryptPassphrase()
-			errorCheck("password input", err)
-
-			boxer = eosvault.NewPassphraseBoxer(password)
-
-		default:
-			fmt.Printf(`Invalid vault type: %q, please use one of: "passphrase", "kms-gcp"\n`, wrapType)
-			os.Exit(1)
+		kmsGCPKeypath := viper.GetString("global-kms-gcp-keypath")
+		if wrapType == "kms-gcp" && kmsGCPKeypath == "" {
+			errorCheck("missing parameter", fmt.Errorf("--kms-gcp-keypath is required with --vault-type=kms-gcp"))
 		}
 
 		vault := eosvault.NewVault()
@@ -89,7 +75,7 @@ You can then use this vault for the different eosc operations.`,
 				newKeys = append(newKeys, privateKey.PublicKey())
 			}
 
-			fmt.Printf("Imported %d keys. Let's secure them before showing the public keys.\n", len(newKeys))
+			fmt.Printf("Imported %d keys.\n", len(newKeys))
 
 		} else {
 			numKeys := viper.GetInt("vault-create-cmd-keys")
@@ -99,16 +85,33 @@ You can then use this vault for the different eosc operations.`,
 
 				newKeys = append(newKeys, pubKey)
 			}
-			fmt.Printf("Created %d keys. Let's secure them before showing the public keys.\n", len(newKeys))
+			fmt.Printf("Created %d keys. They will be shown when encrypted and written to disk successfully.\n", len(newKeys))
+		}
+
+		switch wrapType {
+		case "kms-gcp":
+			fmt.Println("Doing the KMS GCP dance")
+			boxer = eosvault.NewKMSGCPBoxer(kmsGCPKeypath)
+
+		case "passphrase":
+			fmt.Println("")
+			fmt.Println("You will be asked to provide a passphrase to secure your newly created vault.")
+			fmt.Println("Make sure you make it long and strong.")
+			fmt.Println("")
+			password, err := cli.GetEncryptPassphrase()
+			errorCheck("password input", err)
+
+			boxer = eosvault.NewPassphraseBoxer(password)
+
+		default:
+			fmt.Printf(`Invalid vault type: %q, please use one of: "passphrase", "kms-gcp"\n`, wrapType)
+			os.Exit(1)
 		}
 
 		errorCheck("sealing vault", vault.Seal(boxer))
 		errorCheck("writing wallet file", vault.WriteToFile(walletFile))
 
-		fmt.Printf("Wallet file %q created. Here are your public keys:\n", walletFile)
-		for _, pub := range newKeys {
-			fmt.Printf("- %s\n", pub.String())
-		}
+		vaultWrittenReport(walletFile, newKeys, len(vault.KeyBag.Keys))
 	},
 }
 

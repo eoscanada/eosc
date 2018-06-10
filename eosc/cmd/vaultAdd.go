@@ -57,11 +57,7 @@ var vaultAddCmd = &cobra.Command{
 		err = vault.WriteToFile(walletFile)
 		errorCheck("writing vault file", err)
 
-		fmt.Printf("Wallet file %q written. These keys were ADDED:\n", walletFile)
-		for _, pub := range newKeys {
-			fmt.Printf("- %s\n", pub.String())
-		}
-		fmt.Printf("Total keys stored: %d\n", len(vault.KeyBag.Keys))
+		vaultWrittenReport(walletFile, newKeys, len(vault.KeyBag.Keys))
 	},
 }
 
@@ -69,41 +65,62 @@ func init() {
 	vaultCmd.AddCommand(vaultAddCmd)
 }
 
-func capturePrivateKeys() ([]*ecc.PrivateKey, error) {
-	privateKeys, err := capturePrivateKey(true)
-	if err != nil {
-		return privateKeys, fmt.Errorf("keys capture, %s", err.Error())
-	}
-	return privateKeys, nil
+func capturePrivateKeys() (out []*ecc.PrivateKey, err error) {
+	fmt.Println("")
+	fmt.Println("PLEASE READ:")
+	fmt.Println("We are now going to ask you to paste your private keys, one at a time.")
+	fmt.Println("They will not be shown on screen.")
+	fmt.Println("Please verify that the public keys printed on screen correspond to what you have noted")
+	fmt.Println("")
 
+	first := true
+	for {
+		privKey, err := capturePrivateKey(first)
+		if err != nil {
+			return out, fmt.Errorf("capture privkeys: %s", err)
+		}
+		first = false
+
+		if privKey == nil {
+			return out, nil
+		}
+		out = append(out, privKey)
+	}
+
+	panic("dead code path")
 }
-func capturePrivateKey(isFirst bool) (privateKeys []*ecc.PrivateKey, err error) {
-	prompt := "Type your first private key: "
+func capturePrivateKey(isFirst bool) (privateKey *ecc.PrivateKey, err error) {
+	prompt := "Paste your first private key: "
 	if !isFirst {
-		prompt = "Type your next private key or hit ENTER if you are done: "
+		prompt = "Paste your next private key or hit ENTER if you are done: "
 	}
 
 	enteredKey, err := cli.GetPassword(prompt)
 	if err != nil {
-		return privateKeys, fmt.Errorf("get password: %s", err.Error())
+		return nil, fmt.Errorf("get private key: %s", err.Error())
 	}
 
 	if enteredKey == "" {
-		return privateKeys, nil
+		return nil, nil
 	}
 
 	key, err := ecc.NewPrivateKey(enteredKey)
 	if err != nil {
-		return privateKeys, fmt.Errorf("new private key: %s", err.Error())
+		return nil, fmt.Errorf("import private key: %s", err.Error())
 	}
 
-	privateKeys = append(privateKeys, key)
-	nextPrivateKeys, err := capturePrivateKey(false)
-	if err != nil {
-		return privateKeys, err
+	fmt.Printf("- Scanned private key corresponding to %s\n", key.PublicKey().String())
+
+	return key, nil
+}
+
+func vaultWrittenReport(walletFile string, newKeys []ecc.PublicKey, totalKeys int) {
+	fmt.Println("")
+	fmt.Printf("Wallet file %q written to disk.\n", walletFile)
+	fmt.Println("Here are the keys that were ADDED during this operation (use `list` to see them all):")
+	for _, pub := range newKeys {
+		fmt.Printf("- %s\n", pub.String())
 	}
 
-	privateKeys = append(privateKeys, nextPrivateKeys...)
-
-	return
+	fmt.Printf("Total keys stored: %d\n", totalKeys)
 }
