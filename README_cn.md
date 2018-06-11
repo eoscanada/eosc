@@ -142,10 +142,9 @@ Done
 
 加密算法采用的是 NaCl
 ([C 语言实现](https://tweetnacl.cr.yp.to/), [Javascript 实现](https://github.com/dchest/tweetnacl-js),
-[Go 版本, 本工具所依赖的库](https://godoc.org/golang.org/x/crypto/nacl/secretbox)). 和
-密钥衍生工具 [Argon2](https://en.wikipedia.org/wiki/Argon2),
-采用的是 [Go 库
-这里](https://godoc.org/golang.org/x/crypto/argon2).
+[Go 版本, 本工具所依赖的库](https://godoc.org/golang.org/x/crypto/nacl/secretbox))。
+和密钥衍生工具 [Argon2](https://en.wikipedia.org/wiki/Argon2),
+采用的是 [Go 语言实现](https://godoc.org/golang.org/x/crypto/argon2)。
 
 你可以在我们的代码库中审查与 `passphrase` 口令实现相关的代码: [第 61 行](./vault/passphrase.go)，包括空行及注释。
 
