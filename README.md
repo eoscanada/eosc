@@ -25,7 +25,9 @@ Installation
 
 2. Build from source with:
 
-    go get -u -v github.com/eoscanada/eosc/eosc
+```bash
+go get -u -v github.com/eoscanada/eosc/eosc
+```
 
 
 
