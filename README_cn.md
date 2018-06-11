@@ -156,7 +156,7 @@ Done
 
 * 通过 `serve` 选项使得命令行工具可以在签名每一笔交易前提示确认信息。
 * 增加 `--accept` 参数以支持自动接收签名 (仅限监听本地地址)
-* 基于 [Shamir Secret Sharing](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing)编码的钱包，支持快速和方便的多重签名。
+* 基于 [Shamir Secret Sharing](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing) 编码的钱包，支持快速和方便的多重签名。
 * 一个完整的工具包，用来帮助区块生产者、开发人员以及终端用户完成他们的日常工作。
 
 
