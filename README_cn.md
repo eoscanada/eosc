@@ -154,10 +154,10 @@ Done
 正在开发的新功能
 ----------------
 
-* Have `serve` default to asking a confirmation on the command line before signing each transactions.
-* Add `--accept` to auto-accepts signatures (only if listening on a local address).
-* Shamir Secret Sharing-encoded wallets, with support for fast and easy multi-sig, even through a secure network.
-* A full suite of tools to help Block Producers, developers, end users, in their every day life.
+* 通过 `serve` 选项使得命令行工具可以在签名每一笔交易前提示确认信息。
+* 增加 `--accept` 参数以支持自动接收签名 (仅限监听本地地址)
+* 基于 [Shamir Secret Sharing](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing)编码的钱包，支持快速和方便的多重签名。
+* 一个完整的工具包，用来帮助区块生产者、开发人员以及终端用户完成他们的日常工作。
 
 
 问答
