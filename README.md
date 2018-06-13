@@ -152,7 +152,7 @@ transaction to the network through the `https://mainnet.eoscanada.com`
 endpoint.  You can also point to some other endpoints that are on the
 main network with `-u` or `--api-url`.
 
-Find what your account it on https://eosauthority.com/account
+Find what your account is on https://eosquery.com
 
 
 
