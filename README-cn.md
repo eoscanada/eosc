@@ -165,7 +165,7 @@ Done
 
 问题: 为什么不使用 `cleos` ?
 
-答案：`cleos` 使用 C+++ 编写，由于依赖太多的工具链而很难被编译。`eosc` 可以在 Windows 上使用，而 `cleos` 却不可以。`eosc` 包含了一个内部钱包，可以很方便的用来签名交易，但 `cleos` 命令则需要借助 (`keosd`) 才可以实现对交易的签名，因此它很难使用。而 `eosc` 将 `cleos` 和 `keosd` 这两个工具整合为一个方便使用的命令行工具。
+答案：`cleos` 使用 C++ 编写，由于依赖太多的工具链而很难被编译。`eosc` 可以在 Windows 上使用，而 `cleos` 却不可以。`eosc` 包含了一个内部钱包，可以很方便的用来签名交易，但 `cleos` 命令则需要借助 (`keosd`) 才可以实现对交易的签名，因此它很难使用。而 `eosc` 将 `cleos` 和 `keosd` 这两个工具整合为一个方便使用的命令行工具。
 
 ERRATA: Previouly, you could read `It uses sha512 key derivation,
 which is faster to brute force, the Argon2 key derivation is stronger

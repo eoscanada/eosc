@@ -1,6 +1,8 @@
 `eosc` command-line swiss-knife
 -------------------------------
 
+[点击查看中文](./README-cn.md)
+
 `eosc` is a cross-platform (Windows, Mac and Linux) command-line tool
 for interacting with an EOS.IO blockchain.
 
