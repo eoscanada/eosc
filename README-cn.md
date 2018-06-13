@@ -19,7 +19,9 @@
 
 2. 基于源码进行构建:
 
-    go get -u -v github.com/eoscanada/eosc/eosc
+```bash
+go get -u -v github.com/eoscanada/eosc/eosc
+```
 
 
 投票!
