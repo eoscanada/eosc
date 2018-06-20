@@ -29,7 +29,7 @@ var getBlockCmd = &cobra.Command{
 	Short: "get block info",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		api := api()
+		api := getAPI()
 
 		block, err := api.GetBlockByNumOrID(args[0])
 		if err != nil {

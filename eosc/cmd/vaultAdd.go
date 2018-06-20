@@ -97,7 +97,7 @@ func capturePrivateKey(isFirst bool) (privateKey *ecc.PrivateKey, err error) {
 
 	enteredKey, err := cli.GetPassword(prompt)
 	if err != nil {
-		return nil, fmt.Errorf("get private key: %s", err.Error())
+		return nil, fmt.Errorf("get private key: %s", err)
 	}
 
 	if enteredKey == "" {
@@ -106,7 +106,7 @@ func capturePrivateKey(isFirst bool) (privateKey *ecc.PrivateKey, err error) {
 
 	key, err := ecc.NewPrivateKey(enteredKey)
 	if err != nil {
-		return nil, fmt.Errorf("import private key: %s", err.Error())
+		return nil, fmt.Errorf("import private key: %s", err)
 	}
 
 	fmt.Printf("- Scanned private key corresponding to %s\n", key.PublicKey().String())

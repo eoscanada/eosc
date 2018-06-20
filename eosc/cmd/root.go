@@ -37,10 +37,12 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	RootCmd.PersistentFlags().StringP("vault-file", "", "./eosc-vault.json", "Wallet file that contains encrypted key material")
+	RootCmd.PersistentFlags().StringSliceP("wallet-url", "", []string{}, "Base URL to wallet endpoint. You can pass this multiple times to use the multi-signer (will use each wallet to sign multi-sig transactions).")
 	RootCmd.PersistentFlags().StringP("api-url", "u", "https://mainnet.eoscanada.com", "api endpoint of eos.io block chain node ")
+	RootCmd.PersistentFlags().StringSliceP("permission", "p", []string{}, "Base URL to wallet endpoint. You can pass this multiple times to use the multi-signer (will use each wallet to sign multi-sig transactions).")
 	RootCmd.PersistentFlags().StringP("kms-gcp-keypath", "", "", "Path to the cryptoKeys within a keyRing on GCP")
 
-	for _, flag := range []string{"vault-file", "api-url", "kms-gcp-keypath"} {
+	for _, flag := range []string{"vault-file", "api-url", "kms-gcp-keypath", "wallet-url", "permission"} {
 		if err := viper.BindPFlag("global-"+flag, RootCmd.PersistentFlags().Lookup(flag)); err != nil {
 			panic(err)
 		}

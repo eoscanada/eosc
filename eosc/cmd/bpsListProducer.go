@@ -49,7 +49,7 @@ func (p producers) Less(i, j int) bool {
 }
 
 var run = func(cmd *cobra.Command, args []string) {
-	api := api()
+	api := getAPI()
 
 	response, err := api.GetTableRows(
 		eos.GetTableRowsRequest{

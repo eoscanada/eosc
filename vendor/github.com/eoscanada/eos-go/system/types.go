@@ -53,45 +53,9 @@ type EOSIOGlobalState struct {
 	PaymentPerBlock           uint64 `json:"payment_per_block"`
 }
 
-// UndelegateBW represents the `eosio.system::undelegatebw` action.
-type UndelegateBW struct {
-	From         eos.AccountName `json:"from"`
-	Receiver     eos.AccountName `json:"receiver"`
-	UnstakeNet   eos.Asset       `json:"unstake_net"`
-	UnstakeCPU   eos.Asset       `json:"unstake_cpu"`
-	UnstakeBytes uint64          `json:"unstake_bytes"`
-}
-
-// Refund represents the `eosio.system::refund` action
-type Refund struct {
-	Owner eos.AccountName `json:"owner"`
-}
-
-// UnregProducer represents the `eosio.system::unregprod` action
-type UnregProducer struct {
-	Producer eos.AccountName `json:"producer"`
-}
-
-// RegProxy represents the `eosio.system::regproxy` action
-type RegProxy struct {
-	Proxy eos.AccountName `json:"proxy"`
-}
-
 // UnregProxy represents the `eosio.system::unregproxy` action
 type UnregProxy struct {
 	Proxy eos.AccountName `json:"proxy"`
-}
-
-// VoteProducer represents the `eosio.system::voteproducer` action
-type VoteProducer struct {
-	Voter     eos.AccountName   `json:"voter"`
-	Proxy     eos.AccountName   `json:"proxy"`
-	Producers []eos.AccountName `json:"producers"`
-}
-
-// ClaimRewards repreents the `eosio.system::claimrewards` action
-type ClaimRewards struct {
-	Owner eos.AccountName `json:"owner"`
 }
 
 // Nonce represents the `eosio.system::nonce` action. It is used to
