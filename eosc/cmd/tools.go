@@ -17,12 +17,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// bpsCmd represents the bps command
-var bpsCmd = &cobra.Command{
-	Use:   "bps",
-	Short: "Commands useful for block producers",
+// toolsCmd represents the tools command
+var toolsCmd = &cobra.Command{
+	Use:   "tools",
+	Short: "Other tools commands",
 }
 
 func init() {
-	RootCmd.AddCommand(bpsCmd)
+	RootCmd.AddCommand(toolsCmd)
 }

@@ -10,14 +10,14 @@ import (
 	"github.com/spf13/viper"
 )
 
-var bpsChainFreezeCmd = &cobra.Command{
+var toolsChainFreezeCmd = &cobra.Command{
 	Use:   "chain-freeze",
 	Short: "Freeze the chain by proxying p2p blocks until a block including updateauth actions is passed through, then block/shutdown.",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		proxy := p2p.Proxy{
 			Routes: []*p2p.Route{
-				{From: viper.GetString("listening-address"), To: viper.GetString("target-p2p-address")},
+				{From: viper.GetString("tools-chain-freeze-cmd-listening-address"), To: viper.GetString("tools-chains-freeze-cmd-target-p2p-address")},
 			},
 			Handlers: []p2p.Handler{chainFreezeHandler},
 		}
@@ -28,21 +28,21 @@ var bpsChainFreezeCmd = &cobra.Command{
 }
 
 func init() {
-	bpsCmd.AddCommand(bpsChainFreezeCmd)
+	toolsCmd.AddCommand(toolsChainFreezeCmd)
 
-	bpsChainFreezeCmd.Flags().StringP("target-p2p-address", "t", "localhost:9876", "return producers info in json")
-	bpsChainFreezeCmd.Flags().StringP("listening-address", "", ":19876", "return producers info in json")
-	bpsChainFreezeCmd.Flags().IntP("block-num", "n", 0, "Last block to let through before exiting.")
+	toolsChainFreezeCmd.Flags().StringP("target-p2p-address", "t", "localhost:9876", "return producers info in json")
+	toolsChainFreezeCmd.Flags().StringP("listening-address", "", ":19876", "return producers info in json")
+	toolsChainFreezeCmd.Flags().IntP("block-num", "n", 0, "Last block to let through before exiting.")
 
 	for _, flag := range []string{"target-p2p-address", "listening-address", "block-num"} {
-		if err := viper.BindPFlag(flag, bpsChainFreezeCmd.Flags().Lookup(flag)); err != nil {
+		if err := viper.BindPFlag("tools-chain-freeze-cmd-"+flag, toolsChainFreezeCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
 }
 
 var chainFreezeHandler = p2p.HandlerFunc(func(msg p2p.Message) {
-	maxBlock := viper.GetInt("block-num")
+	maxBlock := viper.GetInt("tools-chain-freeze-cmd-block-num")
 
 	p2pMsg := msg.Envelope.P2PMessage
 	switch m := p2pMsg.(type) {

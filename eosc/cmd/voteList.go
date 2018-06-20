@@ -32,11 +32,6 @@ var voteListProducerCmd = &cobra.Command{
 	Short: "Retrieve registered producers",
 	Run:   run,
 }
-var bpsListProducerCmd = &cobra.Command{
-	Use:   "producers",
-	Short: "Retrieve registered producers",
-	Run:   run,
-}
 
 type producers []map[string]interface{}
 
@@ -66,21 +61,21 @@ var run = func(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
-	if viper.GetBool("get-producers-cmd-json") {
+	if viper.GetBool("vote-list-cmd-json") {
 		data, err := json.MarshalIndent(response.Rows, "", "    ")
 		if err != nil {
-			fmt.Printf("JSON generation , %s\n", err.Error())
+			fmt.Println("Error: json marshalling:", err)
 			os.Exit(1)
 		}
 		fmt.Println(string(data))
 	} else {
 		var producers producers
 		if err := json.Unmarshal(response.Rows, &producers); err != nil {
-			fmt.Printf("JSON unmarshall , %s\n", err.Error())
+			fmt.Println("Error: json marshalling:", err)
 			os.Exit(1)
 		}
 
-		if viper.GetBool("get-producers-cmd-sort") {
+		if viper.GetBool("vote-list-cmd-sort") {
 			sort.Slice(producers, producers.Less)
 		}
 
@@ -94,17 +89,13 @@ var run = func(cmd *cobra.Command, args []string) {
 }
 
 func init() {
-	//getCmd.AddCommand(bpsListProducerCmd)
 	voteCmd.AddCommand(voteListProducerCmd)
-
-	//bpsListProducerCmd.Flags().BoolP("sort", "s", false, "sort producers")
-	//bpsListProducerCmd.Flags().BoolP("json", "j", false, "return producers info in json")
 
 	voteListProducerCmd.Flags().BoolP("sort", "s", false, "sort producers")
 	voteListProducerCmd.Flags().BoolP("json", "j", false, "return producers info in json")
 
 	for _, flag := range []string{"json", "sort"} {
-		if err := viper.BindPFlag("get-producers-cmd-"+flag, voteListProducerCmd.Flags().Lookup(flag)); err != nil {
+		if err := viper.BindPFlag("vote-list-cmd-"+flag, voteListProducerCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
