@@ -16,7 +16,6 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 
 	"sort"
 
@@ -55,25 +54,17 @@ var run = func(cmd *cobra.Command, args []string) {
 			Limit: 5000,
 		},
 	)
-
-	if err != nil {
-		fmt.Printf("Get table rows , %s\n", err.Error())
-		os.Exit(1)
-	}
+	errorCheck("get table rows", err)
 
 	if viper.GetBool("vote-list-cmd-json") {
 		data, err := json.MarshalIndent(response.Rows, "", "    ")
-		if err != nil {
-			fmt.Println("Error: json marshalling:", err)
-			os.Exit(1)
-		}
+		errorCheck("json marshal", err)
+
 		fmt.Println(string(data))
 	} else {
 		var producers producers
-		if err := json.Unmarshal(response.Rows, &producers); err != nil {
-			fmt.Println("Error: json marshalling:", err)
-			os.Exit(1)
-		}
+		err := json.Unmarshal(response.Rows, &producers)
+		errorCheck("json marshaling", err)
 
 		if viper.GetBool("vote-list-cmd-sort") {
 			sort.Slice(producers, producers.Less)

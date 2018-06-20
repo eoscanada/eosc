@@ -17,8 +17,6 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"os"
-
 	"github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -40,17 +38,10 @@ var getTableCmd = &cobra.Command{
 				Limit: uint32(viper.GetInt("get-table-cmd-limit")),
 			},
 		)
-
-		if err != nil {
-			fmt.Printf("Error: get table rows: %s\n", err)
-			os.Exit(1)
-		}
+		errorCheck("get table rows", err)
 
 		data, err := json.MarshalIndent(response, "", "  ")
-		if err != nil {
-			fmt.Printf("Error: json marshal: %s\n", err)
-			os.Exit(1)
-		}
+		errorCheck("json marshal", err)
 
 		fmt.Println(string(data))
 	},

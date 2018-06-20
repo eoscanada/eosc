@@ -1,4 +1,4 @@
-// Copyright © 2018 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2018 EOS Canada <alex@eoscanada.com>
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -14,32 +14,29 @@
 package cmd
 
 import (
-	"fmt"
-
-	"github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/ecc"
-	"github.com/eoscanada/eos-go/system"
+	eos "github.com/eoscanada/eos-go"
+	"github.com/eoscanada/eos-go/msig"
 	"github.com/spf13/cobra"
 )
 
-var systemRegisterProducerCmd = &cobra.Command{
-	Use:   "register [account_name] [public_key] [website_url]",
-	Short: "Register account as a block producer",
+// msigExecCmd represents the `eosio.msig::exec` command
+var msigExecCmd = &cobra.Command{
+	Use:   "exec [proposer] [proposal name] [executer]",
+	Short: "Execute a transaction in the eosio.msig contract",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		accountName := eos.AccountName(args[0])
-		publicKey, err := ecc.NewPublicKey(args[1])
-		errorCheck(fmt.Sprintf("%q invalid public key", args[1]), err)
-		websiteURL := args[2]
+		proposer := eos.AccountName(args[0])
+		proposalName := eos.Name(args[1])
+		executer := eos.AccountName(args[2])
 
 		pushEOSCActions(api,
-			system.NewRegProducer(accountName, publicKey, websiteURL),
+			msig.NewExec(proposer, proposalName, executer),
 		)
 	},
 }
 
 func init() {
-	systemCmd.AddCommand(systemRegisterProducerCmd)
+	msigCmd.AddCommand(msigExecCmd)
 }

@@ -3,7 +3,6 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 
 	"github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
@@ -17,15 +16,11 @@ var getAccountCmd = &cobra.Command{
 		api := getAPI()
 
 		account, err := api.GetAccount(eos.AccountName(args[0]))
-		if err != nil {
-			fmt.Printf("Error: get account , %s\n", err.Error())
-			os.Exit(1)
-		}
+		errorCheck("get account", err)
+
 		data, err := json.MarshalIndent(account, "", "  ")
-		if err != nil {
-			fmt.Printf("Error: json conversion , %s\n", err.Error())
-			os.Exit(1)
-		}
+		errorCheck("json marshal", err)
+
 		fmt.Println(string(data))
 	},
 }

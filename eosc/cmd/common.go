@@ -10,6 +10,12 @@ import (
 	"github.com/spf13/viper"
 )
 
+func mustGetWallet() *eosvault.Vault {
+	vault, err := setupWallet()
+	errorCheck("wallet setup", err)
+	return vault
+}
+
 func setupWallet() (*eosvault.Vault, error) {
 	walletFile := viper.GetString("global-vault-file")
 	if _, err := os.Stat(walletFile); err != nil {
@@ -34,15 +40,23 @@ func setupWallet() (*eosvault.Vault, error) {
 }
 
 func apiWithWallet() *eos.API {
-	vault, err := setupWallet()
-	if err != nil {
-		fmt.Printf("Error setting up wallet: %s\n", err)
-		os.Exit(1)
+	api := getAPI()
+
+	walletURLs := viper.GetStringSlice("global-wallet-url")
+	if len(walletURLs) == 0 {
+		vault, err := setupWallet()
+		errorCheck("setting up wallet", err)
+
+		api.SetSigner(vault.KeyBag)
+	} else {
+		if len(walletURLs) == 1 {
+			// If a `walletURLs` has a Username in the path, use instead of `default`.
+			api.SetSigner(eos.NewWalletSigner(eos.New(walletURLs[0]), "default"))
+		} else {
+			fmt.Println("Multi-signer not yet implemented.  Please choose only one `--wallet-url`")
+			os.Exit(1)
+		}
 	}
-
-	api := eos.New(viper.GetString("global-api-url"))
-
-	api.SetSigner(vault.KeyBag)
 
 	return api
 

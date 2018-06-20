@@ -17,7 +17,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
@@ -38,11 +37,7 @@ It is to be used with tools such as 'cleos' or 'eos-vote' that need
 transactions signed before submitting them to an EOS network.
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		vault, err := setupWallet()
-		if err != nil {
-			fmt.Println("ERROR:", err)
-			os.Exit(1)
-		}
+		vault := mustGetWallet()
 
 		vault.PrintPublicKeys()
 

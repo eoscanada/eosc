@@ -16,8 +16,6 @@ package cmd
 import (
 	"fmt"
 
-	"os"
-
 	"encoding/json"
 
 	"github.com/spf13/cobra"
@@ -32,16 +30,12 @@ var getBlockCmd = &cobra.Command{
 		api := getAPI()
 
 		block, err := api.GetBlockByNumOrID(args[0])
-		if err != nil {
-			fmt.Printf("Error: get block , %s\n", err.Error())
-			os.Exit(1)
-		}
+		errorCheck("get block", err)
+
 		if viper.GetBool("getBlockCmd.json") {
 			data, err := json.MarshalIndent(block, "", "  ")
-			if err != nil {
-				fmt.Printf("Error: json conversion , %s\n", err.Error())
-				os.Exit(1)
-			}
+			errorCheck("json marshal", err)
+
 			fmt.Println(string(data))
 		} else {
 			fmt.Printf("Block [%d] produced by [%s] as [%s]\n", block.BlockHeader.BlockNumber(), block.BlockHeader.Producer, block.Timestamp)

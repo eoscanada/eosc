@@ -15,9 +15,7 @@ package cmd
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
-	"os"
 
 	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/msig"
@@ -42,22 +40,14 @@ The transaction file should look like:
 		transactionFileName := args[2]
 
 		cnt, err := ioutil.ReadFile(transactionFileName)
-		if err != nil {
-			fmt.Printf("Error reading transaction file: %s\n", err)
-			os.Exit(1)
-		}
+		errorCheck("reading transaction file", err)
 
 		var tx *eos.Transaction
-		if err := json.Unmarshal(cnt, &tx); err != nil {
-			fmt.Printf("Error parsing transaction file: %s\n", err)
-			os.Exit(1)
-		}
+		err = json.Unmarshal(cnt, &tx)
+		errorCheck("parsing transaction file", err)
 
 		requested, err := permissionsToPermissionLevels(viper.GetStringSlice("msig-propose-cmd-requested-permissions"))
-		if err != nil {
-			fmt.Printf("Error with requested permission: %s\n", err)
-			os.Exit(1)
-		}
+		errorCheck("requested permissions", err)
 
 		pushEOSCActions(api,
 			msig.NewPropose(proposer, proposalName, requested, tx),

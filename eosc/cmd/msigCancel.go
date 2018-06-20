@@ -14,32 +14,29 @@
 package cmd
 
 import (
-	"fmt"
-
-	"github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/ecc"
-	"github.com/eoscanada/eos-go/system"
+	eos "github.com/eoscanada/eos-go"
+	"github.com/eoscanada/eos-go/msig"
 	"github.com/spf13/cobra"
 )
 
-var systemRegisterProducerCmd = &cobra.Command{
-	Use:   "register [account_name] [public_key] [website_url]",
-	Short: "Register account as a block producer",
+// msigCancelCmd represents the `eosio.msig::cancel` command
+var msigCancelCmd = &cobra.Command{
+	Use:   "cancel [proposer] [proposal name] [canceler]",
+	Short: "Cancel a transaction in the eosio.msig contract",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		accountName := eos.AccountName(args[0])
-		publicKey, err := ecc.NewPublicKey(args[1])
-		errorCheck(fmt.Sprintf("%q invalid public key", args[1]), err)
-		websiteURL := args[2]
+		proposer := eos.AccountName(args[0])
+		proposalName := eos.Name(args[1])
+		canceler := eos.AccountName(args[2])
 
 		pushEOSCActions(api,
-			system.NewRegProducer(accountName, publicKey, websiteURL),
+			msig.NewCancel(proposer, proposalName, canceler),
 		)
 	},
 }
 
 func init() {
-	systemCmd.AddCommand(systemRegisterProducerCmd)
+	msigCmd.AddCommand(msigCancelCmd)
 }

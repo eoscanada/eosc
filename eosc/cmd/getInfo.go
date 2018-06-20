@@ -16,8 +16,6 @@ package cmd
 import (
 	"fmt"
 
-	"os"
-
 	"encoding/json"
 
 	"github.com/spf13/cobra"
@@ -30,17 +28,10 @@ var getInfoCmd = &cobra.Command{
 		api := getAPI()
 
 		info, err := api.GetInfo()
-		if err != nil {
-			fmt.Println("Error: get info:", err)
-			os.Exit(1)
-		}
+		errorCheck("get info", err)
 
 		data, err := json.MarshalIndent(info, "", "  ")
-
-		if err != nil {
-			fmt.Println("Error: json conversion:", err)
-			os.Exit(1)
-		}
+		errorCheck("json marshal", err)
 
 		fmt.Println(string(data))
 	},

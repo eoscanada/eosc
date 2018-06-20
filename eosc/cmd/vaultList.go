@@ -14,9 +14,6 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/spf13/cobra"
 )
 
@@ -31,11 +28,7 @@ you cannot trust that these public keys have their counterpart in the
 wallet, unless you check with the "list" command.
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		vault, err := setupWallet()
-		if err != nil {
-			fmt.Println("ERROR:", err)
-			os.Exit(1)
-		}
+		vault := mustGetWallet()
 
 		vault.PrintPublicKeys()
 	},

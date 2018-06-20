@@ -15,31 +15,35 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
-	"github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/ecc"
-	"github.com/eoscanada/eos-go/system"
+	eos "github.com/eoscanada/eos-go"
+	"github.com/eoscanada/eos-go/msig"
 	"github.com/spf13/cobra"
 )
 
-var systemRegisterProducerCmd = &cobra.Command{
-	Use:   "register [account_name] [public_key] [website_url]",
-	Short: "Register account as a block producer",
+// msigApproveCmd represents the `eosio.msig::approve` command
+var msigApproveCmd = &cobra.Command{
+	Use:   "approve [proposer] [proposal name] [actor@permission]",
+	Short: "Approve a transaction in the eosio.msig contract",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		accountName := eos.AccountName(args[0])
-		publicKey, err := ecc.NewPublicKey(args[1])
-		errorCheck(fmt.Sprintf("%q invalid public key", args[1]), err)
-		websiteURL := args[2]
+		proposer := eos.AccountName(args[0])
+		proposalName := eos.Name(args[1])
+		requested, err := permissionToPermissionLevel(args[2])
+		if err != nil {
+			fmt.Printf("Error with requested permission: %s\n", err)
+			os.Exit(1)
+		}
 
 		pushEOSCActions(api,
-			system.NewRegProducer(accountName, publicKey, websiteURL),
+			msig.NewApprove(proposer, proposalName, requested),
 		)
 	},
 }
 
 func init() {
-	systemCmd.AddCommand(systemRegisterProducerCmd)
+	msigCmd.AddCommand(msigApproveCmd)
 }

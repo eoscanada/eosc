@@ -34,10 +34,7 @@ var systemBuyRamBytesCmd = &cobra.Command{
 		payer := eos.AccountName(args[0])
 		receiver := eos.AccountName(args[1])
 		numBytes, err := strconv.ParseInt(args[2], 10, 64)
-		if err != nil {
-			fmt.Printf("Invalid number of bytes: %s\n", err)
-			os.Exit(1)
-		}
+		errorCheck(fmt.Sprintf("invalid number of bytes %q", args[2]), err)
 
 		if int64(uint32(numBytes)) != numBytes {
 			fmt.Printf("Invalid number of bytes: capped at unsigned 32 bits.  That's probably too much RAM anyway.\n")
