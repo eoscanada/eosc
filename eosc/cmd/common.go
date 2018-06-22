@@ -74,26 +74,7 @@ func errorCheck(prefix string, err error) {
 }
 
 func permissionToPermissionLevel(in string) (out eos.PermissionLevel, err error) {
-	parts := strings.Split(in, "@")
-	if len(parts) > 2 {
-		return out, fmt.Errorf("permission %q invalid, use account[@permission]", in)
-	}
-
-	if len(parts[0]) > 12 {
-		return out, fmt.Errorf("account name %q too long", parts[0])
-	}
-
-	out.Actor = eos.AccountName(parts[0])
-	out.Permission = eos.PermissionName("active")
-	if len(parts) == 2 {
-		if len(parts[1]) > 12 {
-			return out, fmt.Errorf("permission %q name too long", parts[1])
-		}
-
-		out.Permission = eos.PermissionName(parts[1])
-	}
-
-	return
+	return eos.NewPermissionLevel(in)
 }
 
 func permissionsToPermissionLevels(in []string) (out []eos.PermissionLevel, err error) {

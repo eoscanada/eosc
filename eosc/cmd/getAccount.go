@@ -24,3 +24,7 @@ var getAccountCmd = &cobra.Command{
 		fmt.Println(string(data))
 	},
 }
+
+func init() {
+	getCmd.AddCommand(getAccountCmd)
+}

@@ -9,58 +9,58 @@
 			"revisionTime": "2017-10-25T01:01:36Z"
 		},
 		{
-			"checksumSHA1": "UAM6eWDyCZD5OEavmNLaKgGBaI4=",
+			"checksumSHA1": "qg/iEB3Y49wxaPqYjDNHKVS6yOs=",
 			"path": "github.com/eoscanada/eos-go",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "mbdurDenl8bhRVVu8ixJw70fi5E=",
 			"path": "github.com/eoscanada/eos-go/btcsuite/btcd/btcec",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "9CdGdJ/+qjIwCfyoxoB3JxNtdyg=",
 			"path": "github.com/eoscanada/eos-go/btcsuite/btcutil",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "VkjW+vswsv7J0PX2UFqqg+/RVgs=",
 			"path": "github.com/eoscanada/eos-go/btcsuite/btcutil/base58",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "Prj/mEIP4L5aX+Kwis+lhBklBOE=",
 			"path": "github.com/eoscanada/eos-go/ecc",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "Gk4Dvc3QqbWnUdz4jvCXuxULqyo=",
 			"path": "github.com/eoscanada/eos-go/msig",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "iQCB2H53Nfjav3Yh/8bEWEHOAIs=",
 			"path": "github.com/eoscanada/eos-go/p2p",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "NdntZrHRFRW6AzmCseIz2LOvb2w=",
 			"path": "github.com/eoscanada/eos-go/system",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "K/B3Lu8wuBTAVmYz+QM9zo2FCF8=",
 			"path": "github.com/eoscanada/eos-go/token",
-			"revision": "86bd976e8c0bc7a7f80addc7dcbe027764d7f19a",
-			"revisionTime": "2018-06-20T05:57:30Z"
+			"revision": "d44666dc2e7e4b56920c077e57df62476565a27d",
+			"revisionTime": "2018-06-22T03:04:04Z"
 		},
 		{
 			"checksumSHA1": "7NP1qUMF8Kx1y0zANxx0e+oq9Oo=",
