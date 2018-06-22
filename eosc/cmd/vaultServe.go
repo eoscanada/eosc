@@ -16,9 +16,7 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
-	"os"
 
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
@@ -39,11 +37,7 @@ It is to be used with tools such as 'cleos' or 'eos-vote' that need
 transactions signed before submitting them to an EOS network.
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		vault, err := setupWallet()
-		if err != nil {
-			fmt.Println("ERROR:", err)
-			os.Exit(1)
-		}
+		vault := mustGetWallet()
 
 		vault.PrintPublicKeys()
 
@@ -54,7 +48,7 @@ transactions signed before submitting them to an EOS network.
 func init() {
 	vaultCmd.AddCommand(vaultServeCmd)
 
-	vaultServeCmd.Flags().IntP("port", "p", 6666, "Listen port")
+	vaultServeCmd.Flags().IntP("port", "", 6666, "Listen port")
 	vaultServeCmd.Flags().BoolP("auto-accept", "", false, "Whether to auto accept all signature requests, or to ask for a security code on the command line.")
 
 	for _, flag := range []string{"port", "auto-accept"} {
@@ -143,27 +137,9 @@ func listen(v *eosvault.Vault) {
 		_ = json.NewEncoder(w).Encode(signed)
 	})
 
-	// when trying to import a key, we should instruct them to use the `eosc vault` command
-	// to create and import new keys.
-	//
-	// TODO: maybe have a `--writable`  option, so we keep the passphrase, or the parts
-	// or the shamir secret, and then write back to the .json file..
-	//
-	// http.HandleFunc("/v1/wallet/import_key", func(w http.ResponseWriter, r *http.Request) {
-	// 	fmt.Println("Handling import_key")
-	// 	var inputs []string
-	// 	_ = json.NewDecoder(r.Body).Decode(&inputs)
-	// 	// We're ignoring inputs[0] which is the name of the wallet ("default" by default)
-
-	// 	keyBag.Add(inputs[1])
-
-	// 	w.WriteHeader(201)
-	// 	w.Write([]byte("{}"))
-	// })
-
 	port := viper.GetInt("vault-serve-cmd-port")
 	fmt.Printf("Listening for wallet operations on 127.0.0.1:%d\n", port)
 	if err := http.ListenAndServe(fmt.Sprintf("127.0.0.1:%d", port), nil); err != nil {
-		log.Println("Failed listening on port %d: %s\n", port, err)
+		fmt.Printf("Failed listening on port %d: %s\n", port, err)
 	}
 }

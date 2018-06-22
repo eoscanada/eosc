@@ -3,6 +3,7 @@ package eos
 import (
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -116,6 +117,23 @@ func (a Asset) Sub(other Asset) Asset {
 	return Asset{Amount: a.Amount - other.Amount, Symbol: a.Symbol}
 }
 
+func (a Asset) String() string {
+	strInt := fmt.Sprintf("%d", a.Amount)
+	if len(strInt) < int(a.Symbol.Precision+1) {
+		// prepend `0` for the difference:
+		strInt = strings.Repeat("0", int(a.Symbol.Precision+uint8(1))-len(strInt)) + strInt
+	}
+
+	var result string
+	if a.Symbol.Precision == 0 {
+		result = strInt
+	} else {
+		result = strInt[:len(strInt)-int(a.Symbol.Precision)] + "." + strInt[len(strInt)-int(a.Symbol.Precision):]
+	}
+
+	return fmt.Sprintf("%s %s", result, a.Symbol.Symbol)
+}
+
 // NOTE: there's also a new ExtendedSymbol (which includes the contract (as AccountName) on which it is)
 type Symbol struct {
 	Precision uint8
@@ -221,6 +239,11 @@ type GetCodeResp struct {
 	AccountName AccountName `json:"account_name"`
 	CodeHash    string      `json:"code_hash"`
 	WASM        string      `json:"wasm"`
+	ABI         ABI         `json:"abi"`
+}
+
+type GetABIResp struct {
+	AccountName AccountName `json:"account_name"`
 	ABI         ABI         `json:"abi"`
 }
 
@@ -340,4 +363,70 @@ func (t *BlockTimestamp) UnmarshalJSON(data []byte) (err error) {
 		t.Time, err = time.Parse(`"`+BlockTimestampFormat+`Z07:00"`, string(data))
 	}
 	return err
+}
+
+type JSONFloat64 float64
+
+func (f *JSONFloat64) UnmarshalJSON(data []byte) error {
+	if len(data) == 0 {
+		return errors.New("empty value")
+	}
+
+	if data[0] == '"' {
+		var s string
+		if err := json.Unmarshal(data, &s); err != nil {
+			return err
+		}
+
+		val, err := strconv.ParseFloat(s, 64)
+		if err != nil {
+			return err
+		}
+
+		*f = JSONFloat64(val)
+
+		return nil
+	}
+
+	var fl float64
+	if err := json.Unmarshal(data, &fl); err != nil {
+		return err
+	}
+
+	*f = JSONFloat64(fl)
+
+	return nil
+}
+
+type JSONInt64 int64
+
+func (i *JSONInt64) UnmarshalJSON(data []byte) error {
+	if len(data) == 0 {
+		return errors.New("empty value")
+	}
+
+	if data[0] == '"' {
+		var s string
+		if err := json.Unmarshal(data, &s); err != nil {
+			return err
+		}
+
+		val, err := strconv.ParseInt(s, 10, 64)
+		if err != nil {
+			return err
+		}
+
+		*i = JSONInt64(val)
+
+		return nil
+	}
+
+	var v int64
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+
+	*i = JSONInt64(v)
+
+	return nil
 }

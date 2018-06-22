@@ -1,6 +1,7 @@
 package eos
 
 import (
+	"crypto/sha256"
 	"fmt"
 
 	"encoding/binary"
@@ -185,28 +186,38 @@ type ProducerSchedule struct {
 }
 
 type BlockHeader struct {
-	Timestamp        BlockTimestamp `json:"timestamp"`
-	Producer         AccountName    `json:"producer"`
-	Confirmed        uint16         `json:"confirmed"`
-	Previous         SHA256Bytes    `json:"previous"`
-	TransactionMRoot SHA256Bytes    `json:"transaction_mroot"`
-	ActionMRoot      SHA256Bytes    `json:"action_mroot"`
-	//BlockMRoot       SHA256Bytes              `json:"block_mroot"`
-	ScheduleVersion  uint32                   `json:"schedule_version"`
-	NewProducers     OptionalProducerSchedule `json:"new_producers"`
-	HeaderExtensions []*Extension             `json:"header_extensions"`
+	Timestamp        BlockTimestamp            `json:"timestamp"`
+	Producer         AccountName               `json:"producer"`
+	Confirmed        uint16                    `json:"confirmed"`
+	Previous         SHA256Bytes               `json:"previous"`
+	TransactionMRoot SHA256Bytes               `json:"transaction_mroot"`
+	ActionMRoot      SHA256Bytes               `json:"action_mroot"`
+	ScheduleVersion  uint32                    `json:"schedule_version"`
+	NewProducers     *OptionalProducerSchedule `json:"new_producers" eos:"optional"`
+	HeaderExtensions []*Extension              `json:"header_extensions"`
 }
 
 func (b *BlockHeader) BlockNumber() uint32 {
 	return binary.BigEndian.Uint32(b.Previous[:4]) + 1
 }
 
-type OptionalProducerSchedule struct {
-	ProducerSchedule
+func (b *BlockHeader) BlockID() (SHA256Bytes, error) {
+	cereal, err := MarshalBinary(b)
+	if err != nil {
+		return nil, err
+	}
+
+	h := sha256.New()
+	_, _ = h.Write(cereal)
+	hashed := h.Sum(nil)
+
+	binary.BigEndian.PutUint32(hashed, b.BlockNumber())
+
+	return SHA256Bytes(hashed), nil
 }
 
-func (a *OptionalProducerSchedule) OptionalBinaryMarshalerPresent() bool {
-	return a == nil
+type OptionalProducerSchedule struct {
+	ProducerSchedule
 }
 
 type SignedBlockHeader struct {
@@ -240,8 +251,8 @@ type TransactionReceipt struct {
 }
 
 type TransactionWithID struct {
-	ID     uint8 //
-	Packed PackedTransaction
+	ID     *SHA256Bytes
+	Packed *PackedTransaction
 }
 
 func (t TransactionWithID) MarshalJSON() ([]byte, error) {
@@ -258,7 +269,7 @@ func (t *TransactionWithID) UnmarshalJSON(data []byte) error {
 			return err
 		}
 		*t = TransactionWithID{
-			Packed: packed,
+			Packed: &packed,
 		}
 
 		return nil
@@ -281,7 +292,7 @@ func (t *TransactionWithID) UnmarshalJSON(data []byte) error {
 	}
 
 	*t = TransactionWithID{
-		Packed: packed,
+		Packed: &packed,
 	}
 
 	return nil

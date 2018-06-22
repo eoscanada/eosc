@@ -121,7 +121,13 @@ func (b *KeyBag) ImportPrivateKey(wifPrivKey string) (err error) {
 }
 
 func (b *KeyBag) SignDigest(digest []byte, requiredKey ecc.PublicKey) (ecc.Signature, error) {
-	return b.keyMap()[requiredKey.String()].Sign(digest)
+
+	privateKey := b.keyMap()[requiredKey.String()]
+	if privateKey == nil {
+		return ecc.Signature{}, fmt.Errorf("private key not found for public key [%s]", requiredKey.String())
+	}
+
+	return privateKey.Sign(digest)
 }
 
 func (b *KeyBag) Sign(tx *SignedTransaction, chainID []byte, requiredKeys ...ecc.PublicKey) (*SignedTransaction, error) {

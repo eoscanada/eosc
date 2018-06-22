@@ -3,11 +3,18 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/eoscanada/eos-go"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
 )
+
+func mustGetWallet() *eosvault.Vault {
+	vault, err := setupWallet()
+	errorCheck("wallet setup", err)
+	return vault
+}
 
 func setupWallet() (*eosvault.Vault, error) {
 	walletFile := viper.GetString("global-vault-file")
@@ -32,21 +39,30 @@ func setupWallet() (*eosvault.Vault, error) {
 	return vault, nil
 }
 
-func apiWithWallet() (*eos.API, error) {
-	vault, err := setupWallet()
-	if err != nil {
-		return nil, err
+func apiWithWallet() *eos.API {
+	api := getAPI()
+
+	walletURLs := viper.GetStringSlice("global-wallet-url")
+	if len(walletURLs) == 0 {
+		vault, err := setupWallet()
+		errorCheck("setting up wallet", err)
+
+		api.SetSigner(vault.KeyBag)
+	} else {
+		if len(walletURLs) == 1 {
+			// If a `walletURLs` has a Username in the path, use instead of `default`.
+			api.SetSigner(eos.NewWalletSigner(eos.New(walletURLs[0]), "default"))
+		} else {
+			fmt.Println("Multi-signer not yet implemented.  Please choose only one `--wallet-url`")
+			os.Exit(1)
+		}
 	}
 
-	api := eos.New(viper.GetString("global-api-url"))
-
-	api.SetSigner(vault.KeyBag)
-
-	return api, nil
+	return api
 
 }
 
-func api() *eos.API {
+func getAPI() *eos.API {
 	return eos.New(viper.GetString("global-api-url"))
 }
 
@@ -55,4 +71,70 @@ func errorCheck(prefix string, err error) {
 		fmt.Printf("ERROR: %s: %s\n", prefix, err)
 		os.Exit(1)
 	}
+}
+
+func permissionToPermissionLevel(in string) (out eos.PermissionLevel, err error) {
+	parts := strings.Split(in, "@")
+	if len(parts) > 2 {
+		return out, fmt.Errorf("permission %q invalid, use account[@permission]", in)
+	}
+
+	if len(parts[0]) > 12 {
+		return out, fmt.Errorf("account name %q too long", parts[0])
+	}
+
+	out.Actor = eos.AccountName(parts[0])
+	out.Permission = eos.PermissionName("active")
+	if len(parts) == 2 {
+		if len(parts[1]) > 12 {
+			return out, fmt.Errorf("permission %q name too long", parts[1])
+		}
+
+		out.Permission = eos.PermissionName(parts[1])
+	}
+
+	return
+}
+
+func permissionsToPermissionLevels(in []string) (out []eos.PermissionLevel, err error) {
+	// loop all parameters
+	for _, singleArg := range in {
+
+		// if they specified "account@active,account2", handle that too..
+		for _, val := range strings.Split(singleArg, ",") {
+			level, err := permissionToPermissionLevel(strings.TrimSpace(val))
+			if err != nil {
+				return out, err
+			}
+
+			out = append(out, level)
+		}
+	}
+
+	return
+}
+
+func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
+	permissions := viper.GetStringSlice("global-permission")
+	if len(permissions) != 0 {
+		levels, err := permissionsToPermissionLevels(permissions)
+		if err != nil {
+			fmt.Println("Specified permissions invalid:", err)
+			os.Exit(1)
+		}
+
+		for _, act := range actions {
+			act.Authorization = levels
+		}
+	}
+
+	resp, err := api.SignPushActions(actions...)
+	if err != nil {
+		fmt.Println("Error signing/pushing transaction:", err)
+		os.Exit(1)
+	}
+
+	// TODO: print the traces
+
+	fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
 }

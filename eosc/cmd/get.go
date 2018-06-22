@@ -2,7 +2,7 @@ package cmd
 
 import "github.com/spf13/cobra"
 
-// Copyright © 2018 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2018 EOS Canada <alex@eoscanada.com>
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -15,13 +15,12 @@ import "github.com/spf13/cobra"
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// bpsCmd represents the bps command
 var getCmd = &cobra.Command{
 	Use:   "get",
-	Short: "get a resources",
+	Short: "Fetch information from the blockchain",
 }
 
 func init() {
 	RootCmd.AddCommand(getCmd)
-	//getCmd.AddCommand(getAccountCmd)
+	getCmd.AddCommand(getAccountCmd)
 }

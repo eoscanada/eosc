@@ -135,6 +135,11 @@ func (api *API) GetCode(account AccountName) (out *GetCodeResp, err error) {
 	return
 }
 
+func (api *API) GetABI(account AccountName) (out *GetABIResp, err error) {
+	err = api.call("chain", "get_abi", M{"account_name": account}, &out)
+	return
+}
+
 // WalletImportKey loads a new WIF-encoded key into the wallet.
 func (api *API) WalletImportKey(walletName, wifPrivKey string) (err error) {
 	return api.call("wallet", "import_key", []string{walletName, wifPrivKey}, nil)
@@ -298,7 +303,7 @@ func (api *API) GetBlockByNumOrID(query string) (out *SignedBlock, err error) {
 }
 
 func (api *API) GetTransaction(id string) (out *TransactionResp, err error) {
-	err = api.call("account_history", "get_transaction", M{"transaction_id": id}, &out)
+	err = api.call("history", "get_transaction", M{"id": id}, &out)
 	return
 }
 
@@ -323,7 +328,11 @@ func (api *API) GetRequiredKeys(tx *Transaction) (out *GetRequiredKeysResp, err 
 }
 
 func (api *API) GetCurrencyBalance(account AccountName, symbol string, code AccountName) (out []Asset, err error) {
-	err = api.call("chain", "get_currency_balance", M{"account": account, "symbol": symbol, "code": code}, &out)
+	params := M{"account": account, "code": code}
+	if symbol != "" {
+		params["symbol"] = symbol
+	}
+	err = api.call("chain", "get_currency_balance", params, &out)
 	return
 }
 
