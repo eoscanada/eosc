@@ -58,15 +58,18 @@ active:
 `,
 	Args: cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		api := apiWithWallet()
-
 		creator := eos.AccountName(args[0])
 		newAccount := eos.AccountName(args[1])
 
 		var actions []*eos.Action
 		authFile := viper.GetString("system-newaccount-cmd-auth-file")
 		authKey := viper.GetString("system-newaccount-cmd-auth-key")
-		if (authKey == "" && authFile == "") || (authKey != "" && authFile != "") {
+		if authKey == "" && authFile == "" {
+			fmt.Println("Error: pass one of --auth-file or --auth-key")
+			os.Exit(1)
+		}
+
+		if authKey != "" && authFile != "" {
 			fmt.Println("Error: pass either --auth-file or --auth-key")
 			os.Exit(1)
 		}
@@ -126,6 +129,8 @@ active:
 			actions = append(actions, system.NewBuyRAMBytes(creator, newAccount, uint32(buyRAMBytes*1024)))
 		}
 
+		api := apiWithWallet()
+
 		pushEOSCActions(api, actions...)
 	},
 }
@@ -141,7 +146,7 @@ func init() {
 	systemNewAccountCmd.Flags().StringP("buy-ram", "", "", "The amount of EOS to spend to buy RAM for the new account (at current EOS/RAM market price)")
 	systemNewAccountCmd.Flags().BoolP("transfer", "", false, "Transfer voting power and right to unstake EOS to receiver")
 
-	for _, flag := range []string{"stake-cpu", "stake-net", "buy-ram-kbytes", "buy-ram", "transfer", "uath-file", "auth-key"} {
+	for _, flag := range []string{"stake-cpu", "stake-net", "buy-ram-kbytes", "buy-ram", "transfer", "auth-file", "auth-key"} {
 		if err := viper.BindPFlag("system-newaccount-cmd-"+flag, systemNewAccountCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
