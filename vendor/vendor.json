@@ -39,6 +39,12 @@
 			"revisionTime": "2018-06-26T04:28:03Z"
 		},
 		{
+			"checksumSHA1": "k2iEBuf5jAzCDLI8kiDmAfHX0Ow=",
+			"path": "github.com/eoscanada/eos-go/forum",
+			"revision": "ba5d7c7212afc22f0aeefb1205127ee31f44e289",
+			"revisionTime": "2018-06-26T05:20:53Z"
+		},
+		{
 			"checksumSHA1": "Gk4Dvc3QqbWnUdz4jvCXuxULqyo=",
 			"path": "github.com/eoscanada/eos-go/msig",
 			"revision": "094fc24e7414fdc1bd8677ff83c9bda59de959bd",
