@@ -1,10 +1,13 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"strings"
 
+	yaml2json "github.com/bronze1man/go-yaml2json"
 	"github.com/eoscanada/eos-go"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
@@ -118,4 +121,25 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 	// TODO: print the traces
 
 	fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
+}
+
+func yamlUnmarshal(cnt []byte, v interface{}) error {
+	jsonCnt, err := yaml2json.Convert(cnt)
+	if err != nil {
+		return err
+	}
+
+	return json.Unmarshal(jsonCnt, v)
+}
+
+func loadYAMLOrJSONFile(filename string, v interface{}) error {
+	cnt, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return err
+	}
+
+	if strings.HasSuffix(strings.ToLower(filename), ".json") {
+		return json.Unmarshal(cnt, v)
+	}
+	return yamlUnmarshal(cnt, v)
 }

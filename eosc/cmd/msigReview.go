@@ -34,20 +34,35 @@ var msigReviewCmd = &cobra.Command{
 
 		response, err := api.GetTableRows(
 			eos.GetTableRowsRequest{
-				Code:  "eosio.msig",
-				Scope: string(proposer),
-				Table: "proposal",
-				JSON:  true,
-				Limit: 10,
+				Code:       "eosio.msig",
+				Scope:      string(proposer),
+				Table:      "proposal",
+				JSON:       true,
+				LowerBound: string(proposalName),
+				Limit:      1,
 			},
 		)
 		errorCheck("get table row", err)
 
-		// var producers producers
-		// for _, row := range response.Rows {
-		// }
+		var transactions []struct {
+			ProposalName eos.Name     `json:"proposal_name"`
+			Transaction  eos.HexBytes `json:"packed_transaction"`
+		}
+		err = response.JSONToStructs(&transactions)
+		errorCheck("reading proposed transactions", err)
 
-		fmt.Println("Look for (we'll implement something better soon :):", proposalName)
+		var transaction *eos.Transaction
+		for _, tx := range transactions {
+			if tx.ProposalName == proposalName {
+				err := eos.UnmarshalBinary(tx.Transaction, &transaction)
+				errorCheck("unmarshal binary data", err)
+			}
+		}
+		if transaction == nil {
+			errorCheck("transaction:", fmt.Errorf("not found"))
+		}
+
+		fmt.Println("Look for:", proposalName)
 
 		enc := json.NewEncoder(os.Stdout)
 		enc.SetIndent("", "  ")
