@@ -120,7 +120,8 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 
 	// TODO: print the traces
 
-	fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
+	//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
+	fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
 }
 
 func yamlUnmarshal(cnt []byte, v interface{}) error {
