@@ -15,6 +15,7 @@ package cmd
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 
 	eos "github.com/eoscanada/eos-go"
@@ -29,7 +30,7 @@ var msigProposeCmd = &cobra.Command{
 	Short: "Propose a new transaction in the eosio.msig contract",
 	Long: `Propose a new transaction in the eosio.msig contract
 
-The transaction file should look like:
+Pass --requested-permissions
 `,
 	Args: cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
@@ -48,6 +49,9 @@ The transaction file should look like:
 
 		requested, err := permissionsToPermissionLevels(viper.GetStringSlice("msig-propose-cmd-requested-permissions"))
 		errorCheck("requested permissions", err)
+		if len(requested) == 0 {
+			errorCheck("--requested-permissions", errors.New("missing values"))
+		}
 
 		pushEOSCActions(api,
 			msig.NewPropose(proposer, proposalName, requested, tx),
