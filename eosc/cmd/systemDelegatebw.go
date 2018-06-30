@@ -11,8 +11,8 @@ import (
 
 var systemDelegateBWCmd = &cobra.Command{
 	Use:   "delegatebw [from_account_name] [receiver_account_name]",
-	Short: "Delegate network and cpu bandwidth to receiver",
-	Long:  "Delegate network and cpu bandwidth to receiver",
+	Short: "Delegate cpu and network bandwidth to receiver",
+	Long:  "Delegate cpu and network bandwidth to receiver",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		from := eos.AccountName(args[0])
