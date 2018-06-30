@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/davecgh/go-spew/spew"
 	eos "github.com/eoscanada/eos-go"
@@ -72,6 +73,8 @@ func (a *Analyzer) AnalyzeTransaction(tx *eos.Transaction) (err error) {
 	a.Pln("---------------------------------------------------------------------")
 	a.Pln()
 
+	now := time.Now().UTC()
+	a.Pf("Expiration: %s (in %s, analysis time: %s)\n", tx.Expiration.Time, tx.Expiration.Time.Sub(now), now)
 	a.Pf("Expiration: %s\n", tx.Expiration.Time)
 	a.Pf("Reference block number: %d\n", tx.RefBlockNum)
 	a.Pf("Reference block prefix: %x\n", tx.RefBlockPrefix)
