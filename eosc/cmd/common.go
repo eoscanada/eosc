@@ -9,6 +9,7 @@ import (
 
 	yaml2json "github.com/bronze1man/go-yaml2json"
 	"github.com/eoscanada/eos-go"
+	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
 )
@@ -143,4 +144,13 @@ func loadYAMLOrJSONFile(filename string, v interface{}) error {
 		return json.Unmarshal(cnt, v)
 	}
 	return yamlUnmarshal(cnt, v)
+}
+
+func toAccount(in, field string) eos.AccountName {
+	acct, err := cli.ToAccountName(in)
+	if err != nil {
+		errorCheck(fmt.Sprintf("invalid account format for %q", field), err)
+	}
+
+	return acct
 }

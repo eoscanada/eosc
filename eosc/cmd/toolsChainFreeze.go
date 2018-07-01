@@ -12,7 +12,7 @@ import (
 
 var toolsChainFreezeCmd = &cobra.Command{
 	Use:   "chain-freeze",
-	Short: "Freeze the chain by proxying p2p blocks until a block including updateauth actions is passed through, then block/shutdown.",
+	Short: "Runs a p2p protocol-level proxy, and stop sync'ing the chain at the given block-num.",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		proxy := p2p.Proxy{
