@@ -9,8 +9,7 @@ for interacting with an EOS.IO blockchain.
 It contains tools for voting and a Vault to securely store private
 keys.
 
-It is based on the `eos-go` library, used in `eos-bios`, the tool used
-to launch the EOS mainnet.
+It is based on the `eos-go` library, used in `eos-bios`.
 
 This first release holds simple tools, but a whole `cleos`-like
 swiss-knife is being developed and will be released shortly after
