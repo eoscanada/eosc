@@ -19,46 +19,33 @@ import (
 	"encoding/json"
 
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 var getBlockCmd = &cobra.Command{
-	Use:   "get [block id | block height]",
-	Short: "get block info",
+	Use:   "block [block id | block height]",
+	Short: "Get block data at a given height, or directly with a block hash",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
 
-		block, err := api.GetBlockByNumOrID(args[0])
+		block, err := api.GetBlockByNumOrIDRaw(args[0])
 		errorCheck("get block", err)
 
-		if viper.GetBool("getBlockCmd.json") {
-			data, err := json.MarshalIndent(block, "", "  ")
-			errorCheck("json marshal", err)
+		data, err := json.MarshalIndent(block, "", "  ")
+		errorCheck("json marshaling", err)
 
-			fmt.Println(string(data))
-		} else {
-			fmt.Printf("Block [%d] produced by [%s] as [%s]\n", block.BlockHeader.BlockNumber(), block.BlockHeader.Producer, block.Timestamp)
-		}
+		fmt.Println(string(data))
 	},
 }
 
-var blockCmd = &cobra.Command{
-	Use:   "block",
-	Short: "block related commands",
-	Long:  `block related commands`,
-}
-
 func init() {
-	// RootCmd.AddCommand(blockCmd)
-	// blockCmd.AddCommand(getBlockCmd)
+	getCmd.AddCommand(getBlockCmd)
 
-	getBlockCmd.Flags().BoolP("json", "", false, "return producers info in json")
+	// getBlockCmd.Flags().BoolP("json", "", false, "return producers info in json")
 
-	for _, flag := range []string{"json", "limit"} {
-		if err := viper.BindPFlag("getBlockCmd."+flag, getBlockCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
-
+	// for _, flag := range []string{"json"} {
+	// 	if err := viper.BindPFlag("get-block-cmd-"+flag, getBlockCmd.Flags().Lookup(flag)); err != nil {
+	// 		panic(err)
+	// 	}
+	// }
 }

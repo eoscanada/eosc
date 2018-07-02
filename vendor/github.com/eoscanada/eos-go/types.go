@@ -96,6 +96,25 @@ func (c *CompressionType) UnmarshalJSON(data []byte) error {
 
 type CurrencyName string
 
+type Bool bool
+
+func (b *Bool) UnmarshalJSON(data []byte) error {
+	var num int
+	err := json.Unmarshal(data, &num)
+	if err == nil {
+		*b = Bool(num != 0)
+		return nil
+	}
+
+	var boolVal bool
+	if err := json.Unmarshal(data, &boolVal); err != nil {
+		return fmt.Errorf("couldn't unmarshal bool as int or true/false: %s", err)
+	}
+
+	*b = Bool(boolVal)
+	return nil
+}
+
 // Asset
 
 // NOTE: there's also ExtendedAsset which is a quantity with the attached contract (AccountName)
@@ -146,6 +165,10 @@ type Symbol struct {
 var EOSSymbol = Symbol{Precision: 4, Symbol: "EOS"}
 
 func NewEOSAssetFromString(amount string) (out Asset, err error) {
+	if len(amount) == 0 {
+		return out, fmt.Errorf("cannot be an empty string")
+	}
+
 	if strings.Contains(amount, " EOS") {
 		amount = strings.Replace(amount, " EOS", "", 1)
 	}

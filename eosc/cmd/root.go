@@ -18,8 +18,8 @@ var RootCmd = &cobra.Command{
 It contains a Vault (or a wallet), a tool for voting, tools for end
 users and tools for Block Producers.
 
-It is developed by EOS Canada, a (candidate) Block Producer for the EOS
-network. Source code is available at: https://github.com/eoscanada/eosc
+It is developed by EOS Canada, a Block Producer for the EOS network.
+Source code is available at: https://github.com/eoscanada/eosc
 
 The 'vault' acts as a keosd-compatible wallet (the one developed by
 Block.one), while allowing you to manage your keys, and unlock it from
