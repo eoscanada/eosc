@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 
-	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -15,14 +14,14 @@ var voteProxyCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		voterName := args[0]
-		proxyName := eos.AccountName(args[1])
+		voterName := toAccount(args[0], "voter name")
+		proxyName := toAccount(args[1], "proxy name")
 
 		fmt.Printf("Voter [%s] voting for proxy: %s\n", voterName, proxyName)
 
 		pushEOSCActions(api,
 			system.NewVoteProducer(
-				eos.AccountName(voterName),
+				voterName,
 				proxyName,
 			),
 		)

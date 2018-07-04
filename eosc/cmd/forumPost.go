@@ -28,7 +28,7 @@ var forumPostCmd = &cobra.Command{
 	Short: "Post a message",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		accountName := eos.AccountName(args[0])
+		accountName := toAccount(args[0], "from account")
 		message := args[1]
 		title := viper.GetString("forum-post-cmd-title")
 		certify := viper.GetBool("forum-post-cmd-certify")
@@ -47,6 +47,10 @@ var forumPostCmd = &cobra.Command{
 		}
 
 		replyTo := eos.AccountName(viper.GetString("forum-post-cmd-reply-to"))
+		if len(replyTo) != 0 {
+			_ = toAccount(string(replyTo), "--reply-to") // only check for errors
+		}
+
 		replyToUUID := viper.GetString("forum-post-cmd-reply-to-uuid")
 
 		api := apiWithWallet()
@@ -60,7 +64,7 @@ func init() {
 	forumCmd.AddCommand(forumPostCmd)
 
 	forumPostCmd.Flags().StringP("title", "", "", "The title for the post. None by default")
-	forumPostCmd.Flags().BoolP("certify", "", false, "Certify that the contents of this message is true")
+	forumPostCmd.Flags().BoolP("certify", "", false, "Certify that the contents of this message is true. See corresponding Ricardian Contract.")
 	forumPostCmd.Flags().StringP("type", "", "chat", "Message type (added to json_metadata)")
 	forumPostCmd.Flags().StringP("metadata", "", "", "Additional metadata. Must be JSON-encoded. If present, takes precedences over --type")
 	forumPostCmd.Flags().StringP("reply-to", "", "", "Account name to reply to")

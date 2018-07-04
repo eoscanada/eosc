@@ -27,8 +27,8 @@ Read https://steemit.com/eos/@eos-canada/everything-you-need-to-know-about-names
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		bidder := eos.AccountName(args[0])
-		newname := eos.AccountName(args[1])
+		bidder := toAccount(args[0], "bidder_account_name")
+		newname := toAccount(args[1], "premium_account_name")
 		bidAsset, err := eos.NewEOSAssetFromString(args[2])
 		errorCheck("bid amount invalid", err)
 

@@ -14,7 +14,6 @@
 package cmd
 
 import (
-	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/msig"
 	"github.com/spf13/cobra"
 )
@@ -27,9 +26,9 @@ var msigCancelCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		proposer := eos.AccountName(args[0])
-		proposalName := eos.Name(args[1])
-		canceler := eos.AccountName(args[2])
+		proposer := toAccount(args[0], "proposer")
+		proposalName := toName(args[1], "proposal name")
+		canceler := toAccount(args[2], "canceler")
 
 		pushEOSCActions(api,
 			msig.NewCancel(proposer, proposalName, canceler),

@@ -36,8 +36,8 @@ Pass --requested-permissions
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		proposer := eos.AccountName(args[0])
-		proposalName := eos.Name(args[1])
+		proposer := toAccount(args[0], "proposer")
+		proposalName := toName(args[1], "proposal name")
 		transactionFileName := args[2]
 
 		cnt, err := ioutil.ReadFile(transactionFileName)

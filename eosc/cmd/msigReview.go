@@ -30,8 +30,8 @@ var msigReviewCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
 
-		proposer := eos.AccountName(args[0])
-		proposalName := eos.Name(args[1])
+		proposer := toAccount(args[0], "proposer")
+		proposalName := toName(args[1], "proposal name")
 
 		response, err := api.GetTableRows(
 			eos.GetTableRowsRequest{

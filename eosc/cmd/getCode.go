@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -15,7 +14,8 @@ var getCodeCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
 
-		code, err := api.GetCode(eos.AccountName(args[0]))
+		accountName := toAccount(args[0], "account name")
+		code, err := api.GetCode(accountName)
 		errorCheck("get code", err)
 
 		fmt.Println("Code hash:", code.CodeHash)

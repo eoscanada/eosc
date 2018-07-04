@@ -16,7 +16,6 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
@@ -29,7 +28,7 @@ var systemRegisterProducerCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		accountName := eos.AccountName(args[0])
+		accountName := toAccount(args[0], "account name")
 		publicKey, err := ecc.NewPublicKey(args[1])
 		errorCheck(fmt.Sprintf("%q invalid public key", args[1]), err)
 		websiteURL := args[2]

@@ -58,8 +58,8 @@ active:
 `,
 	Args: cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		creator := eos.AccountName(args[0])
-		newAccount := eos.AccountName(args[1])
+		creator := toAccount(args[0], "creator")
+		newAccount := toAccount(args[1], "new account name")
 
 		var actions []*eos.Action
 		authFile := viper.GetString("system-newaccount-cmd-auth-file")

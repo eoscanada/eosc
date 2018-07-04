@@ -14,7 +14,6 @@
 package cmd
 
 import (
-	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -26,7 +25,7 @@ var systemClaimRewardsCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		owner := eos.AccountName(args[0])
+		owner := toAccount(args[0], "owner")
 
 		pushEOSCActions(api,
 			system.NewClaimRewards(owner),

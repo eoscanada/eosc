@@ -154,3 +154,12 @@ func toAccount(in, field string) eos.AccountName {
 
 	return acct
 }
+
+func toName(in, field string) eos.Name {
+	name, err := cli.ToName(in)
+	if err != nil {
+		errorCheck(fmt.Sprintf("invalid name format for %q", field), err)
+	}
+
+	return name
+}

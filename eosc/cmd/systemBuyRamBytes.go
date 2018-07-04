@@ -19,7 +19,6 @@ import (
 
 	"os"
 
-	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -31,8 +30,8 @@ var systemBuyRamBytesCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		payer := eos.AccountName(args[0])
-		receiver := eos.AccountName(args[1])
+		payer := toAccount(args[0], "payer")
+		receiver := toAccount(args[1], "receiver")
 		numBytes, err := strconv.ParseInt(args[2], 10, 64)
 		errorCheck(fmt.Sprintf("invalid number of bytes %q", args[2]), err)
 

@@ -17,7 +17,6 @@ import (
 	"fmt"
 	"os"
 
-	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/msig"
 	"github.com/spf13/cobra"
 )
@@ -30,8 +29,8 @@ var msigApproveCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := apiWithWallet()
 
-		proposer := eos.AccountName(args[0])
-		proposalName := eos.Name(args[1])
+		proposer := toAccount(args[0], "proposer")
+		proposalName := toName(args[1], "proposal name")
 		requested, err := permissionToPermissionLevel(args[2])
 		if err != nil {
 			fmt.Printf("Error with requested permission: %s\n", err)

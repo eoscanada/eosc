@@ -14,7 +14,6 @@
 package cmd
 
 import (
-	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/forum"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -26,7 +25,7 @@ var forumVoteCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 
-		accountName := eos.AccountName(args[0])
+		accountName := toAccount(args[0], "voter")
 		proposition := args[1]
 		vote := args[2]
 		propositionHash := viper.GetString("forum-vote-cmd-hash")
@@ -41,10 +40,10 @@ var forumVoteCmd = &cobra.Command{
 func init() {
 	forumCmd.AddCommand(forumVoteCmd)
 
-	forumPostCmd.Flags().StringP("hash", "", "", "Hash of the proposition, as defined by the proposition itself")
+	forumVoteCmd.Flags().StringP("hash", "", "", "Hash of the proposition, as defined by the proposition itself")
 
 	for _, flag := range []string{"hash"} {
-		if err := viper.BindPFlag("forum-vote-cmd-"+flag, forumPostCmd.Flags().Lookup(flag)); err != nil {
+		if err := viper.BindPFlag("forum-vote-cmd-"+flag, forumVoteCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
