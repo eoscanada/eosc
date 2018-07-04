@@ -113,16 +113,51 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 		}
 	}
 
-	resp, err := api.SignPushActions(actions...)
-	if err != nil {
-		fmt.Println("Error signing/pushing transaction:", err)
+	opts := &eos.TxOptions{}
+	if err := opts.FillFromChain(api); err != nil {
+		fmt.Println("Error fetching tapos + chain_id from the chain:", err)
 		os.Exit(1)
 	}
 
-	// TODO: print the traces
+	tx := eos.NewTransaction(actions, opts)
 
-	//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
-	fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
+	var signedTx *eos.SignedTransaction
+	var packedTx *eos.PackedTransaction
+
+	if true /* --skip-sign isn't passed */ {
+		var err error
+		signedTx, packedTx, err = api.SignTransaction(tx, opts.ChainID, eos.CompressionNone)
+		if err != nil {
+			fmt.Println("Error signing transaction:", err)
+			os.Exit(1)
+		}
+	}
+
+	if true /* --dont-broadcast isn't passed */ {
+		if packedTx == nil {
+			fmt.Println("A signed transaction is required if you want to broadcast it. Remove one of --skip-sign or --dont-broadcast")
+			os.Exit(1)
+		}
+
+		// TODO: print the traces
+		resp, err := api.PushTransaction(packedTx)
+		if err != nil {
+			fmt.Println("Error signing/pushing transaction:", err)
+			os.Exit(1)
+		}
+
+		//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
+		fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
+
+	} else {
+		cnt, err := json.MarshalIndent(signedTx, "", "  ")
+		if err != nil {
+			fmt.Printf("Error marshalling into json: %s\n", err)
+			os.Exit(1)
+		}
+
+		fmt.Print(string(cnt))
+	}
 }
 
 func yamlUnmarshal(cnt []byte, v interface{}) error {
