@@ -24,7 +24,7 @@ var msigUnapproveCmd = &cobra.Command{
 	Short: "Unapprove a transaction in the eosio.msig contract",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
-		api := apiWithWallet()
+		api := getAPI()
 
 		proposer := toAccount(args[0], "proposer")
 		proposalName := toName(args[1], "proposal name")

@@ -25,7 +25,7 @@ var voteProducersCmd = &cobra.Command{
 			producerNames = append(producerNames, toAccount(producerString, "producer list"))
 		}
 
-		api := apiWithWallet()
+		api := getAPI()
 
 		fmt.Printf("Voter [%s] voting for: %s\n", voterName, producerNames)
 		pushEOSCActions(api,

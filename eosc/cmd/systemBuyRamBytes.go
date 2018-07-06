@@ -28,7 +28,7 @@ var systemBuyRamBytesCmd = &cobra.Command{
 	Short: "Buy RAM at market price, for a given number of bytes.",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
-		api := apiWithWallet()
+		api := getAPI()
 
 		payer := toAccount(args[0], "payer")
 		receiver := toAccount(args[1], "receiver")

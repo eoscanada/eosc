@@ -12,7 +12,7 @@ var voteProxyCmd = &cobra.Command{
 	Short: "Cast your vote for a proxy voter",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		api := apiWithWallet()
+		api := getAPI()
 
 		voterName := toAccount(args[0], "voter name")
 		proxyName := toAccount(args[1], "proxy name")

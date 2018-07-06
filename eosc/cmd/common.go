@@ -1,14 +1,18 @@
 package cmd
 
 import (
+	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 
 	yaml2json "github.com/bronze1man/go-yaml2json"
 	"github.com/eoscanada/eos-go"
+	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
@@ -43,9 +47,7 @@ func setupWallet() (*eosvault.Vault, error) {
 	return vault, nil
 }
 
-func apiWithWallet() *eos.API {
-	api := getAPI()
-
+func attachWallet(api *eos.API) {
 	walletURLs := viper.GetStringSlice("global-wallet-url")
 	if len(walletURLs) == 0 {
 		vault, err := setupWallet()
@@ -61,9 +63,6 @@ func apiWithWallet() *eos.API {
 			os.Exit(1)
 		}
 	}
-
-	return api
-
 }
 
 func getAPI() *eos.API {
@@ -114,6 +113,15 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 	}
 
 	opts := &eos.TxOptions{}
+
+	if chainID := viper.GetString("global-offline-chain-id"); chainID != "" {
+		opts.ChainID = toSHA256Bytes(chainID, "--offline-chain-id")
+	}
+
+	if headBlockID := viper.GetString("global-offline-head-block"); headBlockID != "" {
+		opts.HeadBlockID = toSHA256Bytes(headBlockID, "--offline-head-block")
+	}
+
 	if err := opts.FillFromChain(api); err != nil {
 		fmt.Println("Error fetching tapos + chain_id from the chain:", err)
 		os.Exit(1)
@@ -121,21 +129,49 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 
 	tx := eos.NewTransaction(actions, opts)
 
+	tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
+
 	var signedTx *eos.SignedTransaction
 	var packedTx *eos.PackedTransaction
 
-	if true /* --skip-sign isn't passed */ {
+	if !viper.GetBool("global-skip-sign") {
+		signKey := viper.GetString("global-offline-sign-key")
+		if signKey != "" {
+			pubKey, err := ecc.NewPublicKey(signKey)
+			errorCheck("parsing public key", err)
+
+			api.SetCustomGetRequiredKeys(func(tx *eos.Transaction) ([]ecc.PublicKey, error) {
+				return []ecc.PublicKey{pubKey}, nil
+			})
+		}
+
+		attachWallet(api)
+
 		var err error
 		signedTx, packedTx, err = api.SignTransaction(tx, opts.ChainID, eos.CompressionNone)
 		if err != nil {
 			fmt.Println("Error signing transaction:", err)
 			os.Exit(1)
 		}
+	} else {
+		signedTx = eos.NewSignedTransaction(tx)
 	}
 
-	if true /* --dont-broadcast isn't passed */ {
+	outputTrx := viper.GetString("global-output-transaction")
+
+	if outputTrx != "" {
+		cnt, err := json.MarshalIndent(signedTx, "", "  ")
+		if err != nil {
+			fmt.Printf("Error marshalling into json: %s\n", err)
+			os.Exit(1)
+		}
+
+		fmt.Println("Writing transaction to", outputTrx)
+		errorCheck("writing output transaction", ioutil.WriteFile(outputTrx, cnt, 0644))
+
+	} else {
 		if packedTx == nil {
-			fmt.Println("A signed transaction is required if you want to broadcast it. Remove one of --skip-sign or --dont-broadcast")
+			fmt.Println("A signed transaction is required if you want to broadcast it. Remove --skip-sign (or add --output-transaction ?)")
 			os.Exit(1)
 		}
 
@@ -149,14 +185,6 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 		//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
 		fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
 
-	} else {
-		cnt, err := json.MarshalIndent(signedTx, "", "  ")
-		if err != nil {
-			fmt.Printf("Error marshalling into json: %s\n", err)
-			os.Exit(1)
-		}
-
-		fmt.Print(string(cnt))
 	}
 }
 
@@ -197,4 +225,15 @@ func toName(in, field string) eos.Name {
 	}
 
 	return name
+}
+
+func toSHA256Bytes(in, field string) eos.SHA256Bytes {
+	if len(in) != 64 {
+		errorCheck(fmt.Sprintf("%q invalid", field), errors.New("should be 64 hexadecimal characters"))
+	}
+
+	bytes, err := hex.DecodeString(in)
+	errorCheck(fmt.Sprintf("invalid hex in %q", field), err)
+
+	return bytes
 }

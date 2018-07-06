@@ -53,7 +53,7 @@ var forumPostCmd = &cobra.Command{
 
 		replyToUUID := viper.GetString("forum-post-cmd-reply-to-uuid")
 
-		api := apiWithWallet()
+		api := getAPI()
 		pushEOSCActions(api,
 			forum.NewPost(accountName, newUUID, title, message, replyTo, replyToUUID, certify, metadata),
 		)

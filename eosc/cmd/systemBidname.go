@@ -25,7 +25,7 @@ Read https://steemit.com/eos/@eos-canada/everything-you-need-to-know-about-names
 `,
 	Args: cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
-		api := apiWithWallet()
+		api := getAPI()
 
 		bidder := toAccount(args[0], "bidder_account_name")
 		newname := toAccount(args[1], "premium_account_name")

@@ -63,7 +63,7 @@ Alternatively, you can use the simplified:
 		errorCheck(`"cpu bw stake qty" invalid`, err)
 		transfer := viper.GetBool("system-delegatebw-cmd-transfer")
 
-		api := apiWithWallet()
+		api := getAPI()
 
 		pushEOSCActions(api, system.NewDelegateBW(from, receiver, cpuStake, netStake, transfer))
 	},

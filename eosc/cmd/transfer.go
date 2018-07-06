@@ -32,7 +32,7 @@ var transferCmd = &cobra.Command{
 		errorCheck("invalid amount", err)
 		memo := viper.GetString("transfer-cmd-memo")
 
-		api := apiWithWallet()
+		api := getAPI()
 
 		action := token.NewTransfer(from, to, quantity, memo)
 		action.Account = toAccount(viper.GetString("transfer-cmd-contract"), "--contract")

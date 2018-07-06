@@ -30,7 +30,7 @@ var forumVoteCmd = &cobra.Command{
 		vote := args[2]
 		propositionHash := viper.GetString("forum-vote-cmd-hash")
 
-		api := apiWithWallet()
+		api := getAPI()
 		pushEOSCActions(api,
 			forum.NewVote(accountName, proposition, propositionHash, vote),
 		)

@@ -46,7 +46,7 @@ parent, still can sign transfers).
 		actionName := eos.ActionName(toName(args[2], "action name"))
 		permission := eos.PermissionName(toName(args[3], "permission name"))
 
-		api := apiWithWallet()
+		api := getAPI()
 
 		pushEOSCActions(api, system.NewLinkAuth(account, code, actionName, permission))
 	},

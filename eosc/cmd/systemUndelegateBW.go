@@ -27,7 +27,7 @@ See also: the "system delegatebw" command.
 		cpuStake, err := eos.NewEOSAssetFromString(args[3])
 		errorCheck(`"cpu bw unstake qty" invalid`, err)
 
-		api := apiWithWallet()
+		api := getAPI()
 
 		pushEOSCActions(api, system.NewUndelegateBW(from, receiver, cpuStake, netStake))
 	},

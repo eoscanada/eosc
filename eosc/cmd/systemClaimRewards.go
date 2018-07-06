@@ -23,7 +23,7 @@ var systemClaimRewardsCmd = &cobra.Command{
 	Short: "Claim block production rewards. Once per day, don't forget it!",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		api := apiWithWallet()
+		api := getAPI()
 
 		owner := toAccount(args[0], "owner")
 
