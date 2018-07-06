@@ -149,10 +149,7 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 
 		var err error
 		signedTx, packedTx, err = api.SignTransaction(tx, opts.ChainID, eos.CompressionNone)
-		if err != nil {
-			fmt.Println("Error signing transaction:", err)
-			os.Exit(1)
-		}
+		errorCheck("signing transaction", err)
 	} else {
 		signedTx = eos.NewSignedTransaction(tx)
 	}

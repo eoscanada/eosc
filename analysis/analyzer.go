@@ -14,6 +14,7 @@ import (
 	// Load these so `Unpack` does Action unpacking with known ABIs.
 	_ "github.com/eoscanada/eos-go/forum"
 	_ "github.com/eoscanada/eos-go/msig"
+	"github.com/eoscanada/eos-go/sudo"
 	"github.com/eoscanada/eos-go/system"
 	_ "github.com/eoscanada/eos-go/token"
 )
@@ -129,14 +130,55 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 		a.Pf("Set ABI for account: %s\n", obj.Account)
 		var unpackedABI eos.ABI
 		if err := eos.UnmarshalBinary(obj.ABI, &unpackedABI); err != nil {
-			a.Pf("Couldn't unpack the ABI therein: %s\n", err)
+			a.Pf("Error: couldn't unpack the ABI therein: %s\n", err)
 		}
 		jsonABI, err := json.MarshalIndent(unpackedABI, "", "  ")
 		if err != nil {
-			a.Pf("Couldn't serialize ABI into JSON: %s\n", err)
+			a.Pf("Error: couldn't serialize ABI into JSON: %s\n", err)
 		}
 		a.VerbPln("JSON representation of the ABI:")
 		a.VerbPf("%s\n", string(jsonABI))
+
+	case *system.SetPriv:
+		a.Pf("Set account %q to be privileged=%s\n", obj.Account, obj.IsPriv)
+
+	case *system.NewAccount:
+		a.Pf("Create a new account named %q, created by %q with the following authority structure:\n", obj.Name, obj.Creator)
+		jsonAuth, err := json.MarshalIndent(map[string]interface{}{
+			"owner":  obj.Owner,
+			"active": obj.Active,
+		}, "", "  ")
+		if err != nil {
+			a.Pf("Error: couldn't serialize auth structs: %s\n", err)
+		}
+		a.Pln(string(jsonAuth))
+
+	case *system.DelegateBW:
+		a.Pf("Delegate bandwidth from account %q to receiver %q\n", obj.From, obj.Receiver)
+		a.Pf("- Network bandwidth stake increase: %s\n", obj.StakeNet)
+		a.Pf("- CPU bandwidth stake increase: %s\n", obj.StakeCPU)
+		a.Pf("Transfer ownership of stakes? %s\n", obj.Transfer)
+
+	case *system.BuyRAM:
+		a.Pf("Account %q is buying RAM for receiver %q, for a total of value of %q\n", obj.Payer, obj.Receiver, obj.Quantity)
+
+	case *system.BuyRAMBytes:
+		a.Pf("Account %q is buying RAM for receiver %q, for %d bytes (whatever the market value)\n", obj.Payer, obj.Receiver, obj.Bytes)
+
+	case *sudo.Exec:
+
+		a.Pf("Account %q executes a transaction impersonating another account\n", obj.Executer)
+		var tx *eos.Transaction
+		err := eos.UnmarshalBinary(obj.Transaction, &tx)
+		if err != nil {
+			a.Pf("Error: unpacking sudo transaction: %s\n", err)
+		} else {
+			a.Pln("-------------------- SUDO TRANSACTION BEGIN -----------------------")
+			if err := a.AnalyzeTransaction(tx); err != nil {
+				a.Pf("Error: analyzing sudo transaction: %s\n")
+			}
+			a.Pln("-------------------- SUDO TRANSACTION END -----------------------")
+		}
 
 	default:
 		return nil
