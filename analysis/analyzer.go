@@ -140,7 +140,7 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 		a.VerbPf("%s\n", string(jsonABI))
 
 	case *system.SetPriv:
-		a.Pf("Set account %q to be privileged=%s\n", obj.Account, obj.IsPriv)
+		a.Pf("Set account %q to be privileged=%v\n", obj.Account, obj.IsPriv)
 
 	case *system.NewAccount:
 		a.Pf("Create a new account named %q, created by %q with the following authority structure:\n", obj.Name, obj.Creator)
@@ -157,7 +157,7 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 		a.Pf("Delegate bandwidth from account %q to receiver %q\n", obj.From, obj.Receiver)
 		a.Pf("- Network bandwidth stake increase: %s\n", obj.StakeNet)
 		a.Pf("- CPU bandwidth stake increase: %s\n", obj.StakeCPU)
-		a.Pf("Transfer ownership of stakes? %s\n", obj.Transfer)
+		a.Pf("Transfer ownership of stakes? %v\n", obj.Transfer)
 
 	case *system.BuyRAM:
 		a.Pf("Account %q is buying RAM for receiver %q, for a total of value of %q\n", obj.Payer, obj.Receiver, obj.Quantity)

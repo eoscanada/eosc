@@ -103,10 +103,7 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 	permissions := viper.GetStringSlice("global-permission")
 	if len(permissions) != 0 {
 		levels, err := permissionsToPermissionLevels(permissions)
-		if err != nil {
-			fmt.Println("Specified permissions invalid:", err)
-			os.Exit(1)
-		}
+		errorCheck("specified --permission(s) invalid", err)
 
 		for _, act := range actions {
 			act.Authorization = levels

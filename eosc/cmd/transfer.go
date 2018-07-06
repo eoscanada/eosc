@@ -47,7 +47,7 @@ func init() {
 	transferCmd.Flags().StringP("contract", "", "eosio.token", "Contract to send the transfer through. eosio.token is the contract dealing with the native EOS token.")
 
 	for _, flag := range []string{"memo", "contract"} {
-		if err := viper.BindPFlag("transfer-cmd-"+flag, forumPostCmd.Flags().Lookup(flag)); err != nil {
+		if err := viper.BindPFlag("transfer-cmd-"+flag, transferCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
