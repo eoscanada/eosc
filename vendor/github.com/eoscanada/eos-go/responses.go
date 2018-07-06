@@ -79,6 +79,7 @@ type ProcessedTransaction struct {
 type TransactionTrace struct {
 	Receipt struct {
 		Receiver        AccountName                    `json:"receiver"`
+		ActionDigest    string                         `json:"act_digest"`
 		GlobalSequence  int64                          `json:"global_sequence"`
 		ReceiveSequence int64                          `json:"recv_sequence"`
 		AuthSequence    []TransactionTraceAuthSequence `json:"auth_sequence"` // [["account", sequence], ["account", sequence]]
@@ -99,6 +100,7 @@ type TransactionTraceAuthSequence struct {
 	Sequence int64
 }
 
+// [ ["account", 123123], ["account2", 345] ]
 func (auth *TransactionTraceAuthSequence) UnmarshalJSON(data []byte) error {
 	var ins []interface{}
 	if err := json.Unmarshal(data, &ins); err != nil {
@@ -122,6 +124,10 @@ func (auth *TransactionTraceAuthSequence) UnmarshalJSON(data []byte) error {
 	*auth = TransactionTraceAuthSequence{AccountName(account), int64(seq)}
 
 	return nil
+}
+
+func (auth TransactionTraceAuthSequence) MarshalJSON() (data []byte, err error) {
+	return json.Marshal([]interface{}{auth.Account, auth.Sequence})
 }
 
 type SequencedTransactionResp struct {
