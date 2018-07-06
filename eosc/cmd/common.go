@@ -161,14 +161,22 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 
 	if outputTrx != "" {
 		cnt, err := json.MarshalIndent(signedTx, "", "  ")
-		if err != nil {
-			fmt.Printf("Error marshalling into json: %s\n", err)
-			os.Exit(1)
+		errorCheck("marshalling json", err)
+
+		err = ioutil.WriteFile(outputTrx, cnt, 0644)
+		errorCheck("writing output transaction", err)
+
+		for _, act := range signedTx.Actions {
+			act.SetToServer(false)
 		}
 
-		fmt.Println("Writing transaction to", outputTrx)
-		errorCheck("writing output transaction", ioutil.WriteFile(outputTrx, cnt, 0644))
+		cnt, err = json.MarshalIndent(signedTx, "", "  ")
+		errorCheck("marshalling json", err)
 
+		fmt.Println(string(cnt))
+		fmt.Println("---")
+		fmt.Printf("Transaction written to %q\n", outputTrx)
+		fmt.Println("Above is a pretty-printed representation of the outputted file")
 	} else {
 		if packedTx == nil {
 			fmt.Println("A signed transaction is required if you want to broadcast it. Remove --skip-sign (or add --output-transaction ?)")
@@ -177,10 +185,7 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 
 		// TODO: print the traces
 		resp, err := api.PushTransaction(packedTx)
-		if err != nil {
-			fmt.Println("Error signing/pushing transaction:", err)
-			os.Exit(1)
-		}
+		errorCheck("pushing transaction", err)
 
 		//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
 		fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
