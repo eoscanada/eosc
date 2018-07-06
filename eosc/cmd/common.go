@@ -13,6 +13,7 @@ import (
 	yaml2json "github.com/bronze1man/go-yaml2json"
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
+	"github.com/eoscanada/eos-go/sudo"
 	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
@@ -128,6 +129,13 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 	}
 
 	tx := eos.NewTransaction(actions, opts)
+
+	if viper.GetBool("global-sudo-wrap") {
+		binTx, err := eos.MarshalBinary(tx)
+		errorCheck("binary-packing transaction for sudo wrapping", err)
+
+		tx = eos.NewTransaction([]*eos.Action{sudo.NewExec(eos.AccountName("eosio"), eos.HexBytes(binTx))}, opts)
+	}
 
 	tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
 
