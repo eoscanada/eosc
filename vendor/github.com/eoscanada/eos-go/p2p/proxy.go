@@ -84,9 +84,16 @@ func (p *Proxy) handlePostProcess(postProcessChannel chan routeCommunication, po
 			Envelope: communication.Envelope,
 		}
 
-		for _, handler := range p.Handlers {
-			handler.Handle(pp)
+		for _, c := range postProcessorChannels {
+			c <- pp
 		}
+	}
+}
+
+func (p *Proxy) handlePluginPostProcess(handle Handler, channel chan Message) {
+
+	for postProcessable := range channel {
+		handle.Handle(postProcessable)
 	}
 }
 
@@ -135,7 +142,7 @@ func (p *Proxy) handleConnection(connection net.Conn, forwardConnection net.Conn
 		}
 
 		router <- routeCommunication{
-			Route: route,
+			Route:                 route,
 			DestinationConnection: forwardConnection,
 			Envelope:              envelope,
 		}
@@ -152,6 +159,16 @@ func (p *Proxy) Start() {
 
 	done := make(chan bool)
 
+	var postProcessorChannels []chan Message
+
+	for _, plugin := range p.Handlers {
+
+		pc := make(chan Message)
+		postProcessorChannels = append(postProcessorChannels, pc)
+		go p.handlePluginPostProcess(plugin, pc)
+
+	}
+
 	routingChannels = []chan routeCommunication{transmissionChannel, postProcessChannel}
 
 	go p.handleRouteAction(routerActionChannel)
@@ -160,6 +177,7 @@ func (p *Proxy) Start() {
 	go p.handlePostProcess(postProcessChannel, postProcessorChannels)
 
 	for _, route := range p.Routes {
+
 		routerActionChannel <- routeAction{actionType: addRoute, route: route}
 	}
 
