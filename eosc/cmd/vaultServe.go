@@ -106,6 +106,8 @@ func listen(v *eosvault.Vault) {
 			return
 		}
 
+		fmt.Println("")
+
 		if !viper.GetBool("vault-serve-cmd-auto-accept") {
 			res, err := cli.GetConfirmation(`- Enter the code "%d" to allow signature: `)
 			if err != nil {

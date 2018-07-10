@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -18,12 +19,12 @@ var RootCmd = &cobra.Command{
 It contains a Vault (or a wallet), a tool for voting, tools for end
 users and tools for Block Producers.
 
-It is developed by EOS Canada, a Block Producer for the EOS network.
-Source code is available at: https://github.com/eoscanada/eosc
-
 The 'vault' acts as a keosd-compatible wallet (the one developed by
 Block.one), while allowing you to manage your keys, and unlock it from
-the command line.`,
+the command line.
+
+Source code is available at: https://github.com/eoscanada/eosc
+`,
 }
 
 func Execute() {
@@ -38,7 +39,7 @@ func init() {
 
 	RootCmd.PersistentFlags().StringP("vault-file", "", "./eosc-vault.json", "Wallet file that contains encrypted key material")
 	RootCmd.PersistentFlags().StringSliceP("wallet-url", "", []string{}, "Base URL to wallet endpoint. You can pass this multiple times to use the multi-signer (will use each wallet to sign multi-sig transactions).")
-	RootCmd.PersistentFlags().StringP("api-url", "u", "https://mainnet.eoscanada.com", "API endpoint of eos.io block chain node ")
+	RootCmd.PersistentFlags().StringP("api-url", "u", "https://mainnet.eoscanada.com", "API endpoint of eos.io blockchain node")
 	RootCmd.PersistentFlags().StringSliceP("permission", "p", []string{}, "Permission to sign transactions with. Optionally specify more than one, or separate by comma")
 	RootCmd.PersistentFlags().StringP("kms-gcp-keypath", "", "", "Path to the cryptoKeys within a keyRing on GCP")
 	RootCmd.PersistentFlags().StringP("output-transaction", "", "", "Do not broadcast the transaction produced, but write it in json to the given filename instead.")
@@ -59,4 +60,6 @@ func init() {
 func initConfig() {
 	viper.SetEnvPrefix("EOSC")
 	viper.AutomaticEnv()
+	replacer := strings.NewReplacer("-", "_")
+	viper.SetEnvKeyReplacer(replacer)
 }
