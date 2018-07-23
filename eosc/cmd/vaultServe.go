@@ -16,6 +16,7 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/eoscanada/eos-go"
@@ -135,8 +136,17 @@ func listen(v *eosvault.Vault) {
 			return
 		}
 
+		cnt, err := json.Marshal(signed)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("couldn't marshal output: %s", err), 500)
+			return
+		}
+		w.Header().Set("Content-Length", fmt.Sprintf("%d", len(cnt)))
 		w.WriteHeader(201)
-		_ = json.NewEncoder(w).Encode(signed)
+		_, err = w.Write(cnt)
+		if err != nil {
+			log.Println("Error writing to socket:", err)
+		}
 	})
 
 	port := viper.GetInt("vault-serve-cmd-port")
