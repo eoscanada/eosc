@@ -139,6 +139,9 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 		a.VerbPln("JSON representation of the ABI:")
 		a.VerbPf("%s\n", string(jsonABI))
 
+	case *system.SetRAMRate:
+		a.Pf("Set increase in RAM to: %d bytes per block\n", obj.BytesPerBlock)
+
 	case *system.SetPriv:
 		a.Pf("Set account %q to be privileged=%v\n", obj.Account, obj.IsPriv)
 
