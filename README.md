@@ -49,7 +49,7 @@ Then run:
 eosc vote --help
 ```
 
-and run somethig like this:
+and run something like this:
 
 ```
 eosc vote producers [your account] [producer1] [producer2] [producer3]
@@ -175,7 +175,7 @@ including blanks and comments.
 Features in the work
 --------------------
 
-* Have `serve` default to asking a confirmation on the command line before signing each transactions.
+* Have `serve` default to asking a confirmation on the command line before signing each transaction.
 * Add `--accept` to auto-accepts signatures (only if listening on a local address).
 * Shamir Secret Sharing-encoded wallets, with support for fast and easy multi-sig, even through a secure network.
 * A full suite of tools to help Block Producers, developers, end users, in their every day life.
@@ -193,7 +193,7 @@ transactions, `cleos` interfaces with yet another program (`keosd`) in
 order to sign transactions, making it more complex to use. `eosc`
 brings `keosd` and `cleos` together in a swiss-knify package.
 
-ERRATA: Previouly, you could read `It uses sha512 key derivation,
+ERRATA: Previously, you could read `It uses sha512 key derivation,
 which is faster to brute force, the Argon2 key derivation is stronger
 and would take an attacker a *lot* more efforts to bruteforce.`. It
 was incorrect as `cleos` generates a big random password for you which
