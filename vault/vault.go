@@ -30,6 +30,8 @@ type Vault struct {
 // 	Parts     [][]byte `json:"parts"`
 // }
 
+// NewVaultFromWalletFile returns a new Vault instance from the
+// provided filename of an eos wallet.
 func NewVaultFromWalletFile(filename string) (*Vault, error) {
 	v := NewVault()
 	fl, err := os.Open(filename)
@@ -46,13 +48,24 @@ func NewVaultFromWalletFile(filename string) (*Vault, error) {
 	return v, nil
 }
 
+// NewVaultFromKeysFile creates a new Vault from the keys in the
+// provided keys file.
+// keysFile should be formatted with a single private key per line
 func NewVaultFromKeysFile(keysFile string) (*Vault, error) {
 	v := NewVault()
+	v.KeyBag.ImportFromFile(keysFile)
 	return v, nil
 }
 
+// NewVaultFromSingleKey creates a new Vault from the provided
+// private key.
 func NewVaultFromSingleKey(privKey string) (*Vault, error) {
 	v := NewVault()
+	key, err := ecc.NewPrivateKey(privKey)
+	if err != nil {
+		return nil, fmt.Errorf("import private key: %s", err)
+	}
+	v.KeyBag.Keys = append(v.KeyBag.Keys, key)
 	return v, nil
 }
 
@@ -80,12 +93,15 @@ func (v *Vault) NewKeyPair() (pub ecc.PublicKey, err error) {
 	return
 }
 
+// AddPrivateKey appends the provided private key into the Vault's KeyBag
 func (v *Vault) AddPrivateKey(privateKey *ecc.PrivateKey) (pub ecc.PublicKey) {
 	v.KeyBag.Keys = append(v.KeyBag.Keys, privateKey)
 	pub = privateKey.PublicKey()
 	return
 }
 
+// PrintPublicKeys prints a PublicKey corresponding to each PrivateKey in the Vault's
+// KeyBag.
 func (v *Vault) PrintPublicKeys() {
 	fmt.Printf("Public keys contained within (%d in total):\n", len(v.KeyBag.Keys))
 	for _, key := range v.KeyBag.Keys {
