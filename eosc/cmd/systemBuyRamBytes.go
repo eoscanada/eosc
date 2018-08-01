@@ -12,7 +12,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var systemBuyRamBytesCmd = &cobra.Command{
+var systemBuyRAMBytesCmd = &cobra.Command{
 	Use:   "buyrambytes [payer] [receiver] [num bytes]",
 	Short: "Buy RAM at market price, for a given number of bytes.",
 	Args:  cobra.ExactArgs(3),
@@ -36,5 +36,5 @@ var systemBuyRamBytesCmd = &cobra.Command{
 }
 
 func init() {
-	systemCmd.AddCommand(systemBuyRamBytesCmd)
+	systemCmd.AddCommand(systemBuyRAMBytesCmd)
 }

@@ -9,6 +9,8 @@ import (
 
 var reValidAccount = regexp.MustCompile(`[a-z12345]+`)
 
+// ToAccountName converts a eos valid name string (in) into an eos-go
+// AccountName struct
 func ToAccountName(in string) (out eos.AccountName, err error) {
 	if !reValidAccount.MatchString(in) {
 		err = fmt.Errorf("invalid characters in %q, allowed: 'a' through 'z', and '1', '2', '3', '4', '5'", in)
@@ -28,6 +30,8 @@ func ToAccountName(in string) (out eos.AccountName, err error) {
 	return eos.AccountName(in), nil
 }
 
+// ToName converts a valid eos name string (in) into an eos-go
+// Name struct
 func ToName(in string) (out eos.Name, err error) {
 	name, err := ToAccountName(in)
 	if err != nil {

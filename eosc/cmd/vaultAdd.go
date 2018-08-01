@@ -75,9 +75,8 @@ func capturePrivateKeys() (out []*ecc.PrivateKey, err error) {
 		}
 		out = append(out, privKey)
 	}
-
-	panic("dead code path")
 }
+
 func capturePrivateKey(isFirst bool) (privateKey *ecc.PrivateKey, err error) {
 	prompt := "Paste your first private key: "
 	if !isFirst {
