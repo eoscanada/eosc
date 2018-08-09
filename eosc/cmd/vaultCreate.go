@@ -68,6 +68,11 @@ You can then use this vault for the different eosc operations.`,
 
 		} else {
 			numKeys := viper.GetInt("vault-create-cmd-keys")
+
+			if numKeys == 0 {
+				errorCheck("specify either --keys or --import", fmt.Errorf("create a vault with 0 keys?"))
+			}
+
 			for i := 0; i < numKeys; i++ {
 				pubKey, err := vault.NewKeyPair()
 				errorCheck("creating new keypair", err)
@@ -107,7 +112,7 @@ You can then use this vault for the different eosc operations.`,
 func init() {
 	vaultCmd.AddCommand(vaultCreateCmd)
 
-	vaultCreateCmd.Flags().IntP("keys", "k", 1, "Number of keypairs to create")
+	vaultCreateCmd.Flags().IntP("keys", "k", 0, "Number of keypairs to create")
 	vaultCreateCmd.Flags().BoolP("import", "i", false, "Whether to import keys instead of creating them. This takes precedence over --keys, and private keys will be inputted on the command line.")
 	vaultCreateCmd.Flags().StringP("comment", "c", "", "Comment field in the vault's json file.")
 	vaultCreateCmd.Flags().StringP("vault-type", "t", "passphrase", "Vault type. One of: passphrase, kms-gcp")
