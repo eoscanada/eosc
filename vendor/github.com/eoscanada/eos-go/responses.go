@@ -36,10 +36,10 @@ type InfoResp struct {
 	HeadBlockTime            JSONTime    `json:"head_block_time"`             //  "2018-02-02T04:19:32"
 	HeadBlockProducer        AccountName `json:"head_block_producer"`         // "inita"
 
-	VirtualBlockCPULimit uint64 `json:"virtual_block_cpu_limit"`
-	VirtualBlockNetLimit uint64 `json:"virtual_block_net_limit"`
-	BlockCPULimit        uint64 `json:"block_cpu_limit"`
-	BlockNetLimit        uint64 `json:"block_net_limit"`
+	VirtualBlockCPULimit JSONInt64 `json:"virtual_block_cpu_limit"`
+	VirtualBlockNetLimit JSONInt64 `json:"virtual_block_net_limit"`
+	BlockCPULimit        JSONInt64 `json:"block_cpu_limit"`
+	BlockNetLimit        JSONInt64 `json:"block_net_limit"`
 }
 
 type BlockResp struct {
@@ -57,6 +57,16 @@ type BlockResp struct {
 // 	Trx           []json.RawMessage `json:"trx"`
 // }
 
+type DBSizeResp struct {
+	FreeBytes JSONInt64 `json:"free_bytes"`
+	UsedBytes JSONInt64 `json:"used_bytes"`
+	Size      JSONInt64 `json:"size"`
+	Indices   []struct {
+		Index    string    `json:"index"`
+		RowCount JSONInt64 `json:"row_count"`
+	} `json:"indices"`
+}
+
 type TransactionResp struct {
 	ID      SHA256Bytes `json:"id"`
 	Receipt struct {
@@ -69,14 +79,14 @@ type TransactionResp struct {
 	BlockTime             JSONTime             `json:"block_time"`
 	BlockNum              uint32               `json:"block_num"`
 	LastIrreversibleBlock uint32               `json:"last_irreversible_block"`
-	Traces                []TransactionTrace   `json:"traces"`
+	Traces                []ActionTrace        `json:"traces"`
 }
 
 type ProcessedTransaction struct {
 	Transaction SignedTransaction `json:"trx"`
 }
 
-type TransactionTrace struct {
+type ActionTrace struct {
 	Receipt struct {
 		Receiver        AccountName                    `json:"receiver"`
 		ActionDigest    string                         `json:"act_digest"`
@@ -86,13 +96,13 @@ type TransactionTrace struct {
 		CodeSequence    int64                          `json:"code_sequence"`
 		ABISequence     int64                          `json:"abi_sequence"`
 	} `json:"receipt"`
-	Action        *Action             `json:"act"`
-	Elapsed       int                 `json:"elapsed"`
-	CPUUsage      int                 `json:"cpu_usage"`
-	Console       string              `json:"console"`
-	TotalCPUUsage int                 `json:"total_cpu_usage"`
-	TransactionID SHA256Bytes         `json:"trx_id"`
-	InlineTraces  []*TransactionTrace `json:"inline_traces"`
+	Action        *Action        `json:"act"`
+	Elapsed       int            `json:"elapsed"`
+	CPUUsage      int            `json:"cpu_usage"`
+	Console       string         `json:"console"`
+	TotalCPUUsage int            `json:"total_cpu_usage"`
+	TransactionID SHA256Bytes    `json:"trx_id"`
+	InlineTraces  []*ActionTrace `json:"inline_traces"`
 }
 
 type TransactionTraceAuthSequence struct {
@@ -143,20 +153,22 @@ type ProducerChange struct {
 }
 
 type AccountResp struct {
-	AccountName        AccountName          `json:"account_name"`
-	Privileged         bool                 `json:"privileged"`
-	LastCodeUpdate     JSONTime             `json:"last_code_update"`
-	Created            JSONTime             `json:"created"`
-	RAMQuota           int64                `json:"ram_quota"`
-	RAMUsage           int64                `json:"ram_usage"`
-	NetWeight          JSONInt64            `json:"net_weight"`
-	CPUWeight          JSONInt64            `json:"cpu_weight"`
-	NetLimit           AccountResourceLimit `json:"net_limit"`
-	CPULimit           AccountResourceLimit `json:"cpu_limit"`
-	Permissions        []Permission         `json:"permissions"`
-	TotalResources     TotalResources       `json:"total_resources"`
-	DelegatedBandwidth DelegatedBandwidth   `json:"delegated_bandwidth"`
-	VoterInfo          VoterInfo            `json:"voter_info"`
+	AccountName            AccountName          `json:"account_name"`
+	Privileged             bool                 `json:"privileged"`
+	LastCodeUpdate         JSONTime             `json:"last_code_update"`
+	Created                JSONTime             `json:"created"`
+	CoreLiquidBalance      Asset                `json:"core_liquid_balance"`
+	RAMQuota               int64                `json:"ram_quota"`
+	RAMUsage               int64                `json:"ram_usage"`
+	NetWeight              JSONInt64            `json:"net_weight"`
+	CPUWeight              JSONInt64            `json:"cpu_weight"`
+	NetLimit               AccountResourceLimit `json:"net_limit"`
+	CPULimit               AccountResourceLimit `json:"cpu_limit"`
+	Permissions            []Permission         `json:"permissions"`
+	TotalResources         TotalResources       `json:"total_resources"`
+	SelfDelegatedBandwidth DelegatedBandwidth   `json:"self_delegated_bandwidth"`
+	RefundRequest          *RefundRequest       `json:"refund_request"`
+	VoterInfo              VoterInfo            `json:"voter_info"`
 }
 
 type CurrencyBalanceResp struct {
@@ -237,13 +249,13 @@ type PushTransactionFullResp struct {
 }
 
 type TransactionProcessed struct {
-	Status               string        `json:"status"`
-	ID                   SHA256Bytes   `json:"id"`
-	ActionTraces         []ActionTrace `json:"action_traces"`
-	DeferredTransactions []string      `json:"deferred_transactions"` // that's not right... dig to find what's there..
+	Status               string      `json:"status"`
+	ID                   SHA256Bytes `json:"id"`
+	ActionTraces         []Trace     `json:"action_traces"`
+	DeferredTransactions []string    `json:"deferred_transactions"` // that's not right... dig to find what's there..
 }
 
-type ActionTrace struct {
+type Trace struct {
 	Receiver AccountName `json:"receiver"`
 	// Action     Action       `json:"act"` // FIXME: how do we unpack that ? what's on the other side anyway?
 	Console    string       `json:"console"`

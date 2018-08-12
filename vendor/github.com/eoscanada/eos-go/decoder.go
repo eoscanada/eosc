@@ -69,20 +69,22 @@ type Decoder struct {
 	decodeActions      bool
 }
 
-//var prefix = make([]string, 0)
+var prefix = make([]string, 0)
 
 var Debug bool
 
 var print = func(s string) {
 	if Debug {
-		//for _, s := range prefix {
-		//fmt.Print(s)
-		//}
+		for _, s := range prefix {
+			fmt.Print(s)
+		}
 		fmt.Print(s)
 	}
 }
 var println = func(args ...interface{}) {
-	print(fmt.Sprintf("%s\n", args...))
+	if Debug {
+		print(fmt.Sprintf("%s\n", args...))
+	}
 }
 
 func NewDecoder(data []byte) *Decoder {
@@ -374,7 +376,9 @@ func (d *Decoder) Decode(v interface{}) (err error) {
 func (d *Decoder) decodeStruct(v interface{}, t reflect.Type, rv reflect.Value) (err error) {
 	l := rv.NumField()
 
-	//prefix = append(prefix, "     ")
+	if Debug {
+		prefix = append(prefix, "     ")
+	}
 	for i := 0; i < l; i++ {
 
 		if tag := t.Field(i).Tag.Get("eos"); tag == "-" {
@@ -389,7 +393,9 @@ func (d *Decoder) decodeStruct(v interface{}, t reflect.Type, rv reflect.Value) 
 			}
 		}
 	}
-	//prefix = prefix[:len(prefix)-1]
+	if Debug {
+		prefix = prefix[:len(prefix)-1]
+	}
 	return
 }
 
@@ -464,6 +470,7 @@ func (d *Decoder) readUint16() (out uint16, err error) {
 
 	out = binary.LittleEndian.Uint16(d.data[d.pos:])
 	d.pos += TypeSize.UInt16
+	println(fmt.Sprintf("readUint16 [%d]", out))
 	return
 }
 
@@ -578,6 +585,7 @@ func (d *Decoder) readBlockTimestamp() (out BlockTimestamp, err error) {
 func (d *Decoder) readJSONTime() (jsonTime JSONTime, err error) {
 	n, err := d.readUint32()
 	jsonTime = JSONTime{time.Unix(int64(n), 0).UTC()}
+	println("readJSONTime: ", jsonTime)
 	return
 }
 

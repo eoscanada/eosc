@@ -6,6 +6,7 @@ import (
 	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 var systemRegisterProducerCmd = &cobra.Command{
@@ -21,11 +22,20 @@ var systemRegisterProducerCmd = &cobra.Command{
 		websiteURL := args[2]
 
 		pushEOSCActions(api,
-			system.NewRegProducer(accountName, publicKey, websiteURL),
+			system.NewRegProducer(accountName, publicKey, websiteURL, uint16(viper.GetInt("system-regproducer-cmd-location"))),
 		)
 	},
 }
 
 func init() {
 	systemCmd.AddCommand(systemRegisterProducerCmd)
+
+	systemRegisterProducerCmd.Flags().IntP("location", "", 0, "Location number (reserved)")
+
+	for _, flag := range []string{"location"} {
+		if err := viper.BindPFlag("system-regproducer-cmd-"+flag, systemRegisterProducerCmd.Flags().Lookup(flag)); err != nil {
+			panic(err)
+		}
+	}
+
 }
