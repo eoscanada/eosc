@@ -93,8 +93,8 @@ func init() {
 
 	toolsSellAccountCmd.Flags().StringP("memo", "", "", "Memo message to attach to transfer")
 	toolsSellAccountCmd.Flags().StringP("proposal-name", "", "sellaccount", "Proposal name to use in the eosio.msig contract")
-	toolsSellAccountCmd.Flags().StringP("buyer-permission", "", "", "Permission required of the buyer (to authorized `eosio.token::transfer`)")
-	toolsSellAccountCmd.Flags().StringP("seller-permission", "", "", "Permission required of the seller (you, to authorize `eosio::updateauth`)")
+	toolsSellAccountCmd.Flags().StringP("buyer-permission", "", "", "Permission required of the buyer (to authorized 'eosio.token::transfer')")
+	toolsSellAccountCmd.Flags().StringP("seller-permission", "", "", "Permission required of the seller (you, to authorize 'eosio::updateauth')")
 
 	for _, flag := range []string{"memo"} {
 		if err := viper.BindPFlag("tools-sell-account-cmd-"+flag, toolsSellAccountCmd.Flags().Lookup(flag)); err != nil {
