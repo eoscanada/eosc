@@ -10,10 +10,8 @@ import (
 var vaultExportCommand = &cobra.Command{
 	Use:   "export",
 	Short: "Export private keys (and corresponding public keys) inside an eosc vault.",
-	Long:  `Export private keys (and corresponding public keys) inside an eosc vault.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		vault := mustGetWallet()
-
 		vault.PrintPrivateKeys()
 	},
 }

@@ -53,7 +53,9 @@ func NewVaultFromWalletFile(filename string) (*Vault, error) {
 // keysFile should be formatted with a single private key per line
 func NewVaultFromKeysFile(keysFile string) (*Vault, error) {
 	v := NewVault()
-	v.KeyBag.ImportFromFile(keysFile)
+	if err := v.KeyBag.ImportFromFile(keysFile); err != nil {
+		return nil, err
+	}
 	return v, nil
 }
 
