@@ -109,6 +109,13 @@ func (v *Vault) PrintPublicKeys() {
 	}
 }
 
+func (v *Vault) PrintPrivateKeys() {
+	fmt.Printf("Private keys contained within (%d in total):\n", len(v.KeyBag.Keys))
+	for _, key := range v.KeyBag.Keys {
+		fmt.Printf("- %s (corresponds to %s)\n", key, key.PublicKey())
+	}
+}
+
 // WriteToFile writes the Vault to disk. You need to encrypt before
 // writing to file, otherwise you might lose much :)
 func (v *Vault) WriteToFile(filename string) error {

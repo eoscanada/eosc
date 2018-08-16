@@ -43,7 +43,11 @@ waits:
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")
 		permissionName := toName(args[1], "permission_name")
-		parent := toName(args[2], "parent permission")
+
+		var parent eos.Name
+		if args[2] != "" {
+			parent = toName(args[2], "parent permission")
+		}
 		authParam := args[3]
 
 		var auth eos.Authority

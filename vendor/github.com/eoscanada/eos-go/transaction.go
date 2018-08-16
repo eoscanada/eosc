@@ -76,6 +76,9 @@ func (tx *Transaction) Fill(headBlockID SHA256Bytes, delaySecs, maxNetUsageWords
 }
 
 func (tx *Transaction) setRefBlock(blockID []byte) {
+	if len(blockID) == 0 {
+		return
+	}
 	tx.RefBlockNum = uint16(binary.BigEndian.Uint32(blockID[:4]))
 	tx.RefBlockPrefix = binary.LittleEndian.Uint32(blockID[8:16])
 }
@@ -159,11 +162,19 @@ func (s *SignedTransaction) Pack(compression CompressionType) (*PackedTransactio
 		// Compress Trx
 		writer, _ := zlib.NewWriterLevel(&trx, flate.BestCompression) // can only fail if invalid `level`..
 		writer.Write(rawtrx)                                          // ignore error, could only bust memory
+		err = writer.Close()
+		if err != nil {
+			return nil, fmt.Errorf("tx writer close %s", err)
+		}
 		rawtrx = trx.Bytes()
 
 		// Compress ContextFreeData
 		writer, _ = zlib.NewWriterLevel(&cfd, flate.BestCompression) // can only fail if invalid `level`..
 		writer.Write(rawcfd)                                         // ignore errors, memory errors only
+		err = writer.Close()
+		if err != nil {
+			return nil, fmt.Errorf("cfd writer close %s", err)
+		}
 		rawcfd = cfd.Bytes()
 
 	}
@@ -194,7 +205,19 @@ func (p *PackedTransaction) ID() SHA256Bytes {
 	return h.Sum(nil)
 }
 
+// Unpack decodes the bytestream of the transaction, and attempts to
+// decode the registered actions.
 func (p *PackedTransaction) Unpack() (signedTx *SignedTransaction, err error) {
+	return p.unpack(false)
+}
+
+// UnpackBare decodes the transcation payload, but doesn't decode the
+// nested action data structure.  See also `Unpack`.
+func (p *PackedTransaction) UnpackBare() (signedTx *SignedTransaction, err error) {
+	return p.unpack(true)
+}
+
+func (p *PackedTransaction) unpack(bare bool) (signedTx *SignedTransaction, err error) {
 	var txReader io.Reader
 	txReader = bytes.NewBuffer(p.PackedTransaction)
 
@@ -205,20 +228,23 @@ func (p *PackedTransaction) Unpack() (signedTx *SignedTransaction, err error) {
 	case CompressionZlib:
 		txReader, err = zlib.NewReader(txReader)
 		if err != nil {
-			return
+			return nil, fmt.Errorf("new reader for tx, %s", err)
 		}
 
-		freeDataReader, err = zlib.NewReader(freeDataReader)
-		if err != nil {
-			return
+		if len(p.PackedContextFreeData) > 0 {
+			freeDataReader, err = zlib.NewReader(freeDataReader)
+			if err != nil {
+				return nil, fmt.Errorf("new reader for free data, %s", err)
+			}
 		}
 	}
 
 	data, err := ioutil.ReadAll(txReader)
 	if err != nil {
-		return
+		return nil, fmt.Errorf("unpack read all, %s", err)
 	}
 	decoder := NewDecoder(data)
+	decoder.DecodeActions(!bare)
 
 	var tx Transaction
 	err = decoder.Decode(&tx)

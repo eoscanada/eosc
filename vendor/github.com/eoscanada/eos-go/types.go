@@ -1,6 +1,7 @@
 package eos
 
 import (
+	"encoding/binary"
 	"encoding/hex"
 	"encoding/json"
 	"errors"
@@ -48,16 +49,20 @@ type TotalResources struct {
 }
 
 type VoterInfo struct {
-	Owner             AccountName    `json:"owner"`
-	Proxy             AccountName    `json:"proxy"`
-	Producers         []AccountName  `json:"producers"`
-	Staked            JSONInt64      `json:"staked"`
-	LastVoteWeight    JSONFloat64    `json:"last_vote_weight"`
-	ProxiedVoteWeight JSONFloat64    `json:"proxied_vote_weight"`
-	IsProxy           byte           `json:"is_proxy"`
-	DeferredTrxID     uint32         `json:"deferred_trx_id"`
-	LastUnstakeTime   BlockTimestamp `json:"last_unstake_time"`
-	Unstaking         Asset          `json:"unstaking"`
+	Owner             AccountName   `json:"owner"`
+	Proxy             AccountName   `json:"proxy"`
+	Producers         []AccountName `json:"producers"`
+	Staked            JSONInt64     `json:"staked"`
+	LastVoteWeight    JSONFloat64   `json:"last_vote_weight"`
+	ProxiedVoteWeight JSONFloat64   `json:"proxied_vote_weight"`
+	IsProxy           byte          `json:"is_proxy"`
+}
+
+type RefundRequest struct {
+	Owner       AccountName `json:"owner"`
+	RequestTime JSONTime    `json:"request_time"` //         {"name":"request_time", "type":"time_point_sec"},
+	NetAmount   Asset       `json:"net_amount"`
+	CPUAmount   Asset       `json:"cpu_amount"`
 }
 
 type CompressionType uint8
@@ -83,7 +88,13 @@ func (c CompressionType) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CompressionType) UnmarshalJSON(data []byte) error {
-	switch string(data) {
+	var s string
+	err := json.Unmarshal(data, &s)
+	if err != nil {
+		return err
+	}
+
+	switch s {
 	case "zlib":
 		*c = CompressionZlib
 	default:
@@ -417,6 +428,19 @@ func (t *Tstamp) UnmarshalJSON(data []byte) (err error) {
 	*t = Tstamp{time.Unix(0, unixNano)}
 
 	return nil
+}
+
+type BlockID string
+
+func (b BlockID) BlockNum() uint32 {
+	if len(b) < 8 {
+		return 0
+	}
+	bin, err := hex.DecodeString(string(b)[:8])
+	if err != nil {
+		return 0
+	}
+	return binary.BigEndian.Uint32(bin)
 }
 
 type BlockTimestamp struct {
