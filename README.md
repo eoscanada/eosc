@@ -192,12 +192,3 @@ contains a wallet inside, and is able to use it to sign some
 transactions, `cleos` interfaces with yet another program (`keosd`) in
 order to sign transactions, making it more complex to use. `eosc`
 brings `keosd` and `cleos` together in a swiss-knify package.
-
-ERRATA: Previously, you could read `It uses sha512 key derivation,
-which is faster to brute force, the Argon2 key derivation is stronger
-and would take an attacker a *lot* more efforts to bruteforce.`. It
-was incorrect as `cleos` generates a big random password for you which
-is effectively very hard to brute force, no matter which derivation
-algo you are using.  The fact that `cleos` doesn't allow you to choose
-your passphrase is a difference, but mostly in usability. You need to
-store that large password somewhere, right?
