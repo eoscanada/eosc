@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"time"
 
 	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/msig"
@@ -77,6 +78,7 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 			system.NewUpdateAuth(soldAccount, eos.PermissionName("active"), eos.PermissionName("owner"), targetActiveAuth, eos.PermissionName("active")),
 			token.NewTransfer(buyerAccount, beneficiaryAccount, saleAmount, memo),
 		}, &eos.TxOptions{HeadBlockID: infoResp.HeadBlockID})
+		tx.SetExpiration(viper.GetDuration("tools-sell-account-cmd-sale-expiration"))
 
 		fmt.Println("Submitting `eosio.msig` proposal:")
 		fmt.Printf("  proposer: %s\n", soldAccount)
@@ -98,8 +100,9 @@ func init() {
 	toolsSellAccountCmd.Flags().StringP("proposal-name", "", "sellaccount", "Proposal name to use in the eosio.msig contract")
 	toolsSellAccountCmd.Flags().StringP("buyer-permission", "", "", "Permission required of the buyer (to authorized 'eosio.token::transfer')")
 	toolsSellAccountCmd.Flags().StringP("seller-permission", "", "", "Permission required of the seller (you, to authorize 'eosio::updateauth')")
+	toolsSellAccountCmd.Flags().DurationP("sale-expiration", "", 1*time.Hour, "Expire proposed transaction after this amount of time (30m, 1h, etc..)")
 
-	for _, flag := range []string{"memo", "seller-permission", "buyer-permission", "proposal-name"} {
+	for _, flag := range []string{"memo", "seller-permission", "buyer-permission", "proposal-name", "sale-expiration"} {
 		if err := viper.BindPFlag("tools-sell-account-cmd-"+flag, toolsSellAccountCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
