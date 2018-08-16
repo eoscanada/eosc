@@ -20,7 +20,6 @@ wallet, unless you check with the "list" command.
 		vault := mustGetWallet()
 
 		vault.PrintPublicKeys()
-		//vault.PrintPrivateKeys()
 	},
 }
 
