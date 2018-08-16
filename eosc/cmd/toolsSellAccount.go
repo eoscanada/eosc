@@ -35,7 +35,7 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 		api := getAPI()
 
 		soldAccountData, err := api.GetAccount(soldAccount)
-		errorCheck("could not find sold account on chain", err)
+		errorCheck("could not find sold account on chain: "+string(soldAccount), err)
 
 		if len(soldAccountData.Permissions) > 2 {
 			fmt.Println("WARNING: your account has more than 2 permissions.")
@@ -69,11 +69,14 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 		targetActiveAuth, err := sellAccountFindAuthority(buyerAccountData, "active")
 		errorCheck("error finding buyer's owner permission", err)
 
+		infoResp, err := api.GetInfo()
+		errorCheck("couldn't get_info from chain", err)
+
 		tx := eos.NewTransaction([]*eos.Action{
 			system.NewUpdateAuth(soldAccount, eos.PermissionName("owner"), eos.PermissionName(""), targetOwnerAuth, eos.PermissionName("owner")),
 			system.NewUpdateAuth(soldAccount, eos.PermissionName("active"), eos.PermissionName("owner"), targetActiveAuth, eos.PermissionName("active")),
 			token.NewTransfer(buyerAccount, beneficiaryAccount, saleAmount, memo),
-		}, nil)
+		}, &eos.TxOptions{HeadBlockID: infoResp.HeadBlockID})
 
 		fmt.Println("Submitting `eosio.msig` proposal:")
 		fmt.Printf("  proposer: %s\n", soldAccount)
@@ -82,7 +85,7 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 		fmt.Println("Review this proposal with:")
 		fmt.Printf("  eosc multisig review %s %s", soldAccount, proposalName)
 		fmt.Println("")
-		msigPermissions := []eos.PermissionLevel{buyerPerm, myPerm}
+		msigPermissions := []eos.PermissionLevel{buyerPerm, myPerm, eos.PermissionLevel{Actor: soldAccount, Permission: eos.PermissionName("owner")}}
 		pushEOSCActions(api, msig.NewPropose(soldAccount, eos.Name(proposalName), msigPermissions, tx))
 
 	},
@@ -96,7 +99,7 @@ func init() {
 	toolsSellAccountCmd.Flags().StringP("buyer-permission", "", "", "Permission required of the buyer (to authorized 'eosio.token::transfer')")
 	toolsSellAccountCmd.Flags().StringP("seller-permission", "", "", "Permission required of the seller (you, to authorize 'eosio::updateauth')")
 
-	for _, flag := range []string{"memo"} {
+	for _, flag := range []string{"memo", "seller-permission", "buyer-permission", "proposal-name"} {
 		if err := viper.BindPFlag("tools-sell-account-cmd-"+flag, toolsSellAccountCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
