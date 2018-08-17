@@ -3,26 +3,45 @@
 package cmd
 
 import (
+	"fmt"
+	"strconv"
+
 	"github.com/eoscanada/eos-go/forum"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 var forumVoteCmd = &cobra.Command{
-	Use:   "vote [voter] [proposition] [vote_value]",
-	Short: "Submit a vote from [voter] on the [proposition] with a [vote_value] agreed in the proposition.",
-	Args:  cobra.ExactArgs(3),
+	Use:   "vote [voter] [proposer] [proposal_name] [vote_value]",
+	Short: "Submit a vote from [voter] on [proposer]'s [proposal_name] with a [vote_value] agreed in the proposition.",
+	Args:  cobra.ExactArgs(4),
 	Run: func(cmd *cobra.Command, args []string) {
+		targetAccount := toAccount(viper.GetString("forum-cmd-target-contract"), "--target-contract")
 
-		accountName := toAccount(args[0], "voter")
-		proposition := args[1]
-		vote := args[2]
-		propositionHash := viper.GetString("forum-vote-cmd-hash")
+		voter := toAccount(args[0], "voter")
+		proposer := toAccount(args[1], "proposer")
+		proposalName := toName(args[2], "proposal_name")
+
+		// TODO: in a func
+		vote := args[3]
+		if vote == "yes" {
+			vote = "1"
+		}
+		if vote == "no" {
+			vote = "0"
+		}
+		voteValue, err := strconv.ParseInt(vote, 10, 64)
+		errorCheck("expected an integer for vote_value", err)
+		if voteValue > 255 {
+			errorCheck("vote value cannot exceed 255", fmt.Errorf("vote value too high: %d", voteValue))
+		}
+		proposalHash := viper.GetString("forum-vote-cmd-hash")
+
+		action := forum.NewVote(voter, proposer, proposalName, proposalHash, uint8(voteValue), "")
+		action.Account = targetAccount
 
 		api := getAPI()
-		pushEOSCActions(api,
-			forum.NewVote(accountName, proposition, propositionHash, vote),
-		)
+		pushEOSCActions(api, action)
 	},
 }
 
