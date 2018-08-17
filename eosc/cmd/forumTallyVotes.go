@@ -16,12 +16,12 @@ import (
 var forumTallyVotesCmd = &cobra.Command{
 	Use:   "tally-votes [proposer] [proposal_name]",
 	Short: "Tally votes according to the `type` of the proposal.",
-	Args:  cobra.ExactArgs(4),
+	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		targetAccount := toAccount(viper.GetString("forum-cmd-target-contract"), "--target-contract")
 
-		proposer := toAccount(args[1], "proposer")
-		proposalName := toName(args[2], "proposal_name")
+		proposer := toAccount(args[0], "proposer")
+		proposalName := toName(args[1], "proposal_name")
 
 		api := getAPI()
 
@@ -45,11 +45,11 @@ var forumTallyVotesCmd = &cobra.Command{
 		fmt.Printf("Vote tally for proposer %q's proposal %q:\n", proposer, proposalName)
 		fmt.Printf("* %d accounts voted\n", len(votes))
 		fmt.Printf("* %s staked total\n", totalStakedEOS.String())
+
 		output := []string{
 			"Vote value | Num accounts | EOS staked",
 			"---------- | ------------ | ----------",
 		}
-		fmt.Println("Vote valuesFor each vote value:")
 		for k, stakedForVote := range tallyStaked {
 			accountsForVote := tallyAccounts[k]
 			output = append(output, fmt.Sprintf("%d | %d | %s", k, accountsForVote, eos.NewEOSAsset(stakedForVote).String()))
