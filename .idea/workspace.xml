@@ -2,151 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/.gitmodules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/archetypes/default.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/config.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/archetypes/default.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/config.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/content/blog/creating-a-new-theme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/content/blog/go-is-for-lovers.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/content/blog/hugo-is-for-lovers.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/content/blog/linked-post.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/content/blog/migrate-from-jekyll.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/content/contact.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/content/service.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/content/work.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/data/service.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/data/testimonial.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/data/work.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/screenshots/blog.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/screenshots/home.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/screenshots/homecropped.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/exampleSite/screenshots/homecroppedscaled.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/images/screenshot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/images/tn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/_default/list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/_default/single.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/page/single.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/call-to-action.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/contact.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/favicon.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/feature.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/global-header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/service.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/slider.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/testimonial.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/work.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/layouts/partials/wrapper.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/airspace-local-fonts.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/airspace.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/animate.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/font-awesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/ionicons.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/owl.carousel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/css/syntax.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/ionicons.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/ionicons.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/ionicons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/ionicons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-600.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-600.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-600.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-600.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-600.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-100.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-100.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-100.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-100.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-100.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-500.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-500.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-500.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-500.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-500.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/roboto-v18-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/volkhov-v9-latin-italic.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/volkhov-v9-latin-italic.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/volkhov-v9-latin-italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/volkhov-v9-latin-italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/fonts/volkhov-v9-latin-italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/blog/blog-post-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/blog/blog-post-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/blog/blog-post-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/blog/blog-post-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/call-to-action-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo-9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/clients/clients-logo8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/cotation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/featue-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/item-img1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/portfolio/work1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/portfolio/work2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/portfolio/work3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/portfolio/work4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/portfolio/work5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/portfolio/work6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/slider-bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/img/wrapper-img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/jquery.counterup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/min/main.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/min/plugins.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/min/waypoints.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/owl.carousel.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/plugins.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/vendor/jquery-1.10.2.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/static/js/vendor/modernizr-2.6.2.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eosc-public/themes/airspace-hugo-master/theme.toml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -161,8 +19,10 @@
     <session id="-909736230">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -172,10 +32,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="md" value="1" />
+          <entry key="headers" value="1" />
+          <entry key="html" value="2" />
+          <entry key="md" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="2" />
+          <entry key="PLAIN_TEXT" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="md" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
@@ -183,20 +56,26 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Blistering</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/docs" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$/eosc" value="master" />
       </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/docs/content/en/_index.md" />
+      </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -204,11 +83,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/package.json" />
-    </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="67" />
@@ -222,6 +96,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -238,34 +113,12 @@
               <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="archetypes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="en" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="en" type="462c0819:PsiDirectoryNode" />
-              <item name="about" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -297,23 +150,19 @@
       <option name="presentableId" value="Default" />
       <updated>1534775195301</updated>
       <workItem from="1534775196818" duration="1508000" />
+      <workItem from="1534863765494" duration="466000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1508000" />
+    <option name="totallyTimeSpent" value="3012000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="23" width="1580" height="1011" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24951892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" visible="true" weight="0.3297062" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -321,6 +170,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3297062" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -361,6 +214,68 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/config.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="412" lean-forward="true" selection-start-line="412" selection-end-line="412" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/.gitmodules">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/theme.toml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/templates/_index.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/netlify.toml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/_index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.headers">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/templates/homepage.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/static/css/hugofont.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/news/0.19-relnotes/index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="174" selection-start-line="33" selection-start-column="174" selection-end-line="33" selection-end-column="174" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/news/0.20.2-relnotes/index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="369" selection-start-line="11" selection-start-column="364" selection-end-line="11" selection-end-column="369" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/hero.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

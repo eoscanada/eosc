@@ -1,7 +1,7 @@
 title = "Airspace for Hugo"
 baseURL = "https://www.example.com"
 languageCode = "en-us"
-theme = "airspace-hugo-master"
+theme = "airspace-hugo"
 
 [menu]
 
