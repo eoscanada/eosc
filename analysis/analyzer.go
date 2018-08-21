@@ -168,6 +168,9 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 	case *system.BuyRAMBytes:
 		a.Pf("Account %q is buying RAM for receiver %q, for %d bytes (whatever the market value)\n", obj.Payer, obj.Receiver, obj.Bytes)
 
+	case *system.Setalimits:
+		a.Pf("Account %q is to set:\n* RAM limit to %d bytes\n* Net weight: %d bytes\n* CPU weight: %d ms\n", obj.Account, obj.RAMBytes, obj.NetWeight, obj.CPUWeight)
+
 	case *sudo.Exec:
 
 		a.Pf("Account %q executes a transaction impersonating another account\n", obj.Executer)
@@ -184,6 +187,8 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 		}
 
 	default:
+
+		a.Pf("Hex data: %s\n", hex.EncodeToString(act.ActionData.HexData))
 		return nil
 	}
 	a.Pln()
