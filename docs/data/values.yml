@@ -1,0 +1,20 @@
+enable: true
+title: Values
+subtitle: sous titre
+content:
+
+  - icon: ion-coffee
+    name: Branding
+    text: >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+
+  - icon: ion-compass
+    name: Web Design
+    text: >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+
+  - icon: ion-image
+    name: App Design
+    text: >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+
