@@ -1,0 +1,33 @@
+<!-- Lasted News Start -->
+<section id="lasted-news" style="background-color: {{ .Site.Params.lastednews.backgroundcolor }};">
+  <div class="container">
+
+    <!-- Intro -->
+    <div class="row">
+      <div class="section-title">
+        <h2>{{ .Site.Params.lastednews.title }}</h2>
+        <p>{{ .Site.Params.lastednews.subtitle }}</p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="row" style="display: inline-flex;">
+      {{ range first 3 (where .Site.Pages.ByDate "Section" "blog") }}
+      <div class="col-sm-6 col-md-4">
+        <div class="lastednews-item">
+          <h3>{{ .Title }}</h3>
+          <time>{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
+          <p class="lastednews-summary">{{ .Summary }}</p>
+          <a class="btn btn-default" href="{{ .RelPermalink }}">Read More</a>
+
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+
+<!--{{ range where .Site.Pages "Section" "blog" }}-->
+<!--<li><a href="{{ .Permalink }}">{{ .Title }}</a><br /><span class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</span></li>-->
+<!--{{ end }}-->

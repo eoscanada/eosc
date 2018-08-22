@@ -1,0 +1,27 @@
+<section id="about">
+  <div class="container">
+
+    <!-- Intro -->
+    <div class="row">
+      <div class="section-title">
+        <h2>{{ .Site.Data.About.title }}</h2>
+        <p>{{ .Site.Data.about.subtitle }}</p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="row">
+      <div class="col-sm-12 col-md-3">
+        <h4>SOUS MENU</h4>
+        <p>Liste des pages contenus dans un dossier (Section)</p>
+          {{ partial "sidebar.html" . }}
+
+      </div>
+      <div class="col-sm-12 col-md-9">
+
+        contenu2
+
+      </div>
+    </div>
+  </div>
+</section>

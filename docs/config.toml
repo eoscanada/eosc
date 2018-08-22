@@ -3,19 +3,23 @@ baseURL = "https://www.example.com"
 languageCode = "en-us"
 theme = "airspace-hugo-master"
 
+
+  summaryLength = 20
+
+
 [menu]
 
   [[menu.header]]
     weight = 2
-    name = "Work"
-    url = "/work"
+    name = "About"
+    url = "/about"
   [[menu.header]]
     weight = 3
-    name = "Blog"
+    name = "Getting started"
     url = "/blog"
   [[menu.header]]
     weight = 4
-    name = "Service"
+    name = "EOSC System"
     url = "/service"
   [[menu.header]]
     weight = 5
@@ -50,14 +54,25 @@ theme = "airspace-hugo-master"
   # This license is offered with a 50% discount for all Hugo users.
   # For information see https://github.com/gohugoio/hugoThemes/issues/260
 
-  dateFormat = "6 January 2006"
+  dateFormat = "August 22, 2018"
 
   home = "Home"
 
+
   [params.slider]
     enable = true
-    title = "A digital marketing &amp; design agency"
-    subtitle = "We love the Web and the work we do.<br/>We work closely with our clients to deliver the best possible solutions for their needs"
+    title = "Easy to use tools for securely storing your private keys and casting your vote"
+    subtitle = ""
+    logo = "eosc-logo-02.svg"
+    [params.slider.button]
+        title = "DOWNLOAD"
+        link = "https://github.com/eoscanada/eosc"
+
+  [params.lastednews]
+    enable = true
+    title = "Lasted Release"
+    subtitle = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    backgroundcolor = "#eee"
 
   [params.wrapper]
     enable = true

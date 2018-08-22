@@ -13,6 +13,14 @@
 		{{ partial "slider.html" . }}
 	{{ end }}
 
+	{{ if and .Site.Data.values .Site.Data.values.enable }}
+	{{ partial "values.html" . }}
+	{{ end }}
+
+	{{ if and (isset .Site.Params "lastednews") (.Site.Params.lastednews.enable) }}
+		{{ partial "lasted-news.html" . }}
+	{{ end }}
+
 	{{ if and (isset .Site.Params "wrapper") (.Site.Params.wrapper.enable) }}
 		{{ partial "wrapper.html" . }}
 	{{ end }}
