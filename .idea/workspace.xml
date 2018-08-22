@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="build">
-      <change afterPath="$PROJECT_DIR$/docs/content/about.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/content/about/creating-a-new-theme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/content/about/go-is-for-lovers.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/content/about/hugo-is-for-lovers.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/content/about/linked-post.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/content/about/migrate-from-jekyll.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/data/about.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/about.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,7 +17,7 @@
     <session id="-909736230">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
@@ -129,8 +120,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/about.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="4" />
+            <state relative-caret-position="15">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="26" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -361,7 +352,7 @@
       <updated>1534775195301</updated>
       <workItem from="1534775196818" duration="1508000" />
       <workItem from="1534863765494" duration="14399000" />
-      <workItem from="1534880534470" duration="1648000" />
+      <workItem from="1534880534470" duration="1895000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -377,11 +368,18 @@
       <option name="project" value="LOCAL" />
       <updated>1534878616260</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="build">
+      <created>1534897066207</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1534897066207</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18593000" />
+    <option name="totallyTimeSpent" value="18840000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="23" width="1580" height="1011" extended-state="0" />
@@ -460,7 +458,8 @@
     <MESSAGE value="change theme" />
     <MESSAGE value="build home page" />
     <MESSAGE value="buil" />
-    <option name="LAST_COMMIT_MESSAGE" value="buil" />
+    <MESSAGE value="build" />
+    <option name="LAST_COMMIT_MESSAGE" value="build" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/docs/content/en/templates/homepage.md" />
@@ -660,10 +659,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/data/about.yml">
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -674,17 +673,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/sidebar.html">
+    <entry file="file://$PROJECT_DIR$/docs/data/about.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/about.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="4" />
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="26" selection-end-column="10" />
         </state>
       </provider>
     </entry>
