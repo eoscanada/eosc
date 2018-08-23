@@ -40,12 +40,22 @@ func printAccount(account *eos.AccountResp) {
 	if account != nil {
 		// dereference this so we can safely mutate it to accomodate uninitialized symbols
 		act := *account
+
+		baseSymbol := act.TotalResources.CPUWeight.Symbol
+		if baseSymbol.Symbol == "" {
+			baseSymbol.Symbol = "EOS"
+			baseSymbol.Precision = 4
+		}
 		if act.SelfDelegatedBandwidth.CPUWeight.Symbol.Symbol == "" {
-			act.SelfDelegatedBandwidth.CPUWeight.Symbol = act.TotalResources.CPUWeight.Symbol
+			act.SelfDelegatedBandwidth.CPUWeight.Symbol = baseSymbol
 		}
 		if act.SelfDelegatedBandwidth.NetWeight.Symbol.Symbol == "" {
-			act.SelfDelegatedBandwidth.NetWeight.Symbol = act.TotalResources.CPUWeight.Symbol
+			act.SelfDelegatedBandwidth.NetWeight.Symbol = baseSymbol
 		}
+		if act.CoreLiquidBalance.Symbol.Symbol == "" {
+			act.CoreLiquidBalance.Symbol = baseSymbol
+		}
+
 		cfg := &columnize.Config{
 			NoTrim: true,
 		}
@@ -65,23 +75,41 @@ func printAccount(account *eos.AccountResp) {
 }
 
 func formatPermissions(account *eos.AccountResp, config *columnize.Config) string {
-	output := []string{
-		"permissions:",
-	}
-	for _, perm := range account.Permissions {
-		keysValues := []string{}
-		for _, key := range perm.RequiredAuth.Keys {
-			keysValues = append(keysValues, fmt.Sprintf("%d %s", key.Weight, key.PublicKey))
+	output := formatNestedPermission([]string{"permissions:"}, account.Permissions, eos.PermissionName(""), "")
+
+	return columnize.Format(output, config)
+}
+
+func formatNestedPermission(in []string, permissions []eos.Permission, showChildsOf eos.PermissionName, indent string) (out []string) {
+	out = in
+	for _, perm := range permissions {
+		if perm.Parent != string(showChildsOf) {
+			continue
 		}
-		output = append(output,
-			fmt.Sprintf("     %s |%d:|%s",
+
+		permValues := []string{}
+		for _, key := range perm.RequiredAuth.Keys {
+			permValues = append(permValues, fmt.Sprintf("+%d %s", key.Weight, key.PublicKey))
+		}
+		for _, acct := range perm.RequiredAuth.Accounts {
+			permValues = append(permValues, fmt.Sprintf("+%d %s@%s", acct.Weight, acct.Permission.Actor, acct.Permission.Permission))
+		}
+		for _, wait := range perm.RequiredAuth.Waits {
+			permValues = append(permValues, fmt.Sprintf("+%d wait %d seconds", wait.Weight, wait.WaitSec))
+		}
+		out = append(out,
+			fmt.Sprintf("     %s%q w/ %d|:|%s",
+				indent,
 				perm.PermName,
 				perm.RequiredAuth.Threshold,
-				strings.Join(keysValues, ", "),
+				strings.Join(permValues, ", "),
 			),
 		)
+
+		out = formatNestedPermission(out, permissions, eos.PermissionName(perm.PermName), indent+"      ")
 	}
-	return columnize.Format(output, config)
+
+	return out
 }
 
 func formatMemory(account *eos.AccountResp, config *columnize.Config) string {
@@ -136,6 +164,7 @@ func formatCPUBandwidth(account *eos.AccountResp, config *columnize.Config) stri
 
 func formatBalances(account *eos.AccountResp, config *columnize.Config) string {
 	totalStaked := account.SelfDelegatedBandwidth.NetWeight.Add(account.SelfDelegatedBandwidth.CPUWeight)
+
 	totalUnstaking := eos.Asset{
 		Amount: 0,
 		Symbol: account.CoreLiquidBalance.Symbol,
@@ -143,6 +172,7 @@ func formatBalances(account *eos.AccountResp, config *columnize.Config) string {
 	if account.RefundRequest != nil {
 		totalUnstaking = account.RefundRequest.CPUAmount.Add(account.RefundRequest.NetAmount)
 	}
+
 	total := totalUnstaking.Add(totalStaked).Add(account.CoreLiquidBalance)
 
 	output := []string{
