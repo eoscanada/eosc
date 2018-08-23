@@ -66,7 +66,11 @@ waits:
 
 		api := getAPI()
 
-		pushEOSCActions(api, system.NewUpdateAuth(account, eos.PermissionName(permissionName), eos.PermissionName(parent), auth, eos.PermissionName("active")))
+		var updateAuthActionPermission = "active"
+		if parent == "" {
+			updateAuthActionPermission = "owner"
+		}
+		pushEOSCActions(api, system.NewUpdateAuth(account, eos.PermissionName(permissionName), eos.PermissionName(parent), auth, eos.PermissionName(updateAuthActionPermission)))
 	},
 }
 
