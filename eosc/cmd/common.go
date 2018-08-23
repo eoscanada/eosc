@@ -28,17 +28,17 @@ func mustGetWallet() *eosvault.Vault {
 func setupWallet() (*eosvault.Vault, error) {
 	walletFile := viper.GetString("global-vault-file")
 	if _, err := os.Stat(walletFile); err != nil {
-		return nil, fmt.Errorf("Wallet file %q missing, ", walletFile)
+		return nil, fmt.Errorf("wallet file %q missing: %s", walletFile, err)
 	}
 
 	vault, err := eosvault.NewVaultFromWalletFile(walletFile)
 	if err != nil {
-		return nil, fmt.Errorf("loading vault, %s", err)
+		return nil, fmt.Errorf("loading vault: %s", err)
 	}
 
 	boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("global-kms-gcp-keypath"))
 	if err != nil {
-		return nil, fmt.Errorf("secret boxer, %s", err)
+		return nil, fmt.Errorf("secret boxer: %s", err)
 	}
 
 	if err := vault.Open(boxer); err != nil {
