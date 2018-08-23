@@ -17,6 +17,7 @@ var forumPostCmd = &cobra.Command{
 	Short: "Post a message",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
+		targetAccount := toAccount(viper.GetString("forum-cmd-target-contract"), "--target-contract")
 		accountName := toAccount(args[0], "from account")
 		message := args[1]
 		title := viper.GetString("forum-post-cmd-title")
@@ -42,10 +43,11 @@ var forumPostCmd = &cobra.Command{
 
 		replyToUUID := viper.GetString("forum-post-cmd-reply-to-uuid")
 
+		action := forum.NewPost(accountName, newUUID, title, message, replyTo, replyToUUID, certify, metadata)
+		action.Account = targetAccount
+
 		api := getAPI()
-		pushEOSCActions(api,
-			forum.NewPost(accountName, newUUID, title, message, replyTo, replyToUUID, certify, metadata),
-		)
+		pushEOSCActions(api, action)
 	},
 }
 
