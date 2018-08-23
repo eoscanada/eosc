@@ -6,6 +6,8 @@ import (
 	"os/exec"
 	"strings"
 
+	"encoding/hex"
+
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/p2p"
 	"github.com/spf13/cobra"
@@ -17,39 +19,41 @@ var toolsChainFreezeCmd = &cobra.Command{
 	Short: "Runs a p2p protocol-level proxy, and stop sync'ing the chain at the given block-num.",
 	Run: func(cmd *cobra.Command, args []string) {
 
-		proxy := p2p.Proxy{
-			Routes: []*p2p.Route{
-				{From: viper.GetString("tools-chain-freeze-cmd-listen-p2p-address"), To: viper.GetString("tools-chain-freeze-cmd-target-p2p-address")},
-			},
-			Handlers: []p2p.Handler{chainFreezeHandler},
-		}
+		chainID, err := hex.DecodeString(viper.GetString("tools-chain-freeze-cmd-chain-id"))
+		errorCheck("parsing chain id", err)
+		proxy := p2p.NewProxy(
+			p2p.NewOutgoingPeer(viper.GetString("tools-chain-freeze-cmd-peer1-p2p-address"), chainID, "eos-proxy", false),
+			p2p.NewOutgoingPeer(viper.GetString("tools-chain-freeze-cmd-peer2-p2p-address"), chainID, "eos-proxy", true),
+		)
 
-		proxy.Start()
-
+		proxy.RegisterHandler(chainFreezeHandler)
+		err = proxy.Start()
+		errorCheck("client start", err)
 	},
 }
 
 func init() {
 	toolsCmd.AddCommand(toolsChainFreezeCmd)
 
-	toolsChainFreezeCmd.Flags().StringP("target-p2p-address", "", "localhost:9876", "Target p2p endpoint to connect to.")
-	toolsChainFreezeCmd.Flags().StringP("listen-p2p-address", "", ":19876", "Listen for p2p connections on this endpoint.")
+	toolsChainFreezeCmd.Flags().StringP("peer1-p2p-address", "", "localhost:9876", "First peer(the feed) to connect to")
+	toolsChainFreezeCmd.Flags().StringP("peer2-p2p-address", "", ":19876", "Second peer(the destination) to connect to")
+	toolsChainFreezeCmd.Flags().StringP("chain-id", "", "", "chain-id that will proxy")
 	toolsChainFreezeCmd.Flags().IntP("on-block-modulo", "", 0, "Execute --exec-cmd each time 'block_num % module' is zero.")
 	toolsChainFreezeCmd.Flags().StringP("on-actions", "", "", "Execute each time the given actions are present in a block. Format: contract1:action1,contract2:action2,...")
 	toolsChainFreezeCmd.Flags().StringP("exec-cmd", "", "", "Command to execute on matching blocks")
 
-	for _, flag := range []string{"target-p2p-address", "listen-p2p-address", "exec-cmd", "on-block-modulo", "on-actions"} {
+	for _, flag := range []string{"peer1-p2p-address", "peer2-p2p-address", "exec-cmd", "on-block-modulo", "on-actions", "chain-id"} {
 		if err := viper.BindPFlag("tools-chain-freeze-cmd-"+flag, toolsChainFreezeCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
 }
 
-var chainFreezeHandler = p2p.HandlerFunc(func(msg p2p.Message) {
+var chainFreezeHandler = p2p.HandlerFunc(func(envelope *p2p.Envelope) {
 	blockModulo := viper.GetInt("tools-chain-freeze-cmd-on-block-modulo")
 	actions := viper.GetString("tools-chain-freeze-cmd-on-actions")
 
-	p2pMsg := msg.Envelope.P2PMessage
+	p2pMsg := envelope.Packet.P2PMessage
 	switch m := p2pMsg.(type) {
 	case *eos.SignedBlock:
 		fmt.Printf("Receiving block %d sign from %s\n", m.BlockNumber(), m.Producer)
