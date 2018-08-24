@@ -1,9 +1,411 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="All Places" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="home page values section">
+    <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/data/values.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/config.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/benefits.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/features.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/hugo-and-gdpr.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/license.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/new-in-032/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/new-in-032/sunset.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/what-is-hugo.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_benchmark.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_check.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_check_ulimit.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_config.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_convert.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_convert_toJSON.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_convert_toTOML.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_convert_toYAML.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_env.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_gen.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_gen_autocomplete.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_gen_chromastyles.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_gen_doc.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_gen_man.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_import.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_import_jekyll.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_list.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_list_drafts.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_list_expired.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_list_future.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_new.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_new_site.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_new_theme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_server.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/commands/hugo_version.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/archetypes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/authors.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/comments.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/cross-references.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/formats.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/front-matter.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/image-processing/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/image-processing/sunset.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/menus.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/multilingual.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/organization/1-featured-content-bundles.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/organization/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/page-bundles.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/page-resources.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/related.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/sections.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/shortcodes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/static-files.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/summaries.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/syntax-highlighting.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/taxonomies.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/toc.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/types.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/content-management/urls.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/contribute/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/contribute/development.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/contribute/documentation.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/contribute/themes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/GetPage.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/NumFmt.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/abslangurl.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/absurl.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/adddate.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/after.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/apply.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/base64.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/chomp.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/cond.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/countrunes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/countwords.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/dateformat.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/default.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/delimit.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/dict.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/echoparam.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/emojify.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/eq.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/errorf.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/fileExists.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/findRe.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/first.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/float.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/format.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/ge.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/get.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/getenv.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/gt.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/hasPrefix.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/haschildren.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/hasmenucurrent.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/highlight.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/htmlEscape.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/htmlUnescape.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/humanize.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/i18n.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/imageConfig.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/in.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/index-function.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/int.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/intersect.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/ismenucurrent.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/isset.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/jsonify.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/lang.Merge.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/last.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/le.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/len.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/lower.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/lt.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/markdownify.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/math.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/md5.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/ne.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/now.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/param.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/partialCached.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/plainify.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/pluralize.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/print.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/printf.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/println.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/querify.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/range.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/readdir.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/readfile.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/ref.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/relLangURL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/relref.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/relurl.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/render.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/replace.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/replacere.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/safeCSS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/safeHTML.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/safeHTMLAttr.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/safeJS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/safeURL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/scratch.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/seq.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/sha.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/shuffle.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/singularize.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/slice.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/slicestr.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/sort.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/split.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/string.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/strings.Repeat.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/strings.RuneCount.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/strings.TrimLeft.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/strings.TrimPrefix.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/strings.TrimRight.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/strings.TrimSuffix.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/substr.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/time.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/title.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/trim.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/truncate.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/union.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/uniq.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/unix.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/upper.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/urlize.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/urls.Parse.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/where.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/functions/with.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/getting-started/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/getting-started/code-toggle.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/getting-started/configuration.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/getting-started/directory-structure.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/getting-started/installing.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/getting-started/quick-start.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/getting-started/usage.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/deployment-with-nanobox.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/deployment-with-rsync.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/deployment-with-wercker.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/hosting-on-bitbucket.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/hosting-on-firebase.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/hosting-on-github.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/hosting-on-gitlab.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/hosting-on-keycdn.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hosting-and-deployment/hosting-on-netlify.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/bundling.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/fingerprint.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/introduction.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/minification.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/postcss.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/resource-from-string.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/resource-from-template.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/scss-sass.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/maintenance/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.10-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.11-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.12-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.13-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.14-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.15-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.16-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.17-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.18-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.19-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.2-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.3-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.4-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.5-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.6-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.7-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.21-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.22-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.22.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.23-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.24-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.24.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.25-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.25.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.26-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.27-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.27.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.28-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.29-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.30-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.30.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.30.2-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.31-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.31.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32.2-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32.3-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32.4-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.33-relnotes/featured-hugo-33-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.33-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.34-relnotes/featured-34-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.34-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.35-relnotes/featured-hugo-35-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.35-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.36-relnotes/featured-hugo-36-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.36-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.36.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.37-relnotes/featured-hugo-37-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.37-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.37.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.38-relnotes/featured-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.38-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.38.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.38.2-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.39-relnotes/featured-hugo-39-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.39-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40-relnotes/featured-hugo-40-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40.2-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40.3-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.41-relnotes/featured-hugo-41-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.41-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.42-relnotes/featured-hugo-42-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.42-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.42.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.42.2-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.43-relnotes/featured-hugo-43-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.43-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.44-relnotes/featured-hugo-44-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.44-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.45-relnotes/featured-hugo-45-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.45-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.45.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.46-relnotes/featured-hugo-46-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.46-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.47-relnotes/featured-hugo-47-poster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.47-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.47.1-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.7-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.8-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.9-relnotes/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/http2-server-push-in-hugo.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/lets-celebrate-hugos-5th-birthday/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/lets-celebrate-hugos-5th-birthday/graph-stars.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/lets-celebrate-hugos-5th-birthday/graph-themes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/lets-celebrate-hugos-5th-birthday/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/news/lets-celebrate-hugos-5th-birthday/sunset-get.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/readfiles/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/readfiles/bfconfig.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/readfiles/dateformatting.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/readfiles/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/readfiles/pages-vs-site-pages.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/readfiles/sectionvars.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/readfiles/testing.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/1password-support/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/1password-support/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/1password-support/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/arolla-cocoon/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/arolla-cocoon/featured-template.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/arolla-cocoon/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/flesland-flis/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/flesland-flis/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/flesland-flis/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/forestry/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/forestry/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/forestry/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/hartwell-insurance/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/hartwell-insurance/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/hartwell-insurance/hartwell-columns.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/hartwell-insurance/hartwell-lighthouse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/hartwell-insurance/hartwell-webpagetest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/hartwell-insurance/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/letsencrypt/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/letsencrypt/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/letsencrypt/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/linode/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/linode/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/linode/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/pace-revenue-management/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/pace-revenue-management/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/pace-revenue-management/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/quiply-employee-communications-app/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/quiply-employee-communications-app/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/quiply-employee-communications-app/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/small-multiples/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/small-multiples/featured-small-multiples.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/small-multiples/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/stackimpact/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/stackimpact/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/stackimpact/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/template/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/template/featured-template.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/template/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/tomango/bio.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/tomango/featured.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/showcase/tomango/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/404.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/alternatives.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/base.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/data-templates.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/files.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/homepage.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/internal.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/introduction.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/lists.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/lookup-order.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/menu-templates.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/ordering-and-grouping.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/output-formats.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/pagination.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/partials.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/robots.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/rss.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/section-templates.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/shortcode-templates.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/single-page-templates.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/sitemap-template.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/taxonomy-templates.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/template-debugging.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/templates/views.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/themes/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/themes/creating.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/themes/installing-and-using-themes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/themes/theme-components.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/tools/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/tools/editors.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/tools/frontends.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/tools/migrations.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/tools/other.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/tools/search.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/tools/starter-kits.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/troubleshooting/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/troubleshooting/faq.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/files.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/git.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/hugo.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/menus.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/page.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/shortcodes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/site.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/sitemap.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/variables/taxonomy.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/zh/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/zh/about/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/zh/content-management/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/zh/documentation.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/zh/news/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/zh/templates/_index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/zh/templates/base.md" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,7 +430,7 @@
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
-          <entry key="git.branch.create.new" value="1" />
+          <entry key="git.branch.create.new" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -60,7 +462,7 @@
           <entry key="html" value="952" />
           <entry key="md" value="109" />
           <entry key="toml" value="341" />
-          <entry key="txt" value="112" />
+          <entry key="txt" value="116" />
           <entry key="yml" value="79" />
         </counts>
       </usages-collector>
@@ -68,105 +470,137 @@
         <counts>
           <entry key="CSS" value="496" />
           <entry key="HTML" value="952" />
-          <entry key="PLAIN_TEXT" value="562" />
+          <entry key="PLAIN_TEXT" value="566" />
           <entry key="YAML" value="79" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="-1927821668">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="13" />
+          <entry key="headers" value="1" />
+          <entry key="html" value="5" />
+          <entry key="md" value="2" />
+          <entry key="svg" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="13" />
+          <entry key="HTML" value="5" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="SVG" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="css" value="97" />
+          <entry key="headers" value="38" />
+          <entry key="html" value="20" />
+          <entry key="toml" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="97" />
+          <entry key="HTML" value="20" />
+          <entry key="PLAIN_TEXT" value="42" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_definition-lists.css">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/static/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="687" column="11" selection-start-line="687" selection-start-column="11" selection-end-line="687" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/page-header.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/head-additions.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/index.html">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.headers">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+            <state relative-caret-position="120">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/head.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="41" column="53" lean-forward="true" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/css/airspace.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="169" column="1" lean-forward="true" selection-start-line="128" selection-end-line="169" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/main.js">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_variables.css">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/owl.carousel.min.js">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/hero.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/plugins.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="39" column="4272" selection-start-line="39" selection-start-column="4272" selection-end-line="39" selection-end-column="4272" />
+            <state relative-caret-position="30">
+              <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/bootstrap.min.js">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_animate.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
+            <state relative-caret-position="-3958" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/min/main.min.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/config.toml">
+        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/slider.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="14" selection-end-column="10" />
+            <state relative-caret-position="15">
+              <caret line="1" column="5" selection-end-line="12" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Blistering</find>
-      <find>screenshot</find>
-      <find>eosc-hero-photo-01</find>
-      <find>slider-bg.jpg</find>
-      <find>slider-bg</find>
       <find>header</find>
       <find>#slider</find>
       <find>#slider:before</find>
@@ -187,13 +621,21 @@
       <find>conf</find>
       <find>summarylength = 30</find>
       <find>config</find>
-      <find>param</find>
       <find>helpers</find>
       <find>summary</find>
       <find>slider</find>
+      <find>svg</find>
+      <find>svg/hugo-logo-wide.svg</find>
+      <find>param</find>
+      <find>&lt;nav role=&quot;navigation&quot;&gt;</find>
+      <find>navigator</find>
+      <find>menu</find>
+      <find>main.css</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials</dir>
+      <dir>$PROJECT_DIR$/docs/themes</dir>
+      <dir>$PROJECT_DIR$/docs/resources</dir>
       <dir>$PROJECT_DIR$/docs</dir>
     </dirStrings>
   </component>
@@ -202,6 +644,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="gh-pages" />
         <entry key="$PROJECT_DIR$/eosc" value="master" />
       </map>
     </option>
@@ -232,6 +675,11 @@
         <option value="$PROJECT_DIR$/docs/content/values/value-1.md" />
         <option value="$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/values.html" />
         <option value="$PROJECT_DIR$/docs/config.toml" />
+        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_custom.css" />
+        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/hero.html" />
+        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/main.css" />
+        <option value="$PROJECT_DIR$/docs/static/css/style.css" />
+        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.headers" />
       </list>
     </option>
   </component>
@@ -241,9 +689,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="11" />
-    <option name="y" value="31" />
+    <option name="x" value="137" />
+    <option name="y" value="23" />
     <option name="width" value="1580" />
     <option name="height" value="1011" />
   </component>
@@ -253,102 +706,129 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="airspace-hugo-master" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="airspace-hugo-master" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="airspace-hugo-master" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="airspace-hugo-master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="airspace-hugo-master" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="eosc-public-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web" type="462c0819:PsiDirectoryNode" />
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="airspace-hugo-master" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/content" />
+      <recent name="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/docs/data" />
     </key>
@@ -380,7 +860,8 @@
       <workItem from="1534880534470" duration="1895000" />
       <workItem from="1534897211760" duration="5791000" />
       <workItem from="1534945401662" duration="5991000" />
-      <workItem from="1534951443027" duration="10319000" />
+      <workItem from="1534951443027" duration="10855000" />
+      <workItem from="1535122939593" duration="6672000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -466,30 +947,45 @@
       <option name="project" value="LOCAL" />
       <updated>1534951363452</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="home page values section">
+      <created>1535122251316</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1535122251316</updated>
+    </task>
+    <task id="LOCAL-00014" summary="hugo">
+      <created>1535122653037</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1535122653037</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40941000" />
+    <option name="totallyTimeSpent" value="48149000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="25" y="39" width="1580" height="1011" extended-state="0" />
+    <frame x="137" y="23" width="1580" height="1011" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24951892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3297062" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection Results" order="0" visible="true" weight="0.3297062" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297062" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -537,275 +1033,157 @@
     <MESSAGE value="home3" />
     <MESSAGE value="lasted new on home page" />
     <MESSAGE value="home page values section" />
-    <option name="LAST_COMMIT_MESSAGE" value="home page values section" />
+    <MESSAGE value="hugo" />
+    <option name="LAST_COMMIT_MESSAGE" value="hugo" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/content/blog/linked-post.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/exampleSite/data/work.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/about/go-is-for-lovers.md" />
-    <entry file="file://$PROJECT_DIR$/docs/content/blog/go-is-for-lovers.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/blog/hugo-is-for-lovers.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/blog/migrate-from-jekyll.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/about/_index.md" />
-    <entry file="file://$PROJECT_DIR$/docs/content/about/migrate-from-jekyll.md" />
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/_default/single.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/about/creating-a-new-theme.md" />
-    <entry file="file://$PROJECT_DIR$/docs/content/work.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/exampleSite/content/contact.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/contact.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/about.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/favicon.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/service.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/page/single.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/call-to-action.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/wrapper.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="65" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/exampleSite/content/blog/creating-a-new-theme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="1103" column="176" selection-start-line="1103" selection-start-column="176" selection-end-line="1103" selection-end-column="176" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/app-values.html" />
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/_default/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/service.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/data/about.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/data/service.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/data/testimonial.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-53" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/data/values.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/data/work.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/data/about.yml" />
+    <entry file="file://$PROJECT_DIR$/docs/data/service.yml" />
+    <entry file="file://$PROJECT_DIR$/docs/data/testimonial.yml" />
+    <entry file="file://$PROJECT_DIR$/docs/data/values.yml" />
+    <entry file="file://$PROJECT_DIR$/docs/data/work.yml" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/css/style.css" />
     <entry file="file://$PROJECT_DIR$/config.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/aboutNO/migrate-from-jekyll.md">
+    <entry file="file://$PROJECT_DIR$/docs/content/aboutNO/migrate-from-jekyll.md" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/sidebar.html" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/lasted-news.html" />
+    <entry file="file://$PROJECT_DIR$/docs/content/blog/creating-a-new-theme.md" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/theme.toml" />
+    <entry file="file://$PROJECT_DIR$/docs/content/values/value-1.md" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/values.html" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/slider.html" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/main.js" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/owl.carousel.min.js" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/plugins.js" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/bootstrap.min.js" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/min/main.min.js" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/head.html" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/index.html" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/css/airspace.css" />
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/svg/clipboard.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/svg/clippy.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/svg/cloud.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/svg/hugo-logo-wide.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/svg/hugo-h-only.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/svg/hugo.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/svg/apple.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/sidebar.html">
+    <entry file="file://$PROJECT_DIR$/../eosc-public-web/docs/content/en/templates/menu-templates.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="9" />
+        <state relative-caret-position="330">
+          <caret line="22" column="73" lean-forward="true" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/lasted-news.html">
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-links-docs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="97" selection-start-line="1" selection-start-column="97" selection-end-line="1" selection-end-column="97" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="45">
+          <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/blog/creating-a-new-theme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_svg.css">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/theme.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/values/value-1.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/values.html">
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_tabs.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/config.toml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        <state relative-caret-position="2003">
+          <caret line="232" column="24" selection-start-line="127" selection-end-line="232" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/slider.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/main.js">
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_hugo-internal-template-styling.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/owl.carousel.min.js">
+    <entry file="file://$PROJECT_DIR$/docs/content/en/news/_index.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_variables.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_definition-lists.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_social-icons.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_chroma.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_animate.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1" />
+        <state relative-caret-position="-3958" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/plugins.js">
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/hero.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="39" column="4272" selection-start-line="39" selection-start-column="4272" selection-end-line="39" selection-end-column="4272" />
+        <state relative-caret-position="30">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/bootstrap.min.js">
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="5" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/static/dist/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#89811#90124#2" expanded="true" />
+            <element signature="e#91501#100006#2" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/js/min/main.min.js">
+    <entry file="file://$PROJECT_DIR$/docs/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="687" column="11" selection-start-line="687" selection-start-column="11" selection-end-line="687" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/page-header.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/head.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="41" column="53" lean-forward="true" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/head-additions.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/static/css/airspace.css">
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.headers">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="169" column="1" lean-forward="true" selection-start-line="128" selection-end-line="169" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
