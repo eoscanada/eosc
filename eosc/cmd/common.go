@@ -121,44 +121,59 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 	}
 
 	if err := opts.FillFromChain(api); err != nil {
-		fmt.Println("Error fetching tapos + chain_id from the chain:", err)
+		fmt.Println("Error fetching tapos + chain_id from the chain (specify --offline flags for offline operations):", err)
 		os.Exit(1)
 	}
 
 	tx := eos.NewTransaction(actions, opts)
 
+	tx = optionallySudoWrap(tx, opts)
+
+	tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
+
+	signedTx, packedTx := optionallySignTransaction(tx, opts.ChainID, api)
+
+	optionallyPushTransaction(signedTx, packedTx, opts.ChainID, api)
+}
+
+func optionallySudoWrap(tx *eos.Transaction, opts *eos.TxOptions) *eos.Transaction {
 	if viper.GetBool("global-sudo-wrap") {
 		binTx, err := eos.MarshalBinary(tx)
 		errorCheck("binary-packing transaction for sudo wrapping", err)
 
-		tx = eos.NewTransaction([]*eos.Action{sudo.NewExec(eos.AccountName("eosio"), eos.HexBytes(binTx))}, opts)
+		return eos.NewTransaction([]*eos.Action{sudo.NewExec(eos.AccountName("eosio"), eos.HexBytes(binTx))}, opts)
 	}
+	return tx
+}
 
-	tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
-
-	var signedTx *eos.SignedTransaction
-	var packedTx *eos.PackedTransaction
-
+func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api *eos.API) (signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction) {
 	if !viper.GetBool("global-skip-sign") {
-		signKey := viper.GetString("global-offline-sign-key")
-		if signKey != "" {
-			pubKey, err := ecc.NewPublicKey(signKey)
-			errorCheck("parsing public key", err)
+		textSignKeys := viper.GetStringSlice("global-offline-sign-key")
+		if textSignKeys != nil {
+			var signKeys []ecc.PublicKey
+			for _, key := range textSignKeys {
+				pubKey, err := ecc.NewPublicKey(key)
+				errorCheck(fmt.Sprintf("parsing public key %q", key), err)
 
+				signKeys = append(signKeys, pubKey)
+			}
 			api.SetCustomGetRequiredKeys(func(tx *eos.Transaction) ([]ecc.PublicKey, error) {
-				return []ecc.PublicKey{pubKey}, nil
+				return signKeys, nil
 			})
 		}
 
 		attachWallet(api)
 
 		var err error
-		signedTx, packedTx, err = api.SignTransaction(tx, opts.ChainID, eos.CompressionNone)
+		signedTx, packedTx, err = api.SignTransaction(tx, chainID, eos.CompressionNone)
 		errorCheck("signing transaction", err)
 	} else {
 		signedTx = eos.NewSignedTransaction(tx)
 	}
+	return signedTx, packedTx
+}
 
+func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes, api *eos.API) {
 	outputTrx := viper.GetString("global-output-transaction")
 
 	if outputTrx != "" {
@@ -178,6 +193,7 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 		fmt.Println(string(cnt))
 		fmt.Println("---")
 		fmt.Printf("Transaction written to %q\n", outputTrx)
+		fmt.Printf("Sign offline with: --offline-chain-id=%s\n", hex.EncodeToString(chainID))
 		fmt.Println("Above is a pretty-printed representation of the outputted file")
 	} else {
 		if packedTx == nil {
@@ -186,13 +202,16 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 		}
 
 		// TODO: print the traces
-		resp, err := api.PushTransaction(packedTx)
-		errorCheck("pushing transaction", err)
-
-		//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
-		fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
-
+		pushTransaction(api, packedTx)
 	}
+}
+
+func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction) {
+	resp, err := api.PushTransaction(packedTx)
+	errorCheck("pushing transaction", err)
+
+	//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
+	fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
 }
 
 func yamlUnmarshal(cnt []byte, v interface{}) error {

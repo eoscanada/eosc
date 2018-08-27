@@ -45,9 +45,19 @@ eosc get balance [account]  - better than `get currency balance eosio.token [acc
 #eosc set account permission
 #eosc set action permission
 
-eosc push action [contract] [action] payload -p permission@active
-eosc push transaction
-eosc push transactions
+#eosc push action [contract] [action] payload -p permission@active
+#eosc push transaction
+#eosc push transactions
+
+eosc tx create [[contract] [action] payload] -p permission@active
+eosc tx create [path/to/actions.yaml] -p permission@active
+eosc tx sign
+eosc tx push (one, many trx, etc..)
+eosc tx pack
+eosc tx unpack
+eosc tx pack-actions
+eosc tx unpack-actions
+eosc tx review
 
 eosc system delegatebw
 eosc system newaccount

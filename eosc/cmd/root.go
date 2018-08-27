@@ -48,7 +48,7 @@ func init() {
 	RootCmd.PersistentFlags().StringP("output-transaction", "", "", "Do not broadcast the transaction produced, but write it in json to the given filename instead.")
 	RootCmd.PersistentFlags().StringP("offline-head-block", "", "", "Provide a recent block ID (long-form hex) for TaPoS. Use all --offline options to sign transactions offline.")
 	RootCmd.PersistentFlags().StringP("offline-chain-id", "", "", "Chain ID to sign transaction with. Use all --offline- options to sign transactions offline.")
-	RootCmd.PersistentFlags().StringP("offline-sign-key", "", "", "Public key to use to sign transaction. Must be in your vault or wallet. Use all --offline- options to sign transactions offline.")
+	RootCmd.PersistentFlags().StringSliceP("offline-sign-key", "", []string{}, "Public key to use to sign transaction. Must be in your vault or wallet. Use all --offline- options to sign transactions offline.")
 	RootCmd.PersistentFlags().BoolP("skip-sign", "", false, "Do not sign the transaction. Use with --output-transaction.")
 	RootCmd.PersistentFlags().IntP("expiration", "", 30, "Set time before transaction expires, in seconds. Defaults to 30 seconds.")
 	RootCmd.PersistentFlags().BoolP("sudo-wrap", "", false, "Wrap the transaction in a eosio.sudo exec. Useful to BPs, with --output-transaction and --skip-sign to then submit as a multisig proposition.")
