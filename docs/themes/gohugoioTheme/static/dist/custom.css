@@ -1,0 +1,122 @@
+#hero .hero-logo img {min-width:300px;}
+#hero .hero-logo  {position:relative;padding-bottom:40px;}
+#hero {
+    background: url("../img/eosc-hero-photo-01.jpg") no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 10% 0%;
+    padding: 200px 0 280px 0;
+    position: relative;
+}
+#hero:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.3;
+}
+#hero h2.hero-title {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2em;
+    letter-spacing: 0px;
+    padding-bottom: 45px;
+    text-transform: unset;
+    position:relative;
+}
+#hero .hero-content {
+    font-size: 23px;
+    line-height: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    letter-spacing: 3px;
+    position:relative;
+}
+
+.btn.btn-default {
+    color: #fff;
+    border: 0px;
+    text-shadow: 0px 0px rgb(76,25,5);
+    box-shadow: unset;
+    -webkit-box-shadow: unset;
+    -moz-box-shadow: unset;
+    background-image: unset;
+    padding: 10px 30px;
+    font-size: 14px;
+    margin-top: 0px!important;
+    width: auto;
+    box-sizing: border-box!important;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 999px;
+    background-color: rgb(255,85,18);
+    height: auto;
+    font-family: sans-serif;
+    line-height: 1.1em;
+}
+
+#logo-main-nav img {max-width:120px;}
+
+#lasted-news, #values {padding:100px 0px;}
+
+#lasted-news .section-title,
+#values .section-title {text-align: center;}
+
+#lasted-news .lastednews-summary {padding:10px 0px;}
+#lasted-news .lastednews-item {padding-bottom:30px;}
+#lasted-news .btn {position:absolute;bottom:0px;}
+
+.bg-orange{background-color:rgb(255,85,18);}
+.bg-primary-color-dark, .hover-bg-primary-color-dark:hover {background-color:#32383f;}
+.bg-grey {background-color:#eee;}
+.dark {color:#333;}
+.content-with-btn-bottom {padding-bottom:40px;position:relative;}
+.content-with-btn-bottom .btn {position:absolute;bottom:0px;}
+
+.title {font-family: 'Lato', sans-serif;}
+
+.sans-serif {
+    font-family: 'Open sans',
+    avenir,
+    'helvetica neue', helvetica,
+    ubuntu,
+    roboto, noto,
+    'segoe ui', arial,
+    sans-serif;
+}
+
+nav input#search-input {
+    border: none;
+    background-color: #49525c;
+    padding: 10px 20px 10px 40px;
+    color:#fff;
+    background-position-x: 10px;
+}
+nav input#search-input::placeholder {color:#fff;}
+
+.ml-auto {margin-left:auto!important;}
+
+
+
+.github-top-btn {
+    border-radius:50%;
+    background-color:none;
+    border:none;
+    width: 44px;
+    height: 44px;
+    text-decoration: none;
+    position: relative;
+
+}
+
+.github-top-btn::before {
+    font-size:44px!important;
+}
