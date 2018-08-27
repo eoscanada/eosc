@@ -1,6 +1,11 @@
 ---
-title: "The world’s fastest framework for building websites"
+title: EOSC
 date: 2017-03-02T12:00:00-05:00
+hero_logo: eosc-logo-02.svg
+hero_title: Easy to use tools for securely storing your private keys and casting your vote
+hero_subtitle:
+button_text: DOWNLOAD
+button_link: https\://github.com/gohugoio/hugo
 features:
   - heading: Blistering Speed
     image_path: /images/icon-fast.svg

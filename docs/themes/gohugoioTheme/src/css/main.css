@@ -31,9 +31,6 @@ list/*Base Styles*/
 @import '_chroma';
 @import '_variables';
 
-
-@import '_custom';
-
 .nested-blockquote blockquote {
   border-left: 4px solid var(--primary-color);
   padding-left: 1em;
@@ -44,17 +41,5 @@ list/*Base Styles*/
 .mw-90 {
   max-width:90%;
 }
-
-#hero .hero-logo img {min-width:300px;}
-#hero .hero-logo  {padding-bottom:40px;}
-
-#lasted-news, #values {padding:100px 0px;}
-
-#lasted-news .section-title,
-#values .section-title {text-align: center;}
-
-#lasted-news .lastednews-summary {padding:10px 0px;}
-#lasted-news .lastednews-item {padding-bottom:30px;}
-#lasted-news .btn {position:absolute;bottom:0px;}
 
 

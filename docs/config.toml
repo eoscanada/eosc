@@ -6,10 +6,10 @@ enableEmoji = true
 footnotereturnlinkcontents = "↩"
 languageCode = "en-us"
 metaDataFormat = "yaml"
-title = "Hugo"
+title = "EOSC"
 theme = "gohugoioTheme"
 
-googleAnalytics = "UA-7131036-4"
+googleAnalytics = ""
 
 pluralizeListTitles = false
 
@@ -68,15 +68,7 @@ twitter = "GoHugoIO"
 #CUSTOM PARAMS
 [params]
 
- [params.slider]
-    enable = true
-    title = "Easy to use tools for securely storing your private keys and casting your vote"
-    subtitle = ""
-    logo = "eosc-logo-02.svg"
-    [params.slider.button]
-        title = "DOWNLOAD"
-        link = "https://github.com/eoscanada/eosc"
-
+  logo = "eosc-logo-02.svg"
 
   description = "The world’s fastest framework for building websites"
   ## Used for views in rendered HTML (i.e., rather than using the .Hugo variable)
