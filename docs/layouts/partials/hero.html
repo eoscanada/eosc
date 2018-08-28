@@ -1,0 +1,22 @@
+<header id="hero" class="bg-primary-color-dark ph4 tc" role="banner">
+  <section class="center pb4 pb5-l ph4-l pt3 pt5-ns w-90 w-90-l">
+    <div class="center w-100 w-90-ns hero-logo">
+      <img src="{{ .Site.BaseURL }}img/{{ .Params.hero_logo  }}" alt="{{ .Site.Title }} Logo">
+    </div>
+
+      <h2 class="f3 f1-l fw4 white-90 m0 lh-title pt2 pb3 pv0-ns hero-title">
+       {{ .Params.hero_title }}
+      </h2>
+
+
+    <div class="lh-copy f4 w-90-ns center fw2 silver tc tc-ns hero-content">
+      {{ .Params.hero_subtitle }}
+    </div>
+    <div class="w4 mv4 center">
+      <a class="f5 db link grow tc v-mid bg-orange white ba b--blue ph3 pv2 br1 btn btn-default" href="{{ .Params.button_link }}">{{ .Params.button_text }}</a>
+    </div>
+  </section>
+</header>
+
+
+

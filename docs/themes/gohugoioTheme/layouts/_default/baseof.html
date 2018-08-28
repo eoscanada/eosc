@@ -30,8 +30,7 @@
     {{ end -}}
 
      <link href='{{ "dist/main.css" | relURL }}' rel='stylesheet' type="text/css" />
-      <link href='{{ "dist/custom.css" | relURL }}' rel='stylesheet' type="text/css" />
-      {{- partial "head-additions.html" . -}}
+          {{- partial "head-additions.html" . -}}
       {{- template "_internal/opengraph.html" . -}}
       {{- template "_internal/google_news.html" . -}}
       {{- template "_internal/schema.html" . -}}

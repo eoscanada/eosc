@@ -68,6 +68,7 @@ twitter = "GoHugoIO"
 #CUSTOM PARAMS
 [params]
 
+  custom_css = ["css/custom.css"]
   logo = "eosc-logo-02.svg"
 
   description = "The world’s fastest framework for building websites"

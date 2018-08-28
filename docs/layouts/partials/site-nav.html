@@ -1,0 +1,37 @@
+{{ $currentPage := . }}
+<nav class="bg-primary-color-dark pv3 w-100" role="navigation">
+
+  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+
+    <div id="logo-main-nav" class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
+      <a href="{{ .Site.BaseURL }}" class="link white">
+        <img src="{{ .Site.BaseURL }}img/{{ .Site.Params.logo }}" alt="{{ .Site.Title }}">
+      </a>
+    </div>
+
+    <ul class="list pa0 dn dib-l ml-auto">
+      {{ range .Site.Menus.global }}
+        <li class="white f5 dib mr4" role="menuitem">
+            {{/* TODO: Create an "Global" active class to show which site one is currently at */}}
+          <a href="{{ .URL }}" class="dim link{{ if $currentPage.IsMenuCurrent "global" . }} white {{else}} white{{ end }}">
+            {{ .Name }}
+              {{/* using ".Post" from the menu system to determine if we should show an icon for external links */}}
+            {{ $post_status := printf "%s" .Post }}
+            {{ if eq $post_status "external" }}
+              {{ partial "svg/link-ext.svg" (dict "size" "10") }}
+            {{ end }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+
+    <div class="db dib-ns pl3">
+      {{- partial "site-search.html" . -}}
+    </div>
+
+    <span class=" mt0  pl4 pr4 ">
+      {{- partial "social-follow.html" . -}}
+    </span>
+
+  </div>
+</nav>
