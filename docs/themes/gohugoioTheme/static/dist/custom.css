@@ -1,3 +1,6 @@
+h1, h2, h3, h4, h5, p {color:#666;font-weight: 400;}
+
+
 #hero .hero-logo img {min-width:300px;}
 #hero .hero-logo  {position:relative;padding-bottom:40px;}
 #hero {
@@ -120,3 +123,71 @@ nav input#search-input::placeholder {color:#fff;}
 .github-top-btn::before {
     font-size:44px!important;
 }
+
+.tool-logo {
+    color: #49525c;
+    font-family: Lato, sans-serif;
+    font-weight: bold;
+}
+
+.tool-logo a {
+    color: #49525c;
+    text-decoration:none;
+}
+
+.tool-logo a:hover {
+    text-decoration:underline;
+}
+li {position:relative;list-style:none;}
+
+ul.li-custom {
+    list-style:none;
+    list-style-position: outside;
+    padding-left:26px;
+
+}
+
+ul.li-check li .fa, ul.li-check li .fas {
+    font-weight: 900;
+    position: absolute;
+    left: -26px;
+    top: 2px;
+    color:#f05922;
+}
+
+/*ul.li-square li:before {*/
+    /*display: inline-block;*/
+    /*font-family: "Font Awesome 5 Free";*/
+    /*font-style: normal;*/
+    /*font-weight: normal;*/
+    /*line-height: 1.8em;*/
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+    /*content: "\f0c8";*/
+    /*margin-right: 8px;*/
+    /*color: #f05922;*/
+    /*font-size: .5em;*/
+    /*position: absolute;*/
+    /*left: -20px;*/
+    /*width: 0px;*/
+    /*top: 1em;*/
+    /*list-style-position: outside;*/
+/*}*/
+
+/*ul.li-check li::before {*/
+    /*display: inline-block;*/
+    /*font-family: FontAwesome;*/
+    /*font-style: normal;*/
+    /*font-weight: normal;*/
+    /*line-height: 1;*/
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
+    /*content: "\f00c";*/
+    /*margin-right: 8px;*/
+    /*color: #f05922;*/
+    /*font-size: 18px;*/
+    /*position: absolute;*/
+    /*left: -30px;*/
+    /*width: 0px;*/
+    /*top: 5px;*/
+/*}*/

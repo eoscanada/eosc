@@ -1,5 +1,5 @@
 ---
-title: "EOSC News"
-description: "Lorem ipsum dolor etat ipsum"
+title: "EOSC NEWS"
+description: "Stay informed about the latest Releases"
 aliases: [/release-notes/]
 ---
