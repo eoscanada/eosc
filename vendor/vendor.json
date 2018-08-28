@@ -21,10 +21,12 @@
 			"revisionTime": "2018-02-21T22:46:20Z"
 		},
 		{
-			"checksumSHA1": "UHgieUcV/JdtwnAwcuTNQ8KFqpg=",
+			"checksumSHA1": "KIy4218gJ9oZwZ8o7UichWuU17o=",
 			"path": "github.com/eoscanada/eos-go",
-			"revision": "8948ee7162597fd90aa6f2361bbcec2f1c36dd24",
-			"revisionTime": "2018-08-23T13:06:08Z"
+			"revision": "f8bd04e5fd5a1acbce567ae625a8f309f6f79f4a",
+			"revisionTime": "2018-08-28T14:25:06Z",
+			"version": "feature/direct-hex-data-in-action-data",
+			"versionExact": "feature/direct-hex-data-in-action-data"
 		},
 		{
 			"checksumSHA1": "mbdurDenl8bhRVVu8ixJw70fi5E=",
@@ -59,12 +61,6 @@
 		{
 			"checksumSHA1": "Gk4Dvc3QqbWnUdz4jvCXuxULqyo=",
 			"path": "github.com/eoscanada/eos-go/msig",
-			"revision": "8948ee7162597fd90aa6f2361bbcec2f1c36dd24",
-			"revisionTime": "2018-08-23T13:06:08Z"
-		},
-		{
-			"checksumSHA1": "zVkoBvwOESW2GcOV1FYKpPMqM6c=",
-			"path": "github.com/eoscanada/eos-go/p2p",
 			"revision": "8948ee7162597fd90aa6f2361bbcec2f1c36dd24",
 			"revisionTime": "2018-08-23T13:06:08Z"
 		},

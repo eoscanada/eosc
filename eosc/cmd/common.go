@@ -253,6 +253,10 @@ func toName(in, field string) eos.Name {
 	return name
 }
 
+func toActionName(in, field string) eos.ActionName {
+	return eos.ActionName(toName(in, field))
+}
+
 func toSHA256Bytes(in, field string) eos.SHA256Bytes {
 	if len(in) != 64 {
 		errorCheck(fmt.Sprintf("%q invalid", field), errors.New("should be 64 hexadecimal characters"))

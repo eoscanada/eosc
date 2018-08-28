@@ -25,7 +25,7 @@ type Signer interface {
 	ImportPrivateKey(wifPrivKey string) error
 }
 
-// `keosd` compatible wallet signer
+// `eosiowd` wallet-based signer
 type WalletSigner struct {
 	api        *API
 	walletName string
@@ -63,6 +63,8 @@ func (s *WalletSigner) Sign(tx *SignedTransaction, chainID []byte, requiredKeys 
 
 	return tx, nil
 }
+
+// KeyBag, local signing - NOT COMPLETE
 
 // KeyBag holds private keys in memory, for signing transactions.
 type KeyBag struct {

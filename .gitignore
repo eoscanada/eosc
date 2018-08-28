@@ -1,3 +1,4 @@
+.envrc
 *wallet.json
 /dist/
 *eosc-vault.json
