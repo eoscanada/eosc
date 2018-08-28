@@ -1,4 +1,8 @@
-h1, h2, h3, h4, h5, p {color:#666;font-weight: 400;}
+h1, h2, h3, h4, h5, p {color:#49525c;font-weight: 400;}
+
+footer p {color:#bbb;}
+footer a {color:#fff; text-decoration:none;}
+footer a:hover {color:#bbb; text-decoration:underline;}
 
 
 #hero .hero-logo img {min-width:300px;}

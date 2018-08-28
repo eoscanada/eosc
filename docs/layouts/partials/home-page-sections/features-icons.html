@@ -1,5 +1,5 @@
 <div class="w-100-l center">
-  <div class=" flex-ns flex-wrap justify-center center mw9 dark">
+  <div class="flex-ns flex-wrap justify-center center mw9 pt6 pb6 dark">
     {{ with .Site.GetPage "/features" }}
     {{ if .Params.features }}
     <h1 class="title w-100-l pt1 pb1 mv0 justify-center tc">{{ .Title }}</h1>
@@ -7,9 +7,6 @@
     {{ end }}
     {{ end }}
     <div class="flex flex-wrap w-90-l center center mw9">
-      <!-- <a href="/news/" class="link accent-color tr-ns f6 w-100 w-50-m w-10-l bg-animate hover-bg-accent-color hover-white pv3 pv4-l ph3 ph4-l dib">
-        Latest News:
-      </a> -->
       {{ range first 3 ( sort (where .Pages "Section" "features") "Weight" "asc" ) }}
       <!-- only show 2 boxes on mobile -->
       {{ $.Scratch.Add "i" 1 }}{{ $i := $.Scratch.Get "i" }}
