@@ -149,7 +149,7 @@ func optionallySudoWrap(tx *eos.Transaction, opts *eos.TxOptions) *eos.Transacti
 func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api *eos.API) (signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction) {
 	if !viper.GetBool("global-skip-sign") {
 		textSignKeys := viper.GetStringSlice("global-offline-sign-key")
-		if textSignKeys != nil {
+		if len(textSignKeys) > 0 {
 			var signKeys []ecc.PublicKey
 			for _, key := range textSignKeys {
 				pubKey, err := ecc.NewPublicKey(key)
