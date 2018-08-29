@@ -12,7 +12,7 @@ import (
 
 // msigApproveCmd represents the `eosio.msig::approve` command
 var msigApproveCmd = &cobra.Command{
-	Use:   "approve [proposer] [proposal name] [actor@permission]",
+	Use:   "approve [proposer] [proposal name] [approver[@active]]",
 	Short: "Approve a transaction in the eosio.msig contract",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
