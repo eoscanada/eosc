@@ -6,18 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/content/en/supported-by/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/layouts/_default/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/layouts/_default/page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/layouts/_default/single.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/layouts/_default/taxonomy.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/layouts/_default/terms.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/layouts/partials/site-footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/layouts/_default/baseof.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/layouts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/layouts/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/layouts/partials/home-page-sections/features-icons.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/layouts/partials/home-page-sections/features-icons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/static/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/static/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/home-page-sections/supported-by.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/layouts/partials/home-page-sections/supported-by.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -101,12 +91,13 @@
           <entry key="_headers" value="2" />
           <entry key="css" value="30" />
           <entry key="headers" value="8" />
-          <entry key="html" value="78" />
+          <entry key="html" value="81" />
+          <entry key="js" value="1" />
           <entry key="json" value="1" />
-          <entry key="md" value="47" />
+          <entry key="md" value="48" />
           <entry key="redir" value="4" />
           <entry key="svg" value="7" />
-          <entry key="toml" value="7" />
+          <entry key="toml" value="9" />
           <entry key="txt" value="2" />
           <entry key="xml" value="1" />
         </counts>
@@ -114,28 +105,29 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="30" />
-          <entry key="HTML" value="78" />
+          <entry key="HTML" value="81" />
           <entry key="JSON" value="1" />
-          <entry key="PLAIN_TEXT" value="70" />
+          <entry key="JavaScript" value="1" />
+          <entry key="PLAIN_TEXT" value="73" />
           <entry key="SVG" value="7" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="1474" />
+          <entry key="css" value="1513" />
           <entry key="headers" value="85" />
-          <entry key="html" value="1942" />
-          <entry key="md" value="949" />
+          <entry key="html" value="2026" />
+          <entry key="md" value="999" />
           <entry key="toml" value="85" />
           <entry key="txt" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1474" />
-          <entry key="HTML" value="1942" />
-          <entry key="PLAIN_TEXT" value="1153" />
+          <entry key="CSS" value="1513" />
+          <entry key="HTML" value="2026" />
+          <entry key="PLAIN_TEXT" value="1203" />
         </counts>
       </usages-collector>
     </session>
@@ -143,28 +135,27 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/supported-by.html">
+        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
+            <state relative-caret-position="300">
+              <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+              <folding>
+                <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/features-icons.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="65" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="65" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/docs/data/titles.toml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-footer.html">
+        <entry file="file://$PROJECT_DIR$/docs/config.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="77" selection-start-column="77" selection-end-column="77" />
+            <state relative-caret-position="496">
+              <caret line="268" lean-forward="true" selection-start-line="268" selection-end-line="268" />
             </state>
           </provider>
         </entry>
@@ -172,26 +163,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="30" selection-start-column="30" selection-end-column="30" />
+            <state relative-caret-position="606">
+              <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/index.html">
+        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/boxes-small-news.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+            <state relative-caret-position="360">
+              <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/_default/baseof.html">
+        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/features-icons.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+            <state relative-caret-position="225">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/supported-by/_index.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="198" selection-start-line="7" selection-start-column="198" selection-end-line="7" selection-end-column="198" />
             </state>
           </provider>
         </entry>
@@ -206,20 +206,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/layouts/_default/baseof.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="647">
-              <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/boxes-small-news.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="34" selection-start-column="27" selection-end-column="34" />
+              <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -230,14 +221,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hugofont</find>
-      <find>.bg-blue</find>
-      <find>/dist/main.css</find>
       <find>dist/main.css</find>
       <find>bg-blue</find>
       <find>w-100</find>
@@ -265,6 +254,9 @@
       <find>paraM</find>
       <find>custom.css</find>
       <find>search</find>
+      <find>hs-search-results</find>
+      <find>description</find>
+      <find>nav</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials</dir>
@@ -290,8 +282,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/docs/data/about.yml" />
-        <option value="$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/page/single.html" />
         <option value="$PROJECT_DIR$/docs/content/about.md" />
         <option value="$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/service.html" />
         <option value="$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials/about.html" />
@@ -326,21 +316,23 @@
         <option value="$PROJECT_DIR$/docs/content/en/news/_index.md" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/home-page-sections/features-icons.html" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/boxes-small-news.html" />
-        <option value="$PROJECT_DIR$/docs/config.toml" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.headers" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/_default/baseof.html" />
         <option value="$PROJECT_DIR$/docs/layouts/index.headers" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/head-additions.html" />
-        <option value="$PROJECT_DIR$/docs/layouts/partials/boxes-small-news.html" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/home-page-sections/supported-by.html" />
         <option value="$PROJECT_DIR$/docs/layouts/index.html" />
         <option value="$PROJECT_DIR$/docs/content/en/supported-by/eos-canada.md" />
-        <option value="$PROJECT_DIR$/docs/content/en/supported-by/_index.md" />
-        <option value="$PROJECT_DIR$/docs/layouts/partials/home-page-sections/features-icons.html" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/site-footer.html" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/home-page-sections/supported-by.html" />
-        <option value="$PROJECT_DIR$/docs/static/css/custom.css" />
         <option value="$PROJECT_DIR$/docs/layouts/_default/baseof.html" />
+        <option value="$PROJECT_DIR$/docs/layouts/maintenance/essai.js" />
+        <option value="$PROJECT_DIR$/docs/config.toml" />
+        <option value="$PROJECT_DIR$/docs/layouts/partials/site-nav.html" />
+        <option value="$PROJECT_DIR$/docs/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/docs/layouts/partials/boxes-small-news.html" />
+        <option value="$PROJECT_DIR$/docs/layouts/partials/home-page-sections/features-icons.html" />
+        <option value="$PROJECT_DIR$/docs/content/en/supported-by/_index.md" />
       </list>
     </option>
   </component>
@@ -384,6 +376,27 @@
               <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
               <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
+              <item name="supported-by" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -392,6 +405,28 @@
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
               <item name="_default" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="maintenance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+              <item name="home-page-sections" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
@@ -405,73 +440,6 @@
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="_default" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="news" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-              <item name="home-page-sections" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -531,7 +499,7 @@
       <workItem from="1534945401662" duration="5991000" />
       <workItem from="1534951443027" duration="10855000" />
       <workItem from="1535122939593" duration="58543000" />
-      <workItem from="1535475808363" duration="3685000" />
+      <workItem from="1535475808363" duration="8096000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -687,11 +655,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535475105459</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="home page3">
+      <created>1535482508303</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1535482508303</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103705000" />
+    <option name="totallyTimeSpent" value="108116000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="72" y="35" width="1580" height="1011" extended-state="0" />
@@ -768,16 +743,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="home page3" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/hero.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/news/0.7-relnotes/index.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/shortcodes/articlelist.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -913,13 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/config.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3452">
-          <caret line="280" selection-start-line="280" selection-end-line="280" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/public/_headers">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -933,9 +891,6 @@
           <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.headers">
       <provider selected="true" editor-type-id="text-editor">
@@ -993,20 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/supported-by/_index.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/boxes-small-news.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="34" selection-start-column="27" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1020,13 +961,6 @@
     <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/sponsors.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/features-icons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="65" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1038,13 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" selection-start-column="30" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1068,10 +995,65 @@
     <entry file="file://$PROJECT_DIR$/docs/layouts/_default/page.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/maintenance/essai.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="56" column="211" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="211" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/layouts/_default/baseof.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="647">
-          <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
+          <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/data/titles.toml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/config.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="268" lean-forward="true" selection-start-line="268" selection-end-line="268" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/boxes-small-news.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/features-icons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/supported-by/_index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="198" selection-start-line="7" selection-start-column="198" selection-end-line="7" selection-end-column="198" />
         </state>
       </provider>
     </entry>
