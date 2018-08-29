@@ -17,15 +17,15 @@ import (
 )
 
 type Peer struct {
-	Address           string
-	chainID           eos.SHA256Bytes
-	agent             string
-	connection        net.Conn
-	reader            io.Reader
-	handshake         eos.HandshakeMessage
-	catchup           Catchup
-	listener          bool
-	mockHandshake     bool
+	Address       string
+	chainID       eos.SHA256Bytes
+	agent         string
+	connection    net.Conn
+	reader        io.Reader
+	handshake     eos.HandshakeMessage
+	catchup       Catchup
+	listener      bool
+	mockHandshake bool
 	connectionTimeout time.Duration
 }
 
