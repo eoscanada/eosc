@@ -1,5 +1,5 @@
 <div class="w-100-l center">
-  <div class="flex-ns flex-wrap justify-center center mw9 pt6 pb6 dark">
+  <div class="flex-ns flex-wrap justify-center center mw9 pt6 pb6 grey">
     {{ with .Site.GetPage "/features" }}
     {{ if .Params.features }}
     <h1 class="title w-100-l pt1 pb1 mv0 justify-center tc">{{ .Title }}</h1>
@@ -10,13 +10,10 @@
       {{ range first 3 ( sort (where .Pages "Section" "features") "Weight" "asc" ) }}
       <!-- only show 2 boxes on mobile -->
       {{ $.Scratch.Add "i" 1 }}{{ $i := $.Scratch.Get "i" }}
-      <div href="{{ .URL }}" class="dark f5 w-100 w-33-m w-33-l pv3 pv4-ns ph3 ph4-ns content-with-btn-bottom">
-        <h2>{{ .Params.title }}</h2>
+      <div href="{{ .URL }}" class=" f5 w-100 w-33-m w-33-l pv3 pv4-ns ph3 ph4-ns content-with-btn-bottom">
+        <h3 class="fw5">{{ .Params.title }}</h3>
         <h4 class="mt3 mb4">{{ .Params.description }}</h4>
         {{ .Content }}
-        <p>
-          {{ .Params.description | markdownify | truncate 100 "…"}}
-        </p>
         <a  href="{{ .URL }}" class="btn btn-default ">READ MORE</a>
 
       </div>
