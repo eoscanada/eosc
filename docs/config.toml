@@ -250,18 +250,6 @@ anchor = "smart"
     identifier = "docs"
     url = "/documentation/"
 
-  [[menu.global]]
-    name = "Themes"
-    weight = 10
-    identifier = "themes"
-    url = "https://themes.gohugo.io/"
-
-    [[menu.global]]
-      name = "Showcase"
-      weight = 20
-      identifier = "showcase"
-      url = "/showcase/"
-
   # Anything with a weight > 100 gets an external icon
   [[menu.global]]
     name = "Community"
@@ -272,12 +260,7 @@ anchor = "smart"
     url = "https://discourse.gohugo.io/"
 
 
-  [[menu.global]]
-    name = "GitHub"
-    weight = 200
-    identifier = "github"
-    post = "external"
-    url = "https://github.com/gohugoio/hugo"
+
 
 ### LANGUAGES ###
 

@@ -1,9 +1,21 @@
-h1, h2, h3, h4, h5, p {color:#49525c;font-weight: 400;}
+h1, h2, h3, h4, h5 {
+    color:#49525c;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+}
 
 footer p {color:#bbb;}
 footer a {color:#fff; text-decoration:none;}
 footer a:hover {color:#bbb; text-decoration:underline;}
-
+main a {color:#ff5512; text-decoration:none;}
+main a:hover {color:#ff5512; text-decoration:underline  ;}
+.accent-color-light, .hover-accent-color-light:hover {
+    color: #ff5512;
+}
+.nested-links a {
+    color: #ff5512;
+    text-decoration: none;
+}
 
 #hero .hero-logo img {min-width:300px;}
 #hero .hero-logo  {position:relative;padding-bottom:40px;}
@@ -56,7 +68,7 @@ footer a:hover {color:#bbb; text-decoration:underline;}
     background-image: unset;
     padding: 10px 30px;
     font-size: 14px;
-    margin-top: 0px!important;
+    /*margin-top: 0px!important;*/
     width: auto;
     box-sizing: border-box!important;
     display: inline-block;
@@ -68,6 +80,25 @@ footer a:hover {color:#bbb; text-decoration:underline;}
     height: auto;
     font-family: sans-serif;
     line-height: 1.1em;
+}
+
+.side-links  a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #ff5512;
+    border-radius: 0px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 0px;
+}
+.side-links  a:hover {
+    color: #fff;
+    background-color: #ff8057;
+}
+
+.hover-bg-gray:focus, .hover-bg-gray:hover {
+    background-color: #aaa;
 }
 
 #logo-main-nav img {max-width:120px;}
@@ -82,8 +113,11 @@ footer a:hover {color:#bbb; text-decoration:underline;}
 #lasted-news .btn {position:absolute;bottom:0px;}
 
 .bg-orange{background-color:rgb(255,85,18);}
-.bg-primary-color-dark, .hover-bg-primary-color-dark:hover {background-color:#32383f;}
+.bg-primary-color-dark, .hover-bg-primary-color-dark:hover {background-color:#32383f!important;}
 .bg-grey {background-color:#eee;}
+.b--moon-gray {border-color: #ddd;}
+/*.gray {color:#49525c;}*/
+.primary-color{color:rgb(255,85,18);}
 .dark {color:#333;}
 .content-with-btn-bottom {padding-bottom:40px;position:relative;}
 .content-with-btn-bottom .btn {position:absolute;bottom:0px;}
@@ -108,6 +142,11 @@ nav input#search-input {
     background-position-x: 10px;
 }
 nav input#search-input::placeholder {color:#fff;}
+
+.nav-top {
+    border-bottom: 1px solid #49525c;
+    background-color:#32383f;
+}
 
 .ml-auto {margin-left:auto!important;}
 

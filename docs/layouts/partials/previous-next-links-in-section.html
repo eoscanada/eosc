@@ -1,0 +1,16 @@
+{{ if or .PrevInSection .NextInSection }}
+{{/* this div holds these a tags as a unit for flex-box display */}}
+	<div class="side-links">
+		{{if .NextInSection}}
+			<a href="{{.NextInSection.Permalink }}" class="dib f6 hover-bg-light-gray " title="{{ .NextInSection.Title }} ">
+				{{ partial "svg/ic_chevron_left_black_24px.svg" (dict "fill" "#0594CB" "size" "30px") }}
+			</a>
+		{{end}}
+
+		{{if .PrevInSection}}
+			<a href="{{ .PrevInSection.Permalink }}" class="dib f6 hover-bg-light-gray " title="{{ .PrevInSection.Title }}">
+			{{ partial "svg/ic_chevron_right_black_24px.svg" (dict "fill" "#0594CB" "size" "30px") }}
+			</a>
+		{{end}}
+	</div>
+{{ end }}

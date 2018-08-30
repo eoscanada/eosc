@@ -2,3 +2,5 @@
 /dist/
 *eosc-vault.json
 analysis.txt
+.DS_Store
+docs/public/
