@@ -234,3 +234,13 @@ ul.li-check li .fa, ul.li-check li .fas {
     /*width: 0px;*/
     /*top: 5px;*/
 /*}*/
+
+
+.prose table th {
+    background-color: #aaa;
+    border-bottom: 1px solid #aaa;
+    color: #fff;
+    font-weight: 400;
+    text-align: left;
+    padding: .375em .5em;
+}

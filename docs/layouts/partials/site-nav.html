@@ -13,6 +13,9 @@
       {{ range .Site.Menus.global }}
         <li class="white f5 dib mr4" role="menuitem">
           <a href="{{ .URL }}" class="dim link{{ if $currentPage.IsMenuCurrent "global" . }} white {{else}} white{{ end }}">
+            {{ .Name }}
+            {{ $post_status := printf "%s" .Post }}
+            {{ if eq $post_status "external" }}
           <i class="fas fa-external-link-alt f7 ml1"></i>
             {{ end }}
           </a>
