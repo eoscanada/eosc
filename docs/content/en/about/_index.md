@@ -12,9 +12,6 @@ menu:
     parent: "about"
     weight: 1
 weight: 1
-draft: false
-aliases: [/about-hugo/,/docs/]
+draft: true
 toc: false
 ---
-
-Hugo is not your average static site generator.

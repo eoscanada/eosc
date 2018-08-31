@@ -5,7 +5,7 @@ hero_logo: eosc-logo-02.svg
 hero_title: Easy to use tools for securely storing your private keys and casting your vote
 hero_subtitle:
 button_text: DOWNLOAD
-button_link: https\://github.com/gohugoio/hugo
+button_link: https\://github.com/eoscanada/eosc/releases
 features_title: "Values title"
 features_subtitle: "Values subtitle"
 features:
@@ -51,4 +51,4 @@ sections:
     copy: "Hugo's Go-based templating provides just the right amount of logic to build anything from the simple to complex. If you prefer Jade/Pug-like syntax, you can also use Amber, Ace, or any combination of the three."
 ---
 
-Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again.
+`eosc` is an open source swiss-army knife for the EOS.IO blockchain.

@@ -1,9 +1,9 @@
 ---
-title: Hugo Documentation
-linktitle: Hugo
-description: Hugo is the world's fastest static website engine. It's written in Go (aka Golang) and developed by bep, spf13 and friends.
-date: 2017-02-01
-publishdate: 2017-02-01
+title: eosc documentation
+linktitle: eosc
+description: eosc is an open source swiss-army knife for the EOS.IO blockchain. It is written in Go and runs on all platforms.
+date: 2018-09-01
+publishdate: 2018-09-01
 menu:
   main:
     parent: "section name"
@@ -15,6 +15,7 @@ aliases: []
 toc: false
 layout: documentation-home
 ---
-Hugo is the **world's fastest static website engine.** It's written in Go (aka Golang) and developed by [bep](https://github.com/bep), [spf13](https://github.com/spf13) and [friends](https://github.com/gohugoio/hugo/graphs/contributors). 
+
+`eosc` is an open source swiss-army knife for the EOS.IO blockchain. It is written in Go and runs on all platforms. It is developed by [EOS Canada](https://www.eoscanada.com) and [friends](https://github.com/eoscanada/eosc/graphs/contributors)
 
 Below you will find some of the most common and helpful pages from our documentation.

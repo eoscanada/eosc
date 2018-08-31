@@ -124,7 +124,7 @@ anchor = "smart"
 # High level items
 
 [[menu.docs]]
-  name = "About Hugo"
+  name = "About eosc"
   weight = 1
   identifier = "about"
   url = "/about/"
