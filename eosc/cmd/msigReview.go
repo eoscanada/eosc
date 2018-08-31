@@ -59,7 +59,7 @@ var msigReviewCmd = &cobra.Command{
 			}
 		}
 		if tx == nil {
-			errorCheck("transaction", fmt.Errorf("not found"))
+			errorCheck("multisig proposal", fmt.Errorf("not found"))
 		}
 	},
 }
