@@ -58,6 +58,9 @@ eosc tx unpack
 eosc tx pack-actions
 eosc tx unpack-actions
 eosc tx review
+eosc tx combine [write_to.json] [tx1.json] [tx2.json] [tx3.json]
+eosc tx combine [write_to.json] [tx1.json] [tx2.json] [tx3.json]
+eosc tx combine [write_to.json] [tx1.json] [tx2.json] [tx3.json]
 
 eosc system delegatebw
 eosc system newaccount

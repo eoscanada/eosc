@@ -48,6 +48,7 @@ var msigReviewCmd = &cobra.Command{
 				errorCheck("unmarshalling packed transaction", err)
 
 				ana := analysis.NewAnalyzer(viper.GetBool("msig-review-cmd-dump"))
+				ana.API = api
 				err = ana.AnalyzeTransaction(tx)
 				errorCheck("analyzing", err)
 

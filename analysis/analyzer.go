@@ -20,6 +20,7 @@ import (
 )
 
 type Analyzer struct {
+	API     *eos.API
 	Verbose bool
 	Writer  *bytes.Buffer
 }
@@ -187,8 +188,18 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 		}
 
 	default:
-
-		a.Pf("Hex data: %s\n", hex.EncodeToString(act.ActionData.HexData))
+		data, err := a.API.ABIBinToJSON(act.Account, eos.Name(act.Name), act.ActionData.HexData)
+		if err != nil {
+			a.Pf("Couldn't decode ABI: %s\n", err)
+			a.Pf("Hex data: %s\n", hex.EncodeToString(act.ActionData.HexData))
+		}
+		j, err := json.MarshalIndent(data, "", "  ")
+		if err != nil {
+			a.Pf("Couldn't marshal JSON: %s\n", err)
+			a.Pf("Hex data: %s\n", hex.EncodeToString(act.ActionData.HexData))
+		}
+		a.Pf("Data:\n%s\n", string(j))
+		a.Pln()
 		return nil
 	}
 	a.Pln()
