@@ -1,4 +1,4 @@
-`eosc` command-line swiss-knife
+`eosc` command-line swiss-army-knife
 -------------------------------
 
 [点击查看中文](./README-cn.md)
@@ -12,7 +12,7 @@ keys.
 It is based on the `eos-go` library, used in `eos-bios`.
 
 This first release holds simple tools, but a whole `cleos`-like
-swiss-knife is being developed and will be released shortly after
+swiss-army-knife is being developed and will be released shortly after
 mainnet launch.  Source code for most operations is already available
 in this repository.
 
