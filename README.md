@@ -348,4 +348,4 @@ toolchain.  `eosc` works on Windows where `cleos` doesn't.  `eosc`
 contains a wallet inside, and is able to use it to sign some
 transactions, `cleos` interfaces with yet another program (`keosd`) in
 order to sign transactions, making it more complex to use. `eosc`
-brings `keosd` and `cleos` together in a swiss-knify package.
+brings `keosd` and `cleos` together in a swiss-army-knify package.
