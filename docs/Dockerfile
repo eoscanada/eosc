@@ -3,6 +3,7 @@ FROM jojomi/hugo:latest as hugo-builder
 # RUN mkdir -p /src
 
 WORKDIR /src
+RUN ls -l
 COPY . /src
 RUN hugo -s /src
 
