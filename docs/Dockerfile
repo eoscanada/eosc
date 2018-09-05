@@ -1,11 +1,10 @@
-FROM jojomi/hugo:latest as hugo-builder
+FROM jojomi/hugo:0.48 as hugo-builder
 
-# RUN mkdir -p /src
 
 WORKDIR /src
 COPY ./docs/ /src
 RUN mkdir /src/public
-RUN hugo -s /src -d /src/public --renderToDisk
+RUN hugo -s /src -d /src/public
 RUN ls -l /src
 
 
