@@ -11,6 +11,27 @@ steps:
     '.'
   ]
 
+
+- id: docker-push
+  name: gcr.io/cloud-builders/docker
+  args: [
+    'push',
+    'gcr.io/$PROJECT_ID/eosc-website:$SHORT_SHA'
+  ]
+
+- id: kubectl-deploy
+  name: gcr.io/cloud-builders/kubectl
+  args:
+  - set
+  - image
+  - deployment
+  - eosc-website
+  - eosc-website=gcr.io/$PROJECT_ID/eosc-website:$SHORT_SHA
+  env:
+  - CLOUDSDK_COMPUTE_ZONE=northamerica-northeast1
+  - CLOUDSDK_CONTAINER_CLUSTER=k8s-yul-public
+  - CLOUDSDK_CORE_PROJECT=eoscanada-public
+
 images:
 - gcr.io/$PROJECT_ID/eosc-website:latest
 - gcr.io/$PROJECT_ID/eosc-website:$SHORT_SHA
