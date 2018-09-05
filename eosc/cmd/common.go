@@ -197,7 +197,6 @@ func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.Pa
 		fmt.Println(string(cnt))
 		fmt.Println("---")
 		fmt.Printf("Transaction written to %q\n", outputTrx)
-		fmt.Printf("Sign offline with: --offline-chain-id=%s\n", hex.EncodeToString(chainID))
 		fmt.Println("Above is a pretty-printed representation of the outputted file")
 	} else {
 		if packedTx == nil {

@@ -15,8 +15,8 @@ var Version string
 // RootCmd represents the eosc command
 var RootCmd = &cobra.Command{
 	Use:   "eosc",
-	Short: "eosc is an EOS command-line swiss knife",
-	Long: `eosc is an EOS command-line swiss knife
+	Short: "eosc is an EOS command-line Swiss Army knife",
+	Long: `eosc is a command-line Swiss Army knife for EOS - by EOS Canada
 
 It contains a Vault (or a wallet), a tool for voting, tools for end
 users and tools for Block Producers.
