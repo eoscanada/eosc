@@ -4,8 +4,7 @@ FROM jojomi/hugo:0.48 as hugo-builder
 WORKDIR /src
 COPY ./docs/ /src
 RUN mkdir /src/public
-RUN hugo
-# RUN hugo -s /src -d /src/public
+RUN hugo -s /src -d /src/public
 RUN ls -l /src
 
 
