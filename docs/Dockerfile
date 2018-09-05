@@ -6,6 +6,8 @@ WORKDIR /src
 COPY ./docs/ /src
 RUN ls -l
 RUN hugo -s /src
+RUN ls -l /src
+RUN ls -l /
 
 
 
