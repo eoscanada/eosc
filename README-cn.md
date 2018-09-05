@@ -1,4 +1,4 @@
-`eosc` 命令行工具 (瑞士军刀)
+`eosc` 像瑞士军刀一样的多功能命令行工具
 ----------------------------
 
 `eosc` 是一个跨平台的命令行工具 (支持 Windows, Mac 和 Linux)，你可以通过这个工具实现与 EOS.IO 区块链的交互。
@@ -27,25 +27,26 @@ go get -u -v github.com/eoscanada/eosc/eosc
 投票!
 -----
 
-安装完成后运行如下命令导入你的私钥:
+安装完成后运行下面命令来导入你的私钥:
 
 ```
 eosc vault create --import
 ```
 
-接着运行如下命令获取投票的帮助信息:
+接着再运行下面命令获取投票的帮助信息:
 
 ```
 eosc vote --help
 ```
 
-运行如下命令为你的候选者投票:
+然后运行如下命令为你的候选者投票: 
 
 ```
 eosc vote producers [your account] [producer1] [producer2] [producer3]
 ```
+命令中参数依次为: [你的账户名] [你要投票的BP1] [你要投票的BP2] [你要投票的BP3] （你共可以为30个BP投票）
 
-确保你的版本为 `v0.7.0` 或高于此版本:
+确保你的版本是 `v0.7.0` 以上的，你可以用下面的命令检查你的版本:
 
 ```
 eosc version
@@ -61,12 +62,12 @@ eosc 私钥钱包
 
 
 
-将私钥导入创建的钱包
+将已有私钥导入新建的钱包
 ====================
 
 你可以通过 `vault create --import` 命令 **导入外部生成的私钥**。
 
-该交互式命令会提示粘贴你的私钥，导入时私钥并不会 **显示** 在屏幕上,导入完成后命令将会回显公钥（由导入的私钥衍生出来）以方便你进行交叉验证。
+这个交互式命令会要你粘贴你的私钥，导入时私钥并 **不会显示在屏幕上**，导入完成后命令将会再次显示（由导入的私钥衍生出来）公钥，以方便你进行交叉验证。
 
 ```
 $ eosc vault create --import -c "Imported key"
@@ -78,15 +79,27 @@ Imported 1 keys. Let's secure them before showing the public keys.
 Wallet file "./eosc-vault.json" created. Here are your public keys:
 - EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 ```
+代码指令中文翻译：
 
-你的私钥将采用口令 (passphrase) 进行加密保护，参考后面的章节获取该工具所使用的加密库。
+```
+$ eosc vault create --import -c "Imported key"
+输入密语来加密你的保险库: **** 
+确认你的密语: ****
+输入你的第一个私钥: ****
+输入你的第二个私钥或按回车键结束输入:
+1组密钥导入成功。 在显示公钥前让我们把它保管好。
+钱包文件 "./eosc-vault.json" 已创建. 这是你的公钥:
+- EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+```
+
+你的私钥将采用密语 (passphrase) 进行加密保护，参考后面的章节获取该工具所使用的加密库。
 
 
 
-创建钱包的同时生成私钥
+创建钱包的同时生成公钥
 ======================
 
-创建钱包的同时生成 2 个私钥:
+创建钱包的同时生成 2 个公钥:
 
 ```
 $ eosc vault create --keys 2
@@ -99,7 +112,7 @@ Wallet file "./eosc-vault.json" created. Here are your public keys:
 ```
 
 
-将私钥添加至已存在的钱包
+将已有的私钥添加至已存在的钱包
 ========================
 
 将外部生成的私钥导入当前钱包:
@@ -117,13 +130,13 @@ Wallet file "./eosc-vault.json" written. Here are your ADDED public keys:
 Total keys writteN: 3
 ```
 
-你可以在没有网络或离线的环境下运行钱包命令。
-生成的钱包文件 `eosc-vault.json` 是被加密处理的，因此你可以放心的对它进行存储。
+你可以离线运行钱包命令。
+生成的钱包文件 `eosc-vault.json` 是被加密处理的，因此你可以放心的把它存起来，他以后就是代替你私钥的凭证。
 
 投票
 ----
 
-有了 `eosc-vault.json` 你就可以投票了:
+`eosc-vault.json` 成功生成之后，你就可以投票了:
 
 ```
 $ eosc vote producers youraccount eoscanadacom someotherfavo riteproducer
@@ -135,7 +148,7 @@ Done
 上面的命令会在本地对投票交易进行签名处理，然后通过节点 `https://mainnet.eoscanada.com` 将交易发送至主网络。
 你也可以通过 `-u` 或 `--api-url` 参数指定主网上的其他节点服务器。
 
-在这里你可以查看你的账户信息 https://eosauthority.com/account
+在这里你可以查看你的账户信息 https://eosquery.com
 
 
 
@@ -153,16 +166,157 @@ Done
 
 
 
-正在开发的新功能
-----------------
-
-* 通过 `serve` 选项使得命令行工具可以在签名每一笔交易前提示确认信息。
-* 增加 `--accept` 参数以支持自动接收签名 (仅限监听本地地址)
-* 基于 [Shamir Secret Sharing](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing) 编码的钱包，支持快速和方便的多重签名。
-* 一个完整的工具包，用来帮助区块生产者、开发人员以及终端用户完成他们的日常工作。
+## 离线交易签名
 
 
-问答
+`eosc` 具备管理一个 airtight 脱机钱包所需的一切。
+这是一个示例用法。 在 `/tmp/airtight` 中, 运行:
+
+* `eosc vault create --import --comment "Airtight wallet"`
+
+它会输出:
+```
+PLEASE READ:
+We are now going to ask you to paste your private keys, one at a time.
+They will not be shown on screen.
+Please verify that the public keys printed on screen correspond to what you have noted
+
+Paste your first private key:       <em>[PASTE PRIVATE KEY HERE]</em>
+- Scanned private key corresponding to EOS5J53bNtH5H1bJTyP237fr5LF6eQSQohfGY5iMCgpC4HpXApJBr
+Paste your next private key or hit ENTER if you are done:           <em>[PASTE SECOND PRIVATE KEY HERE]</em>
+- Scanned private key corresponding to EOS6tgsdv6S7N1GYWgX8QEBAsanAwXwuaEkv11GGtteyk5ELqSzVP
+Paste your next private key or hit ENTER if you are done:           <em>[HIT ENTER HERE]</em>
+Imported 2 keys.
+
+You will be asked to provide a passphrase to secure your newly created vault.
+Make sure you make it long and strong.
+
+Enter passphrase to encrypt your vault:       <em>[ENTER YOUR PASSPHRASE HERE]</em>
+Confirm passphrase:                           <em>[RE-ENTER YOUR PASSPHRASE HERE]</em>
+
+Wallet file "./eosc-vault.json" written to disk.
+Here are the keys that were ADDED during this operation (use `list` to see them all):
+- EOS5J53bNtH5H1bJTyP237fr5LF6eQSQohfGY5iMCgpC4HpXApJBr
+- EOS6tgsdv6S7N1GYWgX8QEBAsanAwXwuaEkv11GGtteyk5ELqSzVP
+Total keys stored: 2
+```
+
+这一操作会创建 `eosc-vault.json` 钱包，而且完全可以离线执行，不需要碰到网络上的任何东西。
+
+好，那让我们来实际操作它试试。从一个有互联网访问权限的计算机发出这些命令（就是说这些命令无法访问您的eosc保险库钱包）:
+
+* `eosc transfer airtight11111 cancancan123 1.0000 -m "Can't say I haven't paid you now" --write-transaction transaction.json --skip-sign --expiration 3600`
+
+输出就会是这样:
+
+```
+{
+  "expiration": "2018-08-27T04:18:43",
+  "ref_block_num": 43579,
+  "ref_block_prefix": 3787183056,
+  "max_net_usage_words": 0,
+  "max_cpu_usage_ms": 0,
+  "delay_sec": 0,
+  "context_free_actions": [],
+  "actions": [
+    {
+      "account": "eosio.token",
+      "name": "transfer",
+      "authorization": [
+        {
+          "actor": "airtight1111",
+          "permission": "active"
+        }
+      ],
+      "data": {
+        "from": "airtight1111",
+        "to": "cancancan123",
+        "quantity": "0.0001 EOS",
+        "memo": "Can't say I haven't paid you now"
+      }
+    }
+  ],
+  "transaction_extensions": [],
+  "signatures": [],
+  "context_free_data": []
+}
+---
+Transaction written to "../transaction.json"
+Sign offline with: --offline-chain-id=5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191
+Above is a pretty-printed representation of the outputted file
+```
+
+好，现在复制 `transaction.json` 文件到另外一台计算机上。注意上面输出的 `--offline-chain-id=...`。
+
+在一个 airtight 计算机上运行:
+
+* `eosc tx sign path/to/transaction.json --offline-sign-key EOS6tgsdv6S7N1GYWgX8QEBAsanAwXwuaEkv11GGtteyk5ELqSzVP  --offline-chain-id=5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191 --write-transaction signedtx.json`
+
+你想输入几个 `--offline-sign-key` 就可以输几个，你可以用 `,` (逗号) 来分隔每个条目，例如: `--offline-sign-key EOS6tgsdv6S7N1GYWgX8QEBAsanAwXwuaEkv11GGtteyk5ELqSzVP,EOS5J53bNtH5H1bJTyP237fr5LF6eQSQohfGY5iMCgpC4HpXApJBr`。这时的输出是:
+
+```
+Enter passphrase to decrypt your vault:
+{
+  "expiration": "2018-08-27T04:18:43",
+  "ref_block_num": 43579,
+  "ref_block_prefix": 3787183056,
+  "max_net_usage_words": 0,
+  "max_cpu_usage_ms": 0,
+  "delay_sec": 0,
+  "context_free_actions": [],
+  "actions": [
+    {
+      "account": "eosio.token",
+      "name": "transfer",
+      "authorization": [
+        {
+          "actor": "airtight1111",
+          "permission": "active"
+        }
+      ],
+      "data": "104208b93197af33304498064d83a641010000000000000004454f53000000002043616e277420736179204920686176656e2774207061696420796f75206e6f77"
+    }
+  ],
+  "transaction_extensions": [],
+  "signatures": [
+    "SIG_K1_KbsvdjfXTzbn7DaghCbFyaxXnv9BHJaAVWZkeJ3AbvnznNgipSLj7BbZajZ1ECZEWKSMFtMbuqfUWQGq2tDzW2n7Fz5KTV",
+    "SIG_K1_K24N3kUfTLMJGwUUWV2qNiyhxAJsbVtpXh2KUj3SHGLTivPBru46QYX9v9gQj7G2yKHp6eZ786hHfJwuzjeZFF7atPfpTY"
+  ],
+  "context_free_data": []
+}
+---
+Transaction written to "signedtx.json"
+Sign offline with: --offline-chain-id=5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191
+Above is a pretty-printed representation of the outputted file
+```
+
+你现在可一个把 `signedtx.json` 放到一个在线的计算机上了，然后运行:
+
+* `eosc tx push signedtx.json`
+
+这个应该是成功的，假如没有，请参照下面的解释, in which case you're done, or fail with some of these:
+
+* `transaction bears irrelevant signatures from these keys: [\"EOS5J53bNtH5H1bJTyP237fr5LF6eQSQohfGY5iMCgpC4HpXApJBr\"]`: 这意味着你无需使用此密钥签名即可授权你在交易的操作中指定的 `actor@permission`。
+
+* `UnAuthorized` errors: this means you have not signed the
+  transaction with the keys required to authorize the
+  `actor@permission` specified in the transaction's actions.
+
+* `Transaction's reference block did not match.`: this means you
+  didn't create the transaction from the same chain you're trying to
+  push it to.
+
+* `expired transaction`: you need to do the whole loop within the
+  timeframe of the original `--expiration`. If you give `--expiration`
+  more than an hour, note that you can only submit the transaction to
+  the chain in the last hour of expiration.
+
+* some other assertion errors, which are normal errors that would have
+  occurred if you tried to sign it online, investigate with the
+  contract in question.
+
+
+常见问题
 ----
 
 问题: 为什么不使用 `cleos` ?
