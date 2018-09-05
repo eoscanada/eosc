@@ -11,6 +11,7 @@ steps:
     '.'
   ]
 
+
 - id: docker-push
   name: gcr.io/cloud-builders/docker
   args: [
