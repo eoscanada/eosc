@@ -15,7 +15,7 @@ import (
 
 var txSignCmd = &cobra.Command{
 	Use:   "sign [transaction.yaml|json]",
-	Short: "Sign a transaction produced by --output-transaction and submit it to the chain (unles s--output-transaction is passed again).",
+	Short: "Sign a transaction produced by --write-transaction and submit it to the chain (unless --write-transaction is passed again).",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		filename := args[0]

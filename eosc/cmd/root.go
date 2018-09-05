@@ -45,15 +45,15 @@ func init() {
 	RootCmd.PersistentFlags().StringP("api-url", "u", "https://mainnet.eoscanada.com", "API endpoint of eos.io blockchain node")
 	RootCmd.PersistentFlags().StringSliceP("permission", "p", []string{}, "Permission to sign transactions with. Optionally specify more than one, or separate by comma")
 	RootCmd.PersistentFlags().StringP("kms-gcp-keypath", "", "", "Path to the cryptoKeys within a keyRing on GCP")
-	RootCmd.PersistentFlags().StringP("output-transaction", "", "", "Do not broadcast the transaction produced, but write it in json to the given filename instead.")
+	RootCmd.PersistentFlags().StringP("write-transaction", "", "", "Do not broadcast the transaction produced, but write it in json to the given filename instead.")
 	RootCmd.PersistentFlags().StringP("offline-head-block", "", "", "Provide a recent block ID (long-form hex) for TaPoS. Use all --offline options to sign transactions offline.")
 	RootCmd.PersistentFlags().StringP("offline-chain-id", "", "", "Chain ID to sign transaction with. Use all --offline- options to sign transactions offline.")
 	RootCmd.PersistentFlags().StringSliceP("offline-sign-key", "", []string{}, "Public key to use to sign transaction. Must be in your vault or wallet. Use all --offline- options to sign transactions offline.")
-	RootCmd.PersistentFlags().BoolP("skip-sign", "", false, "Do not sign the transaction. Use with --output-transaction.")
+	RootCmd.PersistentFlags().BoolP("skip-sign", "", false, "Do not sign the transaction. Use with --write-transaction.")
 	RootCmd.PersistentFlags().IntP("expiration", "", 30, "Set time before transaction expires, in seconds. Defaults to 30 seconds.")
-	RootCmd.PersistentFlags().BoolP("sudo-wrap", "", false, "Wrap the transaction in a eosio.sudo exec. Useful to BPs, with --output-transaction and --skip-sign to then submit as a multisig proposition.")
+	RootCmd.PersistentFlags().BoolP("sudo-wrap", "", false, "Wrap the transaction in a eosio.sudo exec. Useful to BPs, with --write-transaction and --skip-sign to then submit as a multisig proposition.")
 
-	for _, flag := range []string{"vault-file", "api-url", "kms-gcp-keypath", "wallet-url", "permission", "expiration", "output-transaction", "skip-sign", "offline-head-block", "offline-chain-id", "offline-sign-key", "sudo-wrap"} {
+	for _, flag := range []string{"vault-file", "api-url", "kms-gcp-keypath", "wallet-url", "permission", "expiration", "write-transaction", "skip-sign", "offline-head-block", "offline-chain-id", "offline-sign-key", "sudo-wrap"} {
 		if err := viper.BindPFlag("global-"+flag, RootCmd.PersistentFlags().Lookup(flag)); err != nil {
 			panic(err)
 		}

@@ -29,7 +29,7 @@ encrypted with your passphrase, on the Airtight Computer's disk.
 5. [ONLINE COMPUTER] Prepare your `voteproducer` transaction with:
 
 ```
-eosc vote producers YOURACCOUNT PRODUCER1 PRODUCER2 PRODUCER3... --output-transaction unsigned-tx.json --skip-sign --expiration 3600
+eosc vote producers YOURACCOUNT PRODUCER1 PRODUCER2 PRODUCER3... --write-transaction unsigned-tx.json --skip-sign --expiration 3600
 ```
 
 This will create a file `unsigned-tx.json` containing the
@@ -43,7 +43,7 @@ roundtrip to happen.
 7. [AIRTIGHT COMPUTER] Sign the transaction by replacing `EOS6tg...` by the Public Key that matches the private key in your Vault (and the YOURACCOUNT account authority):
 
 ```
-eosc tx sign unsigned-tx.json --offline-sign-key EOS6tg..... --output-transaction signed-tx.json
+eosc tx sign unsigned-tx.json --offline-sign-key EOS6tg..... --write-transaction signed-tx.json
 ```
 
 This command will write `signed-tx.json` on disk.

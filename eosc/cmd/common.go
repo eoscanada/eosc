@@ -175,32 +175,22 @@ func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api
 }
 
 func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes, api *eos.API) {
-	outputTrx := viper.GetString("global-output-transaction")
+	writeTrx := viper.GetString("global-write-transaction")
 
-	if outputTrx != "" {
+	if writeTrx != "" {
 		cnt, err := json.MarshalIndent(signedTx, "", "  ")
 		errorCheck("marshalling json", err)
 
 		annotatedCnt, err := sjson.Set(string(cnt), "chain_id", hex.EncodeToString(chainID))
 		errorCheck("adding chain_id", err)
 
-		err = ioutil.WriteFile(outputTrx, []byte(annotatedCnt), 0644)
+		err = ioutil.WriteFile(writeTrx, []byte(annotatedCnt), 0644)
 		errorCheck("writing output transaction", err)
 
-		for _, act := range signedTx.Actions {
-			act.SetToServer(false)
-		}
-
-		cnt, err = json.MarshalIndent(signedTx, "", "  ")
-		errorCheck("marshalling json", err)
-
-		fmt.Println(string(cnt))
-		fmt.Println("---")
-		fmt.Printf("Transaction written to %q\n", outputTrx)
-		fmt.Println("Above is a pretty-printed representation of the outputted file")
+		fmt.Printf("Transaction written to %q\n", writeTrx)
 	} else {
 		if packedTx == nil {
-			fmt.Println("A signed transaction is required if you want to broadcast it. Remove --skip-sign (or add --output-transaction ?)")
+			fmt.Println("A signed transaction is required if you want to broadcast it. Remove --skip-sign (or add --write-transaction ?)")
 			os.Exit(1)
 		}
 

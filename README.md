@@ -211,7 +211,7 @@ completely offline as it does not touch the network at all.
 
 Now, let's try using it. Issue those commands from a computer with internet access (which in turn does not have access to your eosc vault wallet):
 
-* `eosc transfer airtight11111 cancancan123 1.0000 -m "Can't say I haven't paid you now" --output-transaction transaction.json --skip-sign --expiration 3600`
+* `eosc transfer airtight11111 cancancan123 1.0000 -m "Can't say I haven't paid you now" --write-transaction transaction.json --skip-sign --expiration 3600`
 
 This will output:
 
@@ -256,7 +256,7 @@ Now copy the `transaction.json` file to another computer. Note the `--offline-ch
 
 On the airtight computer, run:
 
-* `eosc tx sign path/to/transaction.json --offline-sign-key EOS6tgsdv6S7N1GYWgX8QEBAsanAwXwuaEkv11GGtteyk5ELqSzVP  --offline-chain-id=5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191 --output-transaction signedtx.json`
+* `eosc tx sign path/to/transaction.json --offline-sign-key EOS6tgsdv6S7N1GYWgX8QEBAsanAwXwuaEkv11GGtteyk5ELqSzVP  --offline-chain-id=5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191 --write-transaction signedtx.json`
 
 You can enter as many `--offline-sign-key` as you want, or separate each entry with a `,` (comma), like this: `--offline-sign-key EOS6tgsdv6S7N1GYWgX8QEBAsanAwXwuaEkv11GGtteyk5ELqSzVP,EOS5J53bNtH5H1bJTyP237fr5LF6eQSQohfGY5iMCgpC4HpXApJBr`.  This will output:
 
