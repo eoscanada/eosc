@@ -7,10 +7,43 @@
   <component name="ChangeListManager">
     <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/_index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/_index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/_index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/about/_index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/benefits.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/about/benefits.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/features.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/hugo-and-gdpr.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/license.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/new-in-032/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/what-is-hugo.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/_index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/_index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/bundling.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/bundling.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/fingerprint.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/fingerprint.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/introduction.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/introduction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/minification.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/minification.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/postcss.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/postcss.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/resource-from-string.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/resource-from-string.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/resource-from-template.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/resource-from-template.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/hugo-pipes/scss-sass.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/hugo-pipes/scss-sass.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/content/en/tools/search.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/tools/search.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/asciicast.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/chroma-lexers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/code.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/datatable-filtered.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/datatable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/directoryindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/docfile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/exfile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/exfm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/gh.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/ghrepo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/imgproc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/nohighlight.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/note.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/output.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/readfile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/tip.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/todo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/warning.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/layouts/shortcodes/yt.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -96,10 +129,10 @@
           <entry key="css" value="30" />
           <entry key="gitignore" value="2" />
           <entry key="headers" value="8" />
-          <entry key="html" value="108" />
+          <entry key="html" value="113" />
           <entry key="js" value="3" />
-          <entry key="json" value="3" />
-          <entry key="md" value="59" />
+          <entry key="json" value="5" />
+          <entry key="md" value="69" />
           <entry key="redir" value="4" />
           <entry key="svg" value="7" />
           <entry key="toml" value="15" />
@@ -110,10 +143,10 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="30" />
-          <entry key="HTML" value="108" />
-          <entry key="JSON" value="3" />
+          <entry key="HTML" value="113" />
+          <entry key="JSON" value="5" />
           <entry key="JavaScript" value="3" />
-          <entry key="PLAIN_TEXT" value="92" />
+          <entry key="PLAIN_TEXT" value="102" />
           <entry key="SVG" value="7" />
           <entry key="XML" value="1" />
         </counts>
@@ -123,8 +156,9 @@
           <entry key="css" value="1690" />
           <entry key="gitignore" value="5" />
           <entry key="headers" value="85" />
-          <entry key="html" value="2475" />
-          <entry key="md" value="1008" />
+          <entry key="html" value="2476" />
+          <entry key="json" value="1" />
+          <entry key="md" value="1039" />
           <entry key="toml" value="85" />
           <entry key="txt" value="62" />
         </counts>
@@ -132,8 +166,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="1690" />
-          <entry key="HTML" value="2475" />
-          <entry key="PLAIN_TEXT" value="1245" />
+          <entry key="HTML" value="2476" />
+          <entry key="JSON" value="1" />
+          <entry key="PLAIN_TEXT" value="1276" />
         </counts>
       </usages-collector>
     </session>
@@ -141,62 +176,54 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/Gruntfile.js">
+        <entry file="file://$PROJECT_DIR$/docs/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+            <state relative-caret-position="-170" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/data/references.toml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/data/titles.toml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/data/articles.toml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/contribute/_index.md">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/maintenance/_index.md">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/data/homepagetweets.toml">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/documentation.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3090" />
+            <state relative-caret-position="240">
+              <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/organization/index.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/data/generatedhelp.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -212,12 +239,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>two</find>
-      <find>Two Bug Fixes Au</find>
-      <find>Two Bug</find>
-      <find>organi</find>
-      <find>org</find>
-      <find>Muli</find>
       <find>icon</find>
       <find>muli-latin-200</find>
       <find>baseof</find>
@@ -242,6 +263,12 @@
       <find>algolia-autocomplete</find>
       <find>nav</find>
       <find>grunt</find>
+      <find>build-performance.md</find>
+      <find>build-performance</find>
+      <find>imgproc.html</find>
+      <find>gohugoioTheme</find>
+      <find>about/new-in-032/index.md</find>
+      <find>new-in-032</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials</dir>
@@ -251,7 +278,11 @@
       <dir>$PROJECT_DIR$/docs/content/en</dir>
       <dir>$PROJECT_DIR$/docs/content/en/content-management/organization</dir>
       <dir>$PROJECT_DIR$/docs/themes/gohugoioTheme/static/dist</dir>
+      <dir>$PROJECT_DIR$/docs/data</dir>
       <dir>$PROJECT_DIR$/docs</dir>
+      <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/page</dir>
+      <dir>$PROJECT_DIR$/docs/content</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -267,13 +298,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/hero.html" />
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_font-family.css" />
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-top.html" />
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-links.html" />
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/site-search.html" />
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/social-follow.html" />
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/main.css" />
         <option value="$PROJECT_DIR$/docs/content/en/features/eosc-vote.md" />
         <option value="$PROJECT_DIR$/docs/content/en/features/eosc-vault.md" />
         <option value="$PROJECT_DIR$/docs/content/en/features/cross-platform.md" />
@@ -318,6 +342,13 @@
         <option value="$PROJECT_DIR$/docs/package-lock.json" />
         <option value="$PROJECT_DIR$/docs/Gruntfile.js" />
         <option value="$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md" />
+        <option value="$PROJECT_DIR$/docs/content/en/templates/_index.md" />
+        <option value="$PROJECT_DIR$/docs/layouts/shortcodes/imgproc.html" />
+        <option value="$PROJECT_DIR$/docs/content/en/about/new-in-032/index.md" />
+        <option value="$PROJECT_DIR$/docs/content/en/news/0.32-relnotes/index.md" />
+        <option value="$PROJECT_DIR$/docs/content/en/about/_index.md" />
+        <option value="$PROJECT_DIR$/docs/content/en/about/benefits.md" />
+        <option value="$PROJECT_DIR$/docs/data/generatedhelp.json" />
       </list>
     </option>
   </component>
@@ -327,20 +358,16 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/docs/node_modules" />
-  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/docs/package.json" />
       <path value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="77" />
     <option name="y" value="37" />
-    <option name="width" value="1580" />
-    <option name="height" value="1011" />
+    <option name="width" value="1425" />
+    <option name="height" value="975" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -380,7 +407,74 @@
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="content" type="462c0819:PsiDirectoryNode" />
               <item name="en" type="462c0819:PsiDirectoryNode" />
-              <item name="troubleshooting" type="462c0819:PsiDirectoryNode" />
+              <item name="about" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
+              <item name="content-management" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
+              <item name="content-management" type="462c0819:PsiDirectoryNode" />
+              <item name="organization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="shortcodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -394,21 +488,23 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/docs/layouts/partials/home-page-sections" />
-      <recent name="$PROJECT_DIR$/docs/layouts/partials" />
-      <recent name="$PROJECT_DIR$/docs/static/css" />
-      <recent name="$PROJECT_DIR$/docs/data" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/docs/layouts/partials" />
       <recent name="$PROJECT_DIR$/docs/layouts" />
       <recent name="$PROJECT_DIR$/docs/content/en/supported-by" />
       <recent name="$PROJECT_DIR$/docs/layouts/partials/home-page-sections" />
       <recent name="$PROJECT_DIR$/docs/content/en/features" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/content/en/about" />
+      <recent name="$PROJECT_DIR$/docs/layouts/partials/home-page-sections" />
+      <recent name="$PROJECT_DIR$/docs/layouts/partials" />
+      <recent name="$PROJECT_DIR$/docs/static/css" />
+      <recent name="$PROJECT_DIR$/docs/data" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -441,7 +537,7 @@
       <workItem from="1534951443027" duration="10855000" />
       <workItem from="1535122939593" duration="58543000" />
       <workItem from="1535475808363" duration="35622000" />
-      <workItem from="1536097961991" duration="3977000" />
+      <workItem from="1536097961991" duration="7873000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -618,17 +714,24 @@
       <option name="project" value="LOCAL" />
       <updated>1535650984208</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="articles list et single 1">
+      <created>1536167944700</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1536167944700</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139619000" />
+    <option name="totallyTimeSpent" value="143515000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="77" y="37" width="1580" height="1011" extended-state="0" />
+    <frame x="77" y="37" width="1425" height="975" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24951892" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27635327" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.3297062" />
@@ -640,7 +743,7 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297062" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.046432614" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -701,58 +804,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="articles list et single 1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/supported-by.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/_default/list.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/maintenance/essai.js" />
-    <entry file="file://$PROJECT_DIR$/docs/layouts/_default/baseof.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/boxes-small-news.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/maintenance/list.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/_default/page.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/_default/baseof.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-links.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/news/0.20.7-relnotes/index.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -895,34 +946,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="17" selection-end-column="47" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/config.toml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/_index.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/documentation.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -960,9 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/data/homepagetweets.toml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3090" />
@@ -980,16 +1004,111 @@
     <entry file="file://$PROJECT_DIR$/docs/content/en/contribute/_index.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/maintenance/_index.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        <state relative-caret-position="240">
+          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/shortcodes/note.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="17" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/hero.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/_index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/templates/_index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" selection-start-line="21" selection-end-line="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/shortcodes/imgproc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="24" selection-end-column="9" />
+          <folding>
+            <element signature="e#521#586#0" expanded="true" />
+            <element signature="e#594#632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/new-in-032/index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/news/0.32-relnotes/index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/documentation.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/organization/index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/data/generatedhelp.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>

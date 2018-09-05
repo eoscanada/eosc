@@ -1,10 +1,10 @@
 ---
-title: About Hugo
+title: What is EOS
 linktitle: Overview
-description: Hugo's features, roadmap, license, and motivation.
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
+description:
+date: 2018-09-05
+publishdate: 2018-09-05
+lastmod: 2018-09-05
 categories: []
 keywords: []
 menu:
@@ -12,6 +12,9 @@ menu:
     parent: "about"
     weight: 1
 weight: 1
-draft: true
+draft: false
+aliases: [/about-eos/,/docs/]
 toc: false
 ---
+
+
