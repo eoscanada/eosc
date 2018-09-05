@@ -37,6 +37,12 @@ This will create a file `unsigned-tx.json` containing the
 the Airtight computer) and sets an expiration of one hour for the
 roundtrip to happen.
 
+You can check its unpacked data with `eosc tx unpack unsigned-tx.json`.
+
+NOTE: you can use any `eosc` commands that produce transactions (like
+`eosc transfer`, `eosc system delegatebw`) in the same way.
+
+
 6. [ONLINE COMPUTER] Copy the `unsigned-tx.json` file to your Airtight
    Computer by whatever means.
 
