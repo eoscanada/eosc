@@ -5,7 +5,7 @@ FROM jojomi/hugo:latest as hugo-builder
 WORKDIR /src
 COPY ./docs/ /src
 RUN ls -l
-RUN hugo -s /src
+RUN hugo -s /src -d /src/public
 RUN ls -l /src
 RUN ls -l /
 
