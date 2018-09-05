@@ -66,23 +66,23 @@ That's it!
 
 ### Troubleshooting
 
-If you the transaction failed for some reasons, you can read the error
-message and see if they match:
-
-* `transaction bears irrelevant signatures from these keys: [\"EOS5J5....\"]`: this means you didn't need to sign with this key to authorize the `actor@permission` you specified in the transaction's actions.
+If the transaction failed for some reasons, you can read the error
+message and see if they match one of:
 
 * `UnAuthorized` errors: this means you have not signed the
   transaction with the keys required to authorize the
   `actor@permission` specified in the transaction's actions.
 
-* `Transaction's reference block did not match.`: this means you
-  didn't create the transaction from the same chain you're trying to
-  push it to.
-
 * `expired transaction`: you need to do the whole loop within the
   timeframe of the original `--expiration`. If you give `--expiration`
   more than an hour, note that you can only submit the transaction to
   the chain in the last hour of expiration.
+
+* `Transaction's reference block did not match.`: this means maybe you
+  didn't create the transaction from the same chain you're trying to
+  push it to.
+
+* `transaction bears irrelevant signatures from these keys: [\"EOS5J5....\"]`: this means you didn't need to sign with this key to authorize the `actor@permission` you specified in the transaction's actions.
 
 * some other assertion errors, which are normal errors that would have
   occurred if you tried to sign it online, investigate with the
