@@ -66,7 +66,6 @@
 		},
 		{
 			"checksumSHA1": "WU8hVzgZvwkfNW0ExzkHbEZqTN8=",
-			"origin": "github.com/eoscanada/eosc/vendor/github.com/eoscanada/eos-go/p2p",
 			"path": "github.com/eoscanada/eos-go/p2p",
 			"revision": "98e345de65d95124be3063f83bb782058c927080",
 			"revisionTime": "2018-08-29T20:10:18Z"
@@ -198,6 +197,12 @@
 			"revisionTime": "2018-03-11T21:45:15Z"
 		},
 		{
+			"checksumSHA1": "M57Rrfc8Z966p+IBtQ91QOcUtcg=",
+			"path": "github.com/ryanuber/columnize",
+			"revision": "abc90934186a77966e2beeac62ed966aac0561d5",
+			"revisionTime": "2017-07-03T20:58:27Z"
+		},
+		{
 			"checksumSHA1": "wsfbX7YxbkeBp+xm9M9nBFzrCnA=",
 			"path": "github.com/spf13/afero",
 			"revision": "787d034dfe70e44075ccc060d346146ef53270ad",
@@ -238,6 +243,24 @@
 			"path": "github.com/spf13/viper",
 			"revision": "d493c32b69b8c6f2377bf30bc4d70267ffbc0793",
 			"revisionTime": "2018-07-10T12:30:20Z"
+		},
+		{
+			"checksumSHA1": "06sFvrxpzrN3gYqkmmZOKCSuax4=",
+			"path": "github.com/tidwall/gjson",
+			"revision": "f92dbfc6b20e4af58d3fd0a32ac0338277012ddb",
+			"revisionTime": "2018-07-30T21:44:31Z"
+		},
+		{
+			"checksumSHA1": "Tk+aXpWRuTQhURlO79bd7YogcU0=",
+			"path": "github.com/tidwall/match",
+			"revision": "1731857f09b1f38450e2c12409748407822dc6be",
+			"revisionTime": "2017-10-02T07:59:45Z"
+		},
+		{
+			"checksumSHA1": "j1wNJXkZyuFKjYFpPawESOaXYxk=",
+			"path": "github.com/tidwall/sjson",
+			"revision": "6a22caf2fd45d5e2119bfc3717e984f15a7eb7ee",
+			"revisionTime": "2016-12-12T16:53:56Z"
 		},
 		{
 			"checksumSHA1": "FwW3Vv4jW0Nv7V2SZC7x/Huj5M4=",
