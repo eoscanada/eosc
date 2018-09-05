@@ -1,0 +1,17 @@
+steps:
+
+- id: docker-build
+  name: gcr.io/cloud-builders/docker
+  args: [
+    'build',
+    '-t', 'gcr.io/$PROJECT_ID/eosc-website:latest',
+    '-t', 'gcr.io/$PROJECT_ID/eosc-website:$SHORT_SHA',
+    '-t', 'gcr.io/$PROJECT_ID/eosc-website:$BUILD_ID',
+    '-f', 'Dockerfile',
+    '.'
+  ]
+
+images:
+- gcr.io/$PROJECT_ID/eosc-website:latest
+- gcr.io/$PROJECT_ID/eosc-website:$SHORT_SHA
+- gcr.io/$PROJECT_ID/eosc-website:$BUILD_ID
