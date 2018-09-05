@@ -16,4 +16,7 @@ draft: false
 aliases: [/templates/overview/,/templates/content]
 toc: false
 notesforauthors:
+eosccommand: eosc-tools
 ---
+
+{% generated_help  %}
