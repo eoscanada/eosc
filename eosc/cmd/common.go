@@ -17,6 +17,7 @@ import (
 	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
+	"github.com/tidwall/sjson"
 )
 
 func mustGetWallet() *eosvault.Vault {
@@ -180,7 +181,10 @@ func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.Pa
 		cnt, err := json.MarshalIndent(signedTx, "", "  ")
 		errorCheck("marshalling json", err)
 
-		err = ioutil.WriteFile(outputTrx, cnt, 0644)
+		annotatedCnt, err := sjson.Set(string(cnt), "chain_id", hex.EncodeToString(chainID))
+		errorCheck("adding chain_id", err)
+
+		err = ioutil.WriteFile(outputTrx, []byte(annotatedCnt), 0644)
 		errorCheck("writing output transaction", err)
 
 		for _, act := range signedTx.Actions {

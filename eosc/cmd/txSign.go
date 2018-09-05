@@ -4,11 +4,13 @@ package cmd
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 
 	eos "github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/tidwall/gjson"
 )
 
 var txSignCmd = &cobra.Command{
@@ -27,7 +29,9 @@ var txSignCmd = &cobra.Command{
 		api := getAPI()
 
 		var chainID eos.SHA256Bytes
-		if cliChainID := viper.GetString("global-offline-chain-id"); cliChainID != "" {
+		if infileChainID := gjson.Get(string(cnt), "chain_id").String(); infileChainID != "" {
+			chainID = toSHA256Bytes(infileChainID, fmt.Sprintf("chain_id field in %q", filename))
+		} else if cliChainID := viper.GetString("global-offline-chain-id"); cliChainID != "" {
 			chainID = toSHA256Bytes(cliChainID, "--offline-chain-id")
 		} else {
 			// getInfo
