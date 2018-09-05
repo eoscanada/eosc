@@ -6,7 +6,7 @@ This step-by-step guide assumes you have a known account on mainnet
 key corresponding to the private key you'll be using in this process.
 
 1. [ONLINE COMPUTER] Download a version of `eosc` from
-   https://github.com/eoscanada/eosc/releases targetting your Airtight
+   https://github.com/eoscanada/eosc/releases targeting your Airtight
    Computer's platform: Windows, Mac or Linux (a small footprint Linux
    distribution is preferred).
 
