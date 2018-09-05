@@ -4,14 +4,12 @@ FROM jojomi/hugo:latest as hugo-builder
 
 WORKDIR /src
 COPY ./docs/ /src
-RUN ls -l
-RUN hugo -s /src -d /src/public --debug  
+RUN hugo -s /src -d =/public --debug
 RUN ls -l /src
-RUN ls -l /
 
 
 
 FROM nginx:stable-alpine-perl
 
 WORKDIR /usr/share/nginx/html
-COPY --from=hugo-builder /src/public /usr/share/nginx/html
+COPY --from=hugo-builder =/public /usr/share/nginx/html
