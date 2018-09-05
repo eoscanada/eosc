@@ -4,7 +4,7 @@ FROM jojomi/hugo:0.48 as hugo-builder
 WORKDIR /src
 COPY ./docs/ /src
 RUN mkdir /src/public
-RUN hugo -s /src -d /src/public -b https://eosc.eoscanada.com/ --minify --gc --verbose
+RUN hugo -s /src -d /src/public -b https://eosc.eoscanada.com/
 RUN ls -l /src
 
 
