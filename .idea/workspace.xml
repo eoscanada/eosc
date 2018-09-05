@@ -6,10 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/layouts/partials/site-nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/layouts/partials/site-nav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/static/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/static/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/config.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/_index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/_index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/tools/search.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/tools/search.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -82,10 +83,11 @@
     <session id="-1927821668">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -94,13 +96,13 @@
           <entry key="css" value="30" />
           <entry key="gitignore" value="2" />
           <entry key="headers" value="8" />
-          <entry key="html" value="107" />
-          <entry key="js" value="1" />
-          <entry key="json" value="1" />
-          <entry key="md" value="49" />
+          <entry key="html" value="108" />
+          <entry key="js" value="3" />
+          <entry key="json" value="3" />
+          <entry key="md" value="59" />
           <entry key="redir" value="4" />
           <entry key="svg" value="7" />
-          <entry key="toml" value="11" />
+          <entry key="toml" value="15" />
           <entry key="txt" value="2" />
           <entry key="xml" value="1" />
         </counts>
@@ -108,10 +110,10 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="30" />
-          <entry key="HTML" value="107" />
-          <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="1" />
-          <entry key="PLAIN_TEXT" value="78" />
+          <entry key="HTML" value="108" />
+          <entry key="JSON" value="3" />
+          <entry key="JavaScript" value="3" />
+          <entry key="PLAIN_TEXT" value="92" />
           <entry key="SVG" value="7" />
           <entry key="XML" value="1" />
         </counts>
@@ -122,7 +124,7 @@
           <entry key="gitignore" value="5" />
           <entry key="headers" value="85" />
           <entry key="html" value="2475" />
-          <entry key="md" value="999" />
+          <entry key="md" value="1008" />
           <entry key="toml" value="85" />
           <entry key="txt" value="62" />
         </counts>
@@ -131,7 +133,7 @@
         <counts>
           <entry key="CSS" value="1690" />
           <entry key="HTML" value="2475" />
-          <entry key="PLAIN_TEXT" value="1236" />
+          <entry key="PLAIN_TEXT" value="1245" />
         </counts>
       </usages-collector>
     </session>
@@ -139,87 +141,62 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
+        <entry file="file://$PROJECT_DIR$/docs/Gruntfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="17" selection-end-column="47" />
-              <folding>
-                <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/data/references.toml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/data/titles.toml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/data/articles.toml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            <state relative-caret-position="180">
+              <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-mobile.html">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/contribute/_index.md">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-top.html">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-footer.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="81" selection-start-line="9" selection-start-column="81" selection-end-line="9" selection-end-column="81" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/docs/content/en/maintenance/_index.md">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/nav-mobile.html">
+        <entry file="file://$PROJECT_DIR$/docs/data/homepagetweets.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="107" lean-forward="true" selection-start-line="8" selection-start-column="107" selection-end-line="8" selection-end-column="107" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/site-nav.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/_default/page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="240" column="33" selection-start-line="240" selection-start-column="33" selection-end-line="240" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/config.toml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="99" column="89" lean-forward="true" selection-start-line="99" selection-start-column="89" selection-end-line="99" selection-end-column="89" />
-            </state>
+            <state relative-caret-position="-3090" />
           </provider>
         </entry>
       </file>
@@ -235,7 +212,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>t</find>
       <find>two</find>
       <find>Two Bug Fixes Au</find>
       <find>Two Bug</find>
@@ -265,6 +241,7 @@
       <find>nested-links</find>
       <find>algolia-autocomplete</find>
       <find>nav</find>
+      <find>grunt</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials</dir>
@@ -290,11 +267,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_custom.css" />
-        <option value="$PROJECT_DIR$/docs/static/css/style.css" />
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_animate.css" />
-        <option value="$PROJECT_DIR$/docs/content/en/news/http2-server-push-in-hugo.md" />
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/page-header.html" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/hero.html" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/_font-family.css" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-top.html" />
@@ -302,7 +274,6 @@
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/site-search.html" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/social-follow.html" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/css/main.css" />
-        <option value="$PROJECT_DIR$/docs/content/en/_index.md" />
         <option value="$PROJECT_DIR$/docs/content/en/features/eosc-vote.md" />
         <option value="$PROJECT_DIR$/docs/content/en/features/eosc-vault.md" />
         <option value="$PROJECT_DIR$/docs/content/en/features/cross-platform.md" />
@@ -333,7 +304,6 @@
         <option value="$PROJECT_DIR$/docs/layouts/partials/previous-next-links-in-section-with-title.html" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/previous-next-links-in-section.html" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/previous-next-links.html" />
-        <option value="$PROJECT_DIR$/docs/config.toml" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/site-search.html" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/social-follow.html" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/site-footer.html" />
@@ -341,6 +311,13 @@
         <option value="$PROJECT_DIR$/docs/static/css/custom.css" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/site-nav.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/docs/config.toml" />
+        <option value="$PROJECT_DIR$/docs/content/en/tools/search.md" />
+        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/js/docsearch.js" />
+        <option value="$PROJECT_DIR$/docs/content/en/_index.md" />
+        <option value="$PROJECT_DIR$/docs/package-lock.json" />
+        <option value="$PROJECT_DIR$/docs/Gruntfile.js" />
+        <option value="$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md" />
       </list>
     </option>
   </component>
@@ -350,14 +327,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/docs/node_modules" />
+  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
+      <path value="$PROJECT_DIR$/docs/package.json" />
       <path value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="59" />
-    <option name="y" value="40" />
+    <option name="x" value="77" />
+    <option name="y" value="37" />
     <option name="width" value="1580" />
     <option name="height" value="1011" />
   </component>
@@ -384,44 +365,22 @@
               <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
               <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
               <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
               <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="gohugoioTheme" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
+              <item name="troubleshooting" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -481,7 +440,8 @@
       <workItem from="1534945401662" duration="5991000" />
       <workItem from="1534951443027" duration="10855000" />
       <workItem from="1535122939593" duration="58543000" />
-      <workItem from="1535475808363" duration="27240000" />
+      <workItem from="1535475808363" duration="35622000" />
+      <workItem from="1536097961991" duration="3977000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -662,10 +622,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127260000" />
+    <option name="totallyTimeSpent" value="139619000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="40" width="1580" height="1011" extended-state="0" />
+    <frame x="77" y="37" width="1580" height="1011" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24951892" />
@@ -680,7 +640,7 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.3297062" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297062" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -741,100 +701,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="articles list et single 1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/tweets.html" />
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/page-header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/social-follow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/theme.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/public/_headers">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/public/zh/_headers">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.headers">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/index.headers">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/head-additions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/features/eosc-vote.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="75" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/supported-by/eos-canada.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/features/eosc-vault.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="26" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/site-footer.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/sponsors.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/layouts/partials/home-page-sections/supported-by.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -852,22 +718,13 @@
     <entry file="file://$PROJECT_DIR$/docs/layouts/_default/list.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/maintenance/essai.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="56" column="211" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="211" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/maintenance/essai.js" />
     <entry file="file://$PROJECT_DIR$/docs/layouts/_default/baseof.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="647">
           <caret line="49" column="68" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/data/titles.toml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/layouts/partials/boxes-small-news.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -976,16 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#fieldset#0;n#form#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/layouts/partials/social-follow.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1017,20 +864,17 @@
     <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-mobile.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-top.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/src/js/docsearch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="240" column="33" selection-start-line="240" selection-start-column="33" selection-end-line="240" selection-end-column="33" />
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/config.toml">
+    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="99" column="89" lean-forward="true" selection-start-line="99" selection-start-column="89" selection-end-line="99" selection-end-column="89" />
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -1041,9 +885,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/nav-top.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="225">
           <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="17" selection-end-column="47" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
@@ -1051,10 +905,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/docs/config.toml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/_index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/documentation.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/tools/search.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="428" selection-start-line="25" selection-start-column="428" selection-end-line="25" selection-end-column="428" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/tools/starter-kits.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3495">
+          <caret line="233" column="13" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="219" column="21" selection-end-line="824" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/data/homepagetweets.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3090" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/data/references.toml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/data/titles.toml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/data/articles.toml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/contribute/_index.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/maintenance/_index.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/troubleshooting/build-performance.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
         </state>
       </provider>
     </entry>
