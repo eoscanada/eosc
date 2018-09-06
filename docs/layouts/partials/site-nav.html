@@ -11,10 +11,11 @@
 
     <ul style="margin-right:auto;" class="list pa0 dn dib-l ml4 mr-auto">
       {{ range .Site.Menus.global }}
+      {{ $post_status := printf "%s" .Post }}
         <li class="white f5 dib mr4" role="menuitem">
-          <a href="{{ .URL }}" class="dim link{{ if $currentPage.IsMenuCurrent "global" . }} white {{else}} white{{ end }}">
+          <a href="{{ .URL }}" target="{{ if eq $post_status "external" }}_blank{{ end }}" class="dim link{{ if $currentPage.IsMenuCurrent "global" . }} white {{else}} white{{ end }}">
             {{ .Name }}
-            {{ $post_status := printf "%s" .Post }}
+
             {{ if eq $post_status "external" }}
           <i class="fas fa-external-link-alt f7 ml1"></i>
             {{ end }}
@@ -23,7 +24,7 @@
       {{ end }}
     </ul>
 
-    <div class="db dib-ns pl3 w-100 w-auto-ns">
+    <div style="display:none;" class="db dib-ns pl3 w-100 w-auto-ns">
       {{- partial "site-search.html" . -}}
     </div>
 
