@@ -3,7 +3,7 @@
     "short": "All the system commands",
     "long": "This is the long-form help for all the system commands\nThis can be multiline\nIt most probably doesn't have markdown or HTML in it.",
     "persistent_flags": "--this     Flag does this\n--that      Flag does that\n"
-  }
+  },
   "eosc-system-linkauth": {
     "parent": "eosc-system",
     "use": "linkauth [DO THAT]",
