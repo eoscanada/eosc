@@ -7,79 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.10-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.11-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.12-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.13-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.14-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.15-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.16-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.17-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.18-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.19-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.2-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.3-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.4-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.5-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.6-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.20.7-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.21-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.22-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.22.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.23-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.24-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.24.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.25-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.25.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.26-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.27-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.27.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.28-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.29-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.30-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.30.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.30.2-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.31-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.31.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32.2-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32.3-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.32.4-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.33-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.34-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.35-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.36-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.36.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.37-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.37.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.38-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.38.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.38.2-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.39-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40.2-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.40.3-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.41-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.42-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.42.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.42.2-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.43-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.44-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.45-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.45.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.46-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.47.1-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.7-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.8-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/0.9-relnotes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/http2-server-push-in-hugo.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/news/lets-celebrate-hugos-5th-birthday/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/news/eosc-lunch-is-website/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/layouts/partials/site-nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/layouts/partials/site-nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/content/en/about/benefits.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/about/benefits.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -162,13 +90,13 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="_headers" value="2" />
-          <entry key="css" value="30" />
+          <entry key="css" value="31" />
           <entry key="gitignore" value="2" />
           <entry key="headers" value="8" />
           <entry key="html" value="114" />
           <entry key="js" value="3" />
           <entry key="json" value="5" />
-          <entry key="md" value="74" />
+          <entry key="md" value="77" />
           <entry key="redir" value="4" />
           <entry key="svg" value="7" />
           <entry key="toml" value="16" />
@@ -178,33 +106,33 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="30" />
+          <entry key="CSS" value="31" />
           <entry key="HTML" value="114" />
           <entry key="JSON" value="5" />
           <entry key="JavaScript" value="3" />
-          <entry key="PLAIN_TEXT" value="108" />
+          <entry key="PLAIN_TEXT" value="111" />
           <entry key="SVG" value="7" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="1690" />
+          <entry key="css" value="1760" />
           <entry key="gitignore" value="5" />
           <entry key="headers" value="85" />
           <entry key="html" value="2623" />
           <entry key="json" value="1" />
-          <entry key="md" value="1502" />
+          <entry key="md" value="1846" />
           <entry key="toml" value="85" />
-          <entry key="txt" value="166" />
+          <entry key="txt" value="269" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1690" />
+          <entry key="CSS" value="1760" />
           <entry key="HTML" value="2623" />
           <entry key="JSON" value="1" />
-          <entry key="PLAIN_TEXT" value="1843" />
+          <entry key="PLAIN_TEXT" value="2290" />
         </counts>
       </usages-collector>
     </session>
@@ -212,37 +140,42 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
+        <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-              <folding>
-                <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="600">
+              <caret line="254" column="17" selection-start-line="254" selection-start-column="17" selection-end-line="254" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/config.toml">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/getting-started/quick-start.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="259" column="33" selection-start-line="259" selection-start-column="33" selection-end-line="259" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="787">
-              <caret line="186" lean-forward="true" selection-start-line="186" selection-end-line="186" />
+            <state relative-caret-position="248">
+              <caret line="85" selection-start-line="85" selection-end-line="104" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="203" column="19" selection-start-line="203" selection-start-column="19" selection-end-line="203" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/content/en/news/v0.7.0/index.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
@@ -252,20 +185,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/documentation.md">
+        <entry file="file://$PROJECT_DIR$/docs/content/en/commands/hugo.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/organization/index.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-            </state>
+            <state relative-caret-position="-488" />
           </provider>
         </entry>
       </file>
@@ -313,7 +235,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>baseof</find>
       <find>baseof.html</find>
       <find>cache</find>
       <find>site</find>
@@ -343,6 +264,7 @@
       <find>new-in-032</find>
       <find>image</find>
       <find>news</find>
+      <find>hugo server -D</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/docs/themes/airspace-hugo-master/layouts/partials</dir>
@@ -400,7 +322,6 @@
         <option value="$PROJECT_DIR$/docs/layouts/partials/social-follow.html" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/site-footer.html" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/nav-mobile.html" />
-        <option value="$PROJECT_DIR$/docs/static/css/custom.css" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/docs/content/en/tools/search.md" />
         <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/js/docsearch.js" />
@@ -413,7 +334,6 @@
         <option value="$PROJECT_DIR$/docs/content/en/about/new-in-032/index.md" />
         <option value="$PROJECT_DIR$/docs/content/en/news/0.32-relnotes/index.md" />
         <option value="$PROJECT_DIR$/docs/content/en/about/_index.md" />
-        <option value="$PROJECT_DIR$/docs/content/en/about/benefits.md" />
         <option value="$PROJECT_DIR$/docs/data/generatedhelp.json" />
         <option value="$PROJECT_DIR$/docs/content/en/content-management/organization/index.md" />
         <option value="$PROJECT_DIR$/docs/content/en/content-management/image-processing/index.md" />
@@ -421,8 +341,10 @@
         <option value="$PROJECT_DIR$/docs/config.toml" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/site-nav.html" />
         <option value="$PROJECT_DIR$/docs/content/en/news/eosc-lunch-is-website/index.md" />
-        <option value="$PROJECT_DIR$/docs/README.md" />
         <option value="$PROJECT_DIR$/docs/content/en/news/v0.7.0/index.md" />
+        <option value="$PROJECT_DIR$/docs/content/en/about/benefits.md" />
+        <option value="$PROJECT_DIR$/docs/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/docs/README.md" />
       </list>
     </option>
   </component>
@@ -489,16 +411,33 @@
               <item name="docs" type="462c0819:PsiDirectoryNode" />
               <item name="content" type="462c0819:PsiDirectoryNode" />
               <item name="en" type="462c0819:PsiDirectoryNode" />
-              <item name="news" type="462c0819:PsiDirectoryNode" />
+              <item name="getting-started" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
               <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="en" type="462c0819:PsiDirectoryNode" />
-              <item name="news" type="462c0819:PsiDirectoryNode" />
-              <item name="v0.7.0" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -561,7 +500,7 @@
       <workItem from="1534951443027" duration="10855000" />
       <workItem from="1535122939593" duration="58543000" />
       <workItem from="1535475808363" duration="35622000" />
-      <workItem from="1536097961991" duration="13277000" />
+      <workItem from="1536097961991" duration="18352000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -759,17 +698,31 @@
       <option name="project" value="LOCAL" />
       <updated>1536238649454</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Clean and made sample for&#10;- about us&#10;- news">
+      <created>1536240792847</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1536240792847</updated>
+    </task>
+    <task id="LOCAL-00030" summary="readme add note to customize content">
+      <created>1536245439996</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1536245439996</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148919000" />
+    <option name="totallyTimeSpent" value="153994000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="77" y="37" width="1425" height="975" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27635327" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27635327" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.3297062" />
@@ -840,19 +793,11 @@
     <MESSAGE value="home page 4" />
     <MESSAGE value="articles list et single 1" />
     <MESSAGE value="hide search menu&#10;link to telegram pour community&#10;add target=&quot;_blank&quot; for external menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="hide search menu&#10;link to telegram pour community&#10;add target=&quot;_blank&quot; for external menu" />
+    <MESSAGE value="Clean and made sample for&#10;- about us&#10;- news" />
+    <MESSAGE value="readme add note to customize content" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme add note to customize content" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/_default/list.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/news/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/layouts/news/single.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -960,13 +905,6 @@
     <entry file="file://$PROJECT_DIR$/docs/content/en/tools/starter-kits.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3495">
-          <caret line="233" column="13" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1066,13 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/documentation.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1091,17 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
           <caret line="259" column="33" selection-start-line="259" selection-start-column="33" selection-end-line="259" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1129,13 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="787">
-          <caret line="186" lean-forward="true" selection-start-line="186" selection-end-line="186" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/_index.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1143,6 +1056,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/commands/hugo.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-488" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="254" column="17" selection-start-line="254" selection-start-column="17" selection-end-line="254" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/getting-started/quick-start.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="85" selection-start-line="85" selection-end-line="104" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="203" column="19" selection-start-line="203" selection-start-column="19" selection-end-line="203" selection-end-column="19" />
         </state>
       </provider>
     </entry>
