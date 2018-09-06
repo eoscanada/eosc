@@ -121,6 +121,10 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 		opts.HeadBlockID = toSHA256Bytes(headBlockID, "--offline-head-block")
 	}
 
+	if delaySec := viper.GetInt("global-delay-sec"); delaySec != 0 {
+		opts.DelaySecs = uint32(delaySec)
+	}
+
 	if err := opts.FillFromChain(api); err != nil {
 		fmt.Println("Error fetching tapos + chain_id from the chain (specify --offline flags for offline operations):", err)
 		os.Exit(1)
