@@ -13,7 +13,7 @@ var systemDeleteauthCmd = &cobra.Command{
 	Short: "Removes a permission currently set on an account. See --help for more details.",
 	Long: `Removes a permission currently set on an account.
 
-	This undoes the action of updateauth. Please refer to the updateauth help for more details.
+This undoes the action of updateauth. Please refer to the updateauth help for more details.
 `,
 	Args: cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {

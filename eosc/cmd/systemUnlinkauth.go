@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -17,7 +16,7 @@ This undoes the action of linkauth, please refer to the documentation for linkau
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "your account")
 		code := toAccount(args[1], "code account")
-		actionName := eos.ActionName(toName(args[2], "action name"))
+		actionName := toActionName(args[2], "action name")
 
 		api := getAPI()
 		pushEOSCActions(api, system.NewUnlinkAuth(account, code, actionName))
