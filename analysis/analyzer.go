@@ -11,6 +11,7 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 	eos "github.com/eoscanada/eos-go"
+
 	// Load these so `Unpack` does Action unpacking with known ABIs.
 	_ "github.com/eoscanada/eos-go/forum"
 	_ "github.com/eoscanada/eos-go/msig"
@@ -182,7 +183,7 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 		} else {
 			a.Pln("-------------------- SUDO TRANSACTION BEGIN -----------------------")
 			if err := a.AnalyzeTransaction(tx); err != nil {
-				a.Pf("Error: analyzing sudo transaction: %s\n")
+				a.Pf("Error: analyzing sudo transaction: %s\n", err)
 			}
 			a.Pln("-------------------- SUDO TRANSACTION END -----------------------")
 		}
