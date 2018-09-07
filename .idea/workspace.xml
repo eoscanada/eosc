@@ -5,10 +5,8 @@
     <option name="CUSTOM_SCOPE_NAME" value="All Places" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
+    <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="readme add note to customize content 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/static/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/static/css/custom.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -123,9 +121,9 @@
           <entry key="headers" value="85" />
           <entry key="html" value="2623" />
           <entry key="json" value="1" />
-          <entry key="md" value="1925" />
+          <entry key="md" value="2105" />
           <entry key="toml" value="85" />
-          <entry key="txt" value="271" />
+          <entry key="txt" value="272" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -133,7 +131,12 @@
           <entry key="CSS" value="1760" />
           <entry key="HTML" value="2623" />
           <entry key="JSON" value="1" />
-          <entry key="PLAIN_TEXT" value="2371" />
+          <entry key="PLAIN_TEXT" value="2552" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -161,17 +164,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="204" column="14" selection-start-line="204" selection-start-column="14" selection-end-line="204" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+            <state relative-caret-position="341">
+              <caret line="217" lean-forward="true" selection-start-line="217" selection-end-line="217" />
             </state>
           </provider>
         </entry>
@@ -341,14 +335,20 @@
         <option value="$PROJECT_DIR$/docs/layouts/partials/site-nav.html" />
         <option value="$PROJECT_DIR$/docs/content/en/news/eosc-lunch-is-website/index.md" />
         <option value="$PROJECT_DIR$/docs/content/en/news/v0.7.0/index.md" />
-        <option value="$PROJECT_DIR$/docs/content/en/about/benefits.md" />
         <option value="$PROJECT_DIR$/docs/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/docs/content/en/about/benefits.md" />
         <option value="$PROJECT_DIR$/docs/README.md" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -463,8 +463,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="68" />
-    <option name="y" value="75" />
+    <option name="x" value="112" />
+    <option name="y" value="38" />
     <option name="width" value="1425" />
     <option name="height" value="975" />
   </component>
@@ -507,40 +507,6 @@
               <item name="content" type="462c0819:PsiDirectoryNode" />
               <item name="en" type="462c0819:PsiDirectoryNode" />
               <item name="about" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="en" type="462c0819:PsiDirectoryNode" />
-              <item name="getting-started" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eosc-public-web-hugo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eosc-public-web-hugo" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -604,7 +570,7 @@
       <workItem from="1535122939593" duration="58543000" />
       <workItem from="1535475808363" duration="35622000" />
       <workItem from="1536097961991" duration="20309000" />
-      <workItem from="1536325649106" duration="582000" />
+      <workItem from="1536325649106" duration="3853000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -823,19 +789,34 @@
       <option name="project" value="LOCAL" />
       <updated>1536247887837</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="readme add note to customize content 2">
+      <created>1536336541179</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1536336541179</updated>
+    </task>
+    <task id="LOCAL-00033" summary="readme add note to customize content 3">
+      <created>1536344725213</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1536344725213</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156533000" />
+    <option name="totallyTimeSpent" value="159804000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="68" y="75" width="1425" height="975" extended-state="0" />
+    <frame x="112" y="38" width="1425" height="975" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27635327" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.3297062" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3297062" />
@@ -845,7 +826,7 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.046432614" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.14722537" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -907,7 +888,8 @@
     <MESSAGE value="Clean and made sample for&#10;- about us&#10;- news" />
     <MESSAGE value="readme add note to customize content" />
     <MESSAGE value="readme add note to customize content 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme add note to customize content 2" />
+    <MESSAGE value="readme add note to customize content 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme add note to customize content 3" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/docs/layouts/news/single.html">
@@ -1129,13 +1111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/news/v0.7.0/index.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1170,10 +1145,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="204" column="14" selection-start-line="204" selection-start-column="14" selection-end-line="204" selection-end-column="14" />
+        <state relative-caret-position="341">
+          <caret line="217" lean-forward="true" selection-start-line="217" selection-end-line="217" />
         </state>
       </provider>
     </entry>
