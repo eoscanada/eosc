@@ -9,8 +9,8 @@ fi
 export CLOUDSDK_CORE_PROJECT=eoscanada-shared-services
 
 
-gcloud builds submit ./docs \
-        --config docs/cloudbuild.yaml \
+gcloud builds submit . \
+        --config cloudbuild_docs.yaml \
         --timeout 15m \
         --substitutions=SHORT_SHA=${TAG_OUT}
 

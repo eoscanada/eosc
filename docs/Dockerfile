@@ -2,7 +2,7 @@ FROM jojomi/hugo:0.48 as hugo-builder
 
 
 WORKDIR /src
-COPY . /src
+COPY ./docs /src
 RUN hugo config
 RUN hugo -s /src -d /eosc-website
 
