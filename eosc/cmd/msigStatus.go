@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
 
 	eos "github.com/eoscanada/eos-go"
@@ -11,7 +12,7 @@ import (
 
 var msigStatusCmd = &cobra.Command{
 	Use:   "status [proposer] [proposal name]",
-	Short: "Shows the status of a proposal and its approvals in the eosio.msig contract.",
+	Short: "Shows the status of a given proposal and its approvals in the eosio.msig contract.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
@@ -26,8 +27,7 @@ var msigStatusCmd = &cobra.Command{
 				Table:      "approvals",
 				JSON:       true,
 				LowerBound: string(proposalName),
-				// UpperBound: string(proposalName),
-				Limit: 1,
+				Limit:      1,
 			},
 		)
 		errorCheck("get table row", err)
@@ -40,16 +40,32 @@ var msigStatusCmd = &cobra.Command{
 		err = response.JSONToStructs(&approvalsInfo)
 		errorCheck("reading approvals_info", err)
 
-		if len(approvalsInfo) == 1 {
-			fmt.Println("Proposal name:", approvalsInfo[0].ProposalName)
-			fmt.Println("Requested approvals:", approvalsInfo[0].RequestedApprovals)
-			fmt.Println("Provided approvals:", approvalsInfo[0].ProvidedApprovals)
-		} else {
-			fmt.Printf("Proposal %s not found.", string(proposalName))
+		var found bool
+		for _, info := range approvalsInfo {
+			if info.ProposalName == proposalName {
+				found = true
+
+				if printJSON, _ := cmd.Flags().GetBool("json"); printJSON == true {
+					data, err := json.MarshalIndent(info, "", "  ")
+					errorCheck("json marshal", err)
+					fmt.Println(string(data))
+					return
+				} else {
+					fmt.Println("Proposer:", proposer)
+					fmt.Println("Proposal name:", proposalName)
+					fmt.Println("Requested approvals:", info.RequestedApprovals)
+					fmt.Println("Provided approvals:", info.ProvidedApprovals)
+					fmt.Println()
+				}
+			}
+		}
+		if !found {
+			errorCheck("multisig proposal", fmt.Errorf("not found"))
 		}
 	},
 }
 
 func init() {
 	msigCmd.AddCommand(msigStatusCmd)
+	msigStatusCmd.Flags().BoolP("json", "", false, "Display as JSON - useful to tally approvals")
 }
