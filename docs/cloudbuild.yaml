@@ -7,7 +7,7 @@ steps:
     '-t', 'gcr.io/$PROJECT_ID/eosc-website:latest',
     '-t', 'gcr.io/$PROJECT_ID/eosc-website:$SHORT_SHA',
     '-t', 'gcr.io/$PROJECT_ID/eosc-website:$BUILD_ID',
-    '-f', 'docs/Dockerfile',
+    '-f', 'Dockerfile',
     '.'
   ]
 
