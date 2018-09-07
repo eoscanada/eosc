@@ -7,7 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/content/en/about/benefits.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/content/en/about/benefits.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/static/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/static/css/custom.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -80,11 +81,11 @@
     <session id="-1927821668">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -122,9 +123,9 @@
           <entry key="headers" value="85" />
           <entry key="html" value="2623" />
           <entry key="json" value="1" />
-          <entry key="md" value="1846" />
+          <entry key="md" value="1925" />
           <entry key="toml" value="85" />
-          <entry key="txt" value="269" />
+          <entry key="txt" value="271" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -132,7 +133,7 @@
           <entry key="CSS" value="1760" />
           <entry key="HTML" value="2623" />
           <entry key="JSON" value="1" />
-          <entry key="PLAIN_TEXT" value="2290" />
+          <entry key="PLAIN_TEXT" value="2371" />
         </counts>
       </usages-collector>
     </session>
@@ -142,7 +143,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
+            <state relative-caret-position="3810">
               <caret line="254" column="17" selection-start-line="254" selection-start-column="17" selection-end-line="254" selection-end-column="17" />
             </state>
           </provider>
@@ -151,7 +152,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/content/en/getting-started/quick-start.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
+            <state relative-caret-position="1275">
               <caret line="85" selection-start-line="85" selection-end-line="104" selection-end-column="3" />
             </state>
           </provider>
@@ -160,8 +161,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="203" column="19" selection-start-line="203" selection-start-column="19" selection-end-line="203" selection-end-column="19" />
+            <state relative-caret-position="607">
+              <caret line="204" column="14" selection-start-line="204" selection-start-column="14" selection-end-line="204" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -169,7 +170,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="225">
               <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
             </state>
           </provider>
@@ -186,9 +187,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/content/en/commands/hugo.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-488" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -200,7 +199,7 @@
         <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/image-processing/index.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -218,7 +217,7 @@
         <entry file="file://$PROJECT_DIR$/docs/data/generatedhelp.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -356,12 +355,116 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
+      <path value="$PROJECT_DIR$/docs/node_modules/abbrev/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/ansi-styles/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/argparse/node_modules/sprintf-js/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/argparse/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/array-find-index/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/async/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/balanced-match/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/brace-expansion/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/builtin-modules/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/camelcase-keys/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/camelcase/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/chalk/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/coffeescript/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/color-convert/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/color-name/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/colors/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/concat-map/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/currently-unhandled/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/dateformat/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/decamelize/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/error-ex/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/escape-string-regexp/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/esprima/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/eventemitter2/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/exit/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/find-up/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/findup-sync/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/findup-sync/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/fs.realpath/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/get-stdin/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/getobject/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/glob/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/graceful-fs/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/grunt-known-options/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/grunt-legacy-log-utils/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/grunt-legacy-log/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/grunt-legacy-util/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/grunt/node_modules/grunt-cli/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/grunt/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/has-flag/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/hooker/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/hosted-git-info/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/iconv-lite/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/indent-string/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/inflight/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/is-arrayish/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/is-builtin-module/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/is-finite/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/is-utf8/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/isexe/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/js-yaml/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/load-json-file/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/lodash/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/loud-rejection/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/map-obj/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/meow/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/minimatch/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/mkdirp/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/mkdirp/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/nopt/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/normalize-package-data/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/number-is-nan/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/once/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/parse-json/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/path-exists/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/path-is-absolute/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/path-type/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/pify/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/pinkie-promise/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/pinkie/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/read-pkg-up/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/read-pkg/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/redent/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/repeating/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/resolve/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/resolve/test/module_dir/zmodules/bbb/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/resolve/test/pathfilter/deep_ref/node_modules/deep/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/resolve/test/resolver/baz/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/resolve/test/resolver/biz/node_modules/garply/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/resolve/test/resolver/incorrect_main/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/resolve/test/subdirs/node_modules/a/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/rimraf/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/safer-buffer/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/semver/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/signal-exit/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/spdx-correct/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/spdx-exceptions/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/spdx-expression-parse/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/spdx-license-ids/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/sprintf-js/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/string/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/strip-bom/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/strip-indent/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/supports-color/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/toml/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/trim-newlines/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/underscore.string/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/util-deprecate/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/validate-npm-package-license/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/which/package.json" />
+      <path value="$PROJECT_DIR$/docs/node_modules/wrappy/package.json" />
       <path value="$PROJECT_DIR$/docs/themes/gohugoioTheme/src/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="77" />
-    <option name="y" value="37" />
+    <option name="x" value="68" />
+    <option name="y" value="75" />
     <option name="width" value="1425" />
     <option name="height" value="975" />
   </component>
@@ -500,7 +603,8 @@
       <workItem from="1534951443027" duration="10855000" />
       <workItem from="1535122939593" duration="58543000" />
       <workItem from="1535475808363" duration="35622000" />
-      <workItem from="1536097961991" duration="18352000" />
+      <workItem from="1536097961991" duration="20309000" />
+      <workItem from="1536325649106" duration="582000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -712,14 +816,21 @@
       <option name="project" value="LOCAL" />
       <updated>1536245439996</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="readme add note to customize content 2">
+      <created>1536247887837</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1536247887837</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153994000" />
+    <option name="totallyTimeSpent" value="156533000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="77" y="37" width="1425" height="975" extended-state="0" />
+    <frame x="68" y="75" width="1425" height="975" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27635327" />
@@ -795,7 +906,8 @@
     <MESSAGE value="hide search menu&#10;link to telegram pour community&#10;add target=&quot;_blank&quot; for external menu" />
     <MESSAGE value="Clean and made sample for&#10;- about us&#10;- news" />
     <MESSAGE value="readme add note to customize content" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme add note to customize content" />
+    <MESSAGE value="readme add note to customize content 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme add note to customize content 2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/docs/layouts/news/single.html">
@@ -905,23 +1017,9 @@
     <entry file="file://$PROJECT_DIR$/docs/content/en/tools/starter-kits.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="219" column="21" selection-end-line="824" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/package-lock.json" />
+    <entry file="file://$PROJECT_DIR$/docs/package.json" />
+    <entry file="file://$PROJECT_DIR$/docs/Gruntfile.js" />
     <entry file="file://$PROJECT_DIR$/docs/data/homepagetweets.toml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3090" />
@@ -976,27 +1074,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="24" selection-end-column="9" />
-          <folding>
-            <element signature="e#521#586#0" expanded="true" />
-            <element signature="e#594#632#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/about/new-in-032/index.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/news/0.32-relnotes/index.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/new-in-032/index.md" />
+    <entry file="file://$PROJECT_DIR$/docs/content/en/news/0.32-relnotes/index.md" />
     <entry file="file://$PROJECT_DIR$/docs/content/en/about/_index.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1025,32 +1107,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/news/http2-server-push-in-hugo.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/news/eosc-lunch-is-website/index.md">
+    <entry file="file://$PROJECT_DIR$/docs/content/en/news/http2-server-push-in-hugo.md" />
+    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/image-processing/index.md">
+    <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="3810">
+          <caret line="254" column="17" selection-start-line="254" selection-start-column="17" selection-end-line="254" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/data/generatedhelp.json">
+    <entry file="file://$PROJECT_DIR$/docs/content/en/getting-started/quick-start.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="1275">
+          <caret line="85" selection-start-line="85" selection-end-line="104" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/_index.md">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/news/v0.7.0/index.md">
       <provider selected="true" editor-type-id="text-editor">
@@ -1060,46 +1144,36 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/commands/hugo.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-488" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/layouts/partials/site-nav.html">
+    <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/_index.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/content/en/content-management/image-processing/index.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#nav#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/about/benefits.md">
+    <entry file="file://$PROJECT_DIR$/docs/content/en/news/eosc-lunch-is-website/index.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+        <state relative-caret-position="45">
+          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/static/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/docs/data/generatedhelp.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="254" column="17" selection-start-line="254" selection-start-column="17" selection-end-line="254" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/getting-started/quick-start.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="85" selection-start-line="85" selection-end-line="104" selection-end-column="3" />
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="203" column="19" selection-start-line="203" selection-start-column="19" selection-end-line="203" selection-end-column="19" />
+        <state relative-caret-position="607">
+          <caret line="204" column="14" selection-start-line="204" selection-start-column="14" selection-end-line="204" selection-end-column="14" />
         </state>
       </provider>
     </entry>

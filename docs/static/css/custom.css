@@ -181,14 +181,19 @@ nav input#search-input::placeholder {color:#fff;}
 .tool-logo a:hover {
     text-decoration:underline;
 }
-li {position:relative;list-style:none;}
+
 
 ul.li-custom {
-    list-style:none;
     list-style-position: outside;
     padding-left:26px;
 
 }
+
+ul.li-custom li, nav ul li  {
+    list-style:none;
+}
+
+
 
 ul.li-check li .fa, ul.li-check li .fas {
     font-weight: 900;
@@ -197,6 +202,8 @@ ul.li-check li .fa, ul.li-check li .fas {
     top: 2px;
     color:#f05922;
 }
+
+li {position:relative;list-style:square;}
 
 /*ul.li-square li:before {*/
     /*display: inline-block;*/
@@ -243,4 +250,13 @@ ul.li-check li .fa, ul.li-check li .fas {
     font-weight: 400;
     text-align: left;
     padding: .375em .5em;
+}
+
+.note, .warning {
+    border-color: #f05922;
+    background-color: #edeeee;
+}
+
+.admonition-content {
+    background-color: #edeeee;
 }

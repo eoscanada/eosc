@@ -155,3 +155,59 @@ eosccommand: eosc-tools
 
 {% generated_help  %}
 ```
+
+
+
+*** Content styling
+
+
+Title
+
+h1 : # Title (don't forgot space)
+h2 : ## Subtitle
+h3 : ### ETC...
+
+
+Bullet Point
+
+* Line 1
+* Line 2
+* Line 3
+
+
+Word with link
+
+[EOS Canada](https://www.eoscanada.com)
+
+
+Words styling
+
+*Text in italic*
+**Text in bold**
+***Text in bold and italic***
+
+
+Add note with vertical left color border
+
+{{% note %}}
+Our note here
+{{% /note %}}
+
+
+Add note box with outside border
+
+```bash
+Content here
+```
+
+Add note box with button to expend horizontal box
+```
+▶ Button title
+Content here
+```
+
+Add video
+
+{{< youtube id="CMtN_LUpeLg" >}}
+
+
