@@ -15,9 +15,9 @@ import (
 	"github.com/spf13/viper"
 )
 
-var voteListProducerCmd = &cobra.Command{
-	Use:   "list",
-	Short: "Retrieve registered producers",
+var voteListProducersCmd = &cobra.Command{
+	Use:   "list-producers",
+	Short: "Retrieve the list of registered producers",
 	Run:   run,
 }
 
@@ -69,13 +69,13 @@ var run = func(cmd *cobra.Command, args []string) {
 }
 
 func init() {
-	voteCmd.AddCommand(voteListProducerCmd)
+	voteCmd.AddCommand(voteListProducersCmd)
 
-	voteListProducerCmd.Flags().BoolP("sort", "s", false, "sort producers")
-	voteListProducerCmd.Flags().BoolP("json", "j", false, "return producers info in json")
+	voteListProducersCmd.Flags().BoolP("sort", "s", false, "sort producers")
+	voteListProducersCmd.Flags().BoolP("json", "j", false, "return producers info in json")
 
 	for _, flag := range []string{"json", "sort"} {
-		if err := viper.BindPFlag("vote-list-cmd-"+flag, voteListProducerCmd.Flags().Lookup(flag)); err != nil {
+		if err := viper.BindPFlag("vote-list-cmd-"+flag, voteListProducersCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
