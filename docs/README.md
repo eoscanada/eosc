@@ -158,21 +158,21 @@ eosccommand: eosc-tools
 
 
 
-*** Content styling
+# Content styling
 
 
-Title
+## Title
 
-h1 : # Title (don't forgot space)
-h2 : ## Subtitle
-h3 : ### ETC...
+h1 : ```# Title (don't forgot space)```
+h2 : ```## Subtitle```
+h3 : ```### ETC...``
 
 
-Bullet Point
+## Bullet Point
 
-* Line 1
-* Line 2
-* Line 3
+```* Line 1```
+```* Line 2```
+```* Line 3```
 
 
 Word with link
