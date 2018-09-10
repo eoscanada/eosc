@@ -161,11 +161,18 @@ eosccommand: eosc-tools
 # Content styling
 
 
+
 ## Title
 
-h1 : ```# Title (don't forgot space)```
-h2 : ```## Subtitle```
-h3 : ```### ETC...``
+```# H1 Title```
+# H1 Title
+
+```## H2 Title```
+##3 H2 Title
+
+```### H3 Title etc```
+### H3 Title etc
+
 
 
 ## Bullet Point
@@ -174,40 +181,65 @@ h3 : ```### ETC...``
 ```* Line 2```
 ```* Line 3```
 
+* Line 1
+* Line 2
+* Line 3
 
-Word with link
 
+
+## Word with link
+
+```[EOS Canada](https://www.eoscanada.com)``
 [EOS Canada](https://www.eoscanada.com)
 
 
-Words styling
+### Words styling
 
+```*Text in italic*```
 *Text in italic*
+
+```**Text in bold**```
 **Text in bold**
+
+```***Text in bold and italic***```
 ***Text in bold and italic***
 
 
-Add note with vertical left color border
+## Add note with vertical left color border
 
 {{% note %}}
 Our note here
 {{% /note %}}
 
+```{{% note %}}
+Our note here
+{{% /note %}}```
 
-Add note box with outside border
+
+
+## Add note box with outside border
 
 ```bash
 Content here
 ```
 
-Add note box with button to expend horizontal box
+
+## Add note box with button to expend horizontal box
+
 ```
 ▶ Button title
 Content here
 ```
+```
+```
+▶ Button title
+Content here
+```
+```
 
-Add video
+
+## Add video
 
 {{< youtube id="CMtN_LUpeLg" >}}
-
+```{{< youtube id="CMtN_LUpeLg" >}}```
 
