@@ -11,24 +11,49 @@ import (
 	"github.com/ryanuber/columnize"
 )
 
+const indentPadding = "      "
+
 func FormatPermissions(account *eos.AccountResp, config *columnize.Config) string {
-	output := []string{
-		"permissions:",
-	}
-	for _, perm := range account.Permissions {
-		keysValues := []string{}
-		for _, key := range perm.RequiredAuth.Keys {
-			keysValues = append(keysValues, fmt.Sprintf("%d %s", key.Weight, key.PublicKey))
-		}
-		output = append(output,
-			fmt.Sprintf("     %s |%d:|%s",
-				perm.PermName,
-				perm.RequiredAuth.Threshold,
-				strings.Join(keysValues, ", "),
-			),
-		)
-	}
+	output := formatNestedPermission([]string{"permissions:"}, account.Permissions, eos.PermissionName(""), "")
 	return columnize.Format(output, config)
+}
+func formatNestedPermission(in []string, permissions []eos.Permission, showChildsOf eos.PermissionName, indent string) (out []string) {
+	out = in
+	for _, perm := range permissions {
+		if perm.Parent != string(showChildsOf) {
+			continue
+		}
+		permValues := []string{}
+		for _, key := range perm.RequiredAuth.Keys {
+			permValues = append(permValues, fmt.Sprintf("+%d %s", key.Weight, key.PublicKey))
+		}
+		for _, acct := range perm.RequiredAuth.Accounts {
+			permValues = append(permValues, fmt.Sprintf("+%d %s@%s", acct.Weight, acct.Permission.Actor, acct.Permission.Permission))
+		}
+		for _, wait := range perm.RequiredAuth.Waits {
+			permValues = append(permValues, fmt.Sprintf("+%d wait %d seconds", wait.Weight, wait.WaitSec))
+		}
+		for i, keyValue := range permValues {
+			if i == 0 {
+				out = append(out,
+					fmt.Sprintf("     %s%q w/%d|:|%s",
+						indent,
+						perm.PermName,
+						perm.RequiredAuth.Threshold,
+						keyValue,
+					),
+				)
+			} else {
+				out = append(out,
+					fmt.Sprintf("     ||%s",
+						keyValue,
+					),
+				)
+			}
+		}
+		out = formatNestedPermission(out, permissions, eos.PermissionName(perm.PermName), indent+indentPadding)
+	}
+	return out
 }
 
 func FormatMemory(account *eos.AccountResp, config *columnize.Config) string {
@@ -70,7 +95,7 @@ func FormatCPUBandwidth(account *eos.AccountResp, config *columnize.Config) stri
 		fmt.Sprintf("     staked:|%s|(total stake delegated from account to self)",
 			prettifyAsset(account.SelfDelegatedBandwidth.CPUWeight),
 		),
-		fmt.Sprintf("     delegated:|%s|(total stake delegated from account from others)",
+		fmt.Sprintf("     delegated:|%s|(total stake delegated to account from others)",
 			prettifyAsset(delegatedCPU),
 		),
 		fmt.Sprintf("     used:|%s", prettifyTime(int64(account.CPULimit.Used))),
