@@ -168,7 +168,7 @@ eosccommand: eosc-tools
 # H1 Title
 
 ```## H2 Title```
-## 3 H2 Title
+## H2 Title
 
 ```### H3 Title etc```
 ### H3 Title etc
@@ -207,23 +207,22 @@ eosccommand: eosc-tools
 
 ```**Text in bold**```
 
-
 **Text in bold**
+
 
 ```***Text in bold and italic***```
 
 ***Text in bold and italic***
 
 
+
 ## Add note with vertical left color border
 
+```
 {{% note %}}
 Our note here
 {{% /note %}}
-
-```{{% note %}}
-Our note here
-{{% /note %}}```
+```
 
 
 
@@ -234,6 +233,7 @@ Content here
 ```
 
 
+
 ## Add note box with button to expend horizontal box
 
 ```
@@ -241,17 +241,9 @@ Content here
 Content here
 ```
 
-```
-```
-▶ Button title
-Content here
-```
-```
 
 
 ## Add video
-
-{{< youtube id="CMtN_LUpeLg" >}}
 
 ```{{< youtube id="CMtN_LUpeLg" >}}```
 
