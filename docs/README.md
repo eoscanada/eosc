@@ -231,7 +231,6 @@ Our note here
 ```
 ```bash
 Content here```
-
 ```
 
 
@@ -239,9 +238,10 @@ Content here```
 ## Add note box with button to expend horizontal box
 
 ```
-▶ Button title
+```▶ Button title
 Content here
 ```
+``
 
 
 
