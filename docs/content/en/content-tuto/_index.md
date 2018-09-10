@@ -1,11 +1,11 @@
 ---
 title: Content styling tuto
-linktitle:
+linktitle: Content styling tuto
 description:
 date: 2018-09-05
 publishdate: 2018-09-05
 lastmod: 2018-09-05
-categories: []
+categories: [content tuto]
 keywords: []
 menu:
   docs:
@@ -13,7 +13,7 @@ menu:
     weight: 1
 weight: 3
 draft: false
-aliases:
+aliases: []
 toc: true
 ---
 

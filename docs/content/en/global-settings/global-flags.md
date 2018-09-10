@@ -9,7 +9,7 @@ categories: [getting started]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:
-    parent: "getting-started"
+    parent: "global-settings"
     weight: 40
 weight: 40
 sections_weight: 40

@@ -135,13 +135,12 @@ anchor = "smart"
   identifier = "getting-started"
   url = "/getting-started/"
 
-
 [[menu.docs]]
-  name = "Themes"
+  name = "Global Settings"
   weight = 15
-  identifier = "themes"
+  identifier = "global-settings"
   post = "break"
-  url = "/themes/"
+  url = "/global-settings/"
 
 # Core Menus
 
@@ -188,42 +187,20 @@ anchor = "smart"
 
 
 [[menu.docs]]
-  name = "Troubleshooting"
-  weight = 60
-  identifier = "troubleshooting"
-  url = "/troubleshooting/"
+    name = "Help"
+    weight = 60
+    identifier = "help"
+    url = "/help/"
+    post = "break"
 
 [[menu.docs]]
-  name = "Tools"
-  weight = 70
-  identifier = "tools"
-  url = "/tools/"
-
-[[menu.docs]]
-  name = "Hosting & Deployment"
-  weight = 80
-  identifier = "hosting-and-deployment"
-  url = "/hosting-and-deployment/"
-
-[[menu.docs]]
-  name = "Contribute"
-  weight = 100
-  post = "break"
-  identifier = "contribute"
-  url = "/contribute/"
-
-#[[menu.docs]]
-#  name = "Tags"
-#  weight = 120
-#  identifier = "tags"
-#  url = "/tags/"
+    name = "Content Tuto"
+    weight = 100
+    identifier = "content-tuto"
+    url = "/content-tuto/"
+        post = "break"
 
 
-# [[menu.docs]]
-#   name = "Categories"
-#   weight = 140
-#   identifier = "categories"
-#   url = "/categories/"
 
 ######## QUICKLINKS
 

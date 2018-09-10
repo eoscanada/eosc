@@ -10,7 +10,7 @@ authors: ["Michael Henderson"]
 keywords: [install,pc,windows,linux,macos,binary,tarball]
 menu:
   docs:
-    parent: "global-setting"
+    parent: "global-settings"
     weight: 30
 weight: 30
 sections_weight: 30
