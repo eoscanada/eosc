@@ -5,7 +5,11 @@
     <option name="CUSTOM_SCOPE_NAME" value="All Places" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="" />
+    <list default="true" id="46955834-0071-4aa2-96b9-b2be52a4dfdf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/content/en/content-tuto/_index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/README.md" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -120,9 +124,9 @@
           <entry key="headers" value="85" />
           <entry key="html" value="2623" />
           <entry key="json" value="1" />
-          <entry key="md" value="2422" />
+          <entry key="md" value="2505" />
           <entry key="toml" value="85" />
-          <entry key="txt" value="302" />
+          <entry key="txt" value="311" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -130,7 +134,7 @@
           <entry key="CSS" value="1760" />
           <entry key="HTML" value="2623" />
           <entry key="JSON" value="1" />
-          <entry key="PLAIN_TEXT" value="2899" />
+          <entry key="PLAIN_TEXT" value="2991" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -163,11 +167,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="258" lean-forward="true" selection-start-line="160" selection-end-line="258" />
+            <state relative-caret-position="146">
+              <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
             </state>
           </provider>
         </entry>
@@ -193,15 +197,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/content/en/content-tuto/_index.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            <state relative-caret-position="388">
+              <caret line="80" column="32" selection-start-line="80" selection-start-column="32" selection-end-line="80" selection-end-column="32" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/content/en/content-tuto/features-overview.md">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -298,7 +297,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/docs/themes/gohugoioTheme/layouts/partials/home-page-sections/supported-by.html" />
         <option value="$PROJECT_DIR$/docs/layouts/index.html" />
         <option value="$PROJECT_DIR$/docs/content/en/supported-by/eos-canada.md" />
         <option value="$PROJECT_DIR$/docs/layouts/partials/home-page-sections/supported-by.html" />
@@ -347,8 +345,9 @@
         <option value="$PROJECT_DIR$/docs/content/en/global-setting/_index.md" />
         <option value="$PROJECT_DIR$/docs/content/en/global-setting/environment-variables.md" />
         <option value="$PROJECT_DIR$/docs/content/en/global-settings/_index.md" />
-        <option value="$PROJECT_DIR$/docs/README.md" />
+        <option value="$PROJECT_DIR$/docs/content/en/content-tuto/features-overview.md" />
         <option value="$PROJECT_DIR$/docs/content/en/content-tuto/_index.md" />
+        <option value="$PROJECT_DIR$/docs/README.md" />
       </list>
     </option>
   </component>
@@ -544,19 +543,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/docs/layouts/partials" />
-      <recent name="$PROJECT_DIR$/docs/layouts" />
-      <recent name="$PROJECT_DIR$/docs/content/en/supported-by" />
-      <recent name="$PROJECT_DIR$/docs/layouts/partials/home-page-sections" />
-      <recent name="$PROJECT_DIR$/docs/content/en/features" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/docs/content/en/news/eosc-lunch-is-website" />
       <recent name="$PROJECT_DIR$/docs/content/en/about" />
       <recent name="$PROJECT_DIR$/docs/layouts/partials/home-page-sections" />
       <recent name="$PROJECT_DIR$/docs/layouts/partials" />
       <recent name="$PROJECT_DIR$/docs/static/css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/content/en/content-tuto" />
+      <recent name="$PROJECT_DIR$/docs/layouts/partials" />
+      <recent name="$PROJECT_DIR$/docs/layouts" />
+      <recent name="$PROJECT_DIR$/docs/content/en/supported-by" />
+      <recent name="$PROJECT_DIR$/docs/layouts/partials/home-page-sections" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -591,7 +590,7 @@
       <workItem from="1535475808363" duration="35622000" />
       <workItem from="1536097961991" duration="20309000" />
       <workItem from="1536325649106" duration="6259000" />
-      <workItem from="1536541571918" duration="5491000" />
+      <workItem from="1536541571918" duration="5757000" />
     </task>
     <task id="LOCAL-00001" summary="build home page">
       <created>1534875049743</created>
@@ -901,14 +900,22 @@
       <option name="project" value="LOCAL" />
       <updated>1536591221978</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="tuto page">
+      <created>1536594037079</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1536594037079</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167701000" />
+    <option name="totallyTimeSpent" value="167967000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="112" y="38" width="1425" height="975" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.90836656" visible="true" weight="0.27635327" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -964,7 +971,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change theme" />
     <MESSAGE value="build home page" />
     <MESSAGE value="buil" />
     <MESSAGE value="build" />
@@ -989,7 +995,8 @@
     <MESSAGE value="reeadme" />
     <MESSAGE value="reeadme 2" />
     <MESSAGE value="add about pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="add about pages" />
+    <MESSAGE value="tuto page" />
+    <option name="LAST_COMMIT_MESSAGE" value="tuto page" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/docs/content/en/tools/starter-kits.md">
@@ -1215,13 +1222,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="258" lean-forward="true" selection-start-line="160" selection-end-line="258" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/content/en/getting-started/quick-start.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="698">
@@ -1229,15 +1229,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/content-tuto/_index.md">
+    <entry file="file://$PROJECT_DIR$/docs/content/en/content-tuto/features-overview.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        <state relative-caret-position="15">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/content/en/content-tuto/features-overview.md">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/docs/content/en/content-tuto/_index.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="80" column="32" selection-start-line="80" selection-start-column="32" selection-end-line="80" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
