@@ -228,8 +228,10 @@ Our note here
 
 ## Add note box with outside border
 
+```
 ```bash
-Content here
+Content here```
+
 ```
 
 
