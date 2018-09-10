@@ -168,7 +168,7 @@ eosccommand: eosc-tools
 # H1 Title
 
 ```## H2 Title```
-##3 H2 Title
+## 3 H2 Title
 
 ```### H3 Title etc```
 ### H3 Title etc
@@ -177,9 +177,11 @@ eosccommand: eosc-tools
 
 ## Bullet Point
 
-```* Line 1```
-```* Line 2```
-```* Line 3```
+```
+* Line 1
+* Line 2
+* Line 3
+```
 
 * Line 1
 * Line 2
@@ -189,19 +191,27 @@ eosccommand: eosc-tools
 
 ## Word with link
 
-```[EOS Canada](https://www.eoscanada.com)``
+```[EOS Canada](https://www.eoscanada.com)```
+
 [EOS Canada](https://www.eoscanada.com)
+
 
 
 ### Words styling
 
+
 ```*Text in italic*```
+
 *Text in italic*
 
+
 ```**Text in bold**```
+
+
 **Text in bold**
 
 ```***Text in bold and italic***```
+
 ***Text in bold and italic***
 
 
@@ -230,6 +240,7 @@ Content here
 ▶ Button title
 Content here
 ```
+
 ```
 ```
 ▶ Button title
@@ -241,5 +252,6 @@ Content here
 ## Add video
 
 {{< youtube id="CMtN_LUpeLg" >}}
+
 ```{{< youtube id="CMtN_LUpeLg" >}}```
 

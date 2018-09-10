@@ -8,4 +8,3 @@ categories: ["Releases"]
 
 Interactive prompts for reconfirmation when signing a transaction to mitigate against unauthorized signing requests performed by a malicious actor.
 
-..
