@@ -130,7 +130,7 @@ func FormatBalances(account *eos.AccountResp, config *columnize.Config) string {
 
 func FormatProducers(account *eos.AccountResp, config *columnize.Config) string {
 	output := []string{
-		"producers:",
+		"voted for:",
 		fmt.Sprintf("     %s", prettifyAccounts(account.VoterInfo.Producers)),
 	}
 
@@ -208,7 +208,7 @@ func prettifyAccounts(accounts []eos.AccountName) string {
 
 func rightAlignColumnize(value, unit string) string {
 	w := new(tabwriter.Writer)
-	bs := bytes.NewBuffer([]byte(""))
+	bs := bytes.NewBuffer([]byte{})
 	// Using tabwriter.Debug to output '|' which is the delimited in columnize
 	w.Init(bs, 15, 0, 1, ' ', tabwriter.Debug|tabwriter.AlignRight)
 	fmt.Fprintf(w, "%s\t%s", value, unit)
