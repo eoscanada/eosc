@@ -148,7 +148,7 @@ func prettifyBytes(b int64) string {
 		exp++
 	}
 	value := float64(b) / float64(div)
-	unit := fmt.Sprintf("%ciB", "KMGTPE"[exp])
+	unit := fmt.Sprintf("%cB", "KMGTPE"[exp])
 
 	precision := 3
 	if value >= 100 {
@@ -165,13 +165,13 @@ func prettifyTime(micro int64) string {
 	unit := "μs"
 	if value > 1000000*60*60 {
 		value /= float64(1000000 * 60 * 60)
-		unit = "hr"
+		unit = "h"
 	} else if value > 1000000*60 {
 		value /= float64(1000000 * 60)
-		unit = "min"
+		unit = "m"
 	} else if value > 1000000 {
 		value /= float64(1000000)
-		unit = "sec"
+		unit = "s"
 	} else if value > 1000 {
 		value /= float64(1000)
 		unit = "ms"
