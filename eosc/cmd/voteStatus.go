@@ -27,20 +27,27 @@ var voteStatusCmd = &cobra.Command{
 		)
 		errorCheck("get table row", err)
 
-		var voterInfo []eos.VoterInfo
-		err = response.JSONToStructs(&voterInfo)
+		var voterInfos []eos.VoterInfo
+		err = response.JSONToStructs(&voterInfos)
 		errorCheck("reading voter_info", err)
 
-		var found bool
-		for _, info := range voterInfo {
+		found := false
+		for _, info := range voterInfos {
 			if info.Owner == voterName {
 				found = true
-
 				fmt.Println("Voter: ", info.Owner)
-				fmt.Println("Is Proxy: ", info.IsProxy)
+
+				if info.IsProxy != 0 {
+					fmt.Println("Registered as a proxy voter: true")
+					fmt.Println("Proxied vote weight: ", info.ProxiedVoteWeight)
+				} else {
+					fmt.Println("Registered as a proxy voter: false")
+				}
+
 				if info.Proxy != "" {
 					fmt.Println("Voting via proxy: ", info.Proxy)
-					fmt.Println("Proxied vote weight: ", info.ProxiedVoteWeight)
+					fmt.Println("Last vote weight: ", info.LastVoteWeight)
+
 				} else {
 					fmt.Println("Producers list: ", info.Producers)
 					fmt.Println("Staked amount: ", info.Staked)
@@ -49,7 +56,7 @@ var voteStatusCmd = &cobra.Command{
 			}
 		}
 		if !found {
-			errorCheck("voter_info", fmt.Errorf("not found"))
+			errorCheck("vote status", fmt.Errorf("unable to find vote status for %s", voterName))
 		}
 	},
 }
