@@ -11,7 +11,7 @@ menu:
   docs:
     parent: "content-tuto"
     weight: 1
-weight: 1
+weight: 3
 draft: false
 aliases:
 toc: true
@@ -88,4 +88,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec metus urna, euism
 hugo new posts/my-first-post.md
 {{< /code >}}
 
+
+
+## add tweet post in page
+{{< tweet 1005812880325922817 >}}
+
+
+## Table
+
+| Metric Name         | Description |
+|---------------------|-------------|
+| cumulative duration | The cumulative time spent executing a given template. |
+| average duration    | The average time spent executing a given template. |
+| maximum duration    | The maximum time a single execution took for a given template. |
+| count               | The number of times a template was executed. |
+| template            | The template name. |
 

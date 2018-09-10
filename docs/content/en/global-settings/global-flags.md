@@ -1,6 +1,6 @@
 ---
-title: Basic Usage
-linktitle: Basic Usage
+title: Global Flags
+linktitle: Global Flags
 description: Hugo's CLI is fully featured but simple to use, even for those who have very limited experience working from the command line.
 date: 2017-02-01
 publishdate: 2017-02-01

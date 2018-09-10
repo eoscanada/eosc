@@ -260,3 +260,38 @@ li {position:relative;list-style:square;}
 .admonition-content {
     background-color: #edeeee;
 }
+
+.prose table, article table {
+    width: 100%;
+    margin-bottom: 3em;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.prose table th, article table th {
+      background-color: #57626f;
+      border-bottom: 1px solid #768290;
+      color: white;
+      font-weight: 400;
+      text-align: left;
+      padding: .375em .5em;
+  }
+
+.prose table td, article table td, .prose table tc, article table tc {
+            padding: .75em .5em;
+            text-align: left;
+            border-right: 1px solid #ddd;
+        }
+
+
+.prose table tr:nth-child(even), article table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+
+
+
+

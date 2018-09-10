@@ -160,4 +160,4 @@ eosccommand: eosc-tools
 
 # Content styling
 
-see content styling examples [here][eosc.eoscanada.com/content-tuto/]
+see content styling examples [Here](http://eosc.eoscanada.com/content-tuto/)
