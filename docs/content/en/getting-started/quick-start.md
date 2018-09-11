@@ -1,12 +1,12 @@
 ---
-title: Quick Start
-linktitle: Quick Start
-description: Create a Hugo site using the beautiful Ananke theme.
-date: 2013-07-01
-publishdate: 2013-07-01
+title: Getting Started
+linktitle: Getting Started
+description: Install and run eosc
+date: 2018-09-11
+publishdate: 2018-09-11
 categories: [getting started]
-keywords: [quick start,usage]
-authors: [Shekhar Gulati, Ryan Watters]
+keywords: [getting started,install,run,eosc,vote,vault]
+authors: [EOS Canada]
 menu:
   docs:
     parent: "getting-started"
@@ -18,123 +18,158 @@ aliases: [/quickstart/,/overview/quickstart/]
 toc: true
 ---
 
-{{% note %}}
-This quick start uses `macOS` in the examples. For instructions about how to install Hugo on other operating systems, see [install](/getting-started/installing).
 
-You also need [Git installed](https://git-scm.com/downloads) to run this tutorial.
-{{% /note %}}
+# Getting Started
 
 
+### Installation
 
-## Step 1: Install Hugo
 
-{{% note %}}
-`Homebrew`, a package manager for `macOS`,  can be installed from [brew.sh](https://brew.sh/). See [install](/getting-started/installing) if you are running Windows etc.
-{{% /note %}}
+1. Install from https://github.com/eoscanada/eosc/releases
 
-```bash
-brew install hugo
-```
 
-To verify your new install:
+**or**
+
+
+2. Build from source with:
 
 ```bash
-hugo version
+go get -u -v github.com/eoscanada/eosc/eosc
 ```
 
 
-{{< asciicast HDlKrUrbfT7yiWsbd6QoxzRTN >}}
+
+### Vote now!
 
 
-## Step 2: Create a New Site
-
-```bash
-hugo new site quickstart
-```
-
-The above will create a new Hugo site in a folder named `quickstart`.
-
-{{< asciicast 1PH9A2fs14Dnyarx5v8OMYQer >}}
-
-
-## Step 3: Add a Theme
-
-See [themes.gohugo.io](https://themes.gohugo.io/) for a list of themes to consider. This quickstart uses the beautiful [Ananke theme](https://themes.gohugo.io/gohugo-theme-ananke/).
-
-```bash
-cd quickstart;\
-git init;\
-git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke;\
-
-# Edit your config.toml configuration file
-# and add the Ananke theme.
-echo 'theme = "ananke"' >> config.toml
-```
-
-
-{{< asciicast WJM2LEZQs8VRhNeuZ5NiGPp9I >}}
-
-## Step 4: Add Some Content
+Once installed run:
 
 ```
-hugo new posts/my-first-post.md
+eosc vault create --import
+```
+
+to import your keys and follow instructions.
+
+Then run:
+
+```
+eosc vote --help
+```
+
+and run something like this:
+
+```
+eosc vote producers [your account] [producer1] [producer2] [producer3]
+```
+
+Make sure you have version `v0.7.0` or higher:
+
+```
+eosc version
+```
+
+Read more below for details.
+
+
+### eosc vault
+
+The `eosc vault` is a simple yet powerful EOS wallet.
+
+
+
+## Import keys in new wallet
+
+
+You can **import externally generated private keys** with `vault create --import` call.
+
+You will then be asked to paste your private key in an interactive
+prompt.  The private key is **not shown** on screen during the
+import. It will display the corresponding public key which you should
+cross-check.
+
+```
+$ eosc vault create --import -c "Imported key"
+Enter passphrase to encrypt your vault: ****
+Confirm passphrase: ****
+Type your first private key: ****
+Type your next private key or hit ENTER if you are done:
+Imported 1 keys. Let's secure them before showing the public keys.
+Wallet file "./eosc-vault.json" created. Here are your public keys:
+- EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+```
+
+Your private keys will be encrypted using your passphrase. See below
+for cryptographic primitives used.
+
+
+
+## New wallet with new keys
+
+
+Create a new wallet with:
+
+```
+$ eosc vault create --keys 2
+Created 2 keys. Let's secure them before showing the public keys.
+Enter passphrase to encrypt your keys:
+Confirm passphrase:
+Wallet file "./eosc-vault.json" created. Here are your public keys:
+- EOS7MEGq9FVb2Ve4bsZEan1t146TKCyo8dKtLvihrNhGbPLCPLjXd
+- EOS5QoyZwJvpPjmZAa3HdgTn2FdNABBffXLD95WPagiARmaAHMhin
 ```
 
 
-Edit the newly created content file if you want. Now, start the Hugo server with [drafts](/getting-started/usage/#draft-future-and-expired-content) enabled:
+## Add keys to an existing vault
+
+
+To add an externally generated private key to an existing vault, use:
 
 ```
-▶ hugo server -D
-
-Started building sites ...
-Built site for language en:
-1 of 1 draft rendered
-0 future content
-0 expired content
-1 regular pages created
-8 other pages created
-0 non-page files copied
-1 paginator pages created
-0 categories created
-0 tags created
-total in 18 ms
-Watching for changes in /Users/bep/sites/quickstart/{data,content,layouts,static,themes}
-Serving pages from memory
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
-Press Ctrl+C to stop
+$ eosc vault add
+Vault file not found, creating a new wallet
+Type your first private key:        [insert your private key here, NOT shown]
+Type your next private key or hit ENTER if you are done:
+Keys imported. Let's secure them before showing the public keys.
+Enter passphrase to encrypt your keys:
+Confirm passphrase:
+Wallet file "./eosc-vault.json" written. Here are your ADDED public keys:
+- EOS5tb61aZMAfQqKDsnkscFq76JXxNdi7ZhkUmkVZUkU4zPzfeAFx
+Total keys writteN: 3
 ```
 
+The vault operations do zero network calls and can be done offline.
+The file is encrypted, can safely be archived and is future proof.
 
-**Navigate to your new site at [http://localhost:1313/](http://localhost:1313/).**
+### Casting your votes
 
-
-
-## Step 5: Customize the Theme
-
-Your new site already looks great, but you will want to tweak it a little before you release it to the public.
-
-### Site Configuration
-
-Open up `config.toml` in a text editor:
+With an `eosc-vault.json`, you can vote:
 
 ```
-baseURL = "https://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
-theme = "ananke"
+$ eosc vote producers youraccount eoscanadacom someotherfavo riteproducer
+Enter passphrase to unlock vault:
+Voter [youraccount] voting for: [eoscanadacom]
+Done
 ```
 
-Replace the `title` above with something more personal. Also, if you already have a domain ready, set the `baseURL`. Note that this value is not needed when running the local development server. 
+This will sign your vote transaction locally, and submit the
+transaction to the network through the `https://mainnet.eoscanada.com`
+endpoint.  You can also point to some other endpoints that are on the
+main network with `-u` or `--api-url`.
 
-{{% note %}}
-**Tip:** Make the changes to the site configuration or any other file in your site while the Hugo server is running, and you will see the changes in the browser right away.
-{{% /note %}}
+Find what your account is on https://eosquery.com
 
 
-For theme specific configuration options, see the [theme site](https://github.com/budparr/gohugo-theme-ananke).
 
-**For further theme customization, see [Customize a Theme](/themes/customizing/).**
+### Cryptographic primitives used
 
-## Recapitulation
 
-{{< asciicast pWp4uvyAkdWgQllD9RCfeBL5k >}}
+The cryptography used is NaCl
+([C implementation](https://tweetnacl.cr.yp.to/), [Javascript port](https://github.com/dchest/tweetnacl-js),
+[Go version, which we use](https://godoc.org/golang.org/x/crypto/nacl/secretbox)). And
+key derivation is [Argon2](https://en.wikipedia.org/wiki/Argon2),
+using the [Go library
+here](https://godoc.org/golang.org/x/crypto/argon2).
+
+You can inspect the crypto code in our codebase regarding the
+`passphrase` implementation: [it is 61 lines](./vault/passphrase.go),
+including blanks and comments.
