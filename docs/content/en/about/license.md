@@ -1,10 +1,10 @@
 ---
 title: License
 linktitle: License
-description:
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
+description: eosc license
+date: 2018-09-11
+publishdate: 2018-09-11
+lastmod: 2018-09-11
 keywords: [eosc,eos,license]
 menu:
   docs:
@@ -17,3 +17,6 @@ aliases: []
 toc: true
 ---
 
+# License
+
+MIT
