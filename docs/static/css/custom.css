@@ -17,15 +17,16 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
     text-decoration: none;
 }
 
-#hero .hero-logo img {min-width:300px;}
-#hero .hero-logo  {position:relative;padding-bottom:40px;}
+#hero .hero-logo img {min-width:260px;}
+#hero .hero-logo  {position:relative;padding-bottom:0px;}
 #hero {
     background: url("../img/eosc-hero-photo-01.jpg") no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: 10% 0%;
-    padding: 200px 0 280px 0;
+    padding: 100px 0 180px 0;
     position: relative;
+    max-height: 100vh;
 }
 #hero:before {
     content: "";
@@ -41,8 +42,8 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 }
 #hero h2.hero-title {
     font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    font-size: 40px;
+    font-weight: 200;
+    font-size: 34px;
     line-height: 1.2em;
     letter-spacing: 0px;
     padding-bottom: 45px;

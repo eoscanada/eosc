@@ -129,13 +129,6 @@ anchor = "smart"
     url = "/help/"
     post = "break"
 
-[[menu.docs]]
-    name = "Content Tuto"
-    weight = 100
-    identifier = "content-tuto"
-    url = "/content-tuto/"
-        post = "break"
-
 
 
 ######## QUICKLINKS
