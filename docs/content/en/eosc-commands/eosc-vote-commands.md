@@ -50,8 +50,7 @@ An interactive prompt would ask for your passphrase to proceed:
 
 
 ```
-Enter passphrase to unlock vault:
-Voter [youraccount] voting for: [eoscanadacom]
+Enter passphrase to unlock vault: ***
 Done
 ```
 
