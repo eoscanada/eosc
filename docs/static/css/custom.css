@@ -313,6 +313,11 @@ li {position:relative;list-style:square;}
 }
 
 
+.nested-links a:focus, .nested-links a:hover {
+    color: #aaa;
+}
+
+
 
 
 

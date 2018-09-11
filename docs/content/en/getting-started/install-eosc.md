@@ -1,6 +1,6 @@
 ---
-title: Install Hugo
-linktitle: Install Hugo
+title: Install eosc
+linktitle: Install eosc
 description: Install Hugo on macOS, Windows, Linux, OpenBSD, FreeBSD, and on any machine where the Go compiler tool chain can run.
 date: 2016-11-01
 publishdate: 2016-11-01
