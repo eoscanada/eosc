@@ -1,7 +1,7 @@
 ---
 title: License
 linktitle: License
-description:eosc license
+description: eosc license
 date: 2018-09-11
 publishdate: 2018-09-11
 lastmod: 2018-09-11
@@ -17,6 +17,6 @@ aliases: []
 toc: true
 ---
 
-# Liscense
+# License
 
 MIT
