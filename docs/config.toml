@@ -111,12 +111,11 @@ anchor = "smart"
 
 
 [[menu.docs]]
-  name = "Commands"
-  weight = 40
-  post = "break"
-  identifier = "commands"
-  url = "/commands/"
-
+    name = "eosc Commands"
+    weight = 60
+    identifier = "eosc-commands"
+    url = "/eosc-commands/"
+    post = "break"
 
 
 # LOW LEVEL ITEMS
