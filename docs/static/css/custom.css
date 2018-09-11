@@ -20,14 +20,32 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 #hero .hero-logo img {min-width:260px;}
 #hero .hero-logo  {position:relative;padding-bottom:0px;}
 #hero {
-    background: url("../img/eosc-hero-photo-01.jpg") no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: 10% 0%;
+    /*background: url("../img/eosc-hero-photo-01.jpg") no-repeat;*/
+    /*background-size: cover;*/
+    /*background-attachment: fixed;*/
+    /*background-position: 10% 0%;*/
     padding: 100px 0 180px 0;
     position: relative;
-    max-height: 100vh;
+    height: calc(100vh - 87px);
+    /*background-color: transparent!important;*/
 }
+
+#hero:after{
+    content:"";
+    position:fixed; /* stretch a fixed position to the whole screen */
+    top:0;
+    height:100vh; /* fix for mobile browser address bar appearing disappearing */
+    left:0;
+    right:0;
+    z-index:-1; /* needed to keep in the background */
+    background: url("../img/eosc-hero-photo-01.jpg") center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
 #hero:before {
     content: "";
     position: absolute;
