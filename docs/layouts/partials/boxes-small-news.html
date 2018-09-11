@@ -1,14 +1,14 @@
 <div class="w-100-l center bg-grey">
-  <div class=" flex-ns flex-wrap justify-center center mw9 pt6 pb6 dark">
+  <div class=" flex-ns flex-wrap justify-center center mw9 pv5 pv6-l  dark">
     {{ with .Site.GetPage "/news" }}
     <h1 class="title w-100-l pt1 pb1 mv0 justify-center tc">{{ .Title }}</h1>
     <h3 class="title w-100-l pt3 pb4 mv0 fw3 justify-center tc">{{ .Description }}</h3>
     {{ end }}
-  <div class="flex flex-wrap w-90-l center center mw9">
+    <div class="flex flex-wrap w-90-l center center mw9">
     <!-- <a href="/news/" class="link accent-color tr-ns f6 w-100 w-50-m w-10-l bg-animate hover-bg-accent-color hover-white pv3 pv4-l ph3 ph4-l dib">
       Latest News:
     </a> -->
-    {{ range first 3 ( sort (where .Pages "Section" "news") "Date" "desc" ) }}
+      {{ range first 3 ( sort (where .Pages "Section" "news") "Date" "desc" ) }}
       <!-- only show 2 boxes on mobile -->
       {{ $.Scratch.Add "i" 1 }}{{ $i := $.Scratch.Get "i" }}
       <div href="{{ .URL }}" class="dark f5 w-100 w-33-m w-33-l pv3 pv4-ns ph3 ph4-ns content-with-btn-bottom">
@@ -17,11 +17,11 @@
         <p>
           {{ .Params.description | markdownify | truncate 100 "…"}}
         </p>
-        <a  href="{{ .URL }}" class="btn btn-default ">READ MORE</a>
+        <a  href="{{ .URL }}" class="ph3 ph4-l fw5 f7 f6-l db link grow tc v-mid bg-orange white ba b--blue ph3 pv2 br1 btn btn-default ">READ MORE</a>
 
       </div>
     {{ end }}
 
-  </div>
+    </div>
   </div>
 </div>

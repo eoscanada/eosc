@@ -1,10 +1,8 @@
-<div class="bg-white w-100-l center">
-  <div class="flex-ns flex-wrap justify-center center mw9 pt6 pb6 grey">
+<div class="bg-white w-100-l center ">
+  <div class="flex-ns flex-wrap justify-center center mw9 pv5 pv6-l grey">
     {{ with .Site.GetPage "/features" }}
-    {{ if .Params.features }}
-    <h1 class="title w-100-l pt1 pb1 mv0 justify-center tc">{{ .Title }}</h1>
+    <h1 class="title w-100-l pt0 pb1 mv0 justify-center tc">{{ .Title }}</h1>
     <h3 class="title w-100-l pt3 pb4 mv0 fw3 justify-center tc">{{ .Description }}</h3>
-    {{ end }}
     {{ end }}
     <div class="flex flex-wrap w-90-l center center mw9">
       {{ range first 3 ( sort (where .Pages "Section" "features") "Weight" "asc" ) }}
@@ -14,7 +12,7 @@
         <h3 class="fw5">{{ .Params.title }}</h3>
         <h4 class="mt3 mb4">{{ .Params.description }}</h4>
         {{ .Content }}
-        <a  href="{{ .URL }}" class="btn btn-default ">READ MORE</a>
+        <a  href="{{ .URL }}" class="ph3 ph4-l fw5 f7 f6-l db link grow tc v-mid bg-orange white ba b--blue ph3 pv2 br1 btn btn-default ">READ MORE</a>
 
       </div>
       {{ end }}

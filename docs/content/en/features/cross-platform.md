@@ -5,7 +5,6 @@ date: 2018-08-24
 weight: 10
 
 ---
-
 <ul class="li-custom li-check">
 <li><i class="fas fa-check"></i>Linux</li>
 <li><i class="fas fa-check"></i>Windows</li>

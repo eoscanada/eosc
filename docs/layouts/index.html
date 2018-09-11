@@ -1,14 +1,18 @@
 {{ define "header" }}
   {{ partial "hero" . }}
-  {{ partial "boxes-small-news" . }}
 {{ end }}
 
 {{ define "main" }}
 
+{{- partial "home-page-sections/features-icons" . -}}
 
-    {{- partial "home-page-sections/features-icons" . -}}
+{{ partial "boxes-small-news" . }}
 
-    {{- partial "home-page-sections/supported-by" . -}}
+{{ partial "home-page-sections/home-video" . }}
+
+{{- partial "home-page-sections/supported-by" . -}}
+
+
   <!--{{ partial "home-page-sections/sponsors.html" (dict "cx" . "gtag" "home" ) }}-->
 
   <!--{{- partial "home-page-sections/features-single" . -}}-->

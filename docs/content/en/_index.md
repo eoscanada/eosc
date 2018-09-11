@@ -6,35 +6,7 @@ hero_title: Is a multiplatform command line tool, stable and easily usable by an
 hero_subtitle:
 button_text: DOWNLOAD
 button_link: https\://github.com/eoscanada/eosc/releases
-features_title: "Values title"
-features_subtitle: "Values subtitle"
-features:
-  - heading: Vault
-    tagline: A simple yet powerful EOS wallet
-    content_before:
-    details:
-       - content: Store your private keys offline
-       - content: Resist brute force attack
-       - content: No need to trust anyone with your private keys
-    content_after:
 
-  - heading: Vote
-    tagline: Easiest and most secure voting solution for EOS.
-    content_before:
-    details:
-       - content: Store your private keys offline
-       - content: Resist brute force attack
-       - content: No need to trust anyone with your private keys
-    content_after:
-
-  - heading: Cross-Platform
-    tagline: "Compatible with:"
-    content_before:
-    details:
-       - content: Store your private keys offline
-       - content: Resist brute force attack
-       - content: No need to trust anyone with your private keys
-    content_after:
 
 sections:
   - heading: "100s of Themes"
@@ -49,6 +21,7 @@ sections:
     color_classes: bg-primary-color-light black
     image: /images/home-page-templating-example.png
     copy: "Hugo's Go-based templating provides just the right amount of logic to build anything from the simple to complex. If you prefer Jade/Pug-like syntax, you can also use Amber, Ace, or any combination of the three."
+
 ---
 
 `eosc` is an open source swiss-army knife for the EOS.IO blockchain.
