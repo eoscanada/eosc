@@ -26,7 +26,7 @@ Building on previous `eosc` capabilities, like voting, securing your keys and us
 * Interactive prompts for reconfirmation when signing a transaction to mitigate against unauthorized signing requests performed by a malicious actor [(v0.7.0)](https://github.com/eoscanada/eosc/releases/tag/v0.7.0)
 * Ability to delegate transaction signature to a wallet running outside of `eosc` by using the global flag --wallet-url, like `keosd` or `eosc vault serve` [(v0.7.3)](https://github.com/eoscanada/eosc/releases/tag/v0.7.3)
 * Block Producer functions like `regproducer` `unregproducer` and `claimrewards` (under `eosc system`, since [v0.7.3](https://github.com/eoscanada/eosc/releases/tag/v0.7.3) and [v0.7.7](https://github.com/eoscanada/eosc/releases/tag/v0.7.3))
-* A host of multisig functions, such as propose, approve, unapprove, cancel, and exec [(v0.7.3)](https://github.com/eoscanada/eosc/releases/tag/v0.7.3)
+* A host of multisig functions, such as *propose*, *approve*, *unapprove*, *cancel*, and *exec* [(v0.7.3)](https://github.com/eoscanada/eosc/releases/tag/v0.7.3)
 * Ability to bid on a namespace [(v0.7.5)](https://github.com/eoscanada/eosc/releases/tag/v0.7.5)
 * Linkauth and Updateauth for setting up custom permissions for an account (under `eosc system`, since [(v0.7.5)](https://github.com/eoscanada/eosc/releases/tag/v0.7.5) and [(v0.7.7)](https://github.com/eoscanada/eosc/releases/tag/v0.7.7))
 * `eosio.sudo` wrap using --sudo-wrap flag for easily testing and executing a sudo’d transaction by Block Producers [(v0.7.5)](https://github.com/eoscanada/eosc/releases/tag/v0.7.5)
