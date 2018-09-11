@@ -109,7 +109,6 @@ anchor = "smart"
 
 # Core Menus
 
-
 [[menu.docs]]
     name = "eosc Commands"
     weight = 20
