@@ -1,6 +1,6 @@
 ---
-title: What is EOS
-linktitle: Overview
+title: About Overview
+linktitle: About Overview
 description:
 date: 2018-09-05
 publishdate: 2018-09-05

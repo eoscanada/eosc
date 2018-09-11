@@ -1,5 +1,5 @@
 ---
-title: eosc Commands
+title: eosc Commands Overview
 linktitle: eosc Commands Overview
 description:
 date: 2018-09-05

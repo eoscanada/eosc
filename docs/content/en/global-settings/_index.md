@@ -1,5 +1,5 @@
 ---
-title: Global Settings
+title: Global Settings Overview
 linktitle: Global Settings Overview
 description:
 date: 2017-02-01
