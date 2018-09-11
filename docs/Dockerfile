@@ -8,7 +8,6 @@ RUN hugo -s /src -d /eosc-website
 
 
 
-
 FROM nginx:stable-alpine-perl
 
 WORKDIR /usr/share/nginx/html
