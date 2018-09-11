@@ -1,6 +1,6 @@
 ---
-title: "`eosc get` Commands"
-linktitle: "`eosc get`"
+title: "`eosc system` Commands"
+linktitle: "`eosc system`"
 description:
 date: 2018-09-05
 publishdate: 2018-09-05

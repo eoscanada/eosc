@@ -112,7 +112,7 @@ anchor = "smart"
 
 [[menu.docs]]
     name = "eosc Commands"
-    weight = 60
+    weight = 20
     identifier = "eosc-commands"
     url = "/eosc-commands/"
     post = "break"
