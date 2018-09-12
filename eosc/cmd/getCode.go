@@ -23,36 +23,35 @@ var getCodeCmd = &cobra.Command{
 		errorCheck("get code", err)
 
 		if codeAndABI.AccountName == accountName {
-			//TODO: Ugly hack !?! -- does not work when string len 0
-			fixedWASMBase64 := codeAndABI.WASMasBase64[:len(codeAndABI.WASMasBase64)-1]
-			fixedABIBase64 := codeAndABI.ABIasBase64[:len(codeAndABI.ABIasBase64)-1]
+			if codeAndABI.WASMasBase64 != "" {
+				normalizedWASMBase64 := codeAndABI.WASMasBase64[:len(codeAndABI.WASMasBase64)-1]
+				wasm, err := base64.StdEncoding.DecodeString(normalizedWASMBase64)
+				errorCheck("decode WASM base64", err)
 
-			bytecode, err := base64.StdEncoding.DecodeString(fixedWASMBase64)
-			errorCheck("decode WASM base64", err)
+				hash := sha256.Sum256(wasm)
+				fmt.Println("Code hash:", hex.EncodeToString(hash[:]))
 
-			hash := sha256.Sum256(bytecode)
-			fmt.Println("Code hash:", hex.EncodeToString(hash[:]))
+				if wasmFile := viper.GetString("get-code-cmd-output-wasm"); wasmFile != "" {
+					err = ioutil.WriteFile(wasmFile, wasm, 0644)
+					errorCheck("writing file", err)
+					fmt.Printf("Wrote WASM to %q\n", wasmFile)
+				}
 
-			if wasmFile := viper.GetString("get-code-cmd-output-wasm"); wasmFile != "" {
-				err = ioutil.WriteFile(wasmFile, bytecode, 0644)
-				errorCheck("writing file", err)
+				if abiFile := viper.GetString("get-code-cmd-output-raw-abi"); abiFile != "" {
+					if codeAndABI.ABIasBase64 != "" {
+						normalizedABIBase64 := codeAndABI.ABIasBase64[:len(codeAndABI.ABIasBase64)-1]
 
-				fmt.Printf("Wrote WASM to %q\n", wasmFile)
-			}
-
-			if abiFile := viper.GetString("get-code-cmd-output-abi"); abiFile != "" {
-				abi, err := base64.StdEncoding.DecodeString(fixedABIBase64)
-				errorCheck("decode ABI base64", err)
-				err = ioutil.WriteFile(abiFile, abi, 0644)
-				errorCheck("writing file", err)
-
-				fmt.Printf("Wrote ABI to %q\n", abiFile)
-
-				// data, err := json.MarshalIndent(codeAndABI.ABI, "", "  ")
-				// errorCheck("json marshal", err)
-				// fmt.Println(string(data))
-
-				// fmt.Printf("Wrote ABI to %q\n", abiFile)
+						abi, err := base64.StdEncoding.DecodeString(normalizedABIBase64)
+						errorCheck("decode ABI base64", err)
+						err = ioutil.WriteFile(abiFile, abi, 0644)
+						errorCheck("writing file", err)
+						fmt.Printf("Wrote ABI to %q\n", abiFile)
+					} else {
+						errorCheck("get code", fmt.Errorf("no ABI has been set for account %s", accountName))
+					}
+				}
+			} else {
+				errorCheck("get code", fmt.Errorf("no code has been set for account %s", accountName))
 			}
 		} else {
 			errorCheck("get code", fmt.Errorf("unable to find account %s", accountName))
@@ -64,9 +63,9 @@ func init() {
 	getCmd.AddCommand(getCodeCmd)
 
 	getCodeCmd.Flags().StringP("output-wasm", "", "", "Output WASM code to a file")
-	getCodeCmd.Flags().StringP("output-abi", "", "", "Output ABI to a file")
+	getCodeCmd.Flags().StringP("output-raw-abi", "", "", "Output raw ABI to a file - If you need the JSON ABI, use `eosc get abi`")
 
-	for _, flag := range []string{"output-wasm", "output-abi"} {
+	for _, flag := range []string{"output-wasm", "output-raw-abi"} {
 		if err := viper.BindPFlag("get-code-cmd-"+flag, getCodeCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
