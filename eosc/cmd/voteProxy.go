@@ -9,7 +9,7 @@ import (
 
 var voteProxyCmd = &cobra.Command{
 	Use:   "proxy [voter name] [proxy name]",
-	Short: "Cast your vote for a proxy voter",
+	Short: "Proxy your vote strength to a proxy.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()

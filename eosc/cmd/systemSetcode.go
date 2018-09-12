@@ -7,7 +7,7 @@ import (
 
 var systemSetcodeCmd = &cobra.Command{
 	Use:   "setcode [account name] [wasm file]",
-	Short: "Set code only on an account",
+	Short: "Set code only on an account.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()

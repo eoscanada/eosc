@@ -6,7 +6,7 @@ import (
 
 var voteCmd = &cobra.Command{
 	Use:   "vote",
-	Short: "Command to vote for block producers or proxy",
+	Short: "Command to vote for block producers or proxy.",
 }
 
 func init() {

@@ -7,7 +7,7 @@ import (
 
 var systemSetabiCmd = &cobra.Command{
 	Use:   "setabi [account name] [abi file]",
-	Short: "Set ABI only on an account",
+	Short: "Set ABI only on an account.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()

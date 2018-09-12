@@ -10,7 +10,7 @@ import (
 
 var voteCancelAllCmd = &cobra.Command{
 	Use:   "cancel-all [voter name]",
-	Short: "Cancel all votes currently casted for producers and reset proxy voting.",
+	Short: "Cancel all votes currently cast for producers/delegated to a proxy.",
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
