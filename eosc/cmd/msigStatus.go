@@ -49,7 +49,6 @@ var msigStatusCmd = &cobra.Command{
 					data, err := json.MarshalIndent(info, "", "  ")
 					errorCheck("json marshal", err)
 					fmt.Println(string(data))
-					return
 				} else {
 					fmt.Println("Proposer:", proposer)
 					fmt.Println("Proposal name:", proposalName)
