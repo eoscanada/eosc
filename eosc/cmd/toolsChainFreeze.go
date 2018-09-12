@@ -22,12 +22,12 @@ var toolsChainFreezeCmd = &cobra.Command{
 		chainID, err := hex.DecodeString(viper.GetString("tools-chain-freeze-cmd-chain-id"))
 		errorCheck("parsing chain id", err)
 		proxy := p2p.NewProxy(
-			p2p.NewOutgoingPeer(viper.GetString("tools-chain-freeze-cmd-peer1-p2p-address"), chainID, "eos-proxy", false),
-			p2p.NewOutgoingPeer(viper.GetString("tools-chain-freeze-cmd-peer2-p2p-address"), chainID, "eos-proxy", true),
+			p2p.NewOutgoingPeer(viper.GetString("tools-chain-freeze-cmd-peer1-p2p-address"), "eos-proxy", nil),
+			p2p.NewOutgoingPeer(viper.GetString("tools-chain-freeze-cmd-peer2-p2p-address"), "eos-proxy", &p2p.HandshakeInfo{ChainID: chainID}),
 		)
 
 		proxy.RegisterHandler(chainFreezeHandler)
-		err = proxy.Start()
+		err = proxy.Start("") //TODO Remove "" when unused arg is dropped
 		errorCheck("client start", err)
 	},
 }
