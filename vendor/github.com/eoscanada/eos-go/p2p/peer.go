@@ -19,25 +19,29 @@ import (
 
 type Peer struct {
 	Address                string
-	chainID                eos.SHA256Bytes
 	agent                  string
 	connection             net.Conn
 	reader                 io.Reader
 	handshake              eos.HandshakeMessage
 	catchup                Catchup
 	listener               bool
-	mockHandshake          bool
+	handshakeInfo          *HandshakeInfo
 	connectionTimeout      time.Duration
 	handshakeTimeout       time.Duration
 	cancelHandshakeTimeout chan bool
 }
 
 type HandshakeInfo struct {
+	ChainID                  eos.SHA256Bytes
 	HeadBlockNum             uint32
 	HeadBlockID              eos.SHA256Bytes
 	HeadBlockTime            time.Time
 	LastIrreversibleBlockNum uint32
 	LastIrreversibleBlockID  eos.SHA256Bytes
+}
+
+func (h *HandshakeInfo) String() string {
+	return fmt.Sprintf("Handshake Info: HeadBlockNum [%d], LastIrreversibleBlockNum [%d]", h.HeadBlockNum, h.LastIrreversibleBlockNum)
 }
 
 func (p *Peer) SetHandshakeTimeout(timeout time.Duration) {
@@ -48,24 +52,23 @@ func (p *Peer) SetConnectionTimeout(timeout time.Duration) {
 	p.connectionTimeout = timeout
 }
 
-func newPeer(address string, chainID eos.SHA256Bytes, agent string, listener bool, mockHandshake bool) *Peer {
+func newPeer(address string, agent string, listener bool, handshakeInfo *HandshakeInfo) *Peer {
 
 	return &Peer{
 		Address:                address,
-		chainID:                chainID,
 		agent:                  agent,
 		listener:               listener,
-		mockHandshake:          mockHandshake,
+		handshakeInfo:          handshakeInfo,
 		cancelHandshakeTimeout: make(chan bool),
 	}
 }
 
-func NewIncommingPeer(address string, chainID eos.SHA256Bytes, agent string) *Peer {
-	return newPeer(address, chainID, agent, true, false)
+func NewIncommingPeer(address string, agent string) *Peer {
+	return newPeer(address, agent, true, nil)
 }
 
-func NewOutgoingPeer(address string, chainID eos.SHA256Bytes, agent string, mockHandshake bool) *Peer {
-	return newPeer(address, chainID, agent, false, mockHandshake)
+func NewOutgoingPeer(address string, agent string, handshakeInfo *HandshakeInfo) *Peer {
+	return newPeer(address, agent, false, handshakeInfo)
 }
 
 func (p *Peer) Read() (*eos.Packet, error) {
@@ -74,11 +77,18 @@ func (p *Peer) Read() (*eos.Packet, error) {
 		log.Println("Connection Read error:", p.Address, err)
 		return nil, fmt.Errorf("connection: read: %s", err)
 	}
-	p.cancelHandshakeTimeout <- true
+	if p.handshakeTimeout > 0 {
+		p.cancelHandshakeTimeout <- true
+	}
 	return packet, nil
 }
 
-func (p *Peer) Init(errChan chan error) (ready chan bool) {
+func (p *Peer) SetConnection(conn net.Conn) {
+	p.connection = conn
+	p.reader = bufio.NewReader(p.connection)
+}
+
+func (p *Peer) Connect(errChan chan error) (ready chan bool) {
 
 	ready = make(chan bool, 1)
 	go func() {
@@ -97,8 +107,7 @@ func (p *Peer) Init(errChan chan error) (ready chan bool) {
 			}
 			fmt.Println("Connected on:", p.Address)
 
-			p.connection = conn
-			p.reader = bufio.NewReader(p.connection)
+			p.SetConnection(conn)
 			ready <- true
 
 		} else {
@@ -157,6 +166,44 @@ func (p *Peer) SendSyncRequest(startBlockNum uint32, endBlockNumber uint32) (err
 
 	return p.WriteP2PMessage(syncRequest)
 }
+func (p *Peer) SendRequest(startBlockNum uint32, endBlockNumber uint32) (err error) {
+	fmt.Printf("SendRequest start [%d] end [%d]\n", startBlockNum, endBlockNumber)
+	request := &eos.RequestMessage{
+		ReqTrx: eos.OrderedBlockIDs{
+			Mode:    [4]byte{0, 0, 0, 0},
+			Pending: startBlockNum,
+		},
+		ReqBlocks: eos.OrderedBlockIDs{
+			Mode:    [4]byte{0, 0, 0, 0},
+			Pending: endBlockNumber,
+		},
+	}
+
+	return p.WriteP2PMessage(request)
+}
+
+func (p *Peer) SendNotice(headBlockNum uint32, libNum uint32, mode byte) (err error) {
+	fmt.Printf("Send Notice head [%d] lib [%d] type[%d]\n", headBlockNum, libNum, mode)
+
+	notice := &eos.NoticeMessage{
+		KnownTrx: eos.OrderedBlockIDs{
+			Mode:    [4]byte{mode, 0, 0, 0},
+			Pending: headBlockNum,
+		},
+		KnownBlocks: eos.OrderedBlockIDs{
+			Mode:    [4]byte{mode, 0, 0, 0},
+			Pending: libNum,
+		},
+	}
+	return p.WriteP2PMessage(notice)
+}
+
+func (p *Peer) SendTime() (err error) {
+	fmt.Printf("SendTime\n")
+
+	notice := &eos.TimeMessage{}
+	return p.WriteP2PMessage(notice)
+}
 
 func (p *Peer) SendHandshake(info *HandshakeInfo) (err error) {
 
@@ -176,7 +223,7 @@ func (p *Peer) SendHandshake(info *HandshakeInfo) (err error) {
 
 	handshake := &eos.HandshakeMessage{
 		NetworkVersion:           1206,
-		ChainID:                  p.chainID,
+		ChainID:                  info.ChainID,
 		NodeID:                   make([]byte, 32),
 		Key:                      publicKey,
 		Time:                     tstamp,
@@ -207,7 +254,7 @@ type Catchup struct {
 	originHeadBlock     uint32
 }
 
-func (c *Catchup) sendSyncRequestTo(peer *Peer) error {
+func (c *Catchup) sendSyncRequest(peer *Peer) error {
 
 	c.IsCatchingUp = true
 
