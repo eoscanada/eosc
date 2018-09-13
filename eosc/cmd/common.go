@@ -209,6 +209,11 @@ func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction) {
 
 	//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
 	fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
+	fmt.Printf("  https://eosquery.com/tx/%s\n", resp.TransactionID)
+	if resp.BlockID != "" {
+		fmt.Printf("Server says transaction was included in block %d with ID: %s\n", resp.BlockNum, resp.BlockID)
+		fmt.Printf("  https://eosquery.com/blocks/%s\n", resp.BlockID)
+	}
 }
 
 func yamlUnmarshal(cnt []byte, v interface{}) error {
