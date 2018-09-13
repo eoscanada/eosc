@@ -19,7 +19,9 @@ toc: true
 ---
 
 Flags:
+
   -u, --api-url string              API endpoint of eos.io blockchain node (default "https://mainnet.eoscanada.com")
+  
       --delay-sec int               Set time to wait before transaction is executed, in seconds. Defaults to 0 second.
       --expiration int              Set time before transaction expires, in seconds. Defaults to 30 seconds. (default 30)
   -h, --help                        help for eosc
