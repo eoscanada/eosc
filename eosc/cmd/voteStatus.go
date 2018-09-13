@@ -51,7 +51,7 @@ var voteStatusCmd = &cobra.Command{
 				} else {
 					fmt.Println("Producers list: ", info.Producers)
 					fmt.Println("Staked amount: ", info.Staked)
-					fmt.Println("Last vote weight: ", info.LastVoteWeight)
+					fmt.Printf("Last vote weight: %f\n", info.LastVoteWeight)
 				}
 			}
 		}

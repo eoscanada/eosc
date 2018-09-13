@@ -10,7 +10,7 @@ import (
 
 var systemBidnameCmd = &cobra.Command{
 	Use:   "bidname [bidder_account_name] [premium_account_name] [bid quantity]",
-	Short: "Bid on a premium account name",
+	Short: "Bid on a premium account name.",
 	Long: `Bid on a premium account name
 
 All fields are required. Example usage:

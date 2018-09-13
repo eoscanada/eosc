@@ -7,7 +7,7 @@ import (
 
 var systemUnlinkAuthCmd = &cobra.Command{
 	Use:   "unlinkauth [your account] [code account] [action name]",
-	Short: "Unassign a permission currently active for the given code::action pair",
+	Short: "Unassign a permission currently active for the given code::action pair.",
 	Long: `Unassign a permission currently active for the given code::action pair.
 
 This undoes the action of linkauth, please refer to the documentation for linkauth for more details.

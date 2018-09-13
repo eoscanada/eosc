@@ -17,7 +17,7 @@ import (
 
 var voteListProducersCmd = &cobra.Command{
 	Use:   "list-producers",
-	Short: "Retrieve the list of registered producers",
+	Short: "Retrieve the list of registered producers.",
 	Run:   run,
 }
 

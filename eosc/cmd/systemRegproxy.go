@@ -7,7 +7,7 @@ import (
 
 var systemRegisterProxyCmd = &cobra.Command{
 	Use:   "regproxy [account_name]",
-	Short: "Register an account as a voting proxy",
+	Short: "Register an account as a voting proxy.",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
