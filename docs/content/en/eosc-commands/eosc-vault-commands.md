@@ -19,6 +19,21 @@ toc: true
 
 ---
 
+```
+Usage:
+  eosc vault [command]
+
+Available Commands:
+  add         Add private keys to an existing vault taking input from the shell
+  create      Create a new encrypted EOS keys vault
+  export      Export private keys (and corresponding public keys) inside an eosc vault.
+  list        List public keys inside an eosc vault.
+  serve       Serves signing queries on a local port.
+
+Flags:
+  -h, --help   help for vault
+```
+
 eosc vault
 ----------
 
