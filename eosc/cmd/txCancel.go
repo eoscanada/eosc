@@ -7,8 +7,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var systemCanceldelayCmd = &cobra.Command{
-	Use:   `canceldelay [cancelling_authority] [transaction_id]`,
+var txCancelCmd = &cobra.Command{
+	Use:   `cancel [cancelling_authority] [transaction_id]`,
 	Short: "Cancels a delayed transaction.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
@@ -21,5 +21,5 @@ var systemCanceldelayCmd = &cobra.Command{
 }
 
 func init() {
-	systemCmd.AddCommand(systemCanceldelayCmd)
+	txCmd.AddCommand(txCancelCmd)
 }
