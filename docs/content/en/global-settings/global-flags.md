@@ -20,8 +20,8 @@ toc: true
 
 Flags:
 
+```
   -u, --api-url string              API endpoint of eos.io blockchain node (default "https://mainnet.eoscanada.com")
-  
       --delay-sec int               Set time to wait before transaction is executed, in seconds. Defaults to 0 second.
       --expiration int              Set time before transaction expires, in seconds. Defaults to 30 seconds. (default 30)
   -h, --help                        help for eosc
@@ -35,3 +35,4 @@ Flags:
       --vault-file string           Wallet file that contains encrypted key material (default "./eosc-vault.json")
       --wallet-url strings          Base URL to wallet endpoint. You can pass this multiple times to use the multi-signer (will use each wallet to sign multi-sig transactions).
       --write-transaction string    Do not broadcast the transaction produced, but write it in json to the given filename instead.
+```
