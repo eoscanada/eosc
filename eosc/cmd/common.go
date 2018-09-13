@@ -277,6 +277,14 @@ func toName(in, field string) eos.Name {
 	return name
 }
 
+func toPermissionLevel(in, field string) eos.PermissionLevel {
+	perm, err := permissionToPermissionLevel(in)
+	if err != nil {
+		errorCheck(fmt.Sprintf("invalid permission level for %q", field), err)
+	}
+	return perm
+}
+
 func toActionName(in, field string) eos.ActionName {
 	return eos.ActionName(toName(in, field))
 }
