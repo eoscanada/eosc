@@ -23,7 +23,7 @@ var getTableCmd = &cobra.Command{
 				Code:  args[0],
 				Scope: args[1],
 				Table: args[2],
-				JSON:  true,
+				JSON:  !(viper.GetBool("get-table-cmd-output-binary")),
 				Limit: uint32(viper.GetInt("get-table-cmd-limit")),
 			},
 		)
@@ -40,8 +40,9 @@ func init() {
 	getCmd.AddCommand(getTableCmd)
 
 	getTableCmd.Flags().IntP("limit", "", 100, "Maximum number of rows to return.")
+	getTableCmd.Flags().Bool("output-binary", false, "Outputs the row-level data as hex-encoded binary instead of deserializing using the ABI")
 
-	for _, flag := range []string{"limit"} {
+	for _, flag := range []string{"limit", "output-binary"} {
 		if err := viper.BindPFlag("get-table-cmd-"+flag, getTableCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
