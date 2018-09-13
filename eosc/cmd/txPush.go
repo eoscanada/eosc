@@ -3,15 +3,17 @@
 package cmd
 
 import (
+	"encoding/hex"
 	"encoding/json"
 	"io/ioutil"
 
 	eos "github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
+	"github.com/tidwall/gjson"
 )
 
 var txPushCmd = &cobra.Command{
-	Use:   "push [transaction.yaml|json]",
+	Use:   "push [transaction.json]",
 	Short: "Push a signed transaction to the chain.  Must be done online.",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
@@ -19,6 +21,9 @@ var txPushCmd = &cobra.Command{
 
 		cnt, err := ioutil.ReadFile(filename)
 		errorCheck("reading transaction file", err)
+
+		chainID := gjson.GetBytes(cnt, "chain_id").String()
+		hexChainID, _ := hex.DecodeString(chainID)
 
 		var signedTx *eos.SignedTransaction
 		errorCheck("json unmarshal transaction", json.Unmarshal(cnt, &signedTx))
@@ -28,7 +33,7 @@ var txPushCmd = &cobra.Command{
 		packedTx, err := signedTx.Pack(eos.CompressionNone)
 		errorCheck("packing transaction", err)
 
-		pushTransaction(api, packedTx)
+		pushTransaction(api, packedTx, eos.SHA256Bytes(hexChainID))
 	},
 }
 

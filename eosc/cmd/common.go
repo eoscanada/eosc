@@ -199,21 +199,43 @@ func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.Pa
 		}
 
 		// TODO: print the traces
-		pushTransaction(api, packedTx)
+		pushTransaction(api, packedTx, chainID)
 	}
 }
 
-func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction) {
+func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes) {
 	resp, err := api.PushTransaction(packedTx)
 	errorCheck("pushing transaction", err)
 
 	//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
-	fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
-	fmt.Printf("  https://eosquery.com/tx/%s\n", resp.TransactionID)
+	trxURL := transactionURL(chainID, resp.TransactionID)
+	fmt.Printf("Transaction submitted to the network.\n  %s\n", trxURL)
 	if resp.BlockID != "" {
-		fmt.Printf("Server says transaction was included in block %d with ID: %s\n", resp.BlockNum, resp.BlockID)
-		fmt.Printf("  https://eosquery.com/blocks/%s\n", resp.BlockID)
+		blockURL := blockURL(chainID, resp.BlockID)
+		fmt.Printf("Server says transaction was included in block %d:\n  %s\n", resp.BlockNum, blockURL)
 	}
+}
+
+func transactionURL(chainID eos.SHA256Bytes, trxID string) string {
+	hexChain := hex.EncodeToString(chainID)
+	switch hexChain {
+	case "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906":
+		return fmt.Sprintf("https://eosquery.com/tx/%s", trxID)
+	case "5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191":
+		return fmt.Sprintf("https://kylin.eosquery.com/tx/%s", trxID)
+	}
+	return trxID
+}
+
+func blockURL(chainID eos.SHA256Bytes, blockID string) string {
+	hexChain := hex.EncodeToString(chainID)
+	switch hexChain {
+	case "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906":
+		return fmt.Sprintf("https://eosquery.com/block/%s", blockID)
+	case "5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191":
+		return fmt.Sprintf("https://kylin.eosquery.com/block/%s", blockID)
+	}
+	return blockID
 }
 
 func yamlUnmarshal(cnt []byte, v interface{}) error {
