@@ -10,7 +10,7 @@ import (
 
 var voteRecastCmd = &cobra.Command{
 	Use:   "recast [voter name]",
-	Short: "Recast your vote for the same producers.",
+	Short: "Recast your vote for the same producers or proxy.",
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
