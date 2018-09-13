@@ -18,12 +18,12 @@ var getABICmd = &cobra.Command{
 		abi, err := api.GetABI(accountName)
 		errorCheck("get ABI", err)
 
-		if abi.AccountName == accountName {
+		if !isStubABI(abi.ABI) {
 			data, err := json.MarshalIndent(abi, "", "  ")
 			errorCheck("json marshal", err)
 			fmt.Println(string(data))
 		} else {
-			errorCheck("get abi", fmt.Errorf("unable to find ABI for account %s", accountName))
+			errorCheck("get abi", fmt.Errorf("no ABI has been set for account %q", accountName))
 		}
 	},
 }

@@ -264,3 +264,13 @@ func toSHA256Bytes(in, field string) eos.SHA256Bytes {
 
 	return bytes
 }
+
+func isStubABI(abi eos.ABI) bool {
+	return abi.Version == "" &&
+		abi.Actions == nil &&
+		abi.ErrorMessages == nil &&
+		abi.Extensions == nil &&
+		abi.RicardianClauses == nil &&
+		abi.Structs == nil && abi.Tables == nil &&
+		abi.Types == nil
+}
