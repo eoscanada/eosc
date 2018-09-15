@@ -63,7 +63,7 @@ If you want to verify on-chain if your proxy registration has gone through, you 
 ```
 eosc get account [ACCOUNT NAME] --json
 ```
-You will look for the field 'is_proxy:`
+You will look for the field `is_proxy:`
 
 If the value is 0, then the account is not registered as a proxy. If it is 1, then the registration was successful.
 
