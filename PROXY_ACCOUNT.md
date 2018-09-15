@@ -59,6 +59,13 @@ to [NEW ACCOUNT] (now a proxy), you would run the command:
 ```
 eosc vote proxy [VOTING ACCOUNT] [NEW ACCOUNT]
 ```
+If you want to verify on-chain if your proxy registration has gone through, you can run the command
+```
+eosc get account [ACCOUNT NAME] --json
+```
+You will look for the field 'is_proxy:`
+
+If the value is 0, then the account is not registered as a proxy. If it is 1, then the registration was successful.
 
 ## Voting With Your Proxy Account
 
