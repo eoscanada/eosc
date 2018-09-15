@@ -59,3 +59,24 @@ to [NEW ACCOUNT] (now a proxy), you would run the command:
 ```
 eosc vote proxy [VOTING ACCOUNT] [NEW ACCOUNT]
 ```
+If you want to verify on-chain if your proxy registration has gone through, you can run the command
+```
+eosc get account [ACCOUNT NAME] --json
+```
+You will look for the field `is_proxy:`
+
+If the value is 0, then the account is not registered as a proxy. If it is 1, then the registration was successful.
+
+## Voting With Your Proxy Account
+
+To vote with your proxy, you follow the same steps that any account would for voting.
+```
+eosc vote producers [ACCOUNT NAME] [Producer1] [Producer2] ...
+```
+An account can vote for up to 30 Block Producers at a time.
+Some handy tools that we've built into `eosc` is the ability to call
+`eosc vote status [ACCOUNT NAME]`
+in case you wanted to copy the voting string of another account without
+having to type in all of the producer names manually.
+For recasting the same vote to keep your [vote strength up](https://www.eoscanada.com/en/how-is-your-vote-strength-calculated-on-eos), you can use
+`eosc vote recast [ACCOUNT NAME]`
