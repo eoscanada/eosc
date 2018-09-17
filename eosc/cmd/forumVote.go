@@ -14,15 +14,15 @@ import (
 var forumVoteCmd = &cobra.Command{
 	Use:   "vote [voter] [proposal_name] [vote_value]",
 	Short: "Submit a vote from [voter] on [proposal_name] with a [vote_value].",
-	Args:  cobra.ExactArgs(4),
+	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		targetAccount := toAccount(viper.GetString("forum-cmd-target-contract"), "--target-contract")
 
 		voter := toAccount(args[0], "voter")
-		proposalName := toName(args[2], "proposal_name")
+		proposalName := toName(args[1], "proposal_name")
 
 		// TODO: in a func
-		vote := args[3]
+		vote := args[2]
 		if vote == "yes" {
 			vote = "1"
 		}
@@ -35,7 +35,7 @@ var forumVoteCmd = &cobra.Command{
 			errorCheck("vote value cannot exceed 255", fmt.Errorf("vote value too high: %d", voteValue))
 		}
 
-		json := viper.GetString("forum-cmd-target-contract")
+		json := viper.GetString("forum-cmd-target-json")
 
 		action := forum.NewVote(voter, proposalName, uint8(voteValue), json)
 		action.Account = targetAccount
