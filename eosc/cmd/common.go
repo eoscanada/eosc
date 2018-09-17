@@ -207,7 +207,7 @@ func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction, chainID eos.
 	resp, err := api.PushTransaction(packedTx)
 	errorCheck("pushing transaction", err)
 
-	//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
+	//fmt.Println("Transaction submitted to the network. Confirm at https://eosq.app/tx/" + resp.TransactionID)
 	trxURL := transactionURL(chainID, resp.TransactionID)
 	fmt.Printf("Transaction submitted to the network.\n  %s\n", trxURL)
 	if resp.BlockID != "" {
@@ -220,9 +220,9 @@ func transactionURL(chainID eos.SHA256Bytes, trxID string) string {
 	hexChain := hex.EncodeToString(chainID)
 	switch hexChain {
 	case "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906":
-		return fmt.Sprintf("https://eosquery.com/tx/%s", trxID)
+		return fmt.Sprintf("https://eosq.app/tx/%s", trxID)
 	case "5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191":
-		return fmt.Sprintf("https://kylin.eosquery.com/tx/%s", trxID)
+		return fmt.Sprintf("https://kylin.eosq.app/tx/%s", trxID)
 	}
 	return trxID
 }
@@ -231,9 +231,9 @@ func blockURL(chainID eos.SHA256Bytes, blockID string) string {
 	hexChain := hex.EncodeToString(chainID)
 	switch hexChain {
 	case "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906":
-		return fmt.Sprintf("https://eosquery.com/block/%s", blockID)
+		return fmt.Sprintf("https://eosq.app/block/%s", blockID)
 	case "5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191":
-		return fmt.Sprintf("https://kylin.eosquery.com/block/%s", blockID)
+		return fmt.Sprintf("https://kylin.eosq.app/block/%s", blockID)
 	}
 	return blockID
 }
