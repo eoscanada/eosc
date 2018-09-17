@@ -27,7 +27,7 @@ var toolsChainFreezeCmd = &cobra.Command{
 		)
 
 		proxy.RegisterHandler(chainFreezeHandler)
-		err = proxy.Start("") //TODO Remove "" when unused arg is dropped
+		err = proxy.Start()
 		errorCheck("client start", err)
 	},
 }
