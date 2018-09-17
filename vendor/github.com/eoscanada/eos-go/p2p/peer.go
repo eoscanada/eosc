@@ -33,6 +33,7 @@ type Peer struct {
 
 type HandshakeInfo struct {
 	ChainID                  eos.SHA256Bytes
+	ConnectingPeerAddress    string
 	HeadBlockNum             uint32
 	HeadBlockID              eos.SHA256Bytes
 	HeadBlockTime            time.Time
@@ -73,12 +74,12 @@ func NewOutgoingPeer(address string, agent string, handshakeInfo *HandshakeInfo)
 
 func (p *Peer) Read() (*eos.Packet, error) {
 	packet, err := eos.ReadPacket(p.reader)
+	if p.handshakeTimeout > 0 {
+		p.cancelHandshakeTimeout <- true
+	}
 	if err != nil {
 		log.Println("Connection Read error:", p.Address, err)
 		return nil, fmt.Errorf("connection: read: %s", err)
-	}
-	if p.handshakeTimeout > 0 {
-		p.cancelHandshakeTimeout <- true
 	}
 	return packet, nil
 }
@@ -126,6 +127,9 @@ func (p *Peer) Connect(errChan chan error) (ready chan bool) {
 			log.Printf("Dialing: %s, timeout: %d\n", p.Address, p.connectionTimeout)
 			conn, err := net.DialTimeout("tcp", p.Address, p.connectionTimeout)
 			if err != nil {
+				if p.handshakeTimeout > 0 {
+					p.cancelHandshakeTimeout <- true
+				}
 				errChan <- fmt.Errorf("peer init: dial %s: %s", p.Address, err)
 				return
 			}
@@ -229,7 +233,7 @@ func (p *Peer) SendHandshake(info *HandshakeInfo) (err error) {
 		Time:                     tstamp,
 		Token:                    make([]byte, 32, 32), // token[:]
 		Signature:                signature,
-		P2PAddress:               p.Address,
+		P2PAddress:               info.ConnectingPeerAddress,
 		LastIrreversibleBlockNum: info.LastIrreversibleBlockNum,
 		LastIrreversibleBlockID:  info.LastIrreversibleBlockID,
 		HeadNum:                  info.HeadBlockNum,

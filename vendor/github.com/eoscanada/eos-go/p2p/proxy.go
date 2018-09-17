@@ -74,9 +74,9 @@ func triggerHandshake(peer *Peer) error {
 	return peer.SendHandshake(peer.handshakeInfo)
 }
 
-func (p *Proxy) ConnectAndStart(chainID string) error {
+func (p *Proxy) ConnectAndStart() error {
 
-	log.Println("Connecting and starting proxy with chain id:", chainID)
+	log.Println("Connecting and starting proxy")
 
 	errorChannel := make(chan error)
 
@@ -100,11 +100,11 @@ func (p *Proxy) ConnectAndStart(chainID string) error {
 		}
 	}
 
-	return p.Start(chainID)
+	return p.Start()
 
 }
 
-func (p *Proxy) Start(chainID string) error {
+func (p *Proxy) Start() error {
 
 	log.Println("Starting readers")
 	errorChannel := make(chan error)
