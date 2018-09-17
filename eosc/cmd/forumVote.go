@@ -12,14 +12,13 @@ import (
 )
 
 var forumVoteCmd = &cobra.Command{
-	Use:   "vote [voter] [proposer] [proposal_name] [vote_value]",
-	Short: "Submit a vote from [voter] on [proposer]'s [proposal_name] with a [vote_value] agreed in the proposition.",
+	Use:   "vote [voter] [proposal_name] [vote_value]",
+	Short: "Submit a vote from [voter] on [proposal_name] with a [vote_value].",
 	Args:  cobra.ExactArgs(4),
 	Run: func(cmd *cobra.Command, args []string) {
 		targetAccount := toAccount(viper.GetString("forum-cmd-target-contract"), "--target-contract")
 
 		voter := toAccount(args[0], "voter")
-		proposer := toAccount(args[1], "proposer")
 		proposalName := toName(args[2], "proposal_name")
 
 		// TODO: in a func
@@ -30,14 +29,15 @@ var forumVoteCmd = &cobra.Command{
 		if vote == "no" {
 			vote = "0"
 		}
-		voteValue, err := strconv.ParseInt(vote, 10, 64)
+		voteValue, err := strconv.ParseUint(vote, 10, 8)
 		errorCheck("expected an integer for vote_value", err)
 		if voteValue > 255 {
 			errorCheck("vote value cannot exceed 255", fmt.Errorf("vote value too high: %d", voteValue))
 		}
-		proposalHash := viper.GetString("forum-vote-cmd-hash")
 
-		action := forum.NewVote(voter, proposer, proposalName, proposalHash, uint8(voteValue), "")
+		json := viper.GetString("forum-cmd-target-contract")
+
+		action := forum.NewVote(voter, proposalName, uint8(voteValue), json)
 		action.Account = targetAccount
 
 		api := getAPI()
@@ -48,9 +48,9 @@ var forumVoteCmd = &cobra.Command{
 func init() {
 	forumCmd.AddCommand(forumVoteCmd)
 
-	forumVoteCmd.Flags().StringP("hash", "", "", "Hash of the proposition, as defined by the proposition itself")
+	forumVoteCmd.Flags().String("json", "", "Optional JSON attached to the vote.")
 
-	for _, flag := range []string{"hash"} {
+	for _, flag := range []string{"json"} {
 		if err := viper.BindPFlag("forum-vote-cmd-"+flag, forumVoteCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
