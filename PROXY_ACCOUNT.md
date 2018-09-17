@@ -80,3 +80,25 @@ in case you wanted to copy the voting string of another account without
 having to type in all of the producer names manually.
 For recasting the same vote to keep your [vote strength up](https://www.eoscanada.com/en/how-is-your-vote-strength-calculated-on-eos), you can use
 `eosc vote recast [ACCOUNT NAME]`
+
+## Voting For a Proxy Account
+
+To vote for an account that has been registered as a proxy, run the command:
+```
+eosc vote proxy [YOUR ACCOUNT] [PROXY ACCOUNT]
+```
+To verify that your vote has been cast for that proxy, you can run the command
+```
+eosc get account [YOUR ACCOUNT] --json
+```
+and you will be see at the end of the json blob
+```
+"voter_info": {
+    "owner": "YOUR ACCOUNT",
+    "proxy": "PROXY ACCOUNT",
+    "producers": [],
+    "staked": ,
+    "last_vote_weight": ,
+    "proxied_vote_weight": 0,
+    "is_proxy": 0
+```
