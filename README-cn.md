@@ -136,7 +136,7 @@ Done
 上面的命令会在本地对投票交易进行签名处理，然后通过节点 `https://mainnet.eoscanada.com` 将交易发送至主网络。
 你也可以通过 `-u` 或 `--api-url` 参数指定主网上的其他节点服务器。
 
-在这里你可以查看你的账户信息 https://eosquery.com
+在这里你可以查看你的账户信息 https://eosq.app
 
 
 
