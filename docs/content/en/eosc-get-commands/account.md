@@ -1,6 +1,6 @@
 ---
-title: eosc get account
-linktitle: eosc get account
+title: Account
+linktitle: Account
 description: Retrieve account information from the chain
 date: 2018-09-05
 publishdate: 2018-09-05
