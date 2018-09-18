@@ -1,22 +1,20 @@
 ---
-title: "`eosc get` Commands"
-linktitle: "`eosc get`"
-description:
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
-keywords: []
+title: get Commands Overview
+linktitle: get Commands Overview
+description: Overview of the `get` section of eosc
+date: 2017-02-01
+publishdate: 2017-02-01
+lastmod: 2017-02-01
+categories: [get]
+keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-get-commands"
-    weight: 30
-weight: 30
-sections_weight: 30
+    weight: 1
+weight: 0001	#rem
 draft: false
-aliases: []
+aliases: [/overview/introduction/]
 toc: false
-
-
 ---
 
 ```
