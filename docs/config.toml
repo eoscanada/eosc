@@ -110,10 +110,10 @@ anchor = "smart"
 # Core Menus
 
 [[menu.docs]]
-	name = "eosc forum Commands"
+	name = "eosc get Commands"
 	weight = 20
-	identifier = "eosc-forum-commands"
-	url = "/eosc-forum-commands/"
+	identifier = "eosc-get-commands"
+	url = "/eosc-get-commands/"
 
 [[menu.docs]]
 	name = "eosc vault Commands"
