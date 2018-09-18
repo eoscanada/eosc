@@ -1,22 +1,20 @@
 ---
-title: "`eosc multisig` Commands"
-linktitle: "`eosc multisig`"
-description:
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
-keywords: []
+title: multisig Commands Overview
+linktitle: multisig Commands Overview
+description: Overview of the `multisig` section of eosc
+date: 2017-02-01
+publishdate: 2017-02-01
+lastmod: 2017-02-01
+categories: [multisig]
+keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-multisig-commands"
-    weight: 30
-weight: 30
-sections_weight: 30
+    weight: 1
+weight: 0001	#rem
 draft: false
-aliases: []
-toc: true
-
-
+aliases: [/overview/introduction/]
+toc: false
 ---
 
 ```
