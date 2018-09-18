@@ -137,7 +137,7 @@ anchor = "smart"
     name = "eosc forum Commands"
     weight = 60
     identifier = "eosc-forum-commands"
-    url = "/eosc-commands/"
+    url = "/eosc-forum-commands/"
 
 [[menu.docs]]
     name = "eosc tx Commands"
