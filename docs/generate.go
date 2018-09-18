@@ -11,6 +11,8 @@ import (
 	"strings"
 )
 
+//go:generate go run generate.go -w data/generatedhelp.json
+
 var out = map[string]interface{}{}
 var outputFile = flag.String("w", "generatedhelp.json", "Output filename")
 
@@ -25,7 +27,9 @@ func main() {
 	}
 	defer fl.Close()
 
-	json.NewEncoder(fl).Encode(out)
+	enc := json.NewEncoder(fl)
+	enc.SetIndent("", "  ")
+	enc.Encode(out)
 }
 
 var reShort = regexp.MustCompile(``)
@@ -66,15 +70,12 @@ func process(out map[string]interface{}, args []string, parent []string, shortHe
 
 	if match := reFlags.FindStringSubmatch(lines); match != nil {
 		var flags = match[1]
-		fmt.Println("FLAGS", flags)
 		helpFlag := reHelpFlag.FindStringSubmatch(flags)
 		if helpFlag != nil {
-			fmt.Println("MATCHED", helpFlag)
 			flags = strings.Replace(flags, helpFlag[1], "", 1)
 		}
 
 		if strings.TrimSpace(flags) != "" {
-			fmt.Println("SETTING", flags)
 			entry["flags"] = flags
 		}
 	}
