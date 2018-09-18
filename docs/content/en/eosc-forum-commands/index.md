@@ -8,7 +8,7 @@ lastmod: 2018-09-05
 keywords: []
 menu:
   docs:
-    parent: "eosc-commands"
+    parent: "eosc-forum-commands"
     weight: 30
 weight: 30
 sections_weight: 30

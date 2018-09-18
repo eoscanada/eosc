@@ -110,10 +110,52 @@ anchor = "smart"
 # Core Menus
 
 [[menu.docs]]
-    name = "eosc Commands"
-    weight = 20
-    identifier = "eosc-commands"
+	name = "eosc forum Commands"
+	weight = 20
+	identifier = "eosc-forum-commands"
+	url = "/eosc-forum-commands/"
+
+[[menu.docs]]
+	name = "eosc vault Commands"
+	weight = 30
+	identifier = "eosc-vault-commands"
+	url = "/eosc-vault-commands/"
+
+[[menu.docs]]
+    name = "eosc system Commands"
+    weight = 40
+    identifier = "eosc-system-commands"
+    url = "/eosc-system-commands/"
+
+[[menu.docs]]
+    name = "eosc multisig Commands"
+    weight = 50
+    identifier = "eosc-multisig-commands"
+    url = "/eosc-multisig-commands/"
+
+[[menu.docs]]
+    name = "eosc forum Commands"
+    weight = 60
+    identifier = "eosc-forum-commands"
     url = "/eosc-commands/"
+
+[[menu.docs]]
+    name = "eosc tx Commands"
+    weight = 70
+    identifier = "eosc-tx-commands"
+    url = "/eosc-tx-commands/"
+
+[[menu.docs]]
+    name = "eosc vote Commands"
+    weight = 90
+    identifier = "eosc-vote-commands"
+    url = "/eosc-vote-commands/"
+
+[[menu.docs]]
+    name = "eosc tools Commands"
+    weight = 100
+    identifier = "eosc-tools-commands"
+    url = "/eosc-tools-commands/"
     post = "break"
 
 
@@ -121,21 +163,21 @@ anchor = "smart"
 
 
 [[menu.docs]]
-    name = "Help"
-    weight = 60
-    identifier = "help"
-    url = "/help/"
-    post = "break"
+	name = "Help"
+	weight = 200
+	identifier = "help"
+	url = "/help/"
+	post = "break"
 
 
 
 ######## QUICKLINKS
 
   [[menu.quicklinks]]
-    name = "Fundamentals"
-    weight = 1
-    identifier = "fundamentals"
-    url = "/tags/fundamentals/"
+	name = "Fundamentals"
+	weight = 1
+	identifier = "fundamentals"
+	url = "/tags/fundamentals/"
 
 
 
@@ -143,25 +185,25 @@ anchor = "smart"
 ######## GLOBAL ITEMS TO BE SHARED WITH THE HUGO SITES
 
 [[menu.global]]
-    name = "News"
-    weight = 1
-    identifier = "news"
-    url = "/news/"
+	name = "News"
+	weight = 1
+	identifier = "news"
+	url = "/news/"
 
   [[menu.global]]
-    name = "Docs"
-    weight = 5
-    identifier = "docs"
-    url = "/documentation/"
+	name = "Docs"
+	weight = 5
+	identifier = "docs"
+	url = "/documentation/"
 
   # Anything with a weight > 100 gets an external icon
   [[menu.global]]
-    name = "Community"
-    weight = 150
-    icon = true
-    identifier = "community"
-    post = "external"
-    url = "https://t.me/eoscanada"
+	name = "Community"
+	weight = 150
+	icon = true
+	identifier = "community"
+	post = "external"
+	url = "https://t.me/eoscanada"
 
 
 
@@ -170,13 +212,13 @@ anchor = "smart"
 
 [languages]
   [languages.en]
-    contentDir = "content/en"
-    languageName = "English"
-    weight = 1
+	contentDir = "content/en"
+	languageName = "English"
+	weight = 1
   [languages.zh]
-    contentDir = "content/zh"
-    languageName = "中文"
-    weight = 2
+	contentDir = "content/zh"
+	languageName = "中文"
+	weight = 2
 
 
 ### LANGUAGE-SPECIFIC MENUS ###
