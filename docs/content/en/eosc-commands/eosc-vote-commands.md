@@ -18,6 +18,22 @@ toc: true
 
 ---
 
+```
+Usage:
+  eosc vote [command]
+
+Available Commands:
+  cancel-all     Cancel all votes currently casted for producers and reset proxy voting.
+  list-producers Retrieve the list of registered producers
+  producers      Cast your vote for 1 to 30 producers. View them with 'list'
+  proxy          Cast your vote for a proxy voter
+  recast         Recast your vote for the same producers
+  status         Display the current vote status for a given account.
+
+Flags:
+  -h, --help   help for vote
+```
+
 # Vote for Block Producers with eosc
 
 

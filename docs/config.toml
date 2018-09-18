@@ -1,4 +1,4 @@
-baseURL = "https://eosc.eoscanada.com/"
+baseURL = "https://eosc.app/"
 paginate =  100
 defaultContentLanguage = "en"
 enableEmoji = true
