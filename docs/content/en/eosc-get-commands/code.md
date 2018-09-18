@@ -5,7 +5,7 @@ description: Retrieve a hash of the code that resides within an account
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [eosc-get-commands]
+categories: [blog]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:
