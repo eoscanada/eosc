@@ -1,7 +1,7 @@
 ---
 title: Built-in EOS wallet
 description: "Combining the function of `cleos` and `keosd`"
-date: 2018-08-24
+date: 2018-09-18
 weight: 10
 
 ---
