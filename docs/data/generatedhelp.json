@@ -5,41 +5,70 @@
     "usage": "eosc [command]"
   },
   "eosc-forum": {
-    "flags": "      --target-contract string   Target account hosting the eosio.forum code (default \"eosforumdapp\")",
+    "flags": "      --target-contract string   Target account hosting the eosio.forum code (default \"eosforumrcpp\")",
     "long": "EOS Forum And Referendum interactions",
     "parent": "eosc",
     "short": "EOS Forum And Referendum interactions",
     "usage": "eosc forum [command]"
   },
+  "eosc-forum-clean-proposal": {
+    "long": "Cleans an expired proposal",
+    "parent": "eosc-forum",
+    "short": "Cleans an expired proposal"
+  },
+  "eosc-forum-expire": {
+    "long": "Allows the [proposer] to expires a proposal before its expected death.",
+    "parent": "eosc-forum",
+    "short": "Allows the [proposer] to expires a proposal before its expected death."
+  },
   "eosc-forum-post": {
-    "flags": "      --certify                Certify that the contents of this message is true. See corresponding Ricardian Contract.\n      --metadata string        Additional metadata. Must be JSON-encoded. If present, takes precedences over --type\n      --reply-to string        Account name to reply to\n      --reply-to-uuid string   UUID from a previous post from the --repy-to account.\n      --title string           The title for the post. None by default\n      --type string            Message type (added to json_metadata) (default \"chat\")",
+    "flags": "      --certify                Certify that the contents of this message is true. See corresponding Ricardian Contract.\n      --metadata string        Additional metadata. Must be JSON-encoded. If present, takes precedences over --type\n      --reply-to string        Account name to reply to\n      --reply-to-uuid string   UUID from a previous post from the --repy-to account.\n      --type string            Message type (added to json_metadata) (default \"chat\")",
     "long": "Post a message",
     "parent": "eosc-forum",
     "short": "Post a message"
   },
   "eosc-forum-propose": {
-    "flags": "      --content string   Markdown 'content' to be injected in the JSON (whether you propose a --json or not)\n      --json string      JSON",
+    "flags": "      --content string               Markdown 'content' to be injected in the JSON (whether you propose a --json or not).\n      --json string                  Proposal JSON body.\n      --proposal-expires-at string   Time at which the proposal expires (maximum 6 months in the future). This must be formatted as ISO-8601 datetime.",
     "long": "Submit a proposition for votes",
     "parent": "eosc-forum",
     "short": "Submit a proposition for votes"
   },
+  "eosc-forum-status": {
+    "long": "Sets the status message for an account.",
+    "parent": "eosc-forum",
+    "short": "Sets the status message for an account."
+  },
   "eosc-forum-tally-votes": {
-    "flags": "      --reserved string   reserved option",
     "long": "Tally votes according to the `type` of the proposal.",
     "parent": "eosc-forum",
     "short": "Tally votes according to the `type` of the proposal."
   },
-  "eosc-forum-vote": {
-    "flags": "      --hash string   Hash of the proposition, as defined by the proposition itself\n",
-    "long": "Submit a vote from [voter] on [proposer]'s [proposal_name] with a [vote_value] agreed in the proposition.",
+  "eosc-forum-unpost": {
+    "long": "Removes a given post.",
     "parent": "eosc-forum",
-    "short": "Submit a vote from [voter] on [proposer]'s [proposal_name] with a [vote_value] agreed in the proposition."
+    "short": "Removes a given post."
+  },
+  "eosc-forum-unvote": {
+    "long": "Cancels a vote for a given proposal.",
+    "parent": "eosc-forum",
+    "short": "Cancels a vote for a given proposal."
+  },
+  "eosc-forum-vote": {
+    "flags": "      --json string   Optional JSON attached to the vote.",
+    "long": "Submit a vote from [voter] on [proposal_name] with a [vote_value].",
+    "parent": "eosc-forum",
+    "short": "Submit a vote from [voter] on [proposal_name] with a [vote_value]."
   },
   "eosc-get": {
     "long": "Fetch information from the blockchain",
     "parent": "eosc",
     "short": "Fetch information from the blockchain",
     "usage": "eosc get [command]"
+  },
+  "eosc-get-abi": {
+    "long": "retrieve the ABI associated with an account",
+    "parent": "eosc-get",
+    "short": "retrieve the ABI associated with an account"
   },
   "eosc-get-account": {
     "flags": "      --json   pass if you wish to see account printed as json",
@@ -59,10 +88,10 @@
     "short": "Get block data at a given height, or directly with a block hash"
   },
   "eosc-get-code": {
-    "flags": "      --output string   Output .wasm code to filename",
-    "long": "retrieve account information for a given name",
+    "flags": "      --output-raw-abi eosc get abi   Output raw ABI to a file - If you need the JSON ABI, use eosc get abi\n      --output-wasm string            Output WASM code to a file",
+    "long": "retrieve the code associated with an account",
     "parent": "eosc-get",
-    "short": "retrieve account information for a given name"
+    "short": "retrieve the code associated with an account"
   },
   "eosc-get-info": {
     "long": "Retrieve blockchain infos, like head block, chain ID, etc..",
@@ -70,7 +99,7 @@
     "short": "Retrieve blockchain infos, like head block, chain ID, etc.."
   },
   "eosc-get-table": {
-    "flags": "      --limit int   Maximum number of rows to return. (default 100)",
+    "flags": "      --encode-type string   The encoding type of key-type (i64 , i128 , float64, float128) only support decimal encoding e.g. 'dec.  i256 - supports both 'dec' and 'hex', ripemd160 and sha256 is 'hex' only.\n      --index string         Index number, 1 - primary (first), 2 - secondary index (in order defined by multi_index), 3 - third index, etc. Number or name of index can be specified, e.g. 'secondary' or '2'.\n      --key-type string      The key type of --index, primary only supports (i64), all others support (i64, i128, i256, float64, float128, ripemd160, sha256). Special type 'name' indicates an account name.\n      --limit int            Maximum number of rows to return. (default 100)\n      --lower-bound string   Lower bound (incluse) value of key, defaults to first.\n      --output-binary        Outputs the row-level data as hex-encoded binary instead of deserializing using the ABI\n      --upper-bound string   Upper bound (exclusive) value of key, defaults to first.",
     "long": "Fetch data from a table in a contract on chain",
     "parent": "eosc-get",
     "short": "Fetch data from a table in a contract on chain"
@@ -155,7 +184,7 @@
   "eosc-system-bidname": {
     "long": "Bid on a premium account name\n\nAll fields are required. Example usage:\n\n    eosc system bidname your_account_name eos \"10.0000 EOS\"\n\nPlease note you could be locking up your funds in the name bidding\nauction if you don't intend to go through and being the highest\nbidder.\n\nRead https://steemit.com/eos/@eos-canada/everything-you-need-to-know-about-namespace-bidding-on-eos for more infos.",
     "parent": "eosc-system",
-    "short": "Bid on a premium account name"
+    "short": "Bid on a premium account name."
   },
   "eosc-system-buyrambytes": {
     "long": "Buy RAM at market price, for a given number of bytes.",
@@ -181,24 +210,24 @@
   "eosc-system-linkauth": {
     "long": "Assign a permission to the given code::action pair.\n\nBy default, accounts have an \"owner\" and \"active\" key and with the\n\"active\" key, you can sign all transactions for that account.\n\nBy using \"updateauth\", you can create a new permission with a\ndifferent set of keys, account delegation and wait times.\nSee \"eosc system updateauth --help\" for details.\n\nOnce done, you can use \"linkauth\" to assign that permission to a\ncode::action pair. Next time you want to sign a transaction destined\nto that code::action, you will need to authorize it with the\nassociated permission.\n\nThis is a way to delegate authority on your account in a granular way,\ndown to the action level.\n\nEXAMPLE:\n\nIn an account with a lots of EOS, you can set a permission called\n\"accounting\" and you give 1 different key to 3 employees in the\naccounting department, and set a \"waits\" of 24h (to for a delay on\ntransactions, with the option to cancel them if found to be unlawful)\n\nYou then set the \"eosio.token::transfer\" action to be assigned to that\npermission.  Now you have delegated the possibility to transfer coins\nto the accounting department, but kept all other privileges with the\n\"active\" key (which, if the \"accounting\" permission has \"active\" as\nparent, still can sign transfers).",
     "parent": "eosc-system",
-    "short": "Assign a permission to the given code::action pair"
+    "short": "Assign a permission to the given code::action pair."
   },
   "eosc-system-newaccount": {
     "flags": "      --auth-file string     File containing owner and active permissions authorities. See example in --help\n      --auth-key string      Public key to use for both owner and active permissions.\n      --buy-ram string       The amount of EOS to spend to buy RAM for the new account (at current EOS/RAM market price)\n      --buy-ram-kbytes int   The amount of RAM kibibytes (KiB) to purchase for the new account.  Defaults to 8 KiB. (default 8)\n      --setpriv              Make this account a privileged account (reserved to the 'eosio' system account)\n      --stake-cpu string     Amount of EOS to stake for CPU bandwidth (required)\n      --stake-net string     Amount of EOS to stake for Network bandwidth (required)\n      --transfer             Transfer voting power and right to unstake EOS to receiver",
     "long": "Create a new account\n\nSpecify the authority structure with either '--auth-file' or '--auth-key'.\n\nWith --auth-key, the provided EOS public key will be used for both the\nowner and active permissions.\n\nWith --auth-file, you can create authority structures for both owner\nand active, from the start. Here is a sample auth file in YAML:\n\n---\nowner:\n  threshold: 2\n  keys:\n  - key: EOS6MRyAjQq8ud7hVNYcfn................tHuGYqET5GDW5CV\n    weight: 1\n  waits:\n  - wait_sec: 300\n    weight: 1\nactive:\n  threshold: 1\n  accounts:\n  - permission:\n      actor: otheraccount\n      permission: active\n    weight: 1\n---",
     "parent": "eosc-system",
-    "short": "Create a new account"
+    "short": "Create a new account."
   },
   "eosc-system-regproducer": {
     "flags": "      --location int   Location number (reserved)",
-    "long": "Register an account as a block producer candidate",
+    "long": "Register an account as a block producer candidate.",
     "parent": "eosc-system",
-    "short": "Register an account as a block producer candidate"
+    "short": "Register an account as a block producer candidate."
   },
   "eosc-system-regproxy": {
-    "long": "Register an account as a voting proxy",
+    "long": "Register an account as a voting proxy.",
     "parent": "eosc-system",
-    "short": "Register an account as a voting proxy"
+    "short": "Register an account as a voting proxy."
   },
   "eosc-system-sellram": {
     "long": "Sell the [num bytes] amount of bytes of RAM on the RAM market.",
@@ -206,19 +235,19 @@
     "short": "Sell the [num bytes] amount of bytes of RAM on the RAM market."
   },
   "eosc-system-setabi": {
-    "long": "Set ABI only on an account",
+    "long": "Set ABI only on an account.",
     "parent": "eosc-system",
-    "short": "Set ABI only on an account"
+    "short": "Set ABI only on an account."
   },
   "eosc-system-setcode": {
-    "long": "Set code only on an account",
+    "long": "Set code only on an account.",
     "parent": "eosc-system",
-    "short": "Set code only on an account"
+    "short": "Set code only on an account."
   },
   "eosc-system-setcontract": {
-    "long": "Set both code and ABI on an account",
+    "long": "Set both code and ABI on an account.",
     "parent": "eosc-system",
-    "short": "Set both code and ABI on an account"
+    "short": "Set both code and ABI on an account."
   },
   "eosc-system-undelegatebw": {
     "long": "Undelegate some CPU and Network bandwidth.\n\nWhen undelegating bandwidth, a \"refund\" action will automatically be\ntriggered and delayed for 72 hours.  This means it takes 3 days for\nyou to get your EOS back and being able to transfer it. However, your\nvoting power is immediately altered.\n\nSee also: the \"system delegatebw\" command.",
@@ -228,7 +257,7 @@
   "eosc-system-unlinkauth": {
     "long": "Unassign a permission currently active for the given code::action pair.\n\nThis undoes the action of linkauth, please refer to the documentation for linkauth for more details.",
     "parent": "eosc-system",
-    "short": "Unassign a permission currently active for the given code::action pair"
+    "short": "Unassign a permission currently active for the given code::action pair."
   },
   "eosc-system-unregprod": {
     "long": "Unregister producer account temporarily.",
@@ -274,6 +303,11 @@
     "parent": "eosc",
     "short": "Transactions-related commands, like signing, pushing, reading, etc..",
     "usage": "eosc tx [command]"
+  },
+  "eosc-tx-cancel": {
+    "long": "Cancels a delayed transaction.",
+    "parent": "eosc-tx",
+    "short": "Cancels a delayed transaction."
   },
   "eosc-tx-create": {
     "long": "Create a transaction with a single action",
@@ -334,36 +368,36 @@
     "short": "Show the program version"
   },
   "eosc-vote": {
-    "long": "Command to vote for block producers or proxy",
+    "long": "Command to vote for block producers or proxy.",
     "parent": "eosc",
-    "short": "Command to vote for block producers or proxy",
+    "short": "Command to vote for block producers or proxy.",
     "usage": "eosc vote [command]"
   },
   "eosc-vote-cancel-all": {
-    "long": "Cancel all votes currently casted for producers and reset proxy voting.",
+    "long": "Cancel all votes currently cast for producers/delegated to a proxy.",
     "parent": "eosc-vote",
-    "short": "Cancel all votes currently casted for producers and reset proxy voting."
+    "short": "Cancel all votes currently cast for producers/delegated to a proxy."
   },
   "eosc-vote-list-producers": {
     "flags": "  -j, --json   return producers info in json\n  -s, --sort   sort producers",
-    "long": "Retrieve the list of registered producers",
+    "long": "Retrieve the list of registered producers.",
     "parent": "eosc-vote",
-    "short": "Retrieve the list of registered producers"
+    "short": "Retrieve the list of registered producers."
   },
   "eosc-vote-producers": {
-    "long": "Cast your vote for 1 to 30 producers. View them with 'list'",
+    "long": "Cast your vote for 1 to 30 producers. View them with 'list-producers'.",
     "parent": "eosc-vote",
-    "short": "Cast your vote for 1 to 30 producers. View them with 'list'"
+    "short": "Cast your vote for 1 to 30 producers. View them with 'list-producers'."
   },
   "eosc-vote-proxy": {
-    "long": "Cast your vote for a proxy voter",
+    "long": "Proxy your vote strength to a proxy.",
     "parent": "eosc-vote",
-    "short": "Cast your vote for a proxy voter"
+    "short": "Proxy your vote strength to a proxy."
   },
   "eosc-vote-recast": {
-    "long": "Recast your vote for the same producers",
+    "long": "Recast your vote for the same producers or proxy.",
     "parent": "eosc-vote",
-    "short": "Recast your vote for the same producers"
+    "short": "Recast your vote for the same producers or proxy."
   },
   "eosc-vote-status": {
     "long": "Display the current vote status for a given account.",
