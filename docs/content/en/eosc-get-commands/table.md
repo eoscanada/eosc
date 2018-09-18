@@ -5,7 +5,7 @@ description: Retrieve data from a table in a specified contract
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [eosc-get-commands]
+categories: [blog]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:
