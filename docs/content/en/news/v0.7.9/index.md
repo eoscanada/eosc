@@ -6,15 +6,12 @@ date: 2018-09-05
 publishdate: 2018-09-05
 lastmod: 2018-09-05
 keywords: [eosc,eos]
-menu:
-  docs:
-    parent: "about"
-    weight: 30
 weight: 30
 sections_weight: 30
 draft: false
 aliases: []
 toc: true
+categories: [blog]
 ---
 
 If you have been testing out different wallets to interact with the EOS blockchain, make sure to also check out `eosc`. `eosc` is always getting new features added by the team at EOS Canada. Here's a quick look into what has recently been released:
