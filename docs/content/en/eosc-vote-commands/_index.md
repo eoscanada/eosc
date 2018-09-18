@@ -1,21 +1,20 @@
 ---
-title: "`eosc vote` Commands"
-linktitle: "`eosc vote`"
-description: Vote for Block Producers with eosc
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
-keywords: []
+title: vote Commands Overview
+linktitle: vote Commands Overview
+description: Overview of the `vote` section of eosc
+date: 2017-02-01
+publishdate: 2017-02-01
+lastmod: 2017-02-01
+categories: [vote]
+keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-vote-commands"
-    weight: 30
-weight: 30
-sections_weight: 30
+    weight: 1
+weight: 0001	#rem
 draft: false
-aliases: []
-toc: true
-
+aliases: [/overview/introduction/]
+toc: false
 ---
 
 ```
