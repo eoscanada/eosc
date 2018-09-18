@@ -47,7 +47,6 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
     background-size: cover;
 }
 
-
 #hero:before {
     content: "";
     position: absolute;
@@ -169,8 +168,6 @@ nav input#search-input::placeholder {color:#fff;}
 
 .ml-auto {margin-left:auto!important;}
 
-
-
 .github-top-btn {
     border-radius:50%;
     background-color:none;
@@ -205,14 +202,11 @@ nav input#search-input::placeholder {color:#fff;}
 ul.li-custom {
     list-style-position: outside;
     padding-left:26px;
-
 }
 
 ul.li-custom li, nav ul li  {
     list-style:none;
 }
-
-
 
 ul.li-check li .fa, ul.li-check li .fas {
     font-weight: 900;
@@ -222,45 +216,7 @@ ul.li-check li .fa, ul.li-check li .fas {
     color:#f05922;
 }
 
-li {position:relative;list-style:square;}
-
-/*ul.li-square li:before {*/
-    /*display: inline-block;*/
-    /*font-family: "Font Awesome 5 Free";*/
-    /*font-style: normal;*/
-    /*font-weight: normal;*/
-    /*line-height: 1.8em;*/
-    /*-webkit-font-smoothing: antialiased;*/
-    /*-moz-osx-font-smoothing: grayscale;*/
-    /*content: "\f0c8";*/
-    /*margin-right: 8px;*/
-    /*color: #f05922;*/
-    /*font-size: .5em;*/
-    /*position: absolute;*/
-    /*left: -20px;*/
-    /*width: 0px;*/
-    /*top: 1em;*/
-    /*list-style-position: outside;*/
-/*}*/
-
-/*ul.li-check li::before {*/
-    /*display: inline-block;*/
-    /*font-family: FontAwesome;*/
-    /*font-style: normal;*/
-    /*font-weight: normal;*/
-    /*line-height: 1;*/
-    /*-webkit-font-smoothing: antialiased;*/
-    /*-moz-osx-font-smoothing: grayscale;*/
-    /*content: "\f00c";*/
-    /*margin-right: 8px;*/
-    /*color: #f05922;*/
-    /*font-size: 18px;*/
-    /*position: absolute;*/
-    /*left: -30px;*/
-    /*width: 0px;*/
-    /*top: 5px;*/
-/*}*/
-
+ul li {position:relative;list-style:square;}
 
 .prose table th {
     background-color: #aaa;
@@ -291,31 +247,25 @@ li {position:relative;list-style:square;}
 }
 
 .prose table th, article table th {
-      background-color: #57626f;
-      border-bottom: 1px solid #768290;
-      color: white;
-      font-weight: 400;
-      text-align: left;
-      padding: .375em .5em;
+    background-color: #57626f;
+    border-bottom: 1px solid #768290;
+    color: white;
+    font-weight: 400;
+    text-align: left;
+    padding: .375em .5em;
   }
 
 .prose table td, article table td, .prose table tc, article table tc {
-            padding: .75em .5em;
-            text-align: left;
-            border-right: 1px solid #ddd;
-        }
+    padding: .75em .5em;
+    text-align: left;
+    border-right: 1px solid #ddd;
+}
 
 
 .prose table tr:nth-child(even), article table tr:nth-child(even) {
     background-color: #f7f7f7;
 }
 
-
 .nested-links a:focus, .nested-links a:hover {
     color: #aaa;
 }
-
-
-
-
-

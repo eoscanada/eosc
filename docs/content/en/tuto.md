@@ -24,7 +24,7 @@ toc: true
 #### H4 Title
 
 
-## Bullet Point
+## Bullet Point or number
 
 * Line 1
 * Line 2
@@ -32,6 +32,10 @@ toc: true
     * Line 31
     * line 32
 * Line4
+
+1. Line 1
+2. Line 2
+3. Line 3
 
 
 ## Word with link
@@ -106,3 +110,17 @@ hugo new posts/my-first-post.md
 | count               | The number of times a template was executed. |
 | template            | The template name. |
 
+
+
+## add Image
+
+#### Add Featured image in News :
+
+1. Put the image in the article folder
+2. Image name must begin by `featured-`, example : featured-name-of-the-image.jpg
+
+#### Add image in content post
+
+![image alt text](../img/eosc-hero-photo-01.jpg)
+
+```![image alt text](../img/eosc-hero-photo-01.jpg)```
