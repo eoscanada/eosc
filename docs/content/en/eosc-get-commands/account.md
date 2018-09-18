@@ -1,7 +1,7 @@
 ---
 title: eosc get account
 linktitle: eosc get account
-description:
+description: Retrieve account information from the chain
 date: 2018-09-05
 publishdate: 2018-09-05
 lastmod: 2018-09-05
@@ -17,3 +17,4 @@ aliases: []
 toc: true
 ---
 
+account
