@@ -1,19 +1,20 @@
 ---
 title: Account
 linktitle: Account
-description: Retrieve account information from the chain
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
+description: Retrieve account information from the chainthe command line.
+date: 2017-02-01
+publishdate: 2017-02-01
+lastmod: 2017-02-01
 categories: [blog]
-keywords: []
+keywords: [usage,livereload,command line,flags]
 menu:
-  main:
-    parent: "eosc get commands"
-    weight: 30
-weight: 30
+  docs:
+    parent: "eosc-get-commands"
+    weight: 40
+weight: 40
+sections_weight: 40
 draft: false
-aliases: []
+aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
 toc: true
 ---
 
