@@ -1,22 +1,20 @@
 ---
-title: "`eosc forum` Commands"
-linktitle: "`eosc forum`"
-description:
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
-keywords: []
+title: forum Commands Overview
+linktitle: forum Commands Overview
+description: Overview of the `forum` section of eosc
+date: 2017-02-01
+publishdate: 2017-02-01
+lastmod: 2017-02-01
+categories: [forum]
+keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-forum-commands"
-    weight: 30
-weight: 30
-sections_weight: 30
+    weight: 1
+weight: 0001	#rem
 draft: false
-aliases: []
-toc: true
-
-
+aliases: [/overview/introduction/]
+toc: false
 ---
 
 ### Forum
