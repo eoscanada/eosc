@@ -5,7 +5,7 @@ description:
 date: 2018-09-05
 publishdate: 2018-09-05
 lastmod: 2018-09-05
-categories: [content tuto]
+categories: [blog]
 keywords: []
 menu:
   main:
