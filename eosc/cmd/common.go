@@ -209,7 +209,7 @@ func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction, chainID eos.
 
 	//fmt.Println("Transaction submitted to the network. Confirm at https://eosq.app/tx/" + resp.TransactionID)
 	trxURL := transactionURL(chainID, resp.TransactionID)
-	fmt.Printf("Transaction submitted to the network.\n  %s\n", trxURL)
+	fmt.Printf("\nTransaction submitted to the network.\n  %s\n", trxURL)
 	if resp.BlockID != "" {
 		blockURL := blockURL(chainID, resp.BlockID)
 		fmt.Printf("Server says transaction was included in block %d:\n  %s\n", resp.BlockNum, blockURL)
