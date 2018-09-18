@@ -12,7 +12,7 @@
   </article>
   <div class="flex flex-wrap">
 
-  /  {{ $interior_classes := $.Site.Params.flex_box_interior_classes }}/
+    {{ $interior_classes := $.Site.Params.flex_box_interior_classes }}
     <section class="flex-ns flex-wrap justify-between w-100 w-80-nsTK v-top">
       {{ $paginator := .Paginate (.Pages | lang.Merge (where .Sites.First.RegularPages "Section" .Section)) -}}
       {{ range $paginator.Pages }}
