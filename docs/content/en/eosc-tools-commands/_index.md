@@ -1,22 +1,20 @@
 ---
-title: "`eosc tools` Commands"
-linktitle: "`eosc tools`"
-description:
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
-keywords: []
+title: tools Commands Overview
+linktitle: tools Commands Overview
+description: Overview of the `tools` section of eosc
+date: 2017-02-01
+publishdate: 2017-02-01
+lastmod: 2017-02-01
+categories: [tools]
+keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-tools-commands"
-    weight: 30
-weight: 30
-sections_weight: 30
+    weight: 1
+weight: 0001	#rem
 draft: false
-aliases: []
-toc: true
-
-
+aliases: [/overview/introduction/]
+toc: false
 ---
 
 ```
