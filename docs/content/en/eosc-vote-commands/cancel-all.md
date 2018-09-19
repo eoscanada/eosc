@@ -1,6 +1,6 @@
 ---
 title: Cancel All Votes
-linktitle: Cancel All Votes2
+linktitle: Cancel All Votes
 description: Cancel all vote actions of an account
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vote-commands"
+    identifier: cancel-all-vote
     weight: 40
 weight: 40
 sections_weight: 40
