@@ -1,6 +1,6 @@
 ---
 title: Community
-linktitle: Community
+linktitle: Community2
 description: An overview of features used for diagnosing and improving performance issues in site builds.
 date: 2017-03-12
 publishdate: 2017-03-12
