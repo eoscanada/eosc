@@ -1,6 +1,7 @@
 ---
-title: Features Overview2
-linktitle: Features Overview
+title: Features Overview
+linktitle: Features Overview2
+identifier: features-about
 description:
 date: 2018-09-05
 publishdate: 2018-09-05
