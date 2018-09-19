@@ -1,7 +1,6 @@
 ---
 title: List
-linktitle: List2
-identifier: list-multisig
+linktitle: List
 description: Lists all active multisig proposals for a given proposer
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: list-multisig
     weight: 40
 weight: 40
 sections_weight: 40
