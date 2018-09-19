@@ -1,6 +1,6 @@
 ---
 title: Add Keys
-linktitle: Add Keys2
+linktitle: Add Keys
 description: Add private keys to an existing vault
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vault-commands"
+    identifier: add-keys-vault
     weight: 40
 weight: 40
 sections_weight: 40
