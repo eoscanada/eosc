@@ -1,7 +1,6 @@
 ---
 title: Account
-linktitle: Account2
-identifier: account-get
+linktitle: Account
 description: Retrieve account information from the chainthe command line.
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-get-commands"
+    identifier: account-get
     weight: 40
 weight: 40
 sections_weight: 40
