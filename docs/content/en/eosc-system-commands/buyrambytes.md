@@ -1,6 +1,7 @@
 ---
 title: Buy RAM Bytes
 linktitle: Buy RAM Bytes2
+identifier: buy-ram-bytes-system
 description: Buy a specified amount of bytes of RAM
 date: 2017-02-01
 publishdate: 2017-02-01
