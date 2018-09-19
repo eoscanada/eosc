@@ -120,8 +120,14 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 }
 
 #logo-main-nav img {max-width:120px;}
-#logo-topbar img {max-height:16px;}
-#logo-topbar, #logo-topbar a  {line-height:8px; font-size:8px;}
+#topbar {min-height:45px;box-sizing:border-box;}
+#logo-topbar img {max-height:17px;}
+#logo-topbar, #logo-topbar a  {line-height:8px;color:#75351c;vertical-align: sub; }
+#logo-topbar a:hover {opacity:.8;}
+#tagline {
+    font-family: "Lato",sans-serif;
+    text-transform: uppercase;
+}
 
 #lasted-news, #values {padding:100px 0px;}
 
@@ -168,7 +174,7 @@ nav input#search-input::placeholder {color:#fff;}
     background-color:#32383f;
 }
 
-.ml-auto {margin-left:auto!important;}
+/*.ml-auto {margin-left:auto!important;}*/
 
 .github-top-btn {
     border-radius:50%;

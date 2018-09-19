@@ -1,8 +1,8 @@
 {{ $currentPage := . }}
-<div class="bg-orange w-100">
-  <div class="pl3 pt2 pb2 relative center flex-ns flex-wrap items-center justify-start mw9">
-          <div id="logo-topbar" class="">
-              <a href="{{ .Site.BaseURL }}" class="link white ">
+<div id="topbar" class="bg-orange w-100 f6 pl3  flex justify-start items-center">
+  <div class="relative flex justify-center mw9">
+          <div  id="logo-topbar" class="">
+              By <a href="https://www.eoscanada.com" class="link white ml1">
                   <img src="{{ .Site.BaseURL }}img/{{ .Site.Params.logo_eos_canada }}" alt="EOS Canada">
               </a>
           </div>
@@ -12,13 +12,16 @@
 
   <div class="relative center flex-ns flex-wrap items-center justify-start mw9">
 
-    <div id="logo-main-nav" class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
+    <div id="logo-main-nav" class="dim f3 lh-solid ml0-ns   mv0 pl3 pl4-ns ">
       <a href="{{ .Site.BaseURL }}" class="link white">
         <img src="{{ .Site.BaseURL }}img/{{ .Site.Params.logo }}" alt="{{ .Site.Title }}">
       </a>
     </div>
+    <div id="tagline" class="fs-normal white pl3">
+      {{ .Site.Params.tagline }}
+    </div>
 
-    <ul style="margin-right:auto;" class="list pa0 dn dib-l ml4 mr-auto">
+    <ul  style="margin-left:auto;"class="list pa0 dn dib-l w-auto ">
       {{ range .Site.Menus.global }}
       {{ $post_status := printf "%s" .Post }}
         <li class="white f5 dib mr4" role="menuitem">
