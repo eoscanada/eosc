@@ -1,6 +1,6 @@
 ---
 title: Push Transaction
-linktitle: Push Transaction
+linktitle: Push Transaction2
 description: Push a transaction to the chain
 date: 2017-02-01
 publishdate: 2017-02-01
