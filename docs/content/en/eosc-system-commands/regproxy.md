@@ -1,6 +1,6 @@
 ---
 title: Register Proxy
-linktitle: Register Proxy
+linktitle: Register Proxy2
 description: Register an account as a proxy
 date: 2017-02-01
 publishdate: 2017-02-01
