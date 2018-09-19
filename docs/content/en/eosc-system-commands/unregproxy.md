@@ -1,6 +1,6 @@
 ---
 title: Unregister Proxy
-linktitle: Unregister Proxy
+linktitle: Unregister Proxy2
 description: Unregister an account as a proxy
 date: 2017-02-01
 publishdate: 2017-02-01
