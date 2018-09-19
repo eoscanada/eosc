@@ -1,6 +1,7 @@
 ---
-title: Tally Votes2
-linktitle: Tally Votes
+title: Tally Votes
+linktitle: Tally Votes2
+identifier: tally-votes-forum
 description: Tally the votes for a particular proposal
 date: 2017-02-01
 publishdate: 2017-02-01
