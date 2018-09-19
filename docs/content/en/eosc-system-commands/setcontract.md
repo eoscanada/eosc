@@ -1,6 +1,6 @@
 ---
 title: Set Contract
-linktitle: Set Contract
+linktitle: Set Contract2
 description: Set contract on an account
 date: 2017-02-01
 publishdate: 2017-02-01
