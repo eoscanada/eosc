@@ -1,6 +1,6 @@
 ---
 title: Set Code
-linktitle: Set Code
+linktitle: Set Code2
 description: Set code on an account
 date: 2017-02-01
 publishdate: 2017-02-01
