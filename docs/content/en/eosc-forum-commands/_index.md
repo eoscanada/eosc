@@ -1,6 +1,7 @@
 ---
-title: forum Commands Overview2
-linktitle: forum Commands Overview
+title: forum Commands Overview
+linktitle: forum Commands Overview2
+identifier: overview-forum
 description: Overview of the `forum` section of eosc
 date: 2017-02-01
 publishdate: 2017-02-01
