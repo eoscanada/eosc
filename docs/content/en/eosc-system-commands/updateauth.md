@@ -1,6 +1,6 @@
 ---
 title: Update Authority
-linktitle: Update Authority2
+linktitle: Update Authority
 description: Update a permission on an account
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: update-authority-system
     weight: 40
 weight: 40
 sections_weight: 40
