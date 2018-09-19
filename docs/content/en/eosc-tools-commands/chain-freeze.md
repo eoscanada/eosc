@@ -1,6 +1,6 @@
 ---
 title: Chain Freezer
-linktitle: Chain Freezer2
+linktitle: Chain Freezer
 description: Sync the chain up until a specified block height
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-tools-commands"
+    identifier: chain-freeze-tools
     weight: 40
 weight: 40
 sections_weight: 40
