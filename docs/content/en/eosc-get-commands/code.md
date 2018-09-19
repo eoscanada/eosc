@@ -1,6 +1,7 @@
 ---
 title: Code
 linktitle: Code2
+identifier: code-get
 description: Retrieve a hash of the code that resides within an account
 date: 2017-02-01
 publishdate: 2017-02-01
