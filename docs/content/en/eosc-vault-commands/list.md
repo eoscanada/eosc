@@ -1,6 +1,6 @@
 ---
 title: List Keys
-linktitle: List Keys
+linktitle: List Keys2
 description: List the public keys associated to the private keys encrypted inside the vault
 date: 2017-02-01
 publishdate: 2017-02-01
