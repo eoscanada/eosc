@@ -136,6 +136,16 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 
 }
 
+#topbar .github-top-btn {
+    width:22px;
+    height:22px;
+}
+#topbar .github-top-btn:before {
+    font-size:22px;
+    top: 6px;
+    position: relative;
+}
+
 #lasted-news, #values {padding:100px 0px;}
 
 #lasted-news .section-title,
@@ -195,7 +205,7 @@ nav input#search-input::placeholder {color:#fff;}
 }
 
 .github-top-btn::before {
-    font-size:44px!important;
+    font-size:44px;
 }
 
 .tool-logo {

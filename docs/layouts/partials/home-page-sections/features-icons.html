@@ -1,8 +1,8 @@
 <div class="bg-white w-100-l center ">
   <div class="flex-ns flex-wrap justify-center center mw9 pv3 pv5-l grey">
     {{ with .Site.GetPage "/features" }}
-    <h1 class="title w-100-l pt3 pb1 mv0 justify-center tc">{{ .Title }}</h1>
-    <h3 class="title w-100-l pt3 pb4 mv0 fw3 justify-center tc">{{ .Description }}</h3>
+    <h1 class="title center w-90 pt3 pb1 mv0 justify-center tc">{{ .Title }}</h1>
+    <h3 class="title center w-90 pt3 pb4 mv0 fw3 justify-center tc">{{ .Description }}</h3>
     {{ end }}
     <div class="flex flex-wrap w-90 center center">
       {{ range first 6 ( sort (where .Pages "Section" "features") "Weight" "asc" ) }}

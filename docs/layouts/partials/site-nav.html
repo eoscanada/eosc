@@ -1,11 +1,14 @@
 {{ $currentPage := . }}
-<div id="topbar" class="bg-orange w-100 f6 pl3  flex justify-start items-center">
-  <div class="relative flex justify-center mw9">
-          <div  id="logo-topbar" class="">
-              By <a href="https://www.eoscanada.com" class="link white ml1" href="_blank">
-                  <img src="{{ .Site.BaseURL }}img/{{ .Site.Params.logo_eos_canada }}" alt="EOS Canada">
-              </a>
-          </div>
+<div id="topbar" class="bg-orange w-100 f6 ph3  flex justify-start items-center">
+  <div class="relative flex justify-center w-100 mw9">
+    <div  id="logo-topbar" style="margin-right:auto;"  class="mr-auto">
+        By <a href="https://www.eoscanada.com" class="link white ml1" href="_blank">
+            <img src="{{ .Site.BaseURL }}img/{{ .Site.Params.logo_eos_canada }}" alt="EOS Canada">
+        </a>
+    </div>
+    <span class="bottom-0 right-0 relative-ns mt0 dib-ns dn-m dn-l absolute">
+      {{- partial "social-follow.html" . -}}
+    </span>
   </div>
 </div>
 <nav class="bg-primary-color-dark pv3 w-100" role="navigation">
@@ -21,7 +24,7 @@
       {{ .Site.Params.tagline }}
     </div>
 
-    <ul  style="margin-left:auto;"class="list pa0 dn dib-l w-auto ">
+    <ul  style="margin-left:auto;" class="list pa0 dn dib-l w-auto ">
       {{ range .Site.Menus.global }}
       {{ $post_status := printf "%s" .Post }}
         <li class="white f5 dib mr4" role="menuitem">
