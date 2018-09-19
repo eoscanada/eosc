@@ -1,6 +1,7 @@
 ---
 title: Status
 linktitle: Status
+identifier: status-multisig
 description: View the status of a given proposal and its approvals
 date: 2017-02-01
 publishdate: 2017-02-01

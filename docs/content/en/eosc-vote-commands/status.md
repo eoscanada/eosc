@@ -1,6 +1,7 @@
 ---
 title: Status
 linktitle: Status2
+identifier: status-vote
 description: View the vote status of an account
 date: 2017-02-01
 publishdate: 2017-02-01
