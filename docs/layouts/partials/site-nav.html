@@ -1,8 +1,13 @@
 {{ $currentPage := . }}
-<topbar class="bg-orange pv3 w-100">
-  <div class="relative center flex-ns flex-wrap items-center justify-start mw9">
+<div class="bg-orange w-100">
+  <div class="pl3 pt2 pb2 relative center flex-ns flex-wrap items-center justify-start mw9">
+          <div id="logo-topbar" class="">
+              <a href="{{ .Site.BaseURL }}" class="link white ">
+                  <img src="{{ .Site.BaseURL }}img/{{ .Site.Params.logo_eos_canada }}" alt="EOS Canada">
+              </a>
+          </div>
   </div>
-</topbar>
+</div>
 <nav class="bg-primary-color-dark pv3 w-100" role="navigation">
 
   <div class="relative center flex-ns flex-wrap items-center justify-start mw9">

@@ -120,6 +120,8 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 }
 
 #logo-main-nav img {max-width:120px;}
+#logo-topbar img {max-height:16px;}
+#logo-topbar, #logo-topbar a  {line-height:8px; font-size:8px;}
 
 #lasted-news, #values {padding:100px 0px;}
 

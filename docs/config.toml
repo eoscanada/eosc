@@ -70,6 +70,7 @@ twitter = "GoHugoIO"
 
   custom_css = ["css/custom.css"]
   logo = "eosc-logo-02.svg"
+  logo_eos_canada = "logo-eos-canada.svg"
 
   flex_box_interior_classes = "flex-auto w-100 w-40-l mr3 mb3 bg-white ba b--moon-gray nested-copy-line-height"
 
