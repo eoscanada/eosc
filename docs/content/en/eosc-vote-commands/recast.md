@@ -1,6 +1,6 @@
 ---
 title: Recast Previous Vote
-linktitle: Recast Previous Vote
+linktitle: Recast Previous Vote2
 description: Recast a previous vote action of an account
 date: 2017-02-01
 publishdate: 2017-02-01
