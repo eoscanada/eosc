@@ -1,6 +1,7 @@
 ---
 title: Cancel
 linktitle: Cancel2
+identifier: cancel-multisig
 description: Cancel a multisig transaction
 date: 2017-02-01
 publishdate: 2017-02-01
