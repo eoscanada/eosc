@@ -7,6 +7,7 @@ categories: [troubleshooting]
 menu:
   docs:
     parent: "help"
+    identifier: faq-help
 keywords: [faqs]
 weight: 2
 toc: true
