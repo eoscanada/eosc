@@ -1,6 +1,6 @@
 ---
 title: Propose
-linktitle: Propose
+linktitle: Propose2
 description: Propose a multisig transaction
 date: 2017-02-01
 publishdate: 2017-02-01
