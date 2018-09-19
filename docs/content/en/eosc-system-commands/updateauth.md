@@ -1,6 +1,6 @@
 ---
 title: Update Authority
-linktitle: Update Authority
+linktitle: Update Authority2
 description: Update a permission on an account
 date: 2017-02-01
 publishdate: 2017-02-01
