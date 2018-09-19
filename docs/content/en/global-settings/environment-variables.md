@@ -1,6 +1,6 @@
 ---
 title: Environment Variable
-linktitle: Environment Variable2
+linktitle: Environment Variable
 description: Install Hugo on macOS, Windows, Linux, OpenBSD, FreeBSD, and on any machine where the Go compiler tool chain can run.
 date: 2016-11-01
 publishdate: 2016-11-01
@@ -11,6 +11,7 @@ keywords: [install,pc,windows,linux,macos,binary,tarball]
 menu:
   docs:
     parent: "global-settings"
+    identifier: environment-variable-global-settings
     weight: 30
 weight: 30
 sections_weight: 30
