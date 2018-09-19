@@ -1,6 +1,6 @@
 ---
 title: Status
-linktitle: Status2
+linktitle: Status
 description: View the status of a given proposal and its approvals
 date: 2017-02-01
 publishdate: 2017-02-01
