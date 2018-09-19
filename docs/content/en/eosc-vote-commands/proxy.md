@@ -1,6 +1,6 @@
 ---
 title: Delegate to a Proxy
-linktitle: Delegate to a Proxy
+linktitle: Delegate to a Proxy2
 description: Delegate your vote strength towards an account registered as a proxy
 date: 2017-02-01
 publishdate: 2017-02-01
