@@ -1,6 +1,7 @@
 ---
 title: Block
 linktitle: Block2
+identifier: block-get
 description: Retrieve a specific block from the chain
 date: 2017-02-01
 publishdate: 2017-02-01
