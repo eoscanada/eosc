@@ -1,6 +1,6 @@
 ---
 title: Unregisted Producer
-linktitle: Unregister Producer2
+linktitle: Unregister Producer
 description: Unregister an account as a Block Producer Candidate
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: unregister-producer-system
     weight: 40
 weight: 40
 sections_weight: 40
