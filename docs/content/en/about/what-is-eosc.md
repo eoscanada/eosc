@@ -1,6 +1,7 @@
 ---
-title: What is EOSC2
-linktitle: What is EOSC
+title: What is EOSC
+linktitle: What is EOSC2
+identifier: what-is-eosc-about
 description:
 date: 2018-09-05
 publishdate: 2018-09-05
