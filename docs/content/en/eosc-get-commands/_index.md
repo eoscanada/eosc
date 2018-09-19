@@ -1,7 +1,6 @@
 ---
 title: get Commands Overview
-linktitle: get Commands Overview2
-identifier: overview-get
+linktitle: get Commands Overview
 description: Overview of the `get` section of eosc
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-get-commands"
+    identifier: overview-get
     weight: 1
 weight: 0001	#rem
 draft: false
