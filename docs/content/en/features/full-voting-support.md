@@ -1,8 +1,8 @@
 ---
-title: "Full voting support"
+title: "Full Voting Support"
 description:
 date: 2018-09-18
 weight: 50
 
 ---
-Including a convenient `revote` tool
+Everything you will need to handle your EOS voting needs, including a convenient `recast` tool
