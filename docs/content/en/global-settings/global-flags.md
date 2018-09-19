@@ -10,7 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "global-settings"
-    identifier: global-flags-global-flags
+    identifier: global-flags-global-settings
     weight: 40
 weight: 40
 sections_weight: 40
