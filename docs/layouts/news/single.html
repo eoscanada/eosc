@@ -64,8 +64,8 @@
               <li class="dib mb2 mr2">Related:</li>
               {{ range $tags.Pages }}
                 {{ if ne .URL $currentPageUrl }}
-                  <li name="{{ .Identifier }}" class="mb2 mr3">
-                     <a name="{{ .Identifier }}" href="{{ .URL }}" class="link">
+                  <li class="mb2 mr3">
+                     <a href="{{ .URL }}" class="link">
                        {{ .LinkTitle }}
                      </a>
                    </li>

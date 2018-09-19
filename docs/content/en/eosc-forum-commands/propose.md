@@ -1,6 +1,6 @@
 ---
 title: Propose2
-linktitle: Propose
+linktitle: Propose2
 description: Submit a proposal for on-chain voting
 date: 2017-02-01
 publishdate: 2017-02-01

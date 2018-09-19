@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: propose-multisig
     weight: 40
 weight: 40
 sections_weight: 40
