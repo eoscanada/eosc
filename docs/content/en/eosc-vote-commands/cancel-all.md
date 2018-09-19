@@ -1,6 +1,6 @@
 ---
 title: Cancel All Votes
-linktitle: Cancel All Votes
+linktitle: Cancel All Votes2
 description: Cancel all vote actions of an account
 date: 2017-02-01
 publishdate: 2017-02-01
