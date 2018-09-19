@@ -1,6 +1,6 @@
 ---
 title: Block Producer Vote
-linktitle: Block Producer Vote
+linktitle: Block Producer Vote2
 description: Vote for a list of Block Producers
 date: 2017-02-01
 publishdate: 2017-02-01
