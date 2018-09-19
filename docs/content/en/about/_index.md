@@ -1,7 +1,6 @@
 ---
 title: About Overview
 linktitle: About Overview
-identifier: about-overview
 description:
 date: 2018-09-05
 publishdate: 2018-09-05
