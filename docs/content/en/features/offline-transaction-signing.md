@@ -1,8 +1,8 @@
 ---
-title: Offline transaction signing 
+title: Offline Transaction Signing 
 description:
 date: 2018-09-18
 weight: 30
 
 ---
-Including full cold wallet support
+Easily create a cold wallet for secure segregation of your keys from the internet.
