@@ -1,6 +1,6 @@
 ---
 title: Unregisted Producer
-linktitle: Unregister Producer
+linktitle: Unregister Producer2
 description: Unregister an account as a Block Producer Candidate
 date: 2017-02-01
 publishdate: 2017-02-01
