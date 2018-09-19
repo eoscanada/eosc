@@ -1,3 +1,4 @@
+---
 title: Create Vault
 linktitle: Create Vault2
 description: Create a new encrypted vault
