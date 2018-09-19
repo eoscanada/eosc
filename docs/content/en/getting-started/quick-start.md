@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-linktitle: Getting Started
+linktitle: Getting Started2
 description: Install and run eosc
 date: 2018-09-11
 publishdate: 2018-09-11
