@@ -1,7 +1,7 @@
 ---
 title: Clean Proposal
 linktitle: Clean Proposal
-description: Post a message to the chain using the forum contract
+description: Cleans out the data from the table of an expired proposal.
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
