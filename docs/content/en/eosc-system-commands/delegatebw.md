@@ -1,6 +1,6 @@
 ---
 title: Delegate Bandwidth
-linktitle: Delegate Bandwidth
+linktitle: Delegate Bandwidth2
 description: Delegate either CPU or Network bandwidth to an account
 date: 2017-02-01
 publishdate: 2017-02-01
