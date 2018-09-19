@@ -10,6 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "getting-started"
+    identifier: overview-getting-started
     weight: 1
 weight: 0001	#rem
 draft: false
