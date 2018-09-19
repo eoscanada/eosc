@@ -1,6 +1,6 @@
 ---
 title: Serve
-linktitle: Serve2
+linktitle: Serve
 description: Serve listens to a local port, creating an interface for signing transactions
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vault-commands"
+    identifier: serve-vault
     weight: 40
 weight: 40
 sections_weight: 40
