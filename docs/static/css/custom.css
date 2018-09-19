@@ -285,3 +285,7 @@ ul li {position:relative;list-style:square;}
 .nested-links a:focus, .nested-links a:hover {
     color: #aaa;
 }
+
+[data-scrolldir=down] .sticky, [data-scrolldir=up] .sticky {
+    top: 150px;
+}
