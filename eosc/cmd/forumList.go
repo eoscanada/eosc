@@ -18,25 +18,27 @@ var forumListCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
 		targetAccount := toAccount(viper.GetString("forum-cmd-target-contract"), "--target-contract")
-		proposer := viper.GetString("forum-list-cmd-from-proposer")
+
+		proposerStr := viper.GetString("forum-list-cmd-from-proposer")
+		var proposer eos.AccountName
 
 		var err error
 		var resp *eos.GetTableRowsResp
-		if proposer != "" {
+		if proposerStr != "" {
+			proposer = toAccount(proposerStr, "--from-proposer")
 			resp, err = api.GetTableRows(eos.GetTableRowsRequest{
 				Code:       string(targetAccount),
 				Scope:      string(targetAccount),
 				Table:      string("proposal"),
 				Index:      "sec", // Secondary index `by_proposer`
 				KeyType:    "name",
-				LowerBound: proposer,
+				LowerBound: string(proposer),
 				Limit:      1000,
 				JSON:       true,
 			})
 			if err != nil {
 				errorCheck(fmt.Sprintf("unable to get list of proposals from proposer %q", proposer), err)
 			}
-
 		} else {
 			resp, err = api.GetTableRows(eos.GetTableRowsRequest{
 				Code:  string(targetAccount),
@@ -55,6 +57,7 @@ var forumListCmd = &cobra.Command{
 			ProposalName eos.Name        `json:"proposal_name"`
 			Proposer     eos.AccountName `json:"proposer"`
 			Title        string          `json:"title"`
+			ProposalJSON string          `json:"proposal_json"`
 			CreatedAt    eos.JSONTime    `json:"created_at"`
 			ExpiresAt    eos.JSONTime    `json:"expires_at"`
 		}
@@ -68,15 +71,21 @@ var forumListCmd = &cobra.Command{
 			return
 		}
 
+		found := false
 		for _, proposal := range proposals {
-			fmt.Println("Proposal name: ", proposal.ProposalName)
-			fmt.Println("Proposer: ", proposal.Proposer)
-			fmt.Println("Title: ", proposal.Title)
-			fmt.Println("Created at: ", proposal.CreatedAt)
-			fmt.Println("Expires at: ", proposal.ExpiresAt)
-			fmt.Println()
+			if proposerStr == "" || proposal.Proposer == proposer {
+				fmt.Println("Proposal name: ", proposal.ProposalName)
+				fmt.Println("Proposer: ", proposal.Proposer)
+				fmt.Println("Title: ", proposal.Title)
+				fmt.Println("JSON: ", proposal.ProposalJSON)
+				fmt.Println("Created at: ", proposal.CreatedAt)
+				fmt.Println("Expires at: ", proposal.ExpiresAt)
+				fmt.Println()
+
+				found = true
+			}
 		}
-		if len(proposals) == 0 {
+		if !found {
 			errorCheck("no proposal found", fmt.Errorf("empty list"))
 		}
 	},
