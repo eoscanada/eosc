@@ -1,7 +1,6 @@
 ---
 title: Status
 linktitle: Status
-identifier: status-multisig
 description: View the status of a given proposal and its approvals
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: status-multisig
     weight: 40
 weight: 40
 sections_weight: 40

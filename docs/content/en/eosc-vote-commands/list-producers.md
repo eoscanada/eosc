@@ -1,6 +1,6 @@
 ---
 title: List Producers
-linktitle: List Producers2
+linktitle: List Producers
 description: List all accounts registered as Block Producer Candidates
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vote-commands"
+    identifier: list-producers-vote
     weight: 40
 weight: 40
 sections_weight: 40

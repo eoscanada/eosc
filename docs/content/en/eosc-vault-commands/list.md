@@ -1,6 +1,6 @@
 ---
 title: List Keys
-linktitle: List Keys2
+linktitle: List Keys
 description: List the public keys associated to the private keys encrypted inside the vault
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vault-commands"
+    identifier: list-keys-vault
     weight: 40
 weight: 40
 sections_weight: 40

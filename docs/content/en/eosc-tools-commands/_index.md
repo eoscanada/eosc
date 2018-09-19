@@ -10,6 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-tools-commands"
+    identifier: overview-tools
     weight: 1
 weight: 0001	#rem
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: Push Transaction
-linktitle: Push Transaction2
+linktitle: Push Transaction
 description: Push a transaction to the chain
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-tx-commands"
+    identifier: push-transaction-tx
     weight: 40
 weight: 40
 sections_weight: 40
