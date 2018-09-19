@@ -1,6 +1,6 @@
 ---
 title: Unpack Transaction
-linktitle: Unpack Transaction
+linktitle: Unpack Transaction2
 description: Review an unpacked transaction
 date: 2017-02-01
 publishdate: 2017-02-01
