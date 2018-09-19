@@ -1,6 +1,6 @@
 ---
 title: Tally Votes
-linktitle: Tally Votes
+linktitle: Tally Votes2
 description: Tally the votes for a particular proposal
 date: 2017-02-01
 publishdate: 2017-02-01
