@@ -1,6 +1,6 @@
 ---
 title: New Account
-linktitle: New Account
+linktitle: New Account2
 description: Create a new account
 date: 2017-02-01
 publishdate: 2017-02-01
