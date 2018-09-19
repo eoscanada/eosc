@@ -1,7 +1,6 @@
 ---
 title: Propose
-linktitle: Propose2
-identifier: propose-forum
+linktitle: Propose
 description: Submit a proposal for on-chain voting
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-forum-commands"
+    identifier: propose-forum
     weight: 40
 weight: 40
 sections_weight: 40
