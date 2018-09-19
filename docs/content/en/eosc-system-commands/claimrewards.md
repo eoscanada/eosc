@@ -1,6 +1,6 @@
 ---
 title: Claim Rewards
-linktitle: Claim Rewards
+linktitle: Claim Rewards2
 description: Claim rewards function useable by any paid Block Producers
 date: 2017-02-01
 publishdate: 2017-02-01
