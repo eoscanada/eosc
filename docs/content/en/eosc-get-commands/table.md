@@ -1,6 +1,7 @@
 ---
 title: Table
 linktitle: Table2
+identifier: table-get
 description: Retrieve data from a table in a specified contract
 date: 2017-02-01
 publishdate: 2017-02-01
