@@ -1,6 +1,6 @@
 ---
 title: Create Vault
-linktitle: Create Vault2
+linktitle: Create Vault
 description: Create a new encrypted vault
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vault-commands"
+    identifier: create-vault-vault
     weight: 40
 weight: 40
 sections_weight: 40
