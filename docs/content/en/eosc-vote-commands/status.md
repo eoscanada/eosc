@@ -1,6 +1,6 @@
 ---
 title: Status
-linktitle: Status2
+linktitle: Status
 identifier: status-vote
 description: View the vote status of an account
 date: 2017-02-01
@@ -11,6 +11,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vote-commands"
+    identifier: status-vote
     weight: 40
 weight: 40
 sections_weight: 40
