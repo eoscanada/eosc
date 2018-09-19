@@ -120,6 +120,7 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 }
 
 #logo-main-nav img {max-width:120px;}
+#logo-main-nav a   {line-height:8px; }
 #topbar {min-height:45px;box-sizing:border-box;}
 #logo-topbar img {max-height:17px;}
 #logo-topbar, #logo-topbar a  {line-height:8px;color:#75351c;vertical-align: sub; }
@@ -127,6 +128,13 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 #tagline {
     font-family: "Lato",sans-serif;
     text-transform: uppercase;
+    font-weight:400;
+    font-size: 14px;
+    -webkit-letter-spacing: 1px;
+    -moz-letter-spacing: 1px;
+    -ms-letter-spacing: 1px;
+    letter-spacing: 1px;
+
 }
 
 #lasted-news, #values {padding:100px 0px;}
