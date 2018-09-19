@@ -1,7 +1,6 @@
 ---
 title: forum Commands Overview
-linktitle: forum Commands Overview2
-identifier: overview-forum
+linktitle: forum Commands Overview
 description: Overview of the `forum` section of eosc
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-forum-commands"
+    identifier: overview-forum
     weight: 1
 weight: 0001	#rem
 draft: false
