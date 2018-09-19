@@ -1,6 +1,6 @@
 ---
 title: List Producers
-linktitle: List Producers
+linktitle: List Producers2
 description: List all accounts registered as Block Producer Candidates
 date: 2017-02-01
 publishdate: 2017-02-01
