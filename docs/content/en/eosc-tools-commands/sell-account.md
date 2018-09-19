@@ -1,6 +1,6 @@
 ---
 title: Sell Account
-linktitle: Sell Account
+linktitle: Sell Account2
 description: Create a multisig transaction that both parties need to approve in order to do an atomic sale of an account
 date: 2017-02-01
 publishdate: 2017-02-01
