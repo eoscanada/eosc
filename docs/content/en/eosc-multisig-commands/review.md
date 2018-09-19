@@ -1,6 +1,6 @@
 ---
 title: Review
-linktitle: Review
+linktitle: Review2
 description: Review a proposal
 date: 2017-02-01
 publishdate: 2017-02-01
