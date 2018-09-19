@@ -1,6 +1,6 @@
 ---
 title: Buy RAM Bytes
-linktitle: Buy RAM Bytes2
+linktitle: Buy RAM Bytes
 description: Buy a specified amount of bytes of RAM
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: buy-ram-bytes-system
     weight: 40
 weight: 40
 sections_weight: 40

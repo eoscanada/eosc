@@ -1,6 +1,7 @@
 ---
 title: Unapprove
 linktitle: Unapprove2
+identifier: unapprove-multisig
 description: Unapprove a multisig proposal
 date: 2017-02-01
 publishdate: 2017-02-01

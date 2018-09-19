@@ -1,5 +1,5 @@
 ---
-title: Vote2
+title: Vote
 linktitle: Vote
 description: Cast a vote for a proposal
 date: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-forum-commands"
+    identifier: vote-forum
     weight: 40
 weight: 40
 sections_weight: 40

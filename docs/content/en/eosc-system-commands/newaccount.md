@@ -1,6 +1,6 @@
 ---
 title: New Account
-linktitle: New Account2
+linktitle: New Account
 description: Create a new account
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: new-account-system
     weight: 40
 weight: 40
 sections_weight: 40

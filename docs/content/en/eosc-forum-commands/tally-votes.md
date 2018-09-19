@@ -1,5 +1,5 @@
 ---
-title: Tally Votes2
+title: Tally Votes
 linktitle: Tally Votes
 description: Tally the votes for a particular proposal
 date: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-forum-commands"
+    identifier: tally-votes-forum
     weight: 40
 weight: 40
 sections_weight: 40

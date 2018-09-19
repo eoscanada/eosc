@@ -1,6 +1,6 @@
 ---
 title: Exec
-linktitle: Exec2
+linktitle: Exec
 description: Execute a multisig transaction
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: exec-multisig
     weight: 40
 weight: 40
 sections_weight: 40

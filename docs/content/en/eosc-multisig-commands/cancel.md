@@ -1,6 +1,6 @@
 ---
 title: Cancel
-linktitle: Cancel2
+linktitle: Cancel
 description: Cancel a multisig transaction
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: cancel-multisig
     weight: 40
 weight: 40
 sections_weight: 40

@@ -1,6 +1,6 @@
 ---
 title: Bidname
-linktitle: Bidname2
+linktitle: Bidname
 description: Place a bid for a premium name auction
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: bidname-system
     weight: 40
 weight: 40
 sections_weight: 40

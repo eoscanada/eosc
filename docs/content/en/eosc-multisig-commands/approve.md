@@ -1,6 +1,6 @@
 ---
 title: Approve
-linktitle: Approve2
+linktitle: Approve
 description: Approve a multisig transaction
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: approve-multisig
     weight: 40
 weight: 40
 sections_weight: 40

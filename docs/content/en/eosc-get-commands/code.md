@@ -1,6 +1,6 @@
 ---
 title: Code
-linktitle: Code2
+linktitle: Code
 description: Retrieve a hash of the code that resides within an account
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-get-commands"
+    identifier: code-get
     weight: 40
 weight: 40
 sections_weight: 40

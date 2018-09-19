@@ -1,6 +1,6 @@
 ---
 title: Block
-linktitle: Block2
+linktitle: Block
 description: Retrieve a specific block from the chain
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-get-commands"
+    identifier: block-get
     weight: 40
 weight: 40
 sections_weight: 40

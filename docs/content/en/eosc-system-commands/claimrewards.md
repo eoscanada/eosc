@@ -1,6 +1,6 @@
 ---
 title: Claim Rewards
-linktitle: Claim Rewards2
+linktitle: Claim Rewards
 description: Claim rewards function useable by any paid Block Producers
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: claim-rewards-system
     weight: 40
 weight: 40
 sections_weight: 40

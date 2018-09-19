@@ -1,6 +1,6 @@
 ---
 title: Delete Authority
-linktitle: Delete Authority2
+linktitle: Delete Authority
 description: Delete an authority permission for an account
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: delete-authority-system
     weight: 40
 weight: 40
 sections_weight: 40

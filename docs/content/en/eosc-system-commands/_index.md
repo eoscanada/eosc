@@ -10,6 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: overview-system
     weight: 1
 weight: 0001	#rem
 draft: false

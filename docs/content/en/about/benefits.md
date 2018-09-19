@@ -1,5 +1,5 @@
 ---
-title: The Benefits2
+title: The Benefits
 linktitle: The Benefits
 description:
 date: 2018-09-05
@@ -9,6 +9,7 @@ keywords: [eosc,eos]
 menu:
   docs:
     parent: "about"
+    identifier: benefits-about
     weight: 30
 weight: 30
 sections_weight: 30

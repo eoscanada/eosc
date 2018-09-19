@@ -1,6 +1,6 @@
 ---
 title: Undelegate Bandwidth
-linktitle: Undelegate Bandwidth2
+linktitle: Undelegate Bandwidth
 description: Undelegate CPU and Network bandwidth of an account
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: undelegate-bandwidth-system
     weight: 40
 weight: 40
 sections_weight: 40

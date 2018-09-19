@@ -10,6 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: overview-multisig
     weight: 1
 weight: 0001	#rem
 draft: false
