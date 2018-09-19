@@ -1,6 +1,7 @@
 ---
-title: The Benefits2
-linktitle: The Benefits
+title: The Benefits
+linktitle: The Benefits2
+identifier: benefits-about
 description:
 date: 2018-09-05
 publishdate: 2018-09-05
