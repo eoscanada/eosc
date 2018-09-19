@@ -1,5 +1,5 @@
 ---
-title: get Commands Overview
+title: get Commands Overview2
 linktitle: get Commands Overview
 description: Overview of the `get` section of eosc
 date: 2017-02-01
