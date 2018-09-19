@@ -1,6 +1,6 @@
 ---
-title: Vote
-linktitle: Vote2
+title: Vote2
+linktitle: Vote
 description: Cast a vote for a proposal
 date: 2017-02-01
 publishdate: 2017-02-01

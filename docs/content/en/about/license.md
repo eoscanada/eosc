@@ -1,6 +1,6 @@
 ---
-title: License
-linktitle: License2
+title: License2
+linktitle: License
 description: eosc license
 date: 2018-09-11
 publishdate: 2018-09-11
