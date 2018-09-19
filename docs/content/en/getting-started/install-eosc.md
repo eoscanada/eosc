@@ -1,5 +1,5 @@
 ---
-title: Install eosc2
+title: Install eosc
 linktitle: Install eosc
 description: 
 date: 2016-11-01
@@ -11,6 +11,7 @@ keywords: [install,pc,windows,linux,macos,binary,tarball]
 menu:
   docs:
     parent: "getting-started"
+    identifier: install-eosc-getting-started
     weight: 30
 weight: 30
 sections_weight: 30

@@ -1,6 +1,6 @@
 ---
 title: Delegate to a Proxy
-linktitle: Delegate to a Proxy2
+linktitle: Delegate to a Proxy
 description: Delegate your vote strength towards an account registered as a proxy
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vote-commands"
+    identifier: delegate-to-a-proxy-vote
     weight: 40
 weight: 40
 sections_weight: 40
