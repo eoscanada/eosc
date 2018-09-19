@@ -1,6 +1,6 @@
 ---
 title: Status
-linktitle: Status 
+linktitle: Status2
 description: View the vote status of an account
 date: 2017-02-01
 publishdate: 2017-02-01
