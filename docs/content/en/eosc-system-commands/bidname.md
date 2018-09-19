@@ -1,6 +1,6 @@
 ---
 title: Bidname
-linktitle: Bidname
+linktitle: Bidname2
 description: Place a bid for a premium name auction
 date: 2017-02-01
 publishdate: 2017-02-01
