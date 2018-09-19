@@ -1,6 +1,6 @@
 ---
 title: Block Producer Vote
-linktitle: Block Producer Vote2
+linktitle: Block Producer Vote
 description: Vote for a list of Block Producers
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vote-commands"
+    identifier: block-producer-vote
     weight: 40
 weight: 40
 sections_weight: 40
