@@ -8,7 +8,7 @@ import (
 
 var systemLinkAuthCmd = &cobra.Command{
 	Use:   "linkauth [your account] [code account] [action name] [permission name]",
-	Short: "Assign a permission to the given code::action pair",
+	Short: "Assign a permission to the given code::action pair.",
 	Long: `Assign a permission to the given code::action pair.
 
 By default, accounts have an "owner" and "active" key and with the

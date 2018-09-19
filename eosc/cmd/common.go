@@ -121,6 +121,10 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 		opts.HeadBlockID = toSHA256Bytes(headBlockID, "--offline-head-block")
 	}
 
+	if delaySec := viper.GetInt("global-delay-sec"); delaySec != 0 {
+		opts.DelaySecs = uint32(delaySec)
+	}
+
 	if err := opts.FillFromChain(api); err != nil {
 		fmt.Println("Error fetching tapos + chain_id from the chain (specify --offline flags for offline operations):", err)
 		os.Exit(1)
@@ -195,16 +199,43 @@ func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.Pa
 		}
 
 		// TODO: print the traces
-		pushTransaction(api, packedTx)
+		pushTransaction(api, packedTx, chainID)
 	}
 }
 
-func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction) {
+func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes) {
 	resp, err := api.PushTransaction(packedTx)
 	errorCheck("pushing transaction", err)
 
-	//fmt.Println("Transaction submitted to the network. Confirm at https://eosquery.com/tx/" + resp.TransactionID)
-	fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
+	//fmt.Println("Transaction submitted to the network. Confirm at https://eosq.app/tx/" + resp.TransactionID)
+	trxURL := transactionURL(chainID, resp.TransactionID)
+	fmt.Printf("\nTransaction submitted to the network.\n  %s\n", trxURL)
+	if resp.BlockID != "" {
+		blockURL := blockURL(chainID, resp.BlockID)
+		fmt.Printf("Server says transaction was included in block %d:\n  %s\n", resp.BlockNum, blockURL)
+	}
+}
+
+func transactionURL(chainID eos.SHA256Bytes, trxID string) string {
+	hexChain := hex.EncodeToString(chainID)
+	switch hexChain {
+	case "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906":
+		return fmt.Sprintf("https://eosq.app/tx/%s", trxID)
+	case "5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191":
+		return fmt.Sprintf("https://kylin.eosq.app/tx/%s", trxID)
+	}
+	return trxID
+}
+
+func blockURL(chainID eos.SHA256Bytes, blockID string) string {
+	hexChain := hex.EncodeToString(chainID)
+	switch hexChain {
+	case "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906":
+		return fmt.Sprintf("https://eosq.app/block/%s", blockID)
+	case "5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191":
+		return fmt.Sprintf("https://kylin.eosq.app/block/%s", blockID)
+	}
+	return blockID
 }
 
 func yamlUnmarshal(cnt []byte, v interface{}) error {
@@ -246,6 +277,14 @@ func toName(in, field string) eos.Name {
 	return name
 }
 
+func toPermissionLevel(in, field string) eos.PermissionLevel {
+	perm, err := permissionToPermissionLevel(in)
+	if err != nil {
+		errorCheck(fmt.Sprintf("invalid permission level for %q", field), err)
+	}
+	return perm
+}
+
 func toActionName(in, field string) eos.ActionName {
 	return eos.ActionName(toName(in, field))
 }
@@ -259,4 +298,14 @@ func toSHA256Bytes(in, field string) eos.SHA256Bytes {
 	errorCheck(fmt.Sprintf("invalid hex in %q", field), err)
 
 	return bytes
+}
+
+func isStubABI(abi eos.ABI) bool {
+	return abi.Version == "" &&
+		abi.Actions == nil &&
+		abi.ErrorMessages == nil &&
+		abi.Extensions == nil &&
+		abi.RicardianClauses == nil &&
+		abi.Structs == nil && abi.Tables == nil &&
+		abi.Types == nil
 }

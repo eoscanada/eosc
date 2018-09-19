@@ -15,7 +15,7 @@ import (
 
 var systemNewAccountCmd = &cobra.Command{
 	Use:   "newaccount [creator] [new_account_name]",
-	Short: "Create a new account",
+	Short: "Create a new account.",
 	Long: `Create a new account
 
 Specify the authority structure with either '--auth-file' or '--auth-key'.

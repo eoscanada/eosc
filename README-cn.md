@@ -1,5 +1,5 @@
 `eosc` 像瑞士军刀一样的多功能命令行工具
-----------------------------
+----------------------------------
 
 `eosc` 是一个跨平台的命令行工具 (支持 Windows, Mac 和 Linux)，你可以通过这个工具实现与 EOS.IO 区块链的交互。
 
@@ -81,23 +81,11 @@ Wallet file "./eosc-vault.json" created. Here are your public keys:
 ```
 代码指令中文翻译：
 
-```
-$ eosc vault create --import -c "Imported key"
-输入密语来加密你的保险库: **** 
-确认你的密语: ****
-输入你的第一个私钥: ****
-输入你的第二个私钥或按回车键结束输入:
-1组密钥导入成功。 在显示公钥前让我们把它保管好。
-钱包文件 "./eosc-vault.json" 已创建. 这是你的公钥:
-- EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
-```
-
 你的私钥将采用密语 (passphrase) 进行加密保护，参考后面的章节获取该工具所使用的加密库。
 
 
-
 创建钱包的同时生成公钥
-======================
+===================
 
 创建钱包的同时生成 2 个公钥:
 
@@ -113,7 +101,7 @@ Wallet file "./eosc-vault.json" created. Here are your public keys:
 
 
 将已有的私钥添加至已存在的钱包
-========================
+=========================
 
 将外部生成的私钥导入当前钱包:
 
@@ -148,12 +136,13 @@ Done
 上面的命令会在本地对投票交易进行签名处理，然后通过节点 `https://mainnet.eoscanada.com` 将交易发送至主网络。
 你也可以通过 `-u` 或 `--api-url` 参数指定主网上的其他节点服务器。
 
-在这里你可以查看你的账户信息 https://eosquery.com
+在这里你可以查看你的账户信息 https://eosq.app
+
 
 
 
 使用的加密库
-------------
+----------
 
 加密算法采用的是 NaCl
 ([C 语言实现](https://tweetnacl.cr.yp.to/), [Javascript 实现](https://github.com/dchest/tweetnacl-js),
@@ -168,13 +157,13 @@ Done
 
 ## 离线交易签名
 
-
 `eosc` 具备管理一个 airtight 脱机钱包所需的一切。
 这是一个示例用法。 在 `/tmp/airtight` 中, 运行:
 
 * `eosc vault create --import --comment "Airtight wallet"`
 
 它会输出:
+
 ```
 PLEASE READ:
 We are now going to ask you to paste your private keys, one at a time.
@@ -203,7 +192,7 @@ Total keys stored: 2
 
 这一操作会创建 `eosc-vault.json` 钱包，而且完全可以离线执行，不需要碰到网络上的任何东西。
 
-好，那让我们来实际操作它试试。从一个有互联网访问权限的计算机发出这些命令（就是说这些命令无法访问您的eosc保险库钱包）:
+好，那让我们来实际操作它试试。从一个有互联网访问权限的计算机发出这些命令（就是说这些命令无法访问你的 eosc 保险库钱包）:
 
 * `eosc transfer airtight11111 cancancan123 1.0000 -m "Can't say I haven't paid you now" --write-transaction transaction.json --skip-sign --expiration 3600`
 
@@ -294,31 +283,39 @@ Above is a pretty-printed representation of the outputted file
 
 * `eosc tx push signedtx.json`
 
-这个应该是成功的，假如没有，请参照下面的解释, in which case you're done, or fail with some of these:
+这个应该是成功的，假如没有，请参照下面的解释:
 
 * `transaction bears irrelevant signatures from these keys: [\"EOS5J53bNtH5H1bJTyP237fr5LF6eQSQohfGY5iMCgpC4HpXApJBr\"]`: 这意味着你无需使用此密钥签名即可授权你在交易的操作中指定的 `actor@permission`。
 
-* `UnAuthorized` errors: this means you have not signed the
-  transaction with the keys required to authorize the
-  `actor@permission` specified in the transaction's actions.
+* `UnAuthorized` errors: 这是说你没有使用交易操作中指定授权
+`actor @ permission` 所需的密钥对交易进行签名。
 
-* `Transaction's reference block did not match.`: this means you
-  didn't create the transaction from the same chain you're trying to
-  push it to.
+* `Transaction's reference block did not match.`: 这是说你的交易没有创建在你想推送的链上。
 
-* `expired transaction`: you need to do the whole loop within the
-  timeframe of the original `--expiration`. If you give `--expiration`
-  more than an hour, note that you can only submit the transaction to
-  the chain in the last hour of expiration.
+* `expired transaction`: 你需要在原始 `--expiration` 的时间范围内完成整个循环。 
+如果你给 `--expiration` 超过一个小时，那请注意你只能在到期的最后一小时内将交易提交到链上。
 
-* some other assertion errors, which are normal errors that would have
-  occurred if you tried to sign it online, investigate with the
-  contract in question.
+
+* 一些其他 assertion（断言）错误，就是你尝试在线签名时发生的常见错误，请根据相关合约进行调查。
+
+
+
+### 离线 multisig（多签名）
+
+
+为增加离线交易签名的安全性，请考虑使用EOS区块链的 `multisig` 工具。
+
+你可以在链上（通过`eosc multisig proposal`）提出一个交易，所有人都可以审查，
+并准备一个离线交易来批准该交易。 使用这种方法，你可以拥有 X 个 airtight 的计算机，
+每个计算机都提供拼图中的一块，由不同的人控制，无需缝合交易文件或将签名收集到一个地方。
 
 
 常见问题
-----
+-------
 
 问题: 为什么不使用 `cleos` ?
 
-答案：`cleos` 使用 C++ 编写，由于依赖太多的工具链而很难被编译。`eosc` 可以在 Windows 上使用，而 `cleos` 却不可以。`eosc` 包含了一个内部钱包，可以很方便的用来签名交易，但 `cleos` 命令则需要借助 (`keosd`) 才可以实现对交易的签名，因此它很难使用。而 `eosc` 将 `cleos` 和 `keosd` 这两个工具整合为一个方便使用的命令行工具。
+答案：`cleos` 使用 C++ 编写，由于依赖太多的工具链而很难被编译。`eosc` 
+可以在 Windows 上使用，而 `cleos` 却不可以。`eosc` 包含了一个内部钱包，
+可以很方便的用来签名交易，但 `cleos` 命令则需要借助 (`keosd`) 才可以实现对交易的签名，
+因此它很难使用。而 `eosc` 将 `cleos` 和 `keosd` 这两个工具整合为一个方便使用的命令行工具。

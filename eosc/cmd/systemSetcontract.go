@@ -7,7 +7,7 @@ import (
 
 var systemSetcontractCmd = &cobra.Command{
 	Use:   "setcontract [account name] [wasm file] [abi file]",
-	Short: "Set both code and ABI on an account",
+	Short: "Set both code and ABI on an account.",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()

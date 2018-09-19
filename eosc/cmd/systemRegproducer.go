@@ -11,7 +11,7 @@ import (
 
 var systemRegisterProducerCmd = &cobra.Command{
 	Use:   "regproducer [account_name] [public_key] [website_url]",
-	Short: "Register an account as a block producer candidate",
+	Short: "Register an account as a block producer candidate.",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
