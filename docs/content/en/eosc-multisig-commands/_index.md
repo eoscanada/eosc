@@ -1,6 +1,7 @@
 ---
 title: multisig Commands Overview
-linktitle: multisig Commands Overview
+linktitle: multisig Commands Overview2
+identifier: overview-multisig
 description: Overview of the `multisig` section of eosc
 date: 2017-02-01
 publishdate: 2017-02-01
