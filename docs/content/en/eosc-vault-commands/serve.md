@@ -1,6 +1,6 @@
 ---
 title: Serve
-linktitle: Serve
+linktitle: Serve2
 description: Serve listens to a local port, creating an interface for signing transactions
 date: 2017-02-01
 publishdate: 2017-02-01
