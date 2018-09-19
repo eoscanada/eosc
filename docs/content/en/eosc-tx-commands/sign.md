@@ -1,6 +1,6 @@
 ---
 title: Sign Transaction
-linktitle: Sign Transaction2
+linktitle: Sign Transaction
 description: Sign a transaction
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-tx-commands"
+    identifier: sign-transaction-tx
     weight: 40
 weight: 40
 sections_weight: 40
