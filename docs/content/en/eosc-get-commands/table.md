@@ -1,7 +1,6 @@
 ---
 title: Table
-linktitle: Table2
-identifier: table-get
+linktitle: Table
 description: Retrieve data from a table in a specified contract
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-get-commands"
+    identifier: table-get
     weight: 40
 weight: 40
 sections_weight: 40
