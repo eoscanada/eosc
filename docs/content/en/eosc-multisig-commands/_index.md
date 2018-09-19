@@ -1,7 +1,6 @@
 ---
 title: multisig Commands Overview
-linktitle: multisig Commands Overview2
-identifier: overview-multisig
+linktitle: multisig Commands Overview
 description: Overview of the `multisig` section of eosc
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: overview-multisig
     weight: 1
 weight: 0001	#rem
 draft: false
