@@ -5,7 +5,7 @@
     <h3 class="title w-100-l pt3 pb4 mv0 fw3 justify-center tc">{{ .Description }}</h3>
     {{ end }}
     <div class="flex flex-wrap w-90 center center">
-      {{ range first 5 ( sort (where .Pages "Section" "features") "Weight" "asc" ) }}
+      {{ range first 6 ( sort (where .Pages "Section" "features") "Weight" "asc" ) }}
       <!-- only show 2 boxes on mobile -->
       {{ $.Scratch.Add "i" 1 }}{{ $i := $.Scratch.Get "i" }}
       <div href="{{ .URL }}" class=" f5 w-100 w-33-m w-33-l pv2 pv2-ns ph2 ph3-ns content-with-btn-bottom">
