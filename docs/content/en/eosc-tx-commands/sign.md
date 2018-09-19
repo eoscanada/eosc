@@ -1,6 +1,6 @@
 ---
 title: Sign Transaction
-linktitle: Sign Transaction
+linktitle: Sign Transaction2
 description: Sign a transaction
 date: 2017-02-01
 publishdate: 2017-02-01
