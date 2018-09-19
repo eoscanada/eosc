@@ -1,6 +1,6 @@
 ---
 title: Install eosc
-linktitle: Install eosc
+linktitle: Install eosc2
 description: 
 date: 2016-11-01
 publishdate: 2016-11-01
