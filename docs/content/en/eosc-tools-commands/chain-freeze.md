@@ -1,6 +1,6 @@
 ---
 title: Chain Freezer
-linktitle: Chain Freezer
+linktitle: Chain Freezer2
 description: Sync the chain up until a specified block height
 date: 2017-02-01
 publishdate: 2017-02-01
