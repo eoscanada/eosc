@@ -1,7 +1,6 @@
 ---
 title: Propose
-linktitle: Propose2
-identifier: propose-multisig
+linktitle: Propose
 description: Propose a multisig transaction
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-multisig-commands"
+    identifier: propose-multisig
     weight: 40
 weight: 40
 sections_weight: 40
