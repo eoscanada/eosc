@@ -1,6 +1,7 @@
 ---
 title: system Commands Overview
-linktitle: system Commands Overview
+linktitle: system Commands Overview2
+identifier: overview-system
 description: Overview of the `system` section of eosc
 date: 2017-02-01
 publishdate: 2017-02-01
