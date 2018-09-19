@@ -1,6 +1,6 @@
 ---
 title: About Overview
-linktitle: About Overview2
+linktitle: About Overview
 identifier: about-overview
 description:
 date: 2018-09-05
@@ -11,6 +11,7 @@ keywords: []
 menu:
   docs:
     parent: "about"
+    identifier: overview-about
     weight: 1
 weight: 1
 draft: false
