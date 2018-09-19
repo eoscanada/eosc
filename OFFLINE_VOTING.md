@@ -1,6 +1,8 @@
 How to vote using eosc and an airtight computer
 -----------------------------------------------
 
+[点击查看中文](./OFFLINE_VOTING-cn.md)
+
 This step-by-step guide assumes you have a known account on mainnet
 (referred to as `YOURACCOUNT`), that is provisioned with the public
 key corresponding to the private key you'll be using in this process.
