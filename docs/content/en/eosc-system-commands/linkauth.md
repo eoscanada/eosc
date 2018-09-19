@@ -1,6 +1,7 @@
 ---
 title: Link Authority
 linktitle: Link Authority2
+identifier: link-authority-system
 description: Assign a permission to a given code::action pair
 date: 2017-02-01
 publishdate: 2017-02-01
