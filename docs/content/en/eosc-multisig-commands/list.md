@@ -1,6 +1,6 @@
 ---
 title: List
-linktitle: List
+linktitle: List2
 description: Lists all active multisig proposals for a given proposer
 date: 2017-02-01
 publishdate: 2017-02-01
