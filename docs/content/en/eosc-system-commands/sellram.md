@@ -1,6 +1,6 @@
 ---
 title: Sell RAM
-linktitle: Sell RAM
+linktitle: Sell RAM2
 description: Sell RAM from an account back to the system contract
 date: 2017-02-01
 publishdate: 2017-02-01
