@@ -1,7 +1,6 @@
 ---
 title: Post
-linktitle: Post2
-identifier: post-forum
+linktitle: Post
 description: Post a message to the chain using the forum contract
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-forum-commands"
+    identifier: post-forum
     weight: 40
 weight: 40
 sections_weight: 40
