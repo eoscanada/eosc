@@ -1,6 +1,6 @@
 ---
 title: Add Keys
-linktitle: Add Keys
+linktitle: Add Keys2
 description: Add private keys to an existing vault
 date: 2017-02-01
 publishdate: 2017-02-01
