@@ -43,7 +43,7 @@ var forumProposeCmd = &cobra.Command{
 			proposalJSON = "{}"
 		}
 		proposalJSON, err = sjson.Set(proposalJSON, "content", content)
-		// Defaults JSON schema type to `bp-proposal-v1`
+		// Defaults JSON schema type to `bps-proposal-v1`
 		proposalJSON, err = sjson.Set(proposalJSON, "type", jsonType)
 		errorCheck("setting content in json", err)
 
@@ -51,7 +51,6 @@ var forumProposeCmd = &cobra.Command{
 		action.Account = targetAccount
 
 		api := getAPI()
-		api.Debug = true
 		pushEOSCActions(api, action)
 	},
 }
@@ -61,7 +60,7 @@ func init() {
 
 	forumProposeCmd.Flags().String("content", "", "Markdown 'content' to be injected in the JSON (whether you propose a --json or not).")
 	forumProposeCmd.Flags().String("json", "", "Proposal JSON body.")
-	forumProposeCmd.Flags().String("type", "bp-proposal-v1", "The JSON schema of the proposal, set as a `type` in the JSON payload - defaults to `bp-proposal-v1`.")
+	forumProposeCmd.Flags().String("type", "bps-proposal-v1", "The JSON schema of the proposal, set as a `type` in the JSON payload - defaults to `bps-proposal-v1`.")
 
 	for _, flag := range []string{"content", "json", "type"} {
 		if err := viper.BindPFlag("forum-propose-cmd-"+flag, forumProposeCmd.Flags().Lookup(flag)); err != nil {
