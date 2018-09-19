@@ -1,6 +1,6 @@
 ---
 title: Approve
-linktitle: Approve
+linktitle: Approve2
 description: Approve a multisig transaction
 date: 2017-02-01
 publishdate: 2017-02-01
