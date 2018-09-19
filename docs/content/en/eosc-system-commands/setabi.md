@@ -1,6 +1,6 @@
 ---
 title: Set ABI
-linktitle: Set ABI
+linktitle: Set ABI2
 description: Set ABI on an account
 date: 2017-02-01
 publishdate: 2017-02-01
