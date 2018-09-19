@@ -1,6 +1,6 @@
 ---
 title: Account
-linktitle: Account
+linktitle: Account2
 description: Retrieve account information from the chainthe command line.
 date: 2017-02-01
 publishdate: 2017-02-01
