@@ -1,6 +1,7 @@
 ---
 title: Balance
 linktitle: Balance2
+identifier: balance-get
 description: Retrieve your liquid balance form the chain
 date: 2017-02-01
 publishdate: 2017-02-01
