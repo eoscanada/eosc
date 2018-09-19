@@ -1,6 +1,6 @@
 ---
 title: Community
-linktitle: Community2
+linktitle: Community
 description: An overview of features used for diagnosing and improving performance issues in site builds.
 date: 2017-03-12
 publishdate: 2017-03-12
@@ -10,6 +10,7 @@ categories: [troubleshooting]
 menu:
   docs:
     parent: "help"
+    identifier: community-help
 weight: 3
 slug:
 aliases: []
