@@ -1,6 +1,6 @@
 ---
 title: Register Producer
-linktitle: Register Producer
+linktitle: Register Producer2
 description: Register an account as Block Producer Candidate
 date: 2017-02-01
 publishdate: 2017-02-01
