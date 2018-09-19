@@ -1,7 +1,6 @@
 ---
 title: system Commands Overview
-linktitle: system Commands Overview2
-identifier: overview-system
+linktitle: system Commands Overview
 description: Overview of the `system` section of eosc
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: overview-system
     weight: 1
 weight: 0001	#rem
 draft: false
