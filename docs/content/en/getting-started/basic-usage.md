@@ -1,6 +1,6 @@
 ---
 title: Basic Usage
-linktitle: Basic Usage
+linktitle: Basic Usage2
 description: Hugo's CLI is fully featured but simple to use, even for those who have very limited experience working from the command line.
 date: 2017-02-01
 publishdate: 2017-02-01
