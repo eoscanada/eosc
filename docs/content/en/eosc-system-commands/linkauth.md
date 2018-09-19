@@ -1,7 +1,6 @@
 ---
 title: Link Authority
-linktitle: Link Authority2
-identifier: link-authority-system
+linktitle: Link Authority
 description: Assign a permission to a given code::action pair
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -11,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: link-authority-system
     weight: 40
 weight: 40
 sections_weight: 40
