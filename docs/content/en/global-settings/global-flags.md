@@ -1,6 +1,6 @@
 ---
 title: Global Flags
-linktitle: Global Flags2
+linktitle: Global Flags
 description: Hugo's CLI is fully featured but simple to use, even for those who have very limited experience working from the command line.
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "global-settings"
+    identifier: global-flags-global-flags
     weight: 40
 weight: 40
 sections_weight: 40
