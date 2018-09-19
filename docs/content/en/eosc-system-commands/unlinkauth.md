@@ -1,6 +1,6 @@
 ---
 title: Unlink Authority
-linktitle: Unlink Authority
+linktitle: Unlink Authority2
 description: Unlink a permission of a given code::action pair
 date: 2017-02-01
 publishdate: 2017-02-01
