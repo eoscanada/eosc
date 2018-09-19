@@ -1,5 +1,5 @@
 ---
-title: Benefits
+title: The Benefits2
 linktitle: The Benefits
 description:
 date: 2018-09-05
