@@ -1,6 +1,6 @@
 ---
 title: Cancel Transaction
-linktitle: Cancel Transaction
+linktitle: Cancel Transaction2
 description: Cancel a delayed transaction
 date: 2017-02-01
 publishdate: 2017-02-01
