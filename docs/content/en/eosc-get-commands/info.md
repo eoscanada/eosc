@@ -1,6 +1,7 @@
 ---
 title: Info
 linktitle: Info2
+identifier: info-get
 description: Retrieve information about the blockchain itself
 date: 2017-02-01
 publishdate: 2017-02-01
