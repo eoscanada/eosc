@@ -2,10 +2,10 @@
 title: EOSC
 date: 2017-03-02T12:00:00-05:00
 hero_logo: eosc-logo-02.svg
-hero_title: Multiplatform command line tool, secure and easily usable by any developer to interact with an EOS blockchain
+hero_title: Run easily and securely
 hero_subtitle:
 button_text: DOWNLOAD
-button_link: https\://github.com/eoscanada/eosc/releases
+button_link: "https://github.com/eoscanada/eosc/releases"
 
 
 sections:
