@@ -1,6 +1,6 @@
 ---
 title: Delete Authority
-linktitle: Delete Authority
+linktitle: Delete Authority2
 description: Delete an authority permission for an account
 date: 2017-02-01
 publishdate: 2017-02-01
