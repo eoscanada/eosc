@@ -1,6 +1,7 @@
 ---
-title: Post2
-linktitle: Post
+title: Post
+linktitle: Post2
+identifier: post-forum
 description: Post a message to the chain using the forum contract
 date: 2017-02-01
 publishdate: 2017-02-01
