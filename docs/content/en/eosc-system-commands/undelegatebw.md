@@ -1,6 +1,6 @@
 ---
 title: Undelegate Bandwidth
-linktitle: Undelegate Bandwidth
+linktitle: Undelegate Bandwidth2
 description: Undelegate CPU and Network bandwidth of an account
 date: 2017-02-01
 publishdate: 2017-02-01
