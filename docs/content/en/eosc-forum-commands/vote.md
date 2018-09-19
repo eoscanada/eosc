@@ -1,6 +1,7 @@
 ---
-title: Vote2
-linktitle: Vote
+title: Vote
+linktitle: Vote2
+identifier: vote-forum
 description: Cast a vote for a proposal
 date: 2017-02-01
 publishdate: 2017-02-01
