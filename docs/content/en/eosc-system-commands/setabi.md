@@ -1,6 +1,6 @@
 ---
 title: Set ABI
-linktitle: Set ABI2
+linktitle: Set ABI
 description: Set ABI on an account
 date: 2017-02-01
 publishdate: 2017-02-01
@@ -10,6 +10,7 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
+    identifier: set-abi-system
     weight: 40
 weight: 40
 sections_weight: 40
