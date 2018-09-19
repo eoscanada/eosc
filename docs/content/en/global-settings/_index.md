@@ -10,6 +10,7 @@ keywords: []
 menu:
   docs:
     parent: "global-settings"
+    identifier: overview-global-settings
     weight: 1
 weight: 1
 draft: false
