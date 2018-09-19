@@ -1,6 +1,6 @@
 ---
 title: Create Transaction
-linktitle: Create Transaction
+linktitle: Create Transaction2
 description: Create a transaction
 date: 2017-02-01
 publishdate: 2017-02-01
