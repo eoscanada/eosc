@@ -1,6 +1,6 @@
 ---
-title: Getting Started
-linktitle: Getting Started
+title: Quick Start
+linktitle: Quick Start
 description: Install and run eosc
 date: 2018-09-11
 publishdate: 2018-09-11
@@ -10,7 +10,7 @@ authors: [EOS Canada]
 menu:
   docs:
     parent: "getting-started"
-    identifier: getting-started-getting-started
+    identifier: quick-start-getting-started
     weight: 10
 weight: 10
 sections_weight: 10
