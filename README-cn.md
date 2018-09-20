@@ -79,9 +79,9 @@ Imported 1 keys. Let's secure them before showing the public keys.
 Wallet file "./eosc-vault.json" created. Here are your public keys:
 - EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 ```
+代码指令中文翻译：
 
 你的私钥将采用密语 (passphrase) 进行加密保护，参考后面的章节获取该工具所使用的加密库。
-
 
 
 创建钱包的同时生成公钥
@@ -140,6 +140,7 @@ Done
 
 
 
+
 使用的加密库
 ----------
 
@@ -155,7 +156,6 @@ Done
 
 
 ## 离线交易签名
-
 
 `eosc` 具备管理一个 airtight 脱机钱包所需的一切。
 这是一个示例用法。 在 `/tmp/airtight` 中, 运行:
