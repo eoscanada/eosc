@@ -77,6 +77,8 @@ twitter = "GoHugoIO"
 
   #sidebar_direction = "sidebar_left"
 
+  eoscrepo = "https://github.com/eoscanada/eosc/"
+
 
 # Defatult JPEG quality setting. Default is 75.
 quality = 75
