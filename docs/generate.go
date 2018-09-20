@@ -100,5 +100,5 @@ func dashName(in []string) string {
 	if len(in) == 0 {
 		return "eosc"
 	}
-	return "eosc-" + strings.Join(in, "-")
+	return "eosc_" + strings.Join(in, "_")
 }
