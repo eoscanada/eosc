@@ -34,5 +34,10 @@
 <div class="prose" id="prose">
   {{- partial "docs/functions-signature.html" . -}}
 
+
+  {{ range .Site.Data.generatedhelp }}
+  <p>//{{ .eosc_forum_post.flags }}//</p>
+  {{end}}
+
   {{ .Content }}
 </div>
