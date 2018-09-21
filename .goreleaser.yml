@@ -77,3 +77,9 @@ sign:
   artifacts: checksum
 env_files:
   github_token: ~/.config/goreleaser/github_token
+brew:
+  github:
+    owner: eoscanada
+    name: homebrew-tap
+  homepage: "https://eosc.app/"
+  description: "Cross-platform EOS command-line swiss-army-knife"
