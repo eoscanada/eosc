@@ -31,14 +31,16 @@
   <div class="prose" id="prose">
     {{- partial "docs/functions-signature.html" . -}}
 
-    {{ if .Params.auto_content }}
-        <table class="CommandHelpTable"><tbody>
-        {{if isset $commandDetail "flags" }}<tr><td>Flags</td><td>{{ $commandDetail.flags }}</td></tr>{{ end }}
-        {{if isset $commandDetail "usage" }}<tr><td>Usage</td><td>{{ $commandDetail.usage }}</td></tr>{{ end }}
-        </tbody></table>
+    {{if isset $commandDetail "flags" }}
+      <aside class="admonition note">
+        <div class="note-icon">
+        </div>
+        <div class="admonition-content"><p>{{ $commandDetail.flags }}</p>
+        </div>
+      </aside>
     {{ end }}
 
-    {{if isset $commandDetail "long" }}{{ $commandDetail.long }}{{ end }}
+    {{if isset $commandDetail "long" }}<br/>{{ $commandDetail.long }}{{ end }}
 
   </div>
 
