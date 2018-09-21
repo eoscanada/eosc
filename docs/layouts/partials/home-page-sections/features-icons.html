@@ -9,7 +9,7 @@
       <!-- only show 2 boxes on mobile -->
       {{ $.Scratch.Add "i" 1 }}{{ $i := $.Scratch.Get "i" }}
       <div href="{{ .URL }}" class=" f5 w-100 w-33-m w-33-l pv2 pv2-ns ph2 ph3-ns content-with-btn-bottom">
-        <i class="{{ echoParam .Params "icon" }} ml1"></i>
+
         <h3 class="fw6 mt3">{{ .Params.title }}</h3>
         <!--<h4 class="mt3 mb5">{{ .Params.description }}</h4>-->
         {{ .Content }}

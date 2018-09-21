@@ -6,7 +6,7 @@ date: 2016-11-01
 publishdate: 2016-11-01
 lastmod: 2018-01-02
 categories: [getting started]
-keywords: []
+keywords: [install]
 authors: ["EOS Canada"]
 menu:
   docs:

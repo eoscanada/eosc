@@ -5,8 +5,8 @@ description:
 date: 2018-09-05
 publishdate: 2018-09-05
 lastmod: 2018-09-05
-categories: []
-keywords: []
+categories: [eosc,eos]
+keywords: [about eosc]
 menu:
   docs:
     parent: "about"
