@@ -4,7 +4,6 @@ linktitle: FAQ
 description:
 date: 2018-02-10
 categories: [help]
-authors: ["EOS Canada"]
 menu:
   docs:
     parent: "help"
