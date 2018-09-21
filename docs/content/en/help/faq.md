@@ -6,7 +6,7 @@ date: 2018-02-10
 categories: [help]
 menu:
   docs:
-    par ent: "help"
+    parent: "help"
     identifier: faq-help
 keywords: [faqs]
 weight: 2
