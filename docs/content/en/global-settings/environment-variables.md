@@ -15,7 +15,7 @@ menu:
     weight: 30
 weight: 30
 sections_weight: 30
-draft: false
+draft: true
 aliases: [/tutorials/installing-on-windows/,/tutorials/installing-on-mac/,/overview/installing/,/getting-started/install,/install/]
 toc: true
 ---

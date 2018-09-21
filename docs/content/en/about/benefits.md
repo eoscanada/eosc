@@ -6,6 +6,7 @@ date: 2018-09-05
 publishdate: 2018-09-05
 lastmod: 2018-09-05
 keywords: [eosc,eos]
+categories: [about eosc]
 menu:
   docs:
     parent: "about"

@@ -5,7 +5,7 @@ description:
 date: 2016-11-01
 publishdate: 2016-11-01
 lastmod: 2018-01-02
-categories: [getting started,fundamentals]
+categories: [getting started]
 authors: ["Michael Henderson"]
 keywords: [install,pc,windows,linux,macos,binary,tarball]
 menu:

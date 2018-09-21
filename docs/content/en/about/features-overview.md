@@ -6,6 +6,7 @@ date: 2018-09-05
 publishdate: 2018-09-05
 lastmod: 2018-09-05
 keywords: [eosc,eos,features]
+categories: [about eosc]
 menu:
   docs:
     parent: "about"
@@ -17,10 +18,6 @@ draft: false
 aliases: []
 toc: true
 ---
-
-# title here
-
-## Table
 
 | Metric Name         | Description |
 |---------------------|-------------|

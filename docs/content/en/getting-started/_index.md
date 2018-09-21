@@ -1,7 +1,7 @@
 ---
 title: Get Started Overview
 linktitle: Get Started Overview
-description: Quick start and guides for installing Hugo on your preferred operating system.
+description:
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
@@ -18,7 +18,3 @@ aliases: [/overview/introduction/]
 toc: false
 ---
 
-If this is your first time using Hugo and you've [already installed Hugo on your machine][installed], we recommend the [quick start][].
-
-[installed]: /getting-started/installing/
-[quick start]: /getting-started/quick-start/

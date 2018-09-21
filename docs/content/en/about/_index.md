@@ -18,4 +18,3 @@ aliases: [/about-eos/,/docs/]
 toc: false
 ---
 
-bla bla bla
