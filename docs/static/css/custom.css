@@ -298,3 +298,8 @@ ul li {position:relative;list-style:square;}
 [data-scrolldir=down] .sticky, [data-scrolldir=up] .sticky {
     top: 150px;
 }
+
+.CommandHelpTable {
+    margin-top:30px;
+}
+.CommandHelpTable tr td:first-child {font-weight:800; border-right:none;}
