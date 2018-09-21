@@ -5,8 +5,8 @@ description: Install and run eosc
 date: 2018-09-11
 publishdate: 2018-09-11
 categories: [getting started]
-keywords: [getting started,install,run,eosc,vote,vault]
-authors: [EOS Canada]
+keywords: []
+authors: ["EOS Canada"]
 menu:
   docs:
     parent: "getting-started"
