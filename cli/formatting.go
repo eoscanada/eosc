@@ -107,25 +107,29 @@ func FormatCPUBandwidth(account *eos.AccountResp, config *columnize.Config) stri
 }
 
 func FormatBalances(account *eos.AccountResp, config *columnize.Config) string {
-	totalStaked := account.SelfDelegatedBandwidth.NetWeight.Add(account.SelfDelegatedBandwidth.CPUWeight)
-	totalUnstaking := eos.Asset{
-		Amount: 0,
-		Symbol: account.CoreLiquidBalance.Symbol,
-	}
-	if account.RefundRequest != nil {
-		totalUnstaking = account.RefundRequest.CPUAmount.Add(account.RefundRequest.NetAmount)
-	}
-	total := totalUnstaking.Add(totalStaked).Add(account.CoreLiquidBalance)
+	if account.CoreLiquidBalance.Symbol.Symbol != "" {
+		totalStaked := account.SelfDelegatedBandwidth.NetWeight.Add(account.SelfDelegatedBandwidth.CPUWeight)
+		totalUnstaking := eos.Asset{
+			Amount: 0,
+			Symbol: account.CoreLiquidBalance.Symbol,
+		}
+		if account.RefundRequest != nil {
+			totalUnstaking = account.RefundRequest.CPUAmount.Add(account.RefundRequest.NetAmount)
+		}
+		total := totalUnstaking.Add(totalStaked).Add(account.CoreLiquidBalance)
 
-	output := []string{
-		fmt.Sprintf("%s balances:", account.CoreLiquidBalance.Symbol.Symbol),
-		fmt.Sprintf("     liquid:|%s", prettifyAsset(account.CoreLiquidBalance)),
-		fmt.Sprintf("     staked:|%s", prettifyAsset(totalStaked)),
-		fmt.Sprintf("     unstaking:|%s", prettifyAsset(totalUnstaking)),
-		fmt.Sprintf("     total:|%s", prettifyAsset(total)),
-	}
+		output := []string{
+			fmt.Sprintf("%s balances:", account.CoreLiquidBalance.Symbol.Symbol),
+			fmt.Sprintf("     liquid:|%s", prettifyAsset(account.CoreLiquidBalance)),
+			fmt.Sprintf("     staked:|%s", prettifyAsset(totalStaked)),
+			fmt.Sprintf("     unstaking:|%s", prettifyAsset(totalUnstaking)),
+			fmt.Sprintf("     total:|%s", prettifyAsset(total)),
+		}
 
-	return columnize.Format(output, config)
+		return columnize.Format(output, config)
+	} else {
+		return "No liquid balance available"
+	}
 }
 
 func FormatProducers(account *eos.AccountResp, config *columnize.Config) string {
