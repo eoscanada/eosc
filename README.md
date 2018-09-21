@@ -30,6 +30,13 @@ Installation
 go get -u -v github.com/eoscanada/eosc/eosc
 ```
 
+**or**
+
+3. If you are on **MacOS** and use **Homebrew**:
+
+```
+brew install eoscanada/tap/eosc
+```
 
 
 Vote now!
