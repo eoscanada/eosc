@@ -1,0 +1,16 @@
+{{ $file := .Get 0}}
+{{ $comma := "\"" }}
+{{ $comma }}
+
+{{ $file2 := index .Site.Data.generatedhelp $file }}
+{{ $file }}<br>
+
+{{if isset $file2 "flags" }}<br/><br/> <h4>Flags:</h4> {{ $file2.flags }}{{ end }}
+
+{{if isset $file2 "long" }}<br/><br/> <h4>Long:</h4> {{ $file2.long }}{{ end }}
+
+{{if isset $file2 "parent" }}<br/><br/> <h4>Parent:</h4> {{ $file2.parent }}{{ end }}
+
+{{if isset $file2 "short" }}<br/><br/> <h4>Short:</h4> {{ $file2.short }}{{ end }}
+
+{{if isset $file2 "usage" }}<br/><br/> <h4>Usage:</h4> {{ $file2.usage }}{{ end }}

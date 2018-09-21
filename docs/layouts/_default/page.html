@@ -34,10 +34,17 @@
 <div class="prose" id="prose">
   {{- partial "docs/functions-signature.html" . -}}
 
+  {{ if .Params.help }}
+  {{ $command := .Params.Menu.Docs.Identifier }}
+  {{ $commandDetail := index .Site.Data.generatedhelp $command }}
+  
+    {{if isset $commandDetail "flags" }}<br/><h4>Flags:</h4> {{ $commandDetail.flags }}{{ end }}
+    {{if isset $commandDetail "long" }}<br/><h4>Long:</h4> {{ $commandDetail.long }}{{ end }}
+    {{if isset $commandDetail "parent" }}<br/><h4>Parent:</h4> {{ $commandDetail.parent }}{{ end }}
+    {{if isset $commandDetail "short" }}<br/><h4>Short:</h4> {{ $commandDetail.short }}{{ end }}
+    {{if isset $commandDetail "usage" }}<br/><h4>Usage:</h4> {{ $commandDetail.usage }}{{ end }}
 
-  {{ range .Site.Data.generatedhelp }}
-  <p>//{{ .flags }}//</p>
-  {{end}}
+  {{ end }}
 
   {{ .Content }}
 </div>
