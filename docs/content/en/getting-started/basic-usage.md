@@ -5,7 +5,7 @@ description:
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [getting started]
+categories: [getting started,fundamentals]
 keywords: [basic, usage]
 authors: ["EOS Canada"]
 menu:
