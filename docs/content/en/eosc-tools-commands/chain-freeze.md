@@ -10,13 +10,12 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-tools-commands"
-    identifier: chain-freeze-tools
+    identifier: eosc_tools_chain-freeze
     weight: 40
 weight: 40
 sections_weight: 40
 draft: false
 aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
 toc: true
+auto_content: true
 ---
-
-chain-freeze

@@ -10,13 +10,12 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-system-commands"
-    identifier: set-abi-system
+    identifier: eosc_system_setabi
     weight: 40
 weight: 40
 sections_weight: 40
 draft: false
 aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
 toc: true
+auto_content: true
 ---
-
-setabi

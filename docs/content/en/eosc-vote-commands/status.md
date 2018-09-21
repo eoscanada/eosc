@@ -11,14 +11,12 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-vote-commands"
-    identifier: status-vote
+    identifier: eosc_vote_status
     weight: 40
 weight: 40
 sections_weight: 40
 draft: false
 aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
 toc: true
-
+auto_content: true
 ---
-
-status
