@@ -10,13 +10,12 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-forum-commands"
-    identifier: vote-forum
+    identifier: eosc_forum_vote
     weight: 40
 weight: 40
 sections_weight: 40
 draft: false
 aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
 toc: true
+auto_content: true
 ---
-
-vote

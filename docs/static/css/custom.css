@@ -302,4 +302,7 @@ ul li {position:relative;list-style:square;}
 .CommandHelpTable {
     margin-top:30px;
 }
+.CommandHelpTable td {
+   vertical-align: top;
+}
 .CommandHelpTable tr td:first-child {font-weight:800; border-right:none;}

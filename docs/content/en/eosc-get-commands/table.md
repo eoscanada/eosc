@@ -10,13 +10,13 @@ keywords: [usage,livereload,command line,flags]
 menu:
   docs:
     parent: "eosc-get-commands"
-    identifier: table-get
+    identifier: eosc_get_table
     weight: 40
 weight: 40
 sections_weight: 40
 draft: false
 aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
 toc: true
+auto_content: true
 ---
 
-table

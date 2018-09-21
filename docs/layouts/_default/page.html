@@ -1,54 +1,83 @@
-<header class="flex-none w-100">
-  {{ if .Params.categories }}
-    {{ range .Params.categories }}
-      <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="f6 fw8 mb0 link mid-gray dim mr3">
-        {{ humanize  . | upper }}
-      </a>
-    {{ end }}
-  {{end}}
-  <h1 class="lh-title mb3 mv0 pt3 primary-color-dark">
-    {{- if eq .Section "functions" -}}
-      {{ .LinkTitle }}
-    {{- else -}}
-      {{ .Title }}
-    {{- end -}}
-  </h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  {{- if .Params.auto_content -}}
-    {{ $command := .Params.Menu.Docs.Identifier }}
-    {{ $commandDetail := index .Site.Data.generatedhelp $command }}
-    <div class="f4 fw4 lh-copy">
-      {{ $commandDetail.short }}
-    </div>
-  {{- else -}}
-    {{ with .Params.description }}
-      <div class="f4 fw4 lh-copy">
-        {{ . | markdownify }}
-      </div>
-    {{ end }}
-  {{- end -}}
-</aside>
-
-{{ with .Params.featured_image_path }}
-  <img src="{{ . }}" alt="Featured Image for {{ $.Title }}" class="mw-100">
-{{ end }}
-
-<div class="prose" id="prose">
-  {{- partial "docs/functions-signature.html" . -}}
-
-  {{ if .Params.auto_content }}
+{{- if .Params.auto_content -}}
   {{ $command := .Params.Menu.Docs.Identifier }}
   {{ $commandDetail := index .Site.Data.generatedhelp $command }}
-    <table class="CommandHelpTable"><tbody>
-    {{if isset $commandDetail "flags" }}<tr><td>Flags</td><td>{{ $commandDetail.flags }}</td></tr>{{ end }}
-    {{if isset $commandDetail "long" }}<tr><td>Long</td><td>{{ $commandDetail.long }}</td></tr>{{ end }}
-    {{if isset $commandDetail "parent" }}<tr><td>Parent</td><td> {{ $commandDetail.parent }}</td></tr>{{ end }}
-    {{if isset $commandDetail "short" }}<tr><td>Short</td><td>{{ $commandDetail.short }}</td></tr>{{ end }}
-    {{if isset $commandDetail "usage" }}<tr><td>Usage</td><td>{{ $commandDetail.usage }}</td></tr>{{ end }}
-    </tbody></table>
+  <header class="flex-none w-100">
+    {{ if .Params.categories }}
+      {{ range .Params.categories }}
+        <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="f6 fw8 mb0 link mid-gray dim mr3">
+          {{ humanize  . | upper }}
+        </a>
+      {{ end }}
+    {{end}}
+    <h1 class="lh-title mb3 mv0 pt3 primary-color-dark">
+      {{- if eq .Section "functions" -}}
+        {{ .LinkTitle }}
+      {{- else -}}
+        {{ .Title }}
+      {{- end -}}
+    </h1>
+  </header>
+
+  <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+      <div class="f4 fw4 lh-copy">
+        {{ $commandDetail.short }}
+      </div>
+  </aside>
+
+  {{ with .Params.featured_image_path }}
+    <img src="{{ . }}" alt="Featured Image for {{ $.Title }}" class="mw-100">
   {{ end }}
 
-  {{ .Content }}
-</div>
+  <div class="prose" id="prose">
+    {{- partial "docs/functions-signature.html" . -}}
+
+    {{ if .Params.auto_content }}
+        <table class="CommandHelpTable"><tbody>
+        {{if isset $commandDetail "flags" }}<tr><td>Flags</td><td>{{ $commandDetail.flags }}</td></tr>{{ end }}
+        {{if isset $commandDetail "usage" }}<tr><td>Usage</td><td>{{ $commandDetail.usage }}</td></tr>{{ end }}
+        </tbody></table>
+    {{ end }}
+
+    {{if isset $commandDetail "long" }}{{ $commandDetail.long }}{{ end }}
+
+  </div>
+
+{{ else }}
+
+  <header class="flex-none w-100">
+    {{ if .Params.categories }}
+    {{ range .Params.categories }}
+    <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="f6 fw8 mb0 link mid-gray dim mr3">
+    {{ humanize  . | upper }}
+    </a>
+    {{ end }}
+    {{end}}
+    <h1 class="lh-title mb3 mv0 pt3 primary-color-dark">
+      {{- if eq .Section "functions" -}}
+      {{ .LinkTitle }}
+      {{- else -}}
+      {{ .Title }}
+      {{- end -}}
+    </h1>
+  </header>
+
+  <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+    {{ with .Params.description }}
+    <div class="f4 fw4 lh-copy">
+      {{ . | markdownify }}
+    </div>
+    {{ end }}
+  </aside>
+
+  {{ with .Params.featured_image_path }}
+  <img src="{{ . }}" alt="Featured Image for {{ $.Title }}" class="mw-100">
+  {{ end }}
+
+  <div class="prose" id="prose">
+    {{- partial "docs/functions-signature.html" . -}}
+
+    {{ .Content }}
+
+  </div>
+
+{{ end }}
