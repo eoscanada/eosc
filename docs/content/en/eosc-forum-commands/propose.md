@@ -5,7 +5,7 @@ description: Submit a proposal for on-chain voting
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-forum-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:

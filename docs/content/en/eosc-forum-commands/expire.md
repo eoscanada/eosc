@@ -5,7 +5,7 @@ description: The proposer is able to kill their proposal before its predetermine
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-forum-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:

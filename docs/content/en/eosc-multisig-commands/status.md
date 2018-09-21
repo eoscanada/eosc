@@ -5,7 +5,7 @@ description: View the status of a given proposal and its approvals
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-multisigs-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:

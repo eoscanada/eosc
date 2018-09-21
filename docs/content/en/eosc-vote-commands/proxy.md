@@ -5,7 +5,7 @@ description: Delegate your vote strength towards an account registered as a prox
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-vote-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:

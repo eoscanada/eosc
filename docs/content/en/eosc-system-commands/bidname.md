@@ -5,7 +5,7 @@ description: Place a bid for a premium name auction
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-system-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:

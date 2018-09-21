@@ -5,7 +5,7 @@ description: Serve listens to a local port, creating an interface for signing tr
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-vault-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:

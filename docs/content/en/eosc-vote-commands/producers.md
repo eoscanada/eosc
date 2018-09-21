@@ -5,7 +5,7 @@ description: Vote for a list of Block Producers
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-vote-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:

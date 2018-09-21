@@ -5,7 +5,7 @@ description: Create a new encrypted vault
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-vault-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:

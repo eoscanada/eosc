@@ -5,7 +5,7 @@ description: Create a multisig transaction that both parties need to approve in 
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
-categories: [blog]
+categories: [eosc-tools-commands]
 keywords: [usage,livereload,command line,flags]
 menu:
   docs:
