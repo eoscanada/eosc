@@ -1,0 +1,7 @@
+{{ $title := .Get 0}}
+{{ $link := .Get 1}}
+{{ $target := .Get 2}}
+
+<a href="{{ $link }}" target="{{ $target }}" class="ph3 ph4-l fw5 f7 f6-l db link grow tc v-mid bg-orange white ba b--blue mt3 ph3 pv2 br1 btn btn-default">
+{{ $title }}
+</a>

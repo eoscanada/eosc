@@ -17,6 +17,6 @@ aliases: []
 toc: true
 ---
 
-NOT SURE WHAT THIS PAGE IS SUPPOSED TO BE FOR. SHOULD BE DEPRECATED?
+{{% button "GO TO TELEGRAM" "https://t.me/eoscanada" "_blank" %}}
 
 
