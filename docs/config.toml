@@ -114,49 +114,50 @@ anchor = "smart"
 # Core Menus
 
 [[menu.docs]]
-	name = "eosc get Commands"
+	name = "eosc get"
 	weight = 20
 	identifier = "eosc-get-commands"
 	url = "/eosc-get-commands/"
+	title = "Commands"
 
 [[menu.docs]]
-	name = "eosc vault Commands"
+	name = "eosc vault"
 	weight = 30
 	identifier = "eosc-vault-commands"
 	url = "/eosc-vault-commands/"
 
 [[menu.docs]]
-    name = "eosc system Commands"
+    name = "eosc system"
     weight = 40
     identifier = "eosc-system-commands"
     url = "/eosc-system-commands/"
 
 [[menu.docs]]
-    name = "eosc multisig Commands"
+    name = "eosc multisig"
     weight = 50
     identifier = "eosc-multisig-commands"
     url = "/eosc-multisig-commands/"
 
 [[menu.docs]]
-    name = "eosc forum Commands"
+    name = "eosc forum"
     weight = 60
     identifier = "eosc-forum-commands"
     url = "/eosc-forum-commands/"
 
 [[menu.docs]]
-    name = "eosc tx Commands"
+    name = "eosc tx"
     weight = 70
     identifier = "eosc-tx-commands"
     url = "/eosc-tx-commands/"
 
 [[menu.docs]]
-    name = "eosc vote Commands"
+    name = "eosc vote"
     weight = 90
     identifier = "eosc-vote-commands"
     url = "/eosc-vote-commands/"
 
 [[menu.docs]]
-    name = "eosc tools Commands"
+    name = "eosc tools"
     weight = 100
     identifier = "eosc-tools-commands"
     url = "/eosc-tools-commands/"

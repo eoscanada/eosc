@@ -306,3 +306,8 @@ ul li {position:relative;list-style:square;}
    vertical-align: top;
 }
 .CommandHelpTable tr td:first-child {font-weight:800; border-right:none;}
+
+.menu-always-active {
+    color:#a9a9a9!important;
+    text-transform: uppercase;
+}
