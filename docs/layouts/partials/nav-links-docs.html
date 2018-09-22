@@ -4,7 +4,7 @@
     {{ range .Site.Menus.docs.ByWeight }}
       {{ $post := printf "%s" .Post }}
       {{ $post_title := printf "%s" .Title }}
-    {{ if ne $post_title "" }}<li class="menu-always-active f5 w-100 fw8{{ if ne $post_title "" }} pl2 mb1 mt3 ttu primary-color{{ end }}">{{ .Title }}</li>{{ end }}
+      {{ if ne $post_title "" }}<li class="menu-always-active f5 w-100 fw8{{ if ne $post_title "" }} pl2 mb1 mt3 ttu primary-color{{ end }}">{{ .Title }}</li>{{ end }}
       <li class="f5 w-100 hover-bg-light-gray hover-accent-color-light fw8{{ if eq $post "break" }} mb1 bb b--moon-gray{{ end }}">
         <a href="{{ if .HasChildren }}javascript:void(0){{ else }}{{ .URL }}{{ end }}" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 {{if or ($currentPage.IsMenuCurrent "docs" .) ($currentPage.HasMenuCurrent "docs" .) }} primary-color{{end}}" data-target=".{{ .Identifier }}">{{ .Name }}</a>
 
