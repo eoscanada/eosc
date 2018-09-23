@@ -50,8 +50,7 @@
     <main role="main" class="content-with-sidebar min-vh-100 pb0    ">
       {{ block "main" . }}{{ end }}
     </main>
-
-    {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
+  
     {{ block "scripts" . }}{{- partial "site-scripts.html" . -}}{{ end }}
 
   </body>
