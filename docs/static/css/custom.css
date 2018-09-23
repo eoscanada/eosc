@@ -17,6 +17,10 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
     text-decoration: none;
 }
 
+.link:focus {
+    outline: 0px dotted currentColor;
+}
+
 #hero .hero-logo img {max-width:290px;}
 #hero .hero-logo  {position:relative;padding-bottom:0px;}
 #hero {
@@ -311,3 +315,23 @@ ul li {position:relative;list-style:square;}
     color:#a9a9a9!important;
     text-transform: uppercase;
 }
+
+.mobilemenu {
+    transition: max-height 1.5s ease-out, padding-bottom .2s ease-out .2s;
+    height:auto;
+    max-height: 1000px;
+    display:block!important;
+    padding-bottom: 1rem;
+    overflow:hidden;
+}
+
+.mobilemenu.dn {
+    transition: max-height 0s ease-out, padding-bottom 0s ease-out 0s;
+    max-height:0px;
+    display:block!important;
+    overflow:hidden;
+    padding-bottom:0rem;
+}
+
+
+
