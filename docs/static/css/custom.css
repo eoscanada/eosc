@@ -161,6 +161,7 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 
 .bg-orange{background-color:rgb(255,85,18);}
 .bg-primary-color-dark, .hover-bg-primary-color-dark:hover {background-color:#32383f!important;}
+.bg-primary-color-dark2, .hover-bg-primary-color-dark2:hover {background-color:#202429!important;}
 .bg-grey {background-color:#eee;}
 .b--moon-gray {border-color: #ddd;}
 /*.gray {color:#49525c;}*/
@@ -316,22 +317,49 @@ ul li {position:relative;list-style:square;}
     text-transform: uppercase;
 }
 
+/*.mobilemenu {*/
+    /*transition: max-height 1.5s ease-out, opacity 0s ease;*/
+    /*height:auto;*/
+    /*max-height: 1000px;*/
+    /*display:block!important;*/
+    /*padding-bottom: 0rem;*/
+    /*overflow:hidden;*/
+    /*opacity:1;*/
+/*}*/
+
+/*.mobilemenu.dn {*/
+    /*transition: max-height .5s ease, opacity .5s ease;*/
+    /*max-height:0px;*/
+    /*display:block!important;*/
+    /*overflow:hidden;*/
+    /*padding-bottom:0rem;*/
+    /*opacity:0;*/
+/*}*/
+
+/*.mobilemenu ul {padding-bottom:2rem!important;}*/
+
+
 .mobilemenu {
-    transition: max-height 1.5s ease-out, padding-bottom .2s ease-out .2s;
+    transition: bottom .5s ease, max-height 1.5s ease-out, opacity .3s ease;
     height:auto;
-    max-height: 1000px;
     display:block!important;
-    padding-bottom: 1rem;
-    overflow:hidden;
+    padding-bottom:70px;
+    position:absolute;
+    bottom:0px;
+    background-color:#32383f;
+    opacity:.95;
 }
 
 .mobilemenu.dn {
-    transition: max-height 0s ease-out, padding-bottom 0s ease-out 0s;
-    max-height:0px;
+    transition: bottom .3s ease, max-height .5s ease, opacity .3s ease;
+    padding-bottom:70px;
     display:block!important;
-    overflow:hidden;
-    padding-bottom:0rem;
+    position:absolute;
+    bottom:-100vh;
+    background-color:#202429;
+    opacity:0;
 }
 
+.mobile-menu-wrapper {
 
-
+}
