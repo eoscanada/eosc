@@ -33,7 +33,7 @@ func main() {
 }
 
 var reShort = regexp.MustCompile(``)
-var reUsage = regexp.MustCompile(`(?m)Usage:\n\s+(.*)\n\nAvail`)
+var reUsage = regexp.MustCompile(`(?m)Usage:\n\s+(.*)\n\n`)
 var reLong = regexp.MustCompile(`(?ms)(.*)\n\nUsage:`)
 var reFlags = regexp.MustCompile(`(?msU)Flags:\n(.*)\n\n`)
 var reHelpFlag = regexp.MustCompile(`\n?(\s+-h, --help.*\n?)`)
