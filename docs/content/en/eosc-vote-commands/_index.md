@@ -10,7 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-vote-commands"
-    identifier: overview-vote
+    identifier: eosc_vote
     weight: 1
 weight: 0001	#rem
 draft: false

@@ -10,7 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-forum-commands"
-    identifier: overview-forum
+    identifier: eosc_forum
     weight: 1
 weight: 0001	#rem
 draft: false

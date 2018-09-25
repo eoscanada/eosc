@@ -10,7 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-tx-commands"
-    identifier: overview-tx
+    identifier: eosc_tx
     weight: 1
 weight: 0001	#rem
 draft: false

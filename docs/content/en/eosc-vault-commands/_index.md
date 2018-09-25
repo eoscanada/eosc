@@ -10,7 +10,7 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-vault-commands"
-    identifier: overview-vault
+    identifier: eosc_vault
     weight: 1
 weight: 0001	#rem
 draft: false
