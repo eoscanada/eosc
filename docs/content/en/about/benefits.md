@@ -14,7 +14,7 @@ menu:
     weight: 30
 weight: 30
 sections_weight: 30
-draft: false
+draft: true
 aliases: []
 toc: true
 ---

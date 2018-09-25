@@ -13,7 +13,7 @@ menu:
     identifier: overview-about
     weight: 1
 weight: 1
-draft: false
+draft: true
 aliases: [/about-eos/,/docs/]
 toc: false
 ---
