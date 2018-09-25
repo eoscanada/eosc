@@ -31,16 +31,16 @@
   <div class="prose" id="prose">
     {{- partial "docs/functions-signature.html" . -}}
 
-    {{if (or (and (isset $commandDetail "long") (eq .Params.data_content_parent "")) (and (ne .Params.data_content_parent "") (in .Params.data_content_items "long"))) }}
+    {{if (or (and (isset $commandDetail "long") (not (isset $.Params "data_content_parent"))) (and (isset $.Params "data_content_parent") (in .Params.data_content_items "long"))) }}
       <br/><br/><h4>Description:</h4>{{ $commandDetail.long }}
     {{ end }}
 
-    {{if (or (and (isset $commandDetail "usage") (eq .Params.data_content_parent "")) (and (ne .Params.data_content_parent "") (in .Params.data_content_items "usage"))) }}
+    {{if (or (and (isset $commandDetail "usage") (not (isset $.Params "data_content_parent"))) (and (isset $.Params "data_content_parent") (in .Params.data_content_items "usage"))) }}
     <br/><br/>
       <h4>Usage:</h4>{{ $commandDetail.usage }}
     {{ end }}
 
-    {{if (or (and (isset $commandDetail "flags") (eq .Params.data_content_parent "")) (and (ne .Params.data_content_parent "") (in .Params.data_content_items "flags"))) }}
+    {{if (or (and (isset $commandDetail "flags") (not (isset $.Params "data_content_parent"))) (and (isset $.Params "data_content_parent") (in .Params.data_content_items "flags"))) }}
     <br/><br/>
       <h4>Flags:</h4>
       <pre class="expand monospace" ><code>{{ $commandDetail.flags }}</code></pre>
