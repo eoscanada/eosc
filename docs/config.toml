@@ -70,7 +70,6 @@ twitter = "GoHugoIO"
 [params]
 
   custom_css = ["css/custom.css"]
-  custom_js = ["js/menutogglemobile.js"]
   logo = "eosc-logo-02.svg"
   logo_eos_canada = "logo-eos-canada.svg"
   tagline = "One tool to run them all"
