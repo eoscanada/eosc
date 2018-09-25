@@ -359,3 +359,7 @@ ul li {position:relative;list-style:square;}
     background-color:#202429;
     opacity:0;
 }
+
+.monospace {
+    font-family: monospace, monospace;
+}

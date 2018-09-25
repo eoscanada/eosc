@@ -32,7 +32,9 @@
     {{- partial "docs/functions-signature.html" . -}}
 
     {{if isset $commandDetail "usage" }}
-      ```{{ $commandDetail.usage }}```
+      <br/>
+      <h4><strong>Usage:</strong></h4>{{ $commandDetail.usage }}
+      <br/><br/>
     {{ end }}
 
     {{if isset $commandDetail "flags" }}
@@ -40,7 +42,7 @@
         <div class="note-icon">
         </div>
         <div class="admonition-content">
-          <h4>flags</h4><p>{{ $commandDetail.flags }}</p>
+          <h4><strong>Flags:</strong></h4><p class="monospace">{{ $commandDetail.flags }}</p>
         </div>
       </aside>
     {{ end }}
