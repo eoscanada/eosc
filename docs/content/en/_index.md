@@ -2,7 +2,7 @@
 title: EOSC
 date: 2017-03-02T12:00:00-05:00
 hero_logo: eosc-logo-02.svg
-hero_title: Run easily and securely
+hero_title: The most flexible & powerful command line tool for any developer to interact with an EOSIO chain
 hero_subtitle:
 button_text: DOWNLOAD
 button_link: "https://github.com/eoscanada/eosc/releases"
