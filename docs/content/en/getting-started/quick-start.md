@@ -22,7 +22,7 @@ toc: true
 Use `eosc` to vote for your favorite Block Producers
 ------------
 
-Once installed run (see : {{< ref "../install-eosc.md" >}} ):
+Once installed run (see : {{< ref "/getting-started/install-eosc.md" >}} ):
 
 ```
 eosc vault create --import
