@@ -4,6 +4,8 @@ h1, h2, h3, h4, h5, main i {
     font-family: 'Lato', sans-serif;
 }
 
+main h4 {font-weight:600;}
+
 footer p {color:#bbb;}
 footer a {color:#fff; text-decoration:none;}
 footer a:hover {color:#bbb; text-decoration:underline;}

@@ -31,18 +31,19 @@
   <div class="prose" id="prose">
     {{- partial "docs/functions-signature.html" . -}}
 
+    {{if isset $commandDetail "long" }}<br/><br/><h4>Description:</h4>{{ $commandDetail.long }}{{ end }}
+
     {{if isset $commandDetail "usage" }}
-      <br/>
-      <h4><strong>Usage:</strong></h4>{{ $commandDetail.usage }}
+      <br/><br/>
+      <h4>Usage:</h4>{{ $commandDetail.usage }}
     {{ end }}
 
     {{if isset $commandDetail "flags" }}
       <br/><br/>
-      <h4><strong>Flags:</strong></h4>
+      <h4>Flags:</h4>
       <pre class="expand monospace" ><code>{{ $commandDetail.flags }}</code></pre>
     {{ end }}
 
-    {{if isset $commandDetail "long" }}<br/><br/><h4><strong>Description:</strong></h4>{{ $commandDetail.long }}{{ end }}
 
   </div>
 

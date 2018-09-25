@@ -1,5 +1,7 @@
-{{- if .Params.auto_content -}}
 
+{{- if .context.Params.auto_content -}}
+  {{ $command := $.context.Params.Menu.Docs.Identifier }}
+  {{ $commandDetail := index $.context.Site.Data.generatedhelp $command }}
   {{ $section_to_display := .section_to_display  }}
     <div class="w-100 ph4 pb5 pb6-ns pt1 mt4 pt3-ns">
 
@@ -13,8 +15,13 @@
           <h1 class="primary-color-dark f2">
             {{ with $.context.Data.Singular }}{{ . | humanize }}: {{ end }}{{ .context.Title }}
           </h1>
-          <div class="{{ .Site.Params.copyClass }} mid-gray f5 f4-l">
-            <!--{{ .context.Content }}-->
+          <div class="{{ .Site.Params.copyClass }} mid-gray f4 f4-l">
+            {{if isset $commandDetail "long" }}<br/>{{ $commandDetail.long }}<br/><br/>{{ end }}
+            {{if isset $commandDetail "flags" }}
+              <h4>Flags:</h4>
+              <pre class="expand monospace" ><code>{{ $commandDetail.flags }}</code></pre>
+              <br/><br/>
+            {{ end }}
           </div>
         </article>
 
