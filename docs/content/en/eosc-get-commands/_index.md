@@ -10,12 +10,13 @@ keywords: [usage,docs]
 menu:
   docs:
     parent: "eosc-get-commands"
-    identifier: overview-get
+    identifier: eosc_get
     weight: 1
 weight: 0001	#rem
 draft: false
 aliases: [/overview/introduction/]
 toc: false
+auto_content: true
 ---
 
 ```

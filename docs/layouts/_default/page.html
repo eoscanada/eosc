@@ -38,13 +38,7 @@
     {{ end }}
 
     {{if isset $commandDetail "flags" }}
-      <aside class="admonition note">
-        <div class="note-icon">
-        </div>
-        <div class="admonition-content">
-          <h4><strong>Flags:</strong></h4><p class="monospace">{{ $commandDetail.flags }}</p>
-        </div>
-      </aside>
+      <pre class="expand monospace" ><code><h4><strong>Flags:</strong></h4>{{ $commandDetail.flags }}</code></pre>
     {{ end }}
 
     {{if isset $commandDetail "long" }}<br/>{{ $commandDetail.long }}{{ end }}
