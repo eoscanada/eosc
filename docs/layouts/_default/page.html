@@ -34,11 +34,12 @@
     {{if isset $commandDetail "usage" }}
       <br/>
       <h4><strong>Usage:</strong></h4>{{ $commandDetail.usage }}
-      <br/><br/>
     {{ end }}
 
     {{if isset $commandDetail "flags" }}
-      <pre class="expand monospace" ><code><h4><strong>Flags:</strong></h4>{{ $commandDetail.flags }}</code></pre>
+      <br/><br/>
+      <h4><strong>Flags:</strong></h4>
+      <pre class="expand monospace" ><code>{{ $commandDetail.flags }}</code></pre>
     {{ end }}
 
     {{if isset $commandDetail "long" }}<br/>{{ $commandDetail.long }}{{ end }}
