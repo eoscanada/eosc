@@ -23,6 +23,7 @@ toc: true
 Installation
 ------------
 
+
 1. Install from https://github.com/eoscanada/eosc/releases
 
 **or**
@@ -31,4 +32,12 @@ Installation
 
 ```bash
 go get -u -v github.com/eoscanada/eosc/eosc
+```
+
+**or**
+
+3. If you are on **MacOS** and use **Homebrew**:
+
+```
+brew install eoscanada/tap/eosc
 ```
