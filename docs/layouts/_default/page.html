@@ -42,7 +42,7 @@
       <pre class="expand monospace" ><code>{{ $commandDetail.flags }}</code></pre>
     {{ end }}
 
-    {{if isset $commandDetail "long" }}<br/>{{ $commandDetail.long }}{{ end }}
+    {{if isset $commandDetail "long" }}<br/><br/><h4><strong>Description:</strong></h4>{{ $commandDetail.long }}{{ end }}
 
   </div>
 
