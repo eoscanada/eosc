@@ -31,11 +31,16 @@
   <div class="prose" id="prose">
     {{- partial "docs/functions-signature.html" . -}}
 
+    {{if isset $commandDetail "usage" }}
+      ```{{ $commandDetail.usage }}```
+    {{ end }}
+
     {{if isset $commandDetail "flags" }}
       <aside class="admonition note">
         <div class="note-icon">
         </div>
-        <div class="admonition-content"><p>{{ $commandDetail.flags }}</p>
+        <div class="admonition-content">
+          <h4>flags</h4><p>{{ $commandDetail.flags }}</p>
         </div>
       </aside>
     {{ end }}

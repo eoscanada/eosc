@@ -29,8 +29,9 @@ pygmentsUseClassic = false
 pygmentsStyle = "trac"
 
 [outputs]
-home = [ "HTML", "RSS", "REDIR", "HEADERS" ]
+home = [ "HTML", "RSS", "REDIR", "HEADERS", "JSON" ]
 section = [ "HTML", "RSS"]
+
 
 [mediaTypes]
 [mediaTypes."text/netlify"]
