@@ -2,11 +2,11 @@
 title: Global Flags
 linktitle: Global Flags
 description:
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [global setting]
-keywords: [flags]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [global-setting]
+keywords: []
 authors: ["EOS Canada"]
 menu:
   docs:
@@ -16,8 +16,8 @@ menu:
 weight: 40
 sections_weight: 40
 draft: false
-aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
-toc: true
+aliases: []
+toc: false
 auto_content: true
 data_content_parent: eosc
 data_content_items: ["flags"]
