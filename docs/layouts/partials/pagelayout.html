@@ -17,10 +17,15 @@
           </h1>
           <div class="{{ .Site.Params.copyClass }} mid-gray f4 f4-l">
             {{if isset $commandDetail "long" }}<br/>{{ $commandDetail.long }}<br/><br/>{{ end }}
+            {{if isset $commandDetail "usage" }}
+            <h4>Usage:</h4>
+            <pre class="expand monospace" ><code>{{ $commandDetail.usage }}</code></pre>
+            <br/>
+            {{ end }}
             {{if isset $commandDetail "flags" }}
               <h4>Flags:</h4>
               <pre class="expand monospace" ><code>{{ $commandDetail.flags }}</code></pre>
-              <br/><br/>
+              <br/>
             {{ end }}
           </div>
         </article>
