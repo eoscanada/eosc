@@ -37,7 +37,8 @@
 
     {{if (or (and (isset $commandDetail "usage") (not (isset $.Params "data_content_parent"))) (and (isset $.Params "data_content_parent") (in .Params.data_content_items "usage"))) }}
     <br/><br/>
-      <h4>Usage:</h4>{{ $commandDetail.usage }}
+      <h4>Usage:</h4>
+      <pre class="expand monospace" ><code>{{ $commandDetail.usage }}</code></pre>
     {{ end }}
 
     {{if (or (and (isset $commandDetail "flags") (not (isset $.Params "data_content_parent"))) (and (isset $.Params "data_content_parent") (in .Params.data_content_items "flags"))) }}

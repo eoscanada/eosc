@@ -15,6 +15,6 @@ menu:
 weight: 1
 draft: true
 aliases: [/about-eos/,/docs/]
-toc: false
+toc: true
 ---
 
