@@ -365,3 +365,13 @@ ul li {position:relative;list-style:square;}
 .monospace {
     font-family: monospace, monospace;
 }
+
+
+#TableOfContents ul,
+#TableOfContents ul li,
+#TableOfContents ul ul,
+#TableOfContents ul ul li,
+#TableOfContents ul ul ul,
+#TableOfContents ul ul ul li {display:block!important;}
+#TableOfContents li {padding-left:5px;}
+#TableOfContents li a:hover {background-color:transparent!important; color:#000!important;}
