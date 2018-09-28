@@ -1,6 +1,6 @@
 <div class=" w-100 pt4">
-    {{ range first 6 ( sort (where .Site.Pages "Section" "features") "Weight" "asc" ) }}
-    {{ $.Scratch.Add "i" 1 }}{{ $i := $.Scratch.Get "i" }}
+    {{ range first 6 ( sort (where .Site.Pages "Section" "features") "Weight" "desc" ) }}
+
     <div class="flex  w-100">
         <div href="{{ .URL }}" class="dib f5 pt3">
             <i class="{{ echoParam .Params "icon" }}"></i>
