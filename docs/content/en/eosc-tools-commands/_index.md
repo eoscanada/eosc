@@ -11,8 +11,8 @@ menu:
   docs:
     parent: "eosc-tools-commands"
     identifier: eosc_tools
-    weight: 40
-weight: 40
+    weight: 10
+weight: 10
 draft: false
 aliases: []
 toc: false

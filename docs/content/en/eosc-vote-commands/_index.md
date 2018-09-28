@@ -11,8 +11,8 @@ menu:
   docs:
     parent: "eosc-vote-commands"
     identifier: eosc_vote
-    weight: 40
-weight: 40
+    weight: 10
+weight: 10
 draft: false
 aliases: []
 toc: false

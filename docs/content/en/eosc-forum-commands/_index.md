@@ -11,8 +11,8 @@ menu:
   docs:
     parent: "eosc-forum-commands"
     identifier: eosc_forum
-    weight: 40
-weight: 40
+    weight: 10
+weight: 10
 draft: false
 aliases: []
 toc: false

@@ -11,8 +11,8 @@ menu:
   docs:
     parent: "eosc-get-commands"
     identifier: eosc_get
-    weight: 40
-weight: 40
+    weight: 10
+weight: 10
 draft: false
 aliases: []
 toc: false
