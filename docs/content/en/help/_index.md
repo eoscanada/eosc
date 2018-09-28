@@ -10,12 +10,12 @@ menu:
   docs:
     parent: "help"
     identifier: overview-help
-    weight: 40
-weight: 40
+    weight: 10
+weight: 10
 draft: false
 hidesectioncontents: false
 slug:
 aliases: []
-toc: false
+toc: true
 notesforauthors:
 ---

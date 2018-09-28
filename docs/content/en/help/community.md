@@ -11,6 +11,7 @@ menu:
   docs:
     parent: "help"
     identifier: community-help
+    weight: 40
 weight: 40
 slug:
 aliases: []

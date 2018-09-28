@@ -12,9 +12,9 @@ menu:
   docs:
     parent: "getting-started"
     identifier: overview-getting-started
-    weight: 40
-weight: 40
-draft: false
+    weight: 10
+weight: 10
+draft: true
 aliases: []
 toc: false
 ---

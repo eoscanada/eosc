@@ -8,6 +8,7 @@ menu:
   docs:
     parent: "help"
     identifier: faq-help
+    weight: 40
 keywords: [faqs]
 weight: 40
 toc: false

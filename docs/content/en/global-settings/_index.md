@@ -11,9 +11,9 @@ menu:
   docs:
     parent: "global-settings"
     identifier: overview-global-settings
-    weight: 40
-weight: 40
-draft: false
+    weight: 10
+weight: 10
+draft: true
 aliases: []
 toc: false
 ---
