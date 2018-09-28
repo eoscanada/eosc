@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/signal"
 	"strings"
+	"syscall"
 	"time"
 
 	yaml2json "github.com/bronze1man/go-yaml2json"
@@ -308,4 +310,25 @@ func isStubABI(abi eos.ABI) bool {
 		abi.RicardianClauses == nil &&
 		abi.Structs == nil && abi.Tables == nil &&
 		abi.Types == nil
+}
+
+func setupSignalHandler(f func(error)) {
+	signals := make(chan os.Signal)
+	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
+
+	seen := 0
+	for {
+		s := <-signals
+		switch s {
+		case syscall.SIGTERM, syscall.SIGINT:
+			fmt.Println("Received", s, "terminating... Ctrl+C multiple times to force kill.")
+			seen++
+			f(fmt.Errorf("received signal %s", s))
+
+			if seen > 3 {
+				fmt.Println("Forcing kill")
+				os.Exit(1)
+			}
+		}
+	}
 }

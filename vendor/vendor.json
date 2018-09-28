@@ -9,6 +9,12 @@
 			"revisionTime": "2018-07-03T19:33:36Z"
 		},
 		{
+			"checksumSHA1": "7TPN90KFp/Jk8UM3YOjQMuEyitc=",
+			"path": "github.com/ahmetalpbalkan/go-dexec",
+			"revision": "2538e5e2198f293ab61ffcab998efd691276af67",
+			"revisionTime": "2016-06-30T17:38:52Z"
+		},
+		{
 			"checksumSHA1": "UhRNoO3ZIQLpDW6Mdb1JonSs/Oo=",
 			"path": "github.com/bronze1man/go-yaml2json",
 			"revision": "f6f64b738964477e1f4f42de9e7ac2ab97d8c02a",
