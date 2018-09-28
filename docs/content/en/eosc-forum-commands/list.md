@@ -6,7 +6,7 @@ date: 2018-09-27
 publishdate: 2018-09-27
 lastmod: 2018-09-27
 categories: [eosc-forum-commands]
-keywords: [
+keywords: []
 menu:
   docs:
     parent: "eosc-forum-commands"
