@@ -2,20 +2,21 @@
 title: get Commands Overview
 linktitle: get Commands Overview
 description: Overview of the `get` section of eosc
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [get]
-keywords: [usage,docs]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [eosc-get-commands]
+keywords: []
 menu:
   docs:
     parent: "eosc-get-commands"
-    identifier: overview-get
-    weight: 1
-weight: 0001	#rem
+    identifier: eosc_get
+    weight: 10
+weight: 10
 draft: false
-aliases: [/overview/introduction/]
+aliases: []
 toc: false
+auto_content: true
 ---
 
 ```

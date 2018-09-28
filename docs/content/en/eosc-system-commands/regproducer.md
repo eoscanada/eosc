@@ -2,21 +2,20 @@
 title: Register Producer
 linktitle: Register Producer
 description: Register an account as Block Producer Candidate
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [blog]
-keywords: [usage,livereload,command line,flags]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [eosc-system-commands]
+keywords: []
 menu:
   docs:
     parent: "eosc-system-commands"
-    identifier: register-producer-system
+    identifier: eosc_system_regproducer
     weight: 40
 weight: 40
 sections_weight: 40
 draft: false
-aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
-toc: true
+aliases: []
+toc: false
+auto_content: true
 ---
-
-regproducer

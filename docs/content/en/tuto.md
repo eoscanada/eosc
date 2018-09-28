@@ -124,3 +124,11 @@ hugo new posts/my-first-post.md
 ![image alt text](../img/eosc-hero-photo-01.jpg)
 
 ```![image alt text](../img/eosc-hero-photo-01.jpg)```
+
+
+## add button
+
+{{% button "GO TO TELEGRAM" "https://t.me/eoscanada" "_blank" %}}
+
+
+

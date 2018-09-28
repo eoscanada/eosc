@@ -2,20 +2,21 @@
 title: system Commands Overview
 linktitle: system Commands Overview
 description: Overview of the `system` section of eosc
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [system]
-keywords: [usage,docs]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [eosc-system-commands]
+keywords: []
 menu:
   docs:
     parent: "eosc-system-commands"
-    identifier: overview-system
-    weight: 1
-weight: 0001	#rem
+    identifier: eosc_system
+    weight: 10
+weight: 10
 draft: false
-aliases: [/overview/introduction/]
+aliases: []
 toc: false
+auto_content: true
 ---
 
 ```

@@ -2,20 +2,21 @@
 title: vault Commands Overview
 linktitle: vault Commands Overview
 description: Overview of the `vault` section of eosc
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [vault]
-keywords: [usage,docs]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [eosc-vault-commands]
+keywords: []
 menu:
   docs:
     parent: "eosc-vault-commands"
-    identifier: overview-vault
-    weight: 1
-weight: 0001	#rem
+    identifier: eosc_vault
+    weight: 10
+weight: 10
 draft: false
-aliases: [/overview/introduction/]
+aliases: []
 toc: false
+auto_content: true
 ---
 
 ```

@@ -2,26 +2,27 @@
 title: Install eosc
 linktitle: Install eosc
 description: 
-date: 2016-11-01
-publishdate: 2016-11-01
-lastmod: 2018-01-02
-categories: [getting started,fundamentals]
-authors: ["Michael Henderson"]
-keywords: [install,pc,windows,linux,macos,binary,tarball]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [getting-started]
+keywords: []
+authors: ["EOS Canada"]
 menu:
   docs:
     parent: "getting-started"
     identifier: install-eosc-getting-started
-    weight: 30
-weight: 30
-sections_weight: 30
+    weight: 40
+weight: 40
+sections_weight: 40
 draft: false
-aliases: [/tutorials/installing-on-windows/,/tutorials/installing-on-mac/,/overview/installing/,/getting-started/install,/install/]
-toc: true
+aliases: []
+toc: false
 ---
 
 Installation
 ------------
+
 
 1. Install from https://github.com/eoscanada/eosc/releases
 
@@ -31,4 +32,12 @@ Installation
 
 ```bash
 go get -u -v github.com/eoscanada/eosc/eosc
+```
+
+**or**
+
+3. If you are on **MacOS** and use **Homebrew**:
+
+```
+brew install eoscanada/tap/eosc
 ```

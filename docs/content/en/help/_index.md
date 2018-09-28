@@ -2,26 +2,20 @@
 title: Help Overview
 linktitle: Help Overview
 description: Frequently asked questions and known issues pulled from the Hugo Discuss forum.
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [help]
 menu:
   docs:
     parent: "help"
     identifier: overview-help
-    weight: 1
-weight: 1	
-draft: false
+    weight: 10
+weight: 10
+draft: true
 hidesectioncontents: false
 slug:
-aliases: [/troubleshooting/faqs/,/faqs/]
+aliases: []
 toc: false
 notesforauthors:
 ---
-
-The Troubleshooting section includes known issues, recent workarounds, and FAQs pulled from the [Hugo Discussion Forum][forum].
-
-
-
-
-[forum]: https://discourse.gohugo.io

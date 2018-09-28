@@ -1,16 +1,16 @@
 ---
 title: eosc 0.7.9 Update
 linktitle: eosc 0.7.9 Update
-description:
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
-keywords: [eosc,eos]
-weight: 30
-sections_weight: 30
+description: Features updated in eosc v0.7.9
+date: 2018-09-27
+publishdate: 2018-09-06
+lastmod: 2018-09-27
+keywords: []
+weight: 40
+sections_weight: 40
 draft: false
 aliases: []
-toc: true
+toc: false
 categories: [blog]
 ---
 

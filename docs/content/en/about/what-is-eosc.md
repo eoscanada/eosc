@@ -2,17 +2,18 @@
 title: What is EOSC
 linktitle: What is EOSC
 description:
-date: 2018-09-05
-publishdate: 2018-09-05
-lastmod: 2018-09-05
-keywords: [eosc,eos]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+keywords: []
+categories: [about eosc]
 menu:
   docs:
     parent: "about"
     identifier: what-is-eosc-about
-    weight: 30
-weight: 30
-sections_weight: 30
+    weight: 40
+weight: 40
+sections_weight: 40
 draft: false
 aliases: []
 toc: true

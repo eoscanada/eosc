@@ -1,8 +1,10 @@
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, main i {
     color:#49525c;
     font-weight: 400;
     font-family: 'Lato', sans-serif;
 }
+
+main h4 {font-weight:600;}
 
 footer p {color:#bbb;}
 footer a {color:#fff; text-decoration:none;}
@@ -15,6 +17,14 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 .nested-links a {
     color: #ff5512;
     text-decoration: none;
+}
+
+.link:focus {
+    outline: 0px dotted currentColor;
+}
+
+.pre, pre {
+    overflow:auto;
 }
 
 #hero .hero-logo img {max-width:290px;}
@@ -157,6 +167,7 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
 
 .bg-orange{background-color:rgb(255,85,18);}
 .bg-primary-color-dark, .hover-bg-primary-color-dark:hover {background-color:#32383f!important;}
+.bg-primary-color-dark2, .hover-bg-primary-color-dark2:hover {background-color:#202429!important;}
 .bg-grey {background-color:#eee;}
 .b--moon-gray {border-color: #ddd;}
 /*.gray {color:#49525c;}*/
@@ -298,3 +309,73 @@ ul li {position:relative;list-style:square;}
 [data-scrolldir=down] .sticky, [data-scrolldir=up] .sticky {
     top: 150px;
 }
+
+.CommandHelpTable {
+    margin-top:30px;
+}
+.CommandHelpTable td {
+   vertical-align: top;
+}
+.CommandHelpTable tr td:first-child {font-weight:800; border-right:none;}
+
+.menu-always-active {
+    color:#a9a9a9!important;
+    text-transform: uppercase;
+}
+
+/*.mobilemenu {*/
+    /*transition: max-height 1.5s ease-out, opacity 0s ease;*/
+    /*height:auto;*/
+    /*max-height: 1000px;*/
+    /*display:block!important;*/
+    /*padding-bottom: 0rem;*/
+    /*overflow:hidden;*/
+    /*opacity:1;*/
+/*}*/
+
+/*.mobilemenu.dn {*/
+    /*transition: max-height .5s ease, opacity .5s ease;*/
+    /*max-height:0px;*/
+    /*display:block!important;*/
+    /*overflow:hidden;*/
+    /*padding-bottom:0rem;*/
+    /*opacity:0;*/
+/*}*/
+
+/*.mobilemenu ul {padding-bottom:2rem!important;}*/
+
+
+.mobilemenu {
+    transition: bottom .5s ease, max-height 1.5s ease-out, opacity .3s ease;
+    height:auto;
+    display:block!important;
+    padding-bottom:70px;
+    position:absolute;
+    bottom:0px;
+    background-color:#32383f;
+    opacity:.95;
+}
+
+.mobilemenu.dn {
+    transition: bottom .3s ease, max-height .5s ease, opacity .3s ease;
+    padding-bottom:70px;
+    display:block!important;
+    position:absolute;
+    bottom:-100vh;
+    background-color:#202429;
+    opacity:0;
+}
+
+.monospace {
+    font-family: monospace, monospace;
+}
+
+
+#TableOfContents ul,
+#TableOfContents ul li,
+#TableOfContents ul ul,
+#TableOfContents ul ul li,
+#TableOfContents ul ul ul,
+#TableOfContents ul ul ul li {display:block!important;}
+#TableOfContents li {padding-left:5px;}
+#TableOfContents li a:hover {background-color:transparent!important; color:#000!important;}

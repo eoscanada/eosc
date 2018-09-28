@@ -1,7 +1,30 @@
+{{ if .context.Params.auto_content }}
+  {{ $command := $.context.Params.Menu.Docs.Identifier }}
+  {{ $commandDetail := index $.context.Site.Data.generatedhelp $command }}
+  <div class="relative pa4 {{ .classes }} weight-{{ .context.Weight }}">
+    <div class="content-with-btn-bottom relative h-100 bg-white ma0 gray ">
+      <h1 class="near-black f3 title">
+        <a href="{{ .context.URL }}" class="link primary-color dim">
+          {{- if eq .context.Section "functions" -}}
+           {{ .context.LinkTitle }}
+          {{- else -}}
+            {{ .context.Title }}
+          {{- end -}}
+        </a>
+      </h1>
+      <div class="lh-copy links pt3 pb2">
+        {{if isset $commandDetail "short" }}<br/>{{ $commandDetail.short }}<br/><br/>{{ end }}
+      </div>
+      <a href="{{ .context.RelPermalink }}" class="ph3 ph4-l fw5 f7 f6-l db link grow tc v-mid bg-orange white ba b--blue ph3 pv2 br1 btn btn-default">
+        Read More
+      </a>
+    </div>
+  </div>
+
+{{ else }}
+
 <div class="relative pa4 {{ .classes }} weight-{{ .context.Weight }}">
   <div class="content-with-btn-bottom relative h-100 bg-white ma0 gray ">
-
-
     <h1 class="near-black f3 title">
       <a href="{{ .context.URL }}" class="link primary-color dim">
       {{- if eq .context.Section "functions" -}}
@@ -12,23 +35,20 @@
       </a>
     </h1>
     {{ if eq .context.Section "news" }}
-    <date class="f6 moon-gray db" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-    {{ .context.Date.Format "January 2, 2006" }}
-    </date>
+      <date class="f6 moon-gray db" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+      {{ .context.Date.Format "January 2, 2006" }}
+      </date>
     {{ end }}
-
     <div class="lh-copy links pt3 pb2">
       {{ if .context.Params.description  }}
           {{ .context.Params.description | markdownify }}
         {{ else }}
           {{ .context.Summary  }}
       {{ end }}
-
     </div>
     <a href="{{ .context.RelPermalink }}" class="ph3 ph4-l fw5 f7 f6-l db link grow tc v-mid bg-orange white ba b--blue ph3 pv2 br1 btn btn-default">
       Read More
     </a>
-
-
   </div>
 </div>
+{{ end }}

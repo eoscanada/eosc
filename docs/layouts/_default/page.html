@@ -1,38 +1,90 @@
-<header class="flex-none w-100">
-  {{ if .Params.categories }}
-    {{ range .Params.categories }}
-      <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="f6 fw8 mb0 link mid-gray dim mr3">
-        {{ humanize  . | upper }}
-      </a>
-    {{ end }}
-  {{end}}
-  <h1 class="lh-title mb3 mv0 pt3 primary-color-dark">
-    {{- if eq .Section "functions" -}}
-      {{ .LinkTitle }}
-    {{- else -}}
-      {{ .Title }}
-    {{- end -}}
-  </h1>
-</header>
+{{- if .Params.auto_content -}}
+  {{ $command := .Params.Menu.Docs.Identifier }}
+  {{ $commandDetail := index .Site.Data.generatedhelp $command }}
+  <header class="flex-none w-100">
+    {{ if .Params.categories }}
+      {{ range .Params.categories }}
+        <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="f6 fw8 mb0 link mid-gray dim mr3">
+          {{ humanize  . | upper }}
+        </a>
+      {{ end }}
+    {{end}}
+    <h1 class="lh-title mb3 mv0 pt3 primary-color-dark">
+      {{- if eq .Section "functions" -}}
+        {{ .LinkTitle }}
+      {{- else -}}
+        {{ .Title }}
+      {{- end -}}
+    </h1>
+  </header>
 
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  {{ with .Params.description }}
+  <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+      <div class="f4 fw4 lh-copy">
+        {{ $commandDetail.short }}
+      </div>
+  </aside>
+
+  {{ with .Params.featured_image_path }}
+    <img src="{{ . }}" alt="Featured Image for {{ $.Title }}" class="mw-100">
+  {{ end }}
+
+  <div class="prose" id="prose">
+    {{- partial "docs/functions-signature.html" . -}}
+
+    {{if (or (and (isset $commandDetail "long") (not (isset $.Params "data_content_parent")) (ne $commandDetail.long $commandDetail.short)) (and (isset $.Params "data_content_parent") (in .Params.data_content_items "long"))) }}
+      <br/><br/><h4>Description:</h4>{{ $commandDetail.long }}
+    {{ end }}
+
+    {{if (or (and (isset $commandDetail "usage") (not (isset $.Params "data_content_parent"))) (and (isset $.Params "data_content_parent") (in .Params.data_content_items "usage"))) }}
+    <br/><br/>
+      <h4>Usage:</h4>
+      <pre class="expand monospace" ><code>{{ $commandDetail.usage }}</code></pre>
+    {{ end }}
+
+    {{if (or (and (isset $commandDetail "flags") (not (isset $.Params "data_content_parent"))) (and (isset $.Params "data_content_parent") (in .Params.data_content_items "flags"))) }}
+    <br/><br/>
+      <h4>Flags:</h4>
+      <pre class="expand monospace" ><code>{{ $commandDetail.flags }}</code></pre>
+    {{ end }}
+
+
+  </div>
+{{ else }}
+
+  <header class="flex-none w-100">
+    {{ if .Params.categories }}
+    {{ range .Params.categories }}
+    <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="f6 fw8 mb0 link mid-gray dim mr3">
+    {{ humanize  . | upper }}
+    </a>
+    {{ end }}
+    {{end}}
+    <h1 class="lh-title mb3 mv0 pt3 primary-color-dark">
+      {{- if eq .Section "functions" -}}
+      {{ .LinkTitle }}
+      {{- else -}}
+      {{ .Title }}
+      {{- end -}}
+    </h1>
+  </header>
+
+  <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+    {{ with .Params.description }}
     <div class="f4 fw4 lh-copy">
       {{ . | markdownify }}
     </div>
+    {{ end }}
+  </aside>
+
+  {{ with .Params.featured_image_path }}
+  <img src="{{ . }}" alt="Featured Image for {{ $.Title }}" class="mw-100">
   {{ end }}
 
-  <!--
-  NOTE: Removed to test builds without it.
-  partial "components/author-github-data" (dict "context" . "size" "110") -->
-</aside>
+  <div class="prose" id="prose">
+    {{- partial "docs/functions-signature.html" . -}}
 
-{{ with .Params.featured_image_path }}
-  <img src="{{ . }}" alt="Featured Image for {{ $.Title }}" class="mw-100">
+    {{ .Content }}
+
+  </div>
+
 {{ end }}
-
-<div class="prose" id="prose">
-  {{- partial "docs/functions-signature.html" . -}}
-
-  {{ .Content }}
-</div>

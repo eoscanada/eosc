@@ -1,9 +1,16 @@
-{{ $related := .Site.RegularPages.Related . | first 5 }}
-{{ with $related }}
+{{ $currentPagePermalink := .Permalink }}
+
+{{if .Params.tags }}
+{{ $tags := .Params.tags }}
 <h2>See Also</h2>
 <ul>
-	{{ range . }}
+{{ range .Site.Pages }}
+{{ $isMatchTags := intersect $tags .Params.tags | len | lt 0 }}
+{{ if and $isMatchTags (ne .Permalink $currentPagePermalink) }}
 	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-	{{ end }}
+{{ end }}
+{{ end }}
 </ul>
 {{ end }}
+
+

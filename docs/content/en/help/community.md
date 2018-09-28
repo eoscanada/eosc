@@ -2,21 +2,22 @@
 title: Community
 linktitle: Community
 description: An overview of features used for diagnosing and improving performance issues in site builds.
-date: 2017-03-12
-publishdate: 2017-03-12
-lastmod: 2017-03-12
-keywords: [performance, build]
-categories: [troubleshooting]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+keywords: []
+categories: [help]
 menu:
   docs:
     parent: "help"
     identifier: community-help
-weight: 3
+    weight: 40
+weight: 40
 slug:
 aliases: []
-toc: true
+toc: false
 ---
 
-NOT SURE WHAT THIS PAGE IS SUPPOSED TO BE FOR. SHOULD BE DEPRECATED?
+{{% button "GO TO TELEGRAM" "https://t.me/eoscanada" "_blank" %}}
 
 

@@ -1,0 +1,14 @@
+<div class=" w-100 pt4">
+    {{ range first 6 ( sort (where .Site.Pages "Section" "features") "Weight" "desc" ) }}
+
+    <div class="flex  w-100">
+        <div href="{{ .URL }}" class="dib f5 pt3">
+            <i class="{{ echoParam .Params "icon" }}"></i>
+        </div>
+        <div href="{{ .URL }}" class="dib f5 pl4 mb3-ns mb1  ">
+            <h3 class="fw6 f4 mt3">{{ .Params.title }}</h3>
+            {{ .Content }}
+        </div>
+    </div>
+    {{ end }}
+</div>

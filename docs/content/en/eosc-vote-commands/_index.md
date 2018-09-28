@@ -2,20 +2,21 @@
 title: vote Commands Overview
 linktitle: vote Commands Overview
 description: Overview of the `vote` section of eosc
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [vote]
-keywords: [usage,docs]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [eosc-vote-commands]
+keywords: []
 menu:
   docs:
     parent: "eosc-vote-commands"
-    identifier: overview-vote
-    weight: 1
-weight: 0001	#rem
+    identifier: eosc_vote
+    weight: 10
+weight: 10
 draft: false
-aliases: [/overview/introduction/]
+aliases: []
 toc: false
+auto_content: true
 ---
 
 ```

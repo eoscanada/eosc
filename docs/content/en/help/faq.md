@@ -1,19 +1,19 @@
 ---
 title: Frequently Asked Questions
 linktitle: FAQ
-description: Solutions to some common Hugo problems.
-date: 2018-02-10
-categories: [troubleshooting]
+description:
+date: 2018-09-27
+categories: [help]
 menu:
   docs:
     parent: "help"
     identifier: faq-help
+    weight: 40
 keywords: [faqs]
-weight: 2
-toc: true
-aliases: [/faq/]
+weight: 40
+toc: false
+aliases: []
 ---
-THIS ALL NEEDS TO BE REVIEWED. IT'S FROM AN OLD VERSION OF AN FAQ I MADE, BUT SOME THINGS MAY BE CHANGED IN MORE RECENT VERSIONS OF EOSC
 
 ### How do I vote?
 Command: `eosc vote producers [YourAccountName] [producer1] [producer2] … [producer30]`

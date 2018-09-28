@@ -1,15 +1,16 @@
 <div class="bg-white w-100-l center ">
   <div class="flex-ns flex-wrap justify-center center mw9 pv3 pv5-l grey">
     {{ with .Site.GetPage "/features" }}
-    <h1 class="title center w-90 pt3 pb1 mv0 justify-center tc">{{ .Title }}</h1>
-    <h3 class="title center w-90 pt3 pb4 mv0 fw3 justify-center tc">{{ .Description }}</h3>
+    <h1 class="title center w-90 pt3 pb1 mv0 fw6 justify-center tc">{{ .Title }}</h1>
+    <h3 class="title center w-90 pt3 pb5 mt0 mb0 mb3-ns fw3 justify-center tc">{{ .Description }}</h3>
     {{ end }}
-    <div class="flex flex-wrap w-90 center center">
+    <div class="flex flex-wrap w-90-l center center">
       {{ range first 6 ( sort (where .Pages "Section" "features") "Weight" "asc" ) }}
       <!-- only show 2 boxes on mobile -->
       {{ $.Scratch.Add "i" 1 }}{{ $i := $.Scratch.Get "i" }}
-      <div href="{{ .URL }}" class=" f5 w-100 w-33-m w-33-l pv2 pv2-ns ph2 ph3-ns content-with-btn-bottom">
-        <h3 class="fw6">{{ .Params.title }}</h3>
+      <div href="{{ .URL }}" class=" f5 w-100 w-33-m w-33-l mb3-ns mb1 pt2 ph3 ph4-ns content-with-btn-bottom">
+        <i class="{{ echoParam .Params "icon" }}"></i>
+        <h3 class="fw6 f4 mt3">{{ .Params.title }}</h3>
         <!--<h4 class="mt3 mb5">{{ .Params.description }}</h4>-->
         {{ .Content }}
 

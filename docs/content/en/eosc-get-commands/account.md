@@ -2,21 +2,20 @@
 title: Account
 linktitle: Account
 description: Retrieve account information from the chainthe command line.
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [blog]
-keywords: [usage,livereload,command line,flags]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [eosc-get-commands]
+keywords: []
 menu:
   docs:
     parent: "eosc-get-commands"
-    identifier: account-get
+    identifier: eosc_get_account
     weight: 40
 weight: 40
 sections_weight: 40
 draft: false
-aliases: [/overview/usage/,/extras/livereload/,/doc/usage/,/usage/]
-toc: true
+aliases: []
+toc: false
+auto_content: true
 ---
-
-account

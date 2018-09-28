@@ -6,6 +6,7 @@ date: 2018-09-11
 publishdate: 2018-09-11
 lastmod: 2018-09-11
 keywords: [eosc,eos,license]
+categories: [about eosc]
 menu:
   docs:
     parent: "about"
@@ -13,7 +14,7 @@ menu:
     weight: 30
 weight: 30
 sections_weight: 30
-draft: false
+draft: true
 aliases: []
 toc: true
 ---
