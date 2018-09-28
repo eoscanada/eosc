@@ -5,4 +5,4 @@ date: 2018-09-27
 weight: 40
 icon: "fab fa-grav fa-2x"
 ---
-Built-in forum functionality for creating, voting on, and checking the status of all live proposals.
+Built-in forum functionality for creating, voting on, and checking the status of all live proposals
