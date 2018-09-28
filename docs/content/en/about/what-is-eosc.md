@@ -19,7 +19,7 @@ aliases: []
 toc: true
 ---
 
-eosc is a multi-platform command line development tool for securely storing your private keys and interacting with any EOSIO
+TEST eosc is a multi-platform command line development tool for securely storing your private keys and interacting with any EOSIO
 blockchain quickly, efficiently, and with greater functionality than any other tool currently available.
 
 EOS Canada is always looking towards the developer community to find out what functions and features they need to quickly integrate those into eosc. We believe strongly in the power of creating single commands to perform complex transactions. This will increase the speed of anyone using eosc so that they can focus on their projects, rather than on how they interact with the blockchain.
