@@ -2,6 +2,7 @@
 title: "What's Been Added Since the Mainnet Launched"
 description: "A list of features added since launch of the mainnet up until eosc v0.7.8"
 categories: [blog]
+publishdate: 2018-09-05
 ---
 
 Since the launch of the EOS mainnet, [EOS Canada](https://eoscanada.com) has been working on `eosc`, a command line interface tool for EOS. It is a secure and simple-to-use interface for any EOS.IO blockchain.
