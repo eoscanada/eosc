@@ -2,21 +2,22 @@
 title: Quick Start
 linktitle: Quick Start
 description: Install and run eosc
-date: 2018-09-11
-publishdate: 2018-09-11
-categories: [getting started]
-keywords: [quick start]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [getting-started]
+keywords: []
 authors: ["EOS Canada"]
 menu:
   docs:
     parent: "getting-started"
     identifier: quick-start-getting-started
-    weight: 10
-weight: 10
-sections_weight: 10
+    weight: 40
+weight: 40
+sections_weight: 40
 draft: false
-aliases: [/quickstart/,/overview/quickstart/]
-toc: true
+aliases: []
+toc: false
 ---
 
 Use `eosc` to vote for your favorite Block Producers

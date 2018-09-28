@@ -2,19 +2,19 @@
 title: tools Commands Overview
 linktitle: tools Commands Overview
 description: Overview of the `tools` section of eosc
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [tools]
-keywords: [usage,docs]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [eosc-tools-commands]
+keywords: []
 menu:
   docs:
     parent: "eosc-tools-commands"
     identifier: eosc_tools
-    weight: 1
-weight: 0001	#rem
+    weight: 40
+weight: 40
 draft: false
-aliases: [/overview/introduction/]
+aliases: []
 toc: false
 auto_content: true
 ---

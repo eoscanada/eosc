@@ -2,19 +2,19 @@
 title: forum Commands Overview
 linktitle: forum Commands Overview
 description: Overview of the `forum` section of eosc
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [forum]
-keywords: [usage,docs]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [eosc-forum-commands]
+keywords: []
 menu:
   docs:
     parent: "eosc-forum-commands"
     identifier: eosc_forum
-    weight: 1
-weight: 0001	#rem
+    weight: 40
+weight: 40
 draft: false
-aliases: [/overview/introduction/]
+aliases: []
 toc: false
 auto_content: true
 ---

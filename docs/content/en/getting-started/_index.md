@@ -2,20 +2,20 @@
 title: Get Started Overview
 linktitle: Get Started Overview
 description:
-date: 2017-02-01
-publishdate: 2017-02-01
-lastmod: 2017-02-01
-categories: [getting started]
-keywords: [""]
+date: 2018-09-27
+publishdate: 2018-09-27
+lastmod: 2018-09-27
+categories: [getting-started]
+keywords: []
 authors: ["EOS Canada"]
 menu:
   docs:
     parent: "getting-started"
     identifier: overview-getting-started
-    weight: 1
-weight: 0001	#rem
+    weight: 40
+weight: 40
 draft: false
-aliases: [/overview/introduction/]
+aliases: []
 toc: false
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Integrated With the EOS Referendum Tool
 description:
-date: 2018-09-18
-weight: 30
+date: 2018-09-27
+weight: 40
 icon: "fab fa-grav fa-2x"
 ---
 Built-in forum functionality for creating, voting on, and checking the status of all live proposals.

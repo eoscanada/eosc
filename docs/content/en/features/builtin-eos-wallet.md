@@ -2,7 +2,7 @@
 title: Built-in EOS Wallet
 description:
 date: 2018-09-18
-weight: 10
+weight: 40
 icon: "fas fa-rocket fa-2x"
 ---
 

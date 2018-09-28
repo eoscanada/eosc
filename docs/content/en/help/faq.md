@@ -2,16 +2,16 @@
 title: Frequently Asked Questions
 linktitle: FAQ
 description:
-date: 2018-02-10
+date: 2018-09-27
 categories: [help]
 menu:
   docs:
     parent: "help"
     identifier: faq-help
 keywords: [faqs]
-weight: 2
-toc: true
-aliases: [/faq/]
+weight: 40
+toc: false
+aliases: []
 ---
 
 ### How do I vote?
