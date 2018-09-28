@@ -5,7 +5,7 @@ description:
 date: 2018-09-27
 publishdate: 2018-09-27
 lastmod: 2018-09-27
-categories: [getting-started]
+categories: [getting started,fundamentals]
 keywords: []
 authors: ["EOS Canada"]
 menu:
@@ -15,7 +15,7 @@ menu:
     weight: 40
 weight: 40
 sections_weight: 40
-draft: true
+draft: false
 aliases: []
 toc: false
 ---
