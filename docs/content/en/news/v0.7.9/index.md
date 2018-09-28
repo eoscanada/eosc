@@ -3,7 +3,7 @@ title: eosc 0.7.9 Update
 linktitle: eosc 0.7.9 Update
 description: Features updated in eosc v0.7.9
 date: 2018-09-27
-publishdate: 2018-09-27
+publishdate: 2018-09-06
 lastmod: 2018-09-27
 keywords: []
 weight: 40
