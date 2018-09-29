@@ -1,5 +1,5 @@
 ---
-title: eosc Feature Duide
+title: eosc Feature Guide
 linktitle: eosc Feature Guide
 description:
 date: 2018-09-27
@@ -8,7 +8,7 @@ lastmod: 2018-09-28
 keywords: []
 weight: 40
 sections_weight: 40
-draft: false
+draft: true
 aliases: []
 toc: false
 categories: [blog]
