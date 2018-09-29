@@ -43,12 +43,12 @@
 
       <div class="fn pl5-l pt3 mid-gray mw8 w-100 w-two-third-l sans-serif nested-copy-line-height no-underline nested-links nested-img nested-copy-seperator nested-blockquote ">
         {{ with .Params.featured_image_path }}
-          <img src="{{ . }}" alt="Featured Image for {{ $.Title }}" class="w-100">
+          <img src="{{ . }}" alt="Featured Image for {{ $.Title }}" class="w-100 featured-image">
         {{ else }}
           {{ $featured := (.Resources.ByType "image").GetMatch "*featured*" }}
           {{ with $featured }}
-          {{ $featured := .Resize "1500x" }}
-          <img src="{{ $featured.RelPermalink }}" alt="Featured Image for {{ $.Title }}" class="mw-100">
+          <!--{{ $featured := .Resize "2000x" }}-->
+          <img src="{{ $featured.RelPermalink }}" alt="Featured Image for {{ $.Title }}" class="mw-100 featured-image">
           {{ end }}
           {{ end }}
         {{ .Content }}

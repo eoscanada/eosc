@@ -27,6 +27,9 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
     overflow:auto;
 }
 
+
+.featured-image {border:1px solid #ccc;}
+
 #hero .hero-logo img {max-width:290px;}
 #hero .hero-logo  {position:relative;padding-bottom:0px;}
 #hero {
