@@ -16,27 +16,36 @@ aliases: []
 ---
 
 ### How do I vote?
-Command: `eosc vote producers [YourAccountName] [producer1] [producer2] … [producer30]`
+Command: 
+```bash
+`eosc vote producers [YourAccountName] [producer1] [producer2] … [producer30]`
+```
 You can vote for up to 30 Block Producers. Make sure that you have the correct account name for the producer you wish to vote for. You can always run the command `eosc vote list` to view a complete list of all accounts that have called the `regproducer` action. You should always verify on a Block Producer’s website/social media that you are using the correct name, as some imposters have been found.
 
 ### How do I check my account info?
-Command: `eosc get account [AccountName]`
+Command: 
+```bash
+`eosc get account [AccountName]`
+```
 What you’ll find: 
--Creation date
--RAM usage/quota
--CPU usage/quota
--Network usage/quota
--Account permissions
--total staked
--last vote weight
--Is this account a proxy? How much weight is being proxied?
--  "deferred_trx_id": 0,
--when the 72 hour countdown for unstaking was last started
--the amount currently being unstaked
--Note that you will not find the amount of unstaked EOS you hold in your account. To find this, you’ll need to run the command `eosc get balance [AccountName]`
+* Creation date
+* RAM usage/quota
+* CPU usage/quota
+* Network usage/quota
+* Account permissions
+* total staked
+* last vote weight
+* Is this account a proxy? How much weight is being proxied?
+* "deferred_trx_id": 0,
+* when the 72 hour countdown for unstaking was last started
+* the amount currently being unstaked
+* Note that you will not find the amount of unstaked EOS you hold in your account. To find this, you’ll need to run the command `eosc get balance [AccountName]`
 
 ### How do I transfer EOS to another account?
-Command: `eosc transfer [SenderAccount] [ReceiverAccount] [amount]`
+Command: 
+```bash
+`eosc transfer [SenderAccount] [ReceiverAccount] [amount]`
+```
 This command will send the amount of EOS specified in [amount] from the [SenderAccount] to the [ReceiverAccount]. You can put up to 4 decimal places at most in the [amount] field. There are 3 iterations to how you can write the [amount]: 1, 1.0000, or 1.0000 EOS.
 If you’d like to attach a memo to the transaction, you can add `-m` or `--memo` to the command followed by the memo. 
 
