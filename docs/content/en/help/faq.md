@@ -128,7 +128,7 @@ Flags:
       --buy-ram-kbytes int   The amount of RAM kibibytes (KiB) to purchase for the new account.  Defaults to 8 KiB. (default 8)
   -h, --help                 help for newaccount
       --setpriv              Make this account a privileged account (reserved to the 'eosio' system account)
-      --stake-cpu string     Amount of EOS to stake foor CPU bandwidth (required)
+      --stake-cpu string     Amount of EOS to stake for CPU bandwidth (required)
       --stake-net string     Amount of EOS to stake for Network bandwidth (required)
       --transfer             Transfer voting power and right to unstake EOS to receiver
 ``` 
