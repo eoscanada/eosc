@@ -131,7 +131,7 @@ Flags:
       --stake-cpu string     Amount of EOS to stake for CPU bandwidth (required)
       --stake-net string     Amount of EOS to stake for Network bandwidth (required)
       --transfer             Transfer voting power and right to unstake EOS to receiver
-```
+``` 
 `--auth-file string` is to be used if you have setup a vault already using `eosc`
 
 `--auth-key string` is to be used if you would like to enter in the Public Key to be assigned for both the Owner and Active permissions.
