@@ -5,7 +5,7 @@ description: Install and run eosc
 date: 2018-09-27
 publishdate: 2018-09-27
 lastmod: 2018-09-27
-categories: [getting-started]
+categories: [getting-started,fundamentals]
 keywords: []
 authors: ["EOS Canada"]
 menu:
