@@ -8,7 +8,7 @@ lastmod: 2018-09-28
 keywords: []
 weight: 40
 sections_weight: 40
-draft: true
+draft: false
 aliases: []
 toc: false
 categories: [blog]
