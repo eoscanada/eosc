@@ -36,7 +36,7 @@ What you’ll find:
 * total staked
 * last vote weight
 * Is this account a proxy? How much weight is being proxied?
-* "deferred_trx_id": 0,
+* "deferred_trx_id": are there any deferred transactions associated to this account
 * when the 72 hour countdown for unstaking was last started
 * the amount currently being unstaked
 * Note that you will not find the amount of unstaked EOS you hold in your account. To find this, you’ll need to run the command `eosc get balance [AccountName]`
@@ -133,9 +133,15 @@ Flags:
       --transfer             Transfer voting power and right to unstake EOS to receiver
 ```
 `--auth-file string` is to be used if you have setup a vault already using `eosc`
+
 `--auth-key string` is to be used if you would like to enter in the Public Key to be assigned for both the Owner and Active permissions.
+
 `--buy-ram string` is to be used if you would like to spend a specific amount of EOS on buying RAM for an account
+
 `--buy-ramkbytes int` is to be used when you want to purchase an amount of KiB of RAM for an account. If this is not used, the default of 8 KiB is used.
+
 `--stake-cpu string` is required to be used. This is how you set a certain amount of EOS to be staked for CPU for the new account.
+
 `--stake-net string` is required to be used. This is how you set a certain amount of EOS to be staked for Network for the new account.
+
 `--transfer` is to be used if you would like to also allow the voting and unstaking rights of the tokens used for `--stake-cpu string` and `--stake-net string` to be transferred to the new account. 
