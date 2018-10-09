@@ -14,7 +14,7 @@ const indentPadding = "      "
 
 func FormatBasicAccountInfo(account *eos.AccountResp, config *columnize.Config) string {
 	output := []string{
-		fmt.Sprintf("privledged: |%v", account.Privileged),
+		fmt.Sprintf("privileged: |%v", account.Privileged),
 		fmt.Sprintf("created at: |%v", account.Created),
 	}
 
@@ -153,7 +153,7 @@ func FormatBalances(account *eos.AccountResp, config *columnize.Config) string {
 }
 
 func FormatProducers(account *eos.AccountResp, config *columnize.Config) string {
-	accounts := prettifyAccounts(account.VoterInfo.Producers)
+	accounts := prettifyAccounts(account.VoterInfo.Producers, account)
 	output := []string{
 		"voted for:",
 	}
@@ -234,9 +234,12 @@ func prettifyAsset(w eos.Asset) string {
 
 }
 
-func prettifyAccounts(accounts []eos.AccountName) []string {
+func prettifyAccounts(accounts []eos.AccountName, account *eos.AccountResp) []string {
 	names := []string{}
 	if len(accounts) == 0 {
+		if len(account.VoterInfo.Proxy) > 0 {
+			return []string{fmt.Sprintf("%svotes via proxy: %s", indentPadding, account.VoterInfo.Proxy)}
+		}
 		return []string{fmt.Sprintf("%s%s", indentPadding, "<not voted>")}
 	}
 	for _, name := range accounts {
