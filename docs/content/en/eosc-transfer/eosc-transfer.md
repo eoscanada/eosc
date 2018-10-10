@@ -14,7 +14,7 @@ menu:
     weight: 40
 weight: 40
 sections_weight: 40
-draft: false
+draft: true
 aliases: []
 toc: false
 auto_content: true
