@@ -146,6 +146,12 @@ anchor = "smart"
     url = "/eosc-forum-commands/"
 
 [[menu.docs]]
+    name = "eosc transfer"
+    weight = 65
+    identifier = "eosc-transfer-commands"
+    url = "/eosc-transfer-commands/"
+
+[[menu.docs]]
     name = "eosc tx"
     weight = 70
     identifier = "eosc-tx-commands"
