@@ -1,7 +1,7 @@
 ---
-title: Transfer
-linktitle: Transfer
-description: Transfer tokens
+title: Transfer Overview
+linktitle: Transfer Overview
+description: Transfer tokens from an account
 date: 2018-09-27
 publishdate: 2018-09-27
 lastmod: 2018-09-27
@@ -11,10 +11,9 @@ menu:
   docs:
     parent: "eosc-transfer-commands"
     identifier: eosc_transfer
-    weight: 40
-weight: 40
-sections_weight: 40
-draft: true
+    weight: 10
+weight: 10
+draft: false
 aliases: []
 toc: false
 auto_content: true
