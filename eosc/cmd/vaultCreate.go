@@ -92,10 +92,14 @@ You can then use this vault for the different eosc operations.`,
 			fmt.Println("You will be asked to provide a passphrase to secure your newly created vault.")
 			fmt.Println("Make sure you make it long and strong.")
 			fmt.Println("")
-			password, err := cli.GetEncryptPassphrase()
-			errorCheck("password input", err)
+			if envVal := os.Getenv("EOSC_GLOBAL_INSECURE_VAULT_PASSPHRASE"); envVal != "" {
+				boxer = eosvault.NewPassphraseBoxer(envVal)
+			} else {
+				password, err := cli.GetEncryptPassphrase()
+				errorCheck("password input", err)
 
-			boxer = eosvault.NewPassphraseBoxer(password)
+				boxer = eosvault.NewPassphraseBoxer(password)
+			}
 
 		default:
 			fmt.Printf(`Invalid vault type: %q, please use one of: "passphrase", "kms-gcp"\n`, wrapType)
