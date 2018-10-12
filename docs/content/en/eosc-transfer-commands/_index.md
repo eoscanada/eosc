@@ -1,6 +1,6 @@
 ---
-title: Transfer Overview
-linktitle: Transfer Overview
+title: transfer Command Overview
+linktitle: transfer Command Overview
 description: Transfer tokens from an account
 date: 2018-09-27
 publishdate: 2018-09-27
