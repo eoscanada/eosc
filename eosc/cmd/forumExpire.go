@@ -10,7 +10,7 @@ import (
 
 var forumExpireCmd = &cobra.Command{
 	Use:   "expire [proposer] [proposal_name]",
-	Short: "Allows the [proposer] to expires a proposal before its expected death.",
+	Short: "Allows the [proposer] to expire a proposal before its set expiration time.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		targetAccount := toAccount(viper.GetString("forum-cmd-target-contract"), "--target-contract")
