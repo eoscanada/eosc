@@ -27,7 +27,7 @@ var toolsChainFreezeCmd = &cobra.Command{
 		)
 
 		proxy.RegisterHandler(chainFreezeHandler)
-		err = proxy.Start()
+		err = proxy.ConnectAndStart()
 		errorCheck("client start", err)
 	},
 }

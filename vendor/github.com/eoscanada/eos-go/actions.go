@@ -16,7 +16,7 @@ type SetCode struct {
 	Account   AccountName `json:"account"`
 	VMType    byte        `json:"vmtype"`
 	VMVersion byte        `json:"vmversion"`
-	Code      HexBytes    `json:"bytes"`
+	Code      HexBytes    `json:"code"`
 }
 
 // SetABI represents the hard-coded `setabi` action.
@@ -97,15 +97,11 @@ type jsonActionFromServer struct {
 }
 
 func (a *Action) MarshalJSON() ([]byte, error) {
-	println(fmt.Sprintf("MarshalJSON toServer? %t", a.toServer))
-
 	if a.toServer {
 		data, err := a.ActionData.EncodeActionData()
 		if err != nil {
 			return nil, err
 		}
-
-		println("MarshalJSON data length : ", len(data)) /**/
 
 		return json.Marshal(&jsonActionToServer{
 			Account:       a.Account,
@@ -132,7 +128,6 @@ func (data *ActionData) EncodeActionData() ([]byte, error) {
 	buf := new(bytes.Buffer)
 	encoder := NewEncoder(buf)
 
-	println("MarshalJSON, encoding action data to binary")
 	if err := encoder.Encode(data.Data); err != nil {
 		return nil, err
 	}

@@ -144,9 +144,6 @@ func (s *SignedTransaction) PackedTransactionAndCFD() ([]byte, []byte, error) {
 	return rawtrx, rawcfd, nil
 }
 
-func (tx *Transaction) ID() string {
-	return "ID here" //todo
-}
 
 func (s *SignedTransaction) Pack(compression CompressionType) (*PackedTransaction, error) {
 	rawtrx, rawcfd, err := s.PackedTransactionAndCFD()
@@ -275,6 +272,18 @@ type DeferredTransaction struct {
 	SenderID   uint32      `json:"sender_id"`
 	Sender     AccountName `json:"sender"`
 	DelayUntil JSONTime    `json:"delay_until"`
+}
+
+type ScheduledTransaction struct {
+	TransactionID SHA256Bytes `json:"trx_id"`
+	Sender        AccountName `json:"sender"`
+	SenderID      string      `json:"sender_id"`
+	Payer         AccountName `json:"payer"`
+	DelayUntil    JSONTime    `json:"delay_until"`
+	Expiration    JSONTime    `json:"expiration"`
+	Published     JSONTime    `json:"published"`
+
+	Transaction *Transaction `json:"transaction"`
 }
 
 // TxOptions represents options you want to pass to the transaction
