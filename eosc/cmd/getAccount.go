@@ -49,12 +49,14 @@ func printAccount(account *eos.AccountResp) {
 		}
 
 		for _, s := range []string{
+			cli.FormatBasicAccountInfo(&act, cfg),
 			cli.FormatPermissions(&act, cfg),
 			cli.FormatMemory(&act, cfg),
 			cli.FormatNetworkBandwidth(&act, cfg),
 			cli.FormatCPUBandwidth(&act, cfg),
 			cli.FormatBalances(&act, cfg),
 			cli.FormatProducers(&act, cfg),
+			cli.FormatVoterInfo(&act, cfg),
 		} {
 			fmt.Println(s)
 			fmt.Println("")

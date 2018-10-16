@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"strconv"
-	"strings"
 	"text/tabwriter"
 
 	eos "github.com/eoscanada/eos-go"
@@ -13,6 +12,18 @@ import (
 
 const indentPadding = "      "
 
+func FormatBasicAccountInfo(account *eos.AccountResp, config *columnize.Config) string {
+	output := []string{
+		fmt.Sprintf("privileged: |%v", account.Privileged),
+		fmt.Sprintf("created at: |%v", account.Created),
+	}
+
+	if account.LastCodeUpdate.Unix() > 0 {
+		output = append(output, fmt.Sprintf("code updated at: |%v", account.LastCodeUpdate))
+	}
+
+	return columnize.Format(output, config)
+}
 func FormatPermissions(account *eos.AccountResp, config *columnize.Config) string {
 	output := formatNestedPermission([]string{"permissions:"}, account.Permissions, eos.PermissionName(""), "")
 	return columnize.Format(output, config)
@@ -59,7 +70,8 @@ func formatNestedPermission(in []string, permissions []eos.Permission, showChild
 func FormatMemory(account *eos.AccountResp, config *columnize.Config) string {
 	output := []string{
 		"memory:",
-		fmt.Sprintf("     quota: %s| used: %s",
+		fmt.Sprintf("%squota: %s| used: %s",
+			indentPadding,
 			prettifyBytes(account.RAMQuota),
 			prettifyBytes(account.RAMUsage),
 		),
@@ -73,15 +85,17 @@ func FormatNetworkBandwidth(account *eos.AccountResp, config *columnize.Config) 
 
 	output := []string{
 		"net bandwidth:",
-		fmt.Sprintf("     staked:|%s|(total stake delegated from account to self)",
+		fmt.Sprintf("%sstaked:|%s|(total stake delegated from account to self)",
+			indentPadding,
 			prettifyAsset(account.SelfDelegatedBandwidth.NetWeight),
 		),
-		fmt.Sprintf("     delegated:|%s|(total stake delegated to account from others)",
+		fmt.Sprintf("%sdelegated:|%s|(total stake delegated to account from others)",
+			indentPadding,
 			prettifyAsset(delegatedNet),
 		),
-		fmt.Sprintf("     used:|%s", prettifyBytes(int64(account.NetLimit.Used))),
-		fmt.Sprintf("     available:|%s", prettifyBytes(int64(account.NetLimit.Available))),
-		fmt.Sprintf("     limit:|%s", prettifyBytes(int64(account.NetLimit.Max))),
+		fmt.Sprintf("%sused:|%s", indentPadding, prettifyBytes(int64(account.NetLimit.Used))),
+		fmt.Sprintf("%savailable:|%s", indentPadding, prettifyBytes(int64(account.NetLimit.Available))),
+		fmt.Sprintf("%slimit:|%s", indentPadding, prettifyBytes(int64(account.NetLimit.Max))),
 	}
 
 	return columnize.Format(output, config)
@@ -92,15 +106,17 @@ func FormatCPUBandwidth(account *eos.AccountResp, config *columnize.Config) stri
 
 	output := []string{
 		"cpu bandwidth:",
-		fmt.Sprintf("     staked:|%s|(total stake delegated from account to self)",
+		fmt.Sprintf("%sstaked:|%s|(total stake delegated from account to self)",
+			indentPadding,
 			prettifyAsset(account.SelfDelegatedBandwidth.CPUWeight),
 		),
-		fmt.Sprintf("     delegated:|%s|(total stake delegated to account from others)",
+		fmt.Sprintf("%sdelegated:|%s|(total stake delegated to account from others)",
+			indentPadding,
 			prettifyAsset(delegatedCPU),
 		),
-		fmt.Sprintf("     used:|%s", prettifyTime(int64(account.CPULimit.Used))),
-		fmt.Sprintf("     available:|%s", prettifyTime(int64(account.CPULimit.Available))),
-		fmt.Sprintf("     limit:|%s", prettifyTime(int64(account.CPULimit.Max))),
+		fmt.Sprintf("%sused:|%s", indentPadding, prettifyTime(int64(account.CPULimit.Used))),
+		fmt.Sprintf("%savailable:|%s", indentPadding, prettifyTime(int64(account.CPULimit.Available))),
+		fmt.Sprintf("%slimit:|%s", indentPadding, prettifyTime(int64(account.CPULimit.Max))),
 	}
 
 	return columnize.Format(output, config)
@@ -109,6 +125,9 @@ func FormatCPUBandwidth(account *eos.AccountResp, config *columnize.Config) stri
 func FormatBalances(account *eos.AccountResp, config *columnize.Config) string {
 	if account.CoreLiquidBalance.Symbol.Symbol != "" {
 		totalStaked := account.SelfDelegatedBandwidth.NetWeight.Add(account.SelfDelegatedBandwidth.CPUWeight)
+		if totalStaked.Symbol != account.CoreLiquidBalance.Symbol {
+			totalStaked.Symbol = account.CoreLiquidBalance.Symbol
+		}
 		totalUnstaking := eos.Asset{
 			Amount: 0,
 			Symbol: account.CoreLiquidBalance.Symbol,
@@ -116,14 +135,15 @@ func FormatBalances(account *eos.AccountResp, config *columnize.Config) string {
 		if account.RefundRequest != nil {
 			totalUnstaking = account.RefundRequest.CPUAmount.Add(account.RefundRequest.NetAmount)
 		}
+
 		total := totalUnstaking.Add(totalStaked).Add(account.CoreLiquidBalance)
 
 		output := []string{
 			fmt.Sprintf("%s balances:", account.CoreLiquidBalance.Symbol.Symbol),
-			fmt.Sprintf("     liquid:|%s", prettifyAsset(account.CoreLiquidBalance)),
-			fmt.Sprintf("     staked:|%s", prettifyAsset(totalStaked)),
-			fmt.Sprintf("     unstaking:|%s", prettifyAsset(totalUnstaking)),
-			fmt.Sprintf("     total:|%s", prettifyAsset(total)),
+			fmt.Sprintf("%sliquid:|%s", indentPadding, prettifyAsset(account.CoreLiquidBalance)),
+			fmt.Sprintf("%sstaked:|%s", indentPadding, prettifyAsset(totalStaked)),
+			fmt.Sprintf("%sunstaking:|%s", indentPadding, prettifyAsset(totalUnstaking)),
+			fmt.Sprintf("%stotal:|%s", indentPadding, prettifyAsset(total)),
 		}
 
 		return columnize.Format(output, config)
@@ -133,11 +153,27 @@ func FormatBalances(account *eos.AccountResp, config *columnize.Config) string {
 }
 
 func FormatProducers(account *eos.AccountResp, config *columnize.Config) string {
+	accounts := prettifyAccounts(account.VoterInfo.Producers, account)
 	output := []string{
 		"voted for:",
-		fmt.Sprintf("     %s", prettifyAccounts(account.VoterInfo.Producers)),
 	}
+	output = append(output, accounts...)
+	return columnize.Format(output, config)
+}
 
+func FormatVoterInfo(account *eos.AccountResp, config *columnize.Config) string {
+	proxy := "<none>"
+	if len(account.VoterInfo.Proxy) > 0 {
+		proxy = string(account.VoterInfo.Proxy)
+	}
+	output := []string{
+		"voter info:",
+		fmt.Sprintf("%sproxy:|%s", indentPadding, proxy),
+		fmt.Sprintf("%sis proxy:|%v", indentPadding, account.VoterInfo.IsProxy == 1),
+		fmt.Sprintf("%sstaked:|%d", indentPadding, account.VoterInfo.Staked),
+		fmt.Sprintf("%svote weight:|%f", indentPadding, account.VoterInfo.LastVoteWeight),
+		fmt.Sprintf("%sproxied vote weight:|%f", indentPadding, account.VoterInfo.ProxiedVoteWeight),
+	}
 	return columnize.Format(output, config)
 }
 
@@ -198,16 +234,19 @@ func prettifyAsset(w eos.Asset) string {
 
 }
 
-func prettifyAccounts(accounts []eos.AccountName) string {
+func prettifyAccounts(accounts []eos.AccountName, account *eos.AccountResp) []string {
 	names := []string{}
 	if len(accounts) == 0 {
-		return "<not voted>"
+		if len(account.VoterInfo.Proxy) > 0 {
+			return []string{fmt.Sprintf("%svotes via proxy: %s", indentPadding, account.VoterInfo.Proxy)}
+		}
+		return []string{fmt.Sprintf("%s%s", indentPadding, "<not voted>")}
 	}
 	for _, name := range accounts {
-		names = append(names, string(name))
+		names = append(names, fmt.Sprintf("%s%s", indentPadding, name))
 	}
 
-	return strings.Join(names, "|  ")
+	return names
 }
 
 func rightAlignColumnize(value, unit string) string {
