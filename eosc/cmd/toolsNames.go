@@ -31,6 +31,9 @@ This command auto-detects encoding and converts it to different encodings.
 			if len(baseHex) == 8 {
 				showFrom["hex"] = binary.LittleEndian.Uint64(baseHex)
 				showFrom["hex_be"] = binary.BigEndian.Uint64(baseHex)
+			} else if len(baseHex) == 4 {
+				showFrom["hex"] = uint64(binary.LittleEndian.Uint32(baseHex))
+				showFrom["hex_be"] = uint64(binary.BigEndian.Uint32(baseHex))
 			}
 		}
 
