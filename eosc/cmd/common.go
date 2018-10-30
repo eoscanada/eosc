@@ -101,6 +101,14 @@ func permissionsToPermissionLevels(in []string) (out []eos.PermissionLevel, err 
 }
 
 func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
+	pushEOSCActionsAndContextFreeActions(api, nil, actions)
+}
+
+func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eos.Action, actions []*eos.Action) {
+	for _, act := range contextFreeActions {
+		act.Authorization = nil
+	}
+
 	permissions := viper.GetStringSlice("global-permission")
 	if len(permissions) != 0 {
 		levels, err := permissionsToPermissionLevels(permissions)
@@ -131,6 +139,9 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 	}
 
 	tx := eos.NewTransaction(actions, opts)
+	if len(contextFreeActions) > 0 {
+		tx.ContextFreeActions = contextFreeActions
+	}
 
 	tx = optionallySudoWrap(tx, opts)
 
