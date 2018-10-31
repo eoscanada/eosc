@@ -138,6 +138,7 @@ const (
 	TransactionStatusSoftFail                          ///< objectively failed (not executed), error handler executed
 	TransactionStatusHardFail                          ///< objectively failed and error handler objectively failed thus no state change
 	TransactionStatusDelayed                           ///< transaction delayed
+	TransactionStatusExpired                           ///< transaction expired
 	TransactionStatusUnknown  = TransactionStatus(255)
 )
 
@@ -151,11 +152,12 @@ func (s *TransactionStatus) UnmarshalJSON(data []byte) error {
 		*s = TransactionStatusExecuted
 	case "soft_fail":
 		*s = TransactionStatusSoftFail
-
 	case "hard_fail":
 		*s = TransactionStatusHardFail
 	case "delayed":
 		*s = TransactionStatusDelayed
+	case "expired":
+		*s = TransactionStatusExpired
 	default:
 		*s = TransactionStatusUnknown
 	}
@@ -173,6 +175,8 @@ func (s TransactionStatus) MarshalJSON() (data []byte, err error) {
 		out = "hard_fail"
 	case TransactionStatusDelayed:
 		out = "delayed"
+	case TransactionStatusExpired:
+		out = "expired"
 	}
 	return json.Marshal(out)
 }
@@ -182,11 +186,13 @@ func (s TransactionStatus) String() string {
 	case TransactionStatusExecuted:
 		return "executed"
 	case TransactionStatusSoftFail:
-		return "soft fail"
+		return "soft_fail"
 	case TransactionStatusHardFail:
-		return "hard fail"
+		return "hard_fail"
 	case TransactionStatusDelayed:
 		return "delayed"
+	case TransactionStatusExpired:
+		return "expired"
 	default:
 		return "unknown"
 	}
@@ -194,23 +200,6 @@ func (s TransactionStatus) String() string {
 }
 
 //type TransactionID SHA256Bytes
-
-type ShardLock struct {
-	AccountName AccountName `json:"account_name"`
-	ScopeName   ScopeName   `json:"scope_name"`
-}
-
-type ShardSummary struct {
-	ReadLocks    []ShardLock          `json:"read_locks"`
-	WriteLocks   []ShardLock          `json:"write_locks"`
-	Transactions []TransactionReceipt `json:"transactions"`
-}
-
-type Cycles []ShardSummary
-type RegionSummary struct {
-	Region        uint16   `json:"region"`
-	CyclesSummary []Cycles `json:"cycles_summary"`
-}
 
 type ProducerKey struct {
 	AccountName     AccountName   `json:"account_name"`
