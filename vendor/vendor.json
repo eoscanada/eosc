@@ -21,10 +21,10 @@
 			"revisionTime": "2018-02-21T22:46:20Z"
 		},
 		{
-			"checksumSHA1": "gr2ndZm7w7Ojwjok7fCEaPcWhFc=",
+			"checksumSHA1": "2ZZH9Tw42VwNFfjH9tqrI59yvLc=",
 			"path": "github.com/eoscanada/eos-go",
-			"revision": "6a1c94a1d8025517f300cc54f6517db1f4cfa250",
-			"revisionTime": "2018-10-31T18:10:37Z",
+			"revision": "33369d9cae16f5c871745ab377785d8baf4e58bc",
+			"revisionTime": "2018-11-07T16:00:32Z",
 			"version": "master"
 		},
 		{

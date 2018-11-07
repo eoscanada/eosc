@@ -68,7 +68,17 @@ func attachWallet(api *eos.API) {
 }
 
 func getAPI() *eos.API {
-	return eos.New(viper.GetString("global-api-url"))
+	httpHeaders := viper.GetStringSlice("global-http-header")
+	api := eos.New(viper.GetString("global-api-url"))
+	for _, header := range httpHeaders {
+		headerArray := strings.SplitN(header, ": ", 2)
+		if len(headerArray) != 2 || strings.Contains(headerArray[0], " ") {
+			errorCheck("validating http headers", fmt.Errorf("invalid HTTP Header format"))
+		}
+		api.Header.Add(headerArray[0], headerArray[1])
+	}
+	fmt.Printf("Set up an api with header: %+v\n", api.Header)
+	return api
 }
 
 func errorCheck(prefix string, err error) {
