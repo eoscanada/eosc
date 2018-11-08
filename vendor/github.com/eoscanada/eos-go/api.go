@@ -384,6 +384,11 @@ func (api *API) PushTransaction(tx *PackedTransaction) (out *PushTransactionFull
 	return
 }
 
+func (api *API) PushTransactionRaw(tx *PackedTransaction) (out json.RawMessage, err error) {
+	err = api.call("chain", "push_transaction", tx, &out)
+	return
+}
+
 func (api *API) GetInfo() (out *InfoResp, err error) {
 	err = api.call("chain", "get_info", nil, &out)
 	return
@@ -567,10 +572,18 @@ func (api *API) call(baseAPI string, endpoint string, body interface{}, out inte
 	}
 
 	if resp.StatusCode == 404 {
-		return ErrNotFound
+		var apiErr APIError
+		if err := json.Unmarshal(cnt.Bytes(), &apiErr); err != nil {
+			return ErrNotFound
+		}
+		return apiErr
 	}
 	if resp.StatusCode > 299 {
-		return fmt.Errorf("%s: status code=%d, body=%s", req.URL.String(), resp.StatusCode, cnt.String())
+		var apiErr APIError
+		if err := json.Unmarshal(cnt.Bytes(), &apiErr); err != nil {
+			return fmt.Errorf("%s: status code=%d, body=%s", req.URL.String(), resp.StatusCode, cnt.String())
+		}
+		return apiErr
 	}
 
 	if api.Debug {
