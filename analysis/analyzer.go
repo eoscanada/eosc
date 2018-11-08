@@ -176,13 +176,11 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 	case *sudo.Exec:
 
 		a.Pf("Account %q executes a transaction impersonating another account\n", obj.Executer)
-		var tx *eos.Transaction
-		err := eos.UnmarshalBinary(obj.Transaction, &tx)
 		if err != nil {
 			a.Pf("Error: unpacking sudo transaction: %s\n", err)
 		} else {
 			a.Pln("-------------------- SUDO TRANSACTION BEGIN -----------------------")
-			if err := a.AnalyzeTransaction(tx); err != nil {
+			if err := a.AnalyzeTransaction(&obj.Transaction); err != nil {
 				a.Pf("Error: analyzing sudo transaction: %s\n", err)
 			}
 			a.Pln("-------------------- SUDO TRANSACTION END -----------------------")

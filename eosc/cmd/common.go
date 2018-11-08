@@ -163,10 +163,7 @@ func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eo
 
 func optionallySudoWrap(tx *eos.Transaction, opts *eos.TxOptions) *eos.Transaction {
 	if viper.GetBool("global-sudo-wrap") {
-		binTx, err := eos.MarshalBinary(tx)
-		errorCheck("binary-packing transaction for sudo wrapping", err)
-
-		return eos.NewTransaction([]*eos.Action{sudo.NewExec(eos.AccountName("eosio"), eos.HexBytes(binTx))}, opts)
+		return eos.NewTransaction([]*eos.Action{sudo.NewExec(eos.AccountName("eosio"), *tx)}, opts)
 	}
 	return tx
 }
