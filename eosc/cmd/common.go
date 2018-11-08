@@ -77,7 +77,6 @@ func getAPI() *eos.API {
 		}
 		api.Header.Add(headerArray[0], headerArray[1])
 	}
-	fmt.Printf("Set up an api with header: %+v\n", api.Header)
 	return api
 }
 
