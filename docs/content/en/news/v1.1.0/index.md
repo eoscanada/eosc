@@ -2,9 +2,9 @@
 title: eosc v1.1.0 Release
 linktitle: eosc v1.1.0 Release
 description: Release of eosc v1.1.0
-date: 2018-10-08
-publishdate: 2018-10-08
-lastmod: 2018-10-08
+date: 2018-11-08
+publishdate: 2018-11-08
+lastmod: 2018-11-08
 keywords: []
 weight: 40
 sections_weight: 40
