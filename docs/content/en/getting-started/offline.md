@@ -17,13 +17,13 @@ weight: 40
 sections_weight: 40
 draft: false
 aliases: []
-toc: false
+toc: true
 ---
 
 How to vote using eosc and an air gapped computer
 -----------------------------------------------
 
-[点击查看中文](./OFFLINE_VOTING-cn.md)
+[点击查看中文](https://github.com/eoscanada/eosc/blob/master/OFFLINE_VOTING-cn.md)
 
 This step-by-step guide assumes you have a known account on mainnet
 (referred to as `YOURACCOUNT`), that is provisioned with the public
