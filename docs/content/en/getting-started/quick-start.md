@@ -17,7 +17,7 @@ weight: 40
 sections_weight: 40
 draft: false
 aliases: []
-toc: false
+toc: true
 ---
 
 Use `eosc` to vote for your favorite Block Producers
