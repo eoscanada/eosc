@@ -14,17 +14,24 @@ var transferCmd = &cobra.Command{
 	Short: "Transfer from tokens from an account to another",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
+		contract := toAccount(viper.GetString("transfer-cmd-contract"), "--contract")
 
 		from := toAccount(args[0], "from")
 		to := toAccount(args[1], "to")
-		quantity, err := eos.NewAsset(args[2])
+		var quantity eos.Asset
+		var err error
+		if contract == "eosio.token" {
+			quantity, err = eos.NewEOSAssetFromString(args[2])
+		} else {
+			quantity, err = eos.NewAsset(args[2])
+		}
 		errorCheck("invalid amount", err)
 		memo := viper.GetString("transfer-cmd-memo")
 
 		api := getAPI()
 
 		action := token.NewTransfer(from, to, quantity, memo)
-		action.Account = toAccount(viper.GetString("transfer-cmd-contract"), "--contract")
+		action.Account = contract
 		pushEOSCActions(api, action)
 	},
 }
