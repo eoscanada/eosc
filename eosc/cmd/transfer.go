@@ -17,7 +17,7 @@ var transferCmd = &cobra.Command{
 
 		from := toAccount(args[0], "from")
 		to := toAccount(args[1], "to")
-		quantity, err := eos.NewEOSAssetFromString(args[2])
+		quantity, err := eos.NewAsset(args[2])
 		errorCheck("invalid amount", err)
 		memo := viper.GetString("transfer-cmd-memo")
 
