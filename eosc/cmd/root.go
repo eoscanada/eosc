@@ -40,6 +40,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
+	RootCmd.PersistentFlags().BoolP("debug", "", false, "Enables verbose API debug messages")
 	RootCmd.PersistentFlags().StringP("vault-file", "", "./eosc-vault.json", "Wallet file that contains encrypted key material")
 	RootCmd.PersistentFlags().StringSliceP("wallet-url", "", []string{}, "Base URL to wallet endpoint. You can pass this multiple times to use the multi-signer (will use each wallet to sign multi-sig transactions).")
 	RootCmd.PersistentFlags().StringP("api-url", "u", "https://mainnet.eoscanada.com", "API endpoint of eos.io blockchain node")
@@ -55,7 +56,7 @@ func init() {
 	RootCmd.PersistentFlags().IntP("delay-sec", "", 0, "Set time to wait before transaction is executed, in seconds. Defaults to 0 second.")
 	RootCmd.PersistentFlags().BoolP("sudo-wrap", "", false, "Wrap the transaction in a eosio.sudo exec. Useful to BPs, with --write-transaction and --skip-sign to then submit as a multisig proposition.")
 
-	for _, flag := range []string{"vault-file", "api-url", "kms-gcp-keypath", "wallet-url", "permission", "http-header", "expiration", "delay-sec", "write-transaction", "skip-sign", "offline-head-block", "offline-chain-id", "offline-sign-key", "sudo-wrap"} {
+	for _, flag := range []string{"debug", "vault-file", "api-url", "kms-gcp-keypath", "wallet-url", "permission", "http-header", "expiration", "delay-sec", "write-transaction", "skip-sign", "offline-head-block", "offline-chain-id", "offline-sign-key", "sudo-wrap"} {
 		if err := viper.BindPFlag("global-"+flag, RootCmd.PersistentFlags().Lookup(flag)); err != nil {
 			panic(err)
 		}

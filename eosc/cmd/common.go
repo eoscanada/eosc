@@ -114,6 +114,8 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 }
 
 func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eos.Action, actions []*eos.Action) {
+	api.Debug = viper.GetBool("global-debug")
+
 	for _, act := range contextFreeActions {
 		act.Authorization = nil
 	}
