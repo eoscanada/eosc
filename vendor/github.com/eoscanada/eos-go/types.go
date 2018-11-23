@@ -29,9 +29,9 @@ func ActN(in string) ActionName   { return ActionName(in) }
 func PN(in string) PermissionName { return PermissionName(in) }
 
 type AccountResourceLimit struct {
-	Used      JSONInt64 `json:"used"`
-	Available JSONInt64 `json:"available"`
-	Max       JSONInt64 `json:"max"`
+	Used      Int64 `json:"used"`
+	Available Int64 `json:"available"`
+	Max       Int64 `json:"max"`
 }
 
 type DelegatedBandwidth struct {
@@ -45,14 +45,14 @@ type TotalResources struct {
 	Owner     AccountName `json:"owner"`
 	NetWeight Asset       `json:"net_weight"`
 	CPUWeight Asset       `json:"cpu_weight"`
-	RAMBytes  JSONInt64   `json:"ram_bytes"`
+	RAMBytes  Int64       `json:"ram_bytes"`
 }
 
 type VoterInfo struct {
 	Owner             AccountName   `json:"owner"`
 	Proxy             AccountName   `json:"proxy"`
 	Producers         []AccountName `json:"producers"`
-	Staked            JSONInt64     `json:"staked"`
+	Staked            Int64         `json:"staked"`
 	LastVoteWeight    JSONFloat64   `json:"last_vote_weight"`
 	ProxiedVoteWeight JSONFloat64   `json:"proxied_vote_weight"`
 	IsProxy           byte          `json:"is_proxy"`
@@ -415,7 +415,11 @@ func (t *HexBytes) UnmarshalJSON(data []byte) (err error) {
 	return
 }
 
-// SHA256Bytes
+func (t HexBytes) String() string {
+	return hex.EncodeToString(t)
+}
+
+// Checksum256
 
 type Checksum160 []byte
 
@@ -449,6 +453,10 @@ func (t *Checksum256) UnmarshalJSON(data []byte) (err error) {
 	return
 }
 
+func (t Checksum256) String() string {
+	return hex.EncodeToString(t)
+}
+
 type Checksum512 []byte
 
 func (t Checksum512) MarshalJSON() ([]byte, error) {
@@ -465,25 +473,10 @@ func (t *Checksum512) UnmarshalJSON(data []byte) (err error) {
 	return
 }
 
-type SHA256Bytes []byte
-
-func (t SHA256Bytes) MarshalJSON() ([]byte, error) {
-	return json.Marshal(hex.EncodeToString(t))
-}
-
-func (t *SHA256Bytes) UnmarshalJSON(data []byte) (err error) {
-	var s string
-	err = json.Unmarshal(data, &s)
-	if err != nil {
-		return
-	}
-
-	*t, err = hex.DecodeString(s)
-	return
-}
-func (t SHA256Bytes) String() string {
-	return hex.EncodeToString(t)
-}
+// SHA256Bytes is deprecated and renamed to Checksum256 for
+// consistency. Please update your code as this type will eventually
+// be phased out.
+type SHA256Bytes = Checksum256
 
 type Varuint32 uint32
 type Varint32 int32
@@ -596,9 +589,25 @@ func (f *JSONFloat64) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-type JSONInt64 int64
+// JSONInt64 is deprecated in favor of Int64.
+type JSONInt64 = Int64
 
-func (i *JSONInt64) UnmarshalJSON(data []byte) error {
+type Int64 int64
+
+func (i Int64) MarshalJSON() (data []byte, err error) {
+	if i > 0xffffffff || i < -0xffffffff {
+		encodedInt, err := json.Marshal(int64(i))
+		if err != nil {
+			return nil, err
+		}
+		data = append([]byte{'"'}, encodedInt...)
+		data = append(data, '"')
+		return data, nil
+	}
+	return json.Marshal(int64(i))
+}
+
+func (i *Int64) UnmarshalJSON(data []byte) error {
 	if len(data) == 0 {
 		return errors.New("empty value")
 	}
@@ -614,7 +623,7 @@ func (i *JSONInt64) UnmarshalJSON(data []byte) error {
 			return err
 		}
 
-		*i = JSONInt64(val)
+		*i = Int64(val)
 
 		return nil
 	}
@@ -624,7 +633,167 @@ func (i *JSONInt64) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	*i = JSONInt64(v)
+	*i = Int64(v)
+
+	return nil
+}
+
+type Uint64 uint64
+
+func (i Uint64) MarshalJSON() (data []byte, err error) {
+	if i > 0xffffffff {
+		encodedInt, err := json.Marshal(uint64(i))
+		if err != nil {
+			return nil, err
+		}
+		data = append([]byte{'"'}, encodedInt...)
+		data = append(data, '"')
+		return data, nil
+	}
+	return json.Marshal(uint64(i))
+}
+
+func (i *Uint64) UnmarshalJSON(data []byte) error {
+	if len(data) == 0 {
+		return errors.New("empty value")
+	}
+
+	if data[0] == '"' {
+		var s string
+		if err := json.Unmarshal(data, &s); err != nil {
+			return err
+		}
+
+		val, err := strconv.ParseUint(s, 10, 64)
+		if err != nil {
+			return err
+		}
+
+		*i = Uint64(val)
+
+		return nil
+	}
+
+	var v uint64
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+
+	*i = Uint64(v)
+
+	return nil
+}
+
+type Uint128 struct {
+	Lo uint64
+	Hi uint64
+}
+
+type Int128 Uint128
+
+type Float128 Uint128
+
+// func (i Int128) BigInt() *big.Int {
+// 	// decode the Lo and Hi to handle the sign
+// 	return nil
+// }
+
+// func (i Uint128) BigInt() *big.Int {
+// 	// no sign to handle, all good..
+// 	return nil
+// }
+
+// func NewInt128(i *big.Int) (Int128, error) {
+// 	// if the big Int overflows the JSONInt128 limits..
+// 	return Int128{}, nil
+// }
+
+// func NewUint128(i *big.Int) (Uint128, error) {
+// 	// if the big Int overflows the JSONInt128 limits..
+// 	return Uint128{}, nil
+// }
+
+func (i Uint128) MarshalJSON() (data []byte, err error) {
+	return json.Marshal(i.String())
+}
+
+func (i Int128) MarshalJSON() (data []byte, err error) {
+	return json.Marshal(Uint128(i).String())
+}
+
+func (i Float128) MarshalJSON() (data []byte, err error) {
+	return json.Marshal(Uint128(i).String())
+}
+
+func (i Uint128) String() string {
+	// Same for Int128, Float128
+	number := make([]byte, 16)
+	binary.LittleEndian.PutUint64(number[:], i.Lo)
+	binary.LittleEndian.PutUint64(number[8:], i.Hi)
+	return fmt.Sprintf("0x%s%s", hex.EncodeToString(number[:8]), hex.EncodeToString(number[8:]))
+}
+
+func (i *Int128) UnmarshalJSON(data []byte) error {
+	var el Uint128
+	if err := json.Unmarshal(data, &el); err != nil {
+		return err
+	}
+
+	out := Int128(el)
+	*i = out
+
+	return nil
+}
+
+func (i *Float128) UnmarshalJSON(data []byte) error {
+	var el Uint128
+	if err := json.Unmarshal(data, &el); err != nil {
+		return err
+	}
+
+	out := Float128(el)
+	*i = out
+
+	return nil
+}
+
+func (i *Uint128) UnmarshalJSON(data []byte) error {
+	if string(data) == "null" {
+		return nil
+	}
+
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+
+	if !strings.HasPrefix(s, "0x") && !strings.HasPrefix(s, "0X") {
+		return fmt.Errorf("int128 expects 0x prefix")
+	}
+
+	truncatedVal := s[2:]
+	if len(truncatedVal) != 32 {
+		return fmt.Errorf("int128 expects 32 characters after 0x, had %d", len(truncatedVal))
+	}
+
+	loHex := truncatedVal[:16]
+	hiHex := truncatedVal[16:]
+
+	lo, err := hex.DecodeString(loHex)
+	if err != nil {
+		return err
+	}
+
+	hi, err := hex.DecodeString(hiHex)
+	if err != nil {
+		return err
+	}
+
+	loUint := binary.LittleEndian.Uint64(lo)
+	hiUint := binary.LittleEndian.Uint64(hi)
+
+	i.Lo = loUint
+	i.Hi = hiUint
 
 	return nil
 }

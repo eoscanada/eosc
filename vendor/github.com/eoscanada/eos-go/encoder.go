@@ -12,6 +12,7 @@ import (
 	"math"
 
 	"github.com/eoscanada/eos-go/ecc"
+	"go.uber.org/zap"
 )
 
 // --------------------------------------------------------------
@@ -80,6 +81,10 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 		return e.writeUint32(cv)
 	case uint64:
 		return e.writeUint64(cv)
+	case Int64:
+		return e.writeUint64(uint64(cv))
+	case Uint64:
+		return e.writeUint64(uint64(cv))
 	case int64:
 		return e.writeInt64(cv)
 	case float32:
@@ -88,6 +93,12 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 		return e.writeFloat64(cv)
 	case Varint32:
 		return e.writeVarInt(int(cv))
+	case Uint128:
+		return e.writeUint128(cv)
+	case Int128:
+		return e.writeUint128(Uint128(cv))
+	case Float128:
+		return e.writeUint128(Uint128(cv))
 	case Varuint32:
 		return e.writeUVarInt(int(cv))
 	case bool:
@@ -106,8 +117,6 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 		return e.writeChecksum512(cv)
 	case []byte:
 		return e.writeByteArray(cv)
-	case SHA256Bytes:
-		return e.writeSHA256Bytes(cv)
 	case ecc.PublicKey:
 		return e.writePublicKey(cv)
 	case ecc.Signature:
@@ -129,10 +138,8 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 
 	// 	}
 	case ActionData:
-		Logger.Encoder.Print("ActionData")
 		return e.writeActionData(cv)
 	case *ActionData:
-		Logger.Encoder.Print("*ActionData")
 		return e.writeActionData(*cv)
 	case *Packet:
 		return e.writeBlockP2PMessageEnvelope(*cv)
@@ -150,9 +157,10 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 
 		case reflect.Array:
 			l := t.Len()
-			defer Logger.Encoder.SetPrefix(Logger.Encoder.Prefix())
-			Logger.Encoder.SetPrefix(Logger.Encoder.Prefix() + "\t")
-			Logger.Encoder.Printf("Encode: array [%T] of length: %d\n", v, l)
+
+			defer func(prev *zap.Logger) { encoderLog = prev }(encoderLog)
+			encoderLog = encoderLog.Named("array")
+			encoderLog.Debug("encode: array", zap.Int("length", l), typeField("type", v))
 
 			for i := 0; i < l; i++ {
 				if err = e.Encode(rv.Index(i).Interface()); err != nil {
@@ -164,10 +172,10 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 			if err = e.writeUVarInt(l); err != nil {
 				return
 			}
-			defer Logger.Encoder.SetPrefix(Logger.Encoder.Prefix())
-			Logger.Encoder.SetPrefix(Logger.Encoder.Prefix() + "\t")
 
-			Logger.Encoder.Printf("Encode: slice [%T] of length: %d\n", v, l)
+			defer func(prev *zap.Logger) { encoderLog = prev }(encoderLog)
+			encoderLog = encoderLog.Named("slice")
+			encoderLog.Debug("encode: slice", zap.Int("length", l), typeField("type", v))
 
 			for i := 0; i < l; i++ {
 				if err = e.Encode(rv.Index(i).Interface()); err != nil {
@@ -176,13 +184,15 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 			}
 		case reflect.Struct:
 			l := rv.NumField()
-			Logger.Encoder.Printf("Encode: struct [%T] with %d field\n", v, l)
-			defer Logger.Encoder.SetPrefix(Logger.Encoder.Prefix())
-			Logger.Encoder.SetPrefix(Logger.Encoder.Prefix() + "\t")
+
+			encoderLog.Debug("encode: struct", zap.Int("fields", l), typeField("type", v))
+
+			defer func(prev *zap.Logger) { encoderLog = prev }(encoderLog)
+			encoderLog = encoderLog.Named("struct")
 
 			for i := 0; i < l; i++ {
 				field := t.Field(i)
-				Logger.Encoder.Printf("field -> %s\n", field.Name)
+				encoderLog.Debug("field", zap.String("field", field.Name))
 
 				tag := field.Tag.Get("eos")
 				if tag == "-" {
@@ -206,21 +216,6 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 				}
 			}
 
-		case reflect.Map:
-			l := rv.Len()
-			if err = e.writeUVarInt(l); err != nil {
-				return
-			}
-			Logger.Encoder.Printf("Map [%T] of length: %d\n", v, l)
-			for _, key := range rv.MapKeys() {
-				value := rv.MapIndex(key)
-				if err = e.Encode(key.Interface()); err != nil {
-					return err
-				}
-				if err = e.Encode(value.Interface()); err != nil {
-					return err
-				}
-			}
 		default:
 			return errors.New("Encode: unsupported type " + t.String())
 		}
@@ -230,15 +225,16 @@ func (e *Encoder) Encode(v interface{}) (err error) {
 }
 
 func (e *Encoder) toWriter(bytes []byte) (err error) {
-
 	e.count += len(bytes)
-	Logger.Encoder.Printf("    Appending : [%s] at pos [%d]\n", hex.EncodeToString(bytes), e.count)
+
+	encoderLog.Debug("    appending", zap.Stringer("hex", HexBytes(bytes)), zap.Int("pos", e.count))
+
 	_, err = e.output.Write(bytes)
 	return
 }
 
 func (e *Encoder) writeByteArray(b []byte) error {
-	Logger.Encoder.Printf("Writing byte array of len [%d]\n", len(b))
+	encoderLog.Debug("write byte array", zap.Int("len", len(b)))
 	if err := e.writeUVarInt(len(b)); err != nil {
 		return err
 	}
@@ -246,26 +242,28 @@ func (e *Encoder) writeByteArray(b []byte) error {
 }
 
 func (e *Encoder) writeUVarInt(v int) (err error) {
-	Logger.Encoder.Printf("Writing uvarint [%d]\n", v)
+	encoderLog.Debug("write uvarint", zap.Int("val", v))
+
 	buf := make([]byte, 8)
 	l := binary.PutUvarint(buf, uint64(v))
 	return e.toWriter(buf[:l])
 }
 
 func (e *Encoder) writeVarInt(v int) (err error) {
-	Logger.Encoder.Printf("Writing varint [%d]\n", v)
+	encoderLog.Debug("write varint", zap.Int("val", v))
+
 	buf := make([]byte, 8)
 	l := binary.PutVarint(buf, int64(v))
 	return e.toWriter(buf[:l])
 }
 
 func (e *Encoder) writeByte(b byte) (err error) {
-	Logger.Encoder.Printf("Writing byte [%d]\n", b)
+	encoderLog.Debug("write byte", zap.Uint8("val", b))
 	return e.toWriter([]byte{b})
 }
 
 func (e *Encoder) writeBool(b bool) (err error) {
-	Logger.Encoder.Printf("Writing byte [%t]\n", b)
+	encoderLog.Debug("write bool", zap.Bool("val", b))
 	var out byte
 	if b {
 		out = 1
@@ -274,45 +272,51 @@ func (e *Encoder) writeBool(b bool) (err error) {
 }
 
 func (e *Encoder) writeUint16(i uint16) (err error) {
-	Logger.Encoder.Printf("Writing uint16 [%d]\n", i)
+	encoderLog.Debug("write uint16", zap.Uint16("val", i))
 	buf := make([]byte, TypeSize.UInt16)
 	binary.LittleEndian.PutUint16(buf, i)
 	return e.toWriter(buf)
 }
 
 func (e *Encoder) writeInt16(i int16) (err error) {
-	Logger.Encoder.Printf("Writing int16 [%d]\n", i)
+	encoderLog.Debug("write int16", zap.Int16("val", i))
 	return e.writeUint16(uint16(i))
 }
 
 func (e *Encoder) writeInt32(i int32) (err error) {
-	Logger.Encoder.Printf("Writing int32 [%d]\n", i)
+	encoderLog.Debug("write int32", zap.Int32("val", i))
 	return e.writeUint32(uint32(i))
 }
 
 func (e *Encoder) writeUint32(i uint32) (err error) {
-	Logger.Encoder.Printf("Writing unint32 [%d]\n", i)
+	encoderLog.Debug("write uint32", zap.Uint32("val", i))
 	buf := make([]byte, TypeSize.UInt32)
 	binary.LittleEndian.PutUint32(buf, i)
 	return e.toWriter(buf)
-
 }
 
 func (e *Encoder) writeInt64(i int64) (err error) {
-	Logger.Encoder.Printf("Writing int64 [%d]\n", i)
+	encoderLog.Debug("write int64", zap.Int64("val", i))
 	return e.writeUint64(uint64(i))
 }
 
 func (e *Encoder) writeUint64(i uint64) (err error) {
-	Logger.Encoder.Printf("Writing uint64 [%d]\n", i)
+	encoderLog.Debug("write uint64", zap.Uint64("val", i))
 	buf := make([]byte, TypeSize.UInt64)
 	binary.LittleEndian.PutUint64(buf, i)
 	return e.toWriter(buf)
+}
 
+func (e *Encoder) writeUint128(i Uint128) (err error) {
+	encoderLog.Debug("write uint128", zap.Stringer("hex", i), zap.Uint64("lo", i.Lo), zap.Uint64("hi", i.Hi))
+	buf := make([]byte, TypeSize.UInt128)
+	binary.LittleEndian.PutUint64(buf, i.Lo)
+	binary.LittleEndian.PutUint64(buf[TypeSize.UInt64:], i.Hi)
+	return e.toWriter(buf)
 }
 
 func (e *Encoder) writeFloat32(f float32) (err error) {
-	Logger.Encoder.Printf("Writing float32 [%f]\n", f)
+	encoderLog.Debug("write float32", zap.Float32("val", f))
 	i := math.Float32bits(f)
 	buf := make([]byte, TypeSize.UInt32)
 	binary.LittleEndian.PutUint32(buf, i)
@@ -320,7 +324,7 @@ func (e *Encoder) writeFloat32(f float32) (err error) {
 	return e.toWriter(buf)
 }
 func (e *Encoder) writeFloat64(f float64) (err error) {
-	Logger.Encoder.Printf("Writing float64 [%f]\n", f)
+	encoderLog.Debug("write float64", zap.Float64("val", f))
 	i := math.Float64bits(f)
 	buf := make([]byte, TypeSize.UInt64)
 	binary.LittleEndian.PutUint64(buf, i)
@@ -329,19 +333,12 @@ func (e *Encoder) writeFloat64(f float64) (err error) {
 }
 
 func (e *Encoder) writeString(s string) (err error) {
-	Logger.Encoder.Printf("Writing string [%s]\n", s)
+	encoderLog.Debug("write string", zap.String("val", s))
 	return e.writeByteArray([]byte(s))
 }
 
-func (e *Encoder) writeSHA256Bytes(s SHA256Bytes) error {
-	Logger.Encoder.Printf("Writing SHA256 [%s]\n", hex.EncodeToString(s))
-	if len(s) == 0 {
-		return e.toWriter(bytes.Repeat([]byte{0}, TypeSize.SHA256Bytes))
-	}
-	return e.toWriter(s)
-}
 func (e *Encoder) writeChecksum160(checksum Checksum160) error {
-	Logger.Encoder.Printf("Writing checksum160 [%s]\n", hex.EncodeToString(checksum))
+	encoderLog.Debug("write Checksum160", zap.Stringer("hex", HexBytes(checksum)))
 	if len(checksum) == 0 {
 		return e.toWriter(bytes.Repeat([]byte{0}, TypeSize.Checksum160))
 	}
@@ -349,7 +346,7 @@ func (e *Encoder) writeChecksum160(checksum Checksum160) error {
 }
 
 func (e *Encoder) writeChecksum256(checksum Checksum256) error {
-	Logger.Encoder.Printf("Writing checksum256 [%s]\n", hex.EncodeToString(checksum))
+	encoderLog.Debug("write Checksum256", zap.Stringer("hex", HexBytes(checksum)))
 	if len(checksum) == 0 {
 		return e.toWriter(bytes.Repeat([]byte{0}, TypeSize.Checksum256))
 	}
@@ -357,7 +354,7 @@ func (e *Encoder) writeChecksum256(checksum Checksum256) error {
 }
 
 func (e *Encoder) writeChecksum512(checksum Checksum512) error {
-	Logger.Encoder.Printf("Writing checksum512 [%s]\n", hex.EncodeToString(checksum))
+	encoderLog.Debug("write Checksum512", zap.Stringer("hex", HexBytes(checksum)))
 	if len(checksum) == 0 {
 		return e.toWriter(bytes.Repeat([]byte{0}, TypeSize.Checksum512))
 	}
@@ -365,7 +362,7 @@ func (e *Encoder) writeChecksum512(checksum Checksum512) error {
 }
 
 func (e *Encoder) writePublicKey(pk ecc.PublicKey) (err error) {
-	Logger.Encoder.Printf("Writing public key [%s]\n", pk.String())
+	encoderLog.Debug("write public key", zap.Stringer("pubkey", pk))
 	if len(pk.Content) != 33 {
 		return fmt.Errorf("public key %q should be 33 bytes, was %d", hex.EncodeToString(pk.Content), len(pk.Content))
 	}
@@ -378,7 +375,7 @@ func (e *Encoder) writePublicKey(pk ecc.PublicKey) (err error) {
 }
 
 func (e *Encoder) writeSignature(s ecc.Signature) (err error) {
-	Logger.Encoder.Printf("Writing signature [%s]\n", s.String())
+	encoderLog.Debug("write signature", zap.Stringer("sig", s))
 	if len(s.Content) != 65 {
 		return fmt.Errorf("signature should be 65 bytes, was %d", len(s.Content))
 	}
@@ -391,28 +388,29 @@ func (e *Encoder) writeSignature(s ecc.Signature) (err error) {
 }
 
 func (e *Encoder) writeTstamp(t Tstamp) (err error) {
-	Logger.Encoder.Printf("Writing tstamp [%s]\n", t)
+	encoderLog.Debug("write tstamp", zap.Time("time", t.Time))
 	n := uint64(t.UnixNano())
 	return e.writeUint64(n)
 }
 
 func (e *Encoder) writeBlockTimestamp(bt BlockTimestamp) (err error) {
-	Logger.Encoder.Printf("Writing block time stamp [%s]\n", bt)
+	encoderLog.Debug("write block timestamp", zap.Time("time", bt.Time))
 	n := uint32(bt.Unix() - 946684800)
 	return e.writeUint32(n)
 }
 
-func (e *Encoder) writeCurrencyName(currecy CurrencyName) (err error) {
-	Logger.Encoder.Printf("Writing currency stamp [%s]\n", currecy)
+func (e *Encoder) writeCurrencyName(currency CurrencyName) (err error) {
+	// FIXME: this isn't really used.. we should implement serialization for the Symbol
+	// type only instead.
+	encoderLog.Debug("write currency", zap.String("name", string(currency)))
 	out := make([]byte, 7, 7)
-	copy(out, []byte(currecy))
+	copy(out, []byte(currency))
 
 	return e.toWriter(out)
 }
 
 func (e *Encoder) writeAsset(asset Asset) (err error) {
-
-	Logger.Encoder.Printf("Writing asset [%s]\n", asset)
+	encoderLog.Debug("write asset", zap.Stringer("value", asset))
 	e.writeUint64(uint64(asset.Amount))
 	e.writeByte(asset.Precision)
 
@@ -422,14 +420,14 @@ func (e *Encoder) writeAsset(asset Asset) (err error) {
 	return e.toWriter(symbol)
 }
 
-func (e *Encoder) writeJSONTime(time JSONTime) (err error) {
-	Logger.Encoder.Printf("Writing json time [%s]\n", time)
-	return e.writeUint32(uint32(time.Unix()))
+func (e *Encoder) writeJSONTime(tm JSONTime) (err error) {
+	encoderLog.Debug("write json time", zap.Time("time", tm.Time))
+	return e.writeUint32(uint32(tm.Unix()))
 }
 
 func (e *Encoder) writeBlockP2PMessageEnvelope(envelope Packet) (err error) {
 
-	Logger.Encoder.Print("writeBlockP2PMessageEnvelope")
+	encoderLog.Debug("p2p: write message envelope")
 
 	if envelope.P2PMessage != nil {
 		buf := new(bytes.Buffer)
@@ -443,7 +441,9 @@ func (e *Encoder) writeBlockP2PMessageEnvelope(envelope Packet) (err error) {
 	}
 
 	messageLen := uint32(len(envelope.Payload) + 1)
-	Logger.Encoder.Printf("Message length: %d\n", messageLen)
+
+	encoderLog.Debug("p2p: message length", zap.Uint32("len", messageLen))
+
 	err = e.writeUint32(messageLen)
 	if err == nil {
 		err = e.writeByte(byte(envelope.Type))
@@ -461,7 +461,7 @@ func (e *Encoder) writeActionData(actionData ActionData) (err error) {
 		//	log.Fatal("pas cool")
 		//}
 
-		Logger.Encoder.Printf("entering action data, %T\n", actionData)
+		encoderLog.Debug("entering action data", typeField("type", actionData))
 		var d interface{}
 		d = actionData.Data
 		if reflect.TypeOf(d).Kind() == reflect.Ptr {
@@ -469,7 +469,6 @@ func (e *Encoder) writeActionData(actionData ActionData) (err error) {
 		}
 
 		if reflect.TypeOf(d).Kind() == reflect.String { //todo : this is a very bad ack ......
-
 			data, err := hex.DecodeString(d.(string))
 			if err != nil {
 				return fmt.Errorf("ack, %s", err)
@@ -479,12 +478,12 @@ func (e *Encoder) writeActionData(actionData ActionData) (err error) {
 
 		}
 
-		Logger.Encoder.Printf("encoding action data, %T\n", d)
+		encoderLog.Debug("encoding action data", typeField("type", d))
 		raw, err := MarshalBinary(d)
 		if err != nil {
 			return err
 		}
-		Logger.Encoder.Printf("writing action data, %T\n", d)
+		encoderLog.Debug("writing action data", typeField("type", d))
 		return e.writeByteArray(raw)
 	}
 

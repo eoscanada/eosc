@@ -28,24 +28,24 @@ import (
 
 type InfoResp struct {
 	ServerVersion            string      `json:"server_version"` // "2cc40a4e"
-	ChainID                  SHA256Bytes `json:"chain_id"`
+	ChainID                  Checksum256 `json:"chain_id"`
 	HeadBlockNum             uint32      `json:"head_block_num"`              // 2465669,
 	LastIrreversibleBlockNum uint32      `json:"last_irreversible_block_num"` // 2465655
-	LastIrreversibleBlockID  SHA256Bytes `json:"last_irreversible_block_id"`  // "00000008f98f0580d7efe7abc60abaaf8a865c9428a4267df30ff7d1937a1084"
-	HeadBlockID              SHA256Bytes `json:"head_block_id"`               // "00259f856bfa142d1d60aff77e70f0c4f3eab30789e9539d2684f9f8758f1b88",
+	LastIrreversibleBlockID  Checksum256 `json:"last_irreversible_block_id"`  // "00000008f98f0580d7efe7abc60abaaf8a865c9428a4267df30ff7d1937a1084"
+	HeadBlockID              Checksum256 `json:"head_block_id"`               // "00259f856bfa142d1d60aff77e70f0c4f3eab30789e9539d2684f9f8758f1b88",
 	HeadBlockTime            JSONTime    `json:"head_block_time"`             //  "2018-02-02T04:19:32"
 	HeadBlockProducer        AccountName `json:"head_block_producer"`         // "inita"
 
-	VirtualBlockCPULimit JSONInt64 `json:"virtual_block_cpu_limit"`
-	VirtualBlockNetLimit JSONInt64 `json:"virtual_block_net_limit"`
-	BlockCPULimit        JSONInt64 `json:"block_cpu_limit"`
-	BlockNetLimit        JSONInt64 `json:"block_net_limit"`
+	VirtualBlockCPULimit Int64 `json:"virtual_block_cpu_limit"`
+	VirtualBlockNetLimit Int64 `json:"virtual_block_net_limit"`
+	BlockCPULimit        Int64 `json:"block_cpu_limit"`
+	BlockNetLimit        Int64 `json:"block_net_limit"`
 	ServerVersionString  string    `json:"server_version_string"`
 }
 
 type BlockResp struct {
 	SignedBlock
-	ID              SHA256Bytes  `json:"id"`
+	ID              Checksum256  `json:"id"`
 	BlockNum        uint32       `json:"block_num"`
 	RefBlockPrefix  uint32       `json:"ref_block_prefix"`
 	BlockExtensions []*Extension `json:"block_extensions"`
@@ -64,17 +64,17 @@ type ScheduledTransactionsResp struct {
 // }
 
 type DBSizeResp struct {
-	FreeBytes JSONInt64 `json:"free_bytes"`
-	UsedBytes JSONInt64 `json:"used_bytes"`
-	Size      JSONInt64 `json:"size"`
+	FreeBytes Int64 `json:"free_bytes"`
+	UsedBytes Int64 `json:"used_bytes"`
+	Size      Int64 `json:"size"`
 	Indices   []struct {
 		Index    string    `json:"index"`
-		RowCount JSONInt64 `json:"row_count"`
+		RowCount Int64 `json:"row_count"`
 	} `json:"indices"`
 }
 
 type TransactionResp struct {
-	ID      SHA256Bytes `json:"id"`
+	ID      Checksum256 `json:"id"`
 	Receipt struct {
 		Status            TransactionStatus `json:"status"`
 		CPUUsageMicrosec  int               `json:"cpu_usage_us"`
@@ -107,7 +107,7 @@ type ActionTrace struct {
 	CPUUsage      int            `json:"cpu_usage"`
 	Console       string         `json:"console"`
 	TotalCPUUsage int            `json:"total_cpu_usage"`
-	TransactionID SHA256Bytes    `json:"trx_id"`
+	TransactionID Checksum256    `json:"trx_id"`
 	InlineTraces  []*ActionTrace `json:"inline_traces"`
 }
 
@@ -166,8 +166,8 @@ type AccountResp struct {
 	CoreLiquidBalance      Asset                `json:"core_liquid_balance"`
 	RAMQuota               int64                `json:"ram_quota"`
 	RAMUsage               int64                `json:"ram_usage"`
-	NetWeight              JSONInt64            `json:"net_weight"`
-	CPUWeight              JSONInt64            `json:"cpu_weight"`
+	NetWeight              Int64            `json:"net_weight"`
+	CPUWeight              Int64            `json:"cpu_weight"`
 	NetLimit               AccountResourceLimit `json:"net_limit"`
 	CPULimit               AccountResourceLimit `json:"cpu_limit"`
 	Permissions            []Permission         `json:"permissions"`
@@ -270,7 +270,7 @@ type PushTransactionFullResp struct {
 
 type TransactionProcessed struct {
 	Status               string      `json:"status"`
-	ID                   SHA256Bytes `json:"id"`
+	ID                   Checksum256 `json:"id"`
 	ActionTraces         []Trace     `json:"action_traces"`
 	DeferredTransactions []string    `json:"deferred_transactions"` // that's not right... dig to find what's there..
 }
@@ -344,8 +344,8 @@ type Global struct {
 	MaxInlineActionDepth           int       `json:"max_inline_action_depth"`
 	MaxAuthorityDepth              int       `json:"max_authority_depth"`
 	MaxRAMSize                     string    `json:"max_ram_size"`
-	TotalRAMBytesReserved          JSONInt64 `json:"total_ram_bytes_reserved"`
-	TotalRAMStake                  JSONInt64 `json:"total_ram_stake"`
+	TotalRAMBytesReserved          Int64 `json:"total_ram_bytes_reserved"`
+	TotalRAMStake                  Int64 `json:"total_ram_stake"`
 	LastProducerScheduleUpdate     string    `json:"last_producer_schedule_update"`
 	LastPervoteBucketFill          int64     `json:"last_pervote_bucket_fill,string"`
 	PervoteBucket                  int       `json:"pervote_bucket"`
