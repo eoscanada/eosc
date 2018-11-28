@@ -57,6 +57,25 @@ Pass --requested-permissions
 			if len(requested) == 0 {
 				errorCheck("--requested-permissions", errors.New("missing values"))
 			}
+
+			if viper.GetBool("msig-propose-cmd-with-subaccounts") {
+				out := make(map[string]bool)
+				for _, req := range requested {
+					out, err = recurseAccounts(api, out, string(req.Actor), string(req.Permission), 0, 4)
+					if err != nil {
+						errorCheck("failed recursing", err)
+					}
+				}
+
+				requested = []eos.PermissionLevel{}
+				for el := range out {
+					chunks := strings.Split(el, "@")
+					requested = append(requested, eos.PermissionLevel{
+						Actor:      eos.AccountName(chunks[0]),
+						Permission: eos.PermissionName(chunks[1]),
+					})
+				}
+			}
 		}
 
 		sort.Slice(requested, func(i, j int) bool {
@@ -162,10 +181,10 @@ func init() {
 	msigCmd.AddCommand(msigProposeCmd)
 
 	msigProposeCmd.Flags().StringSlice("requested-permissions", []string{}, "Permissions requested, specify multiple times or separated by a comma.")
-
 	msigProposeCmd.Flags().Bool("request-producers", false, "Request permissions from top 30 producers (not just 21 because of potential rotation during long periods of time)")
+	msigProposeCmd.Flags().Bool("with-subaccounts", false, "Recursively fetch subaccounts for signature (simplifies your life with multisig accounts)")
 
-	for _, flag := range []string{"requested-permissions", "request-producers"} {
+	for _, flag := range []string{"requested-permissions", "request-producers", "with-subaccounts"} {
 		if err := viper.BindPFlag("msig-propose-cmd-"+flag, msigProposeCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
