@@ -47,7 +47,7 @@ var msigReviewCmd = &cobra.Command{
 				err := eos.UnmarshalBinary(txData.Transaction, &tx)
 				errorCheck("unmarshalling packed transaction", err)
 
-				ana := analysis.NewAnalyzer(viper.GetBool("msig-review-cmd-dump"))
+				ana := analysis.NewAnalyzer(viper.GetBool("multisig-review-cmd-dump"))
 				ana.API = api
 				err = ana.AnalyzeTransaction(tx)
 				errorCheck("analyzing", err)
@@ -70,7 +70,7 @@ func init() {
 	msigReviewCmd.Flags().BoolP("dump", "", true, "Do verbose analysis, and dump more contents of transactions and actions.")
 
 	for _, flag := range []string{"dump"} {
-		if err := viper.BindPFlag("msig-review-cmd-"+flag, msigReviewCmd.Flags().Lookup(flag)); err != nil {
+		if err := viper.BindPFlag("multisig-review-cmd-"+flag, msigReviewCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}

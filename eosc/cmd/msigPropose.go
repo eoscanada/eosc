@@ -40,7 +40,7 @@ Pass --requested-permissions
 		errorCheck("parsing transaction file", err)
 
 		var requested []eos.PermissionLevel
-		if viper.GetBool("msig-propose-cmd-request-producers") {
+		if viper.GetBool("multisig-propose-cmd-request-producers") {
 			out, err := requestProducers(api)
 			errorCheck("recursing to get producers accounts", err)
 			for el := range out {
@@ -52,13 +52,13 @@ Pass --requested-permissions
 			}
 
 		} else {
-			requested, err = permissionsToPermissionLevels(viper.GetStringSlice("msig-propose-cmd-requested-permissions"))
+			requested, err = permissionsToPermissionLevels(viper.GetStringSlice("multisig-propose-cmd-requested-permissions"))
 			errorCheck("requested permissions", err)
 			if len(requested) == 0 {
 				errorCheck("--requested-permissions", errors.New("missing values"))
 			}
 
-			if viper.GetBool("msig-propose-cmd-with-subaccounts") {
+			if viper.GetBool("multisig-propose-cmd-with-subaccounts") {
 				out := make(map[string]bool)
 				for _, req := range requested {
 					out, err = recurseAccounts(api, out, string(req.Actor), string(req.Permission), 0, 4)
@@ -151,6 +151,10 @@ func recurseAccounts(api *eos.API, in map[string]bool, account string, permissio
 
 	curPerm := permissionByName(resp.Permissions, permission)
 	for {
+		if !viper.GetBool("multisig-propose-cmd-include-owner-permissions") && curPerm.PermName == "owner" {
+			break
+		}
+
 		if curPerm.PermName == "" {
 			break
 		}
@@ -183,9 +187,10 @@ func init() {
 	msigProposeCmd.Flags().StringSlice("requested-permissions", []string{}, "Permissions requested, specify multiple times or separated by a comma.")
 	msigProposeCmd.Flags().Bool("request-producers", false, "Request permissions from top 30 producers (not just 21 because of potential rotation during long periods of time)")
 	msigProposeCmd.Flags().Bool("with-subaccounts", false, "Recursively fetch subaccounts for signature (simplifies your life with multisig accounts)")
+	msigProposeCmd.Flags().Bool("include-owner-permissions", false, "Also include owner permissions when doing recursion (with either --with-subaccounts or --request-producers")
 
-	for _, flag := range []string{"requested-permissions", "request-producers", "with-subaccounts"} {
-		if err := viper.BindPFlag("msig-propose-cmd-"+flag, msigProposeCmd.Flags().Lookup(flag)); err != nil {
+	for _, flag := range []string{"requested-permissions", "request-producers", "with-subaccounts", "include-owner-permissions"} {
+		if err := viper.BindPFlag("multisig-propose-cmd-"+flag, msigProposeCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
 	}
