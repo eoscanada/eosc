@@ -71,8 +71,6 @@ Pass --requested-permissions
 			return el1.Permission < el2.Permission
 		})
 
-		fmt.Println("MAMA", requested)
-
 		pushEOSCActions(api,
 			msig.NewPropose(proposer, proposalName, requested, tx),
 		)

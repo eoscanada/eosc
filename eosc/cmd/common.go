@@ -224,9 +224,13 @@ func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.Pa
 
 func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes) {
 	resp, err := api.PushTransaction(packedTx)
-	errorCheck("pushing transaction", err)
+	if err != nil {
+		if typedErr, ok := err.(eos.APIError); ok {
+			printError(typedErr)
+		}
+		errorCheck("pushing transaction", err)
+	}
 
-	//fmt.Println("Transaction submitted to the network. Confirm at https://eosq.app/tx/" + resp.TransactionID)
 	trxURL := transactionURL(chainID, resp.TransactionID)
 	fmt.Printf("\nTransaction submitted to the network.\n  %s\n", trxURL)
 	if resp.BlockID != "" {
@@ -255,6 +259,12 @@ func blockURL(chainID eos.SHA256Bytes, blockID string) string {
 		return fmt.Sprintf("https://kylin.eosq.app/block/%s", blockID)
 	}
 	return blockID
+}
+
+func printError(err eos.APIError) {
+	enc := json.NewEncoder(os.Stdout)
+	enc.SetIndent("", "  ")
+	enc.Encode(err)
 }
 
 func yamlUnmarshal(cnt []byte, v interface{}) error {
