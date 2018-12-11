@@ -22,8 +22,22 @@ var msigProposeCmd = &cobra.Command{
 	Short: "Propose a new transaction in the eosio.msig contract",
 	Long: `Propose a new transaction in the eosio.msig contract
 
-Pass --requested-permissions
-`,
+Don't forget '--request' to list authorities needed to approve this
+transaction.
+
+The --request-producers option will get the top 30 producers and
+require their signatures. This is because there is rotation in the top
+21 producers, and 15 out of 21 active producers are required upon
+execution (which might differ from the time a proposal was made)
+
+The --with-subaccounts option will navigate the accounts listed in
+--request (or --request-producers) and automatically add them to the
+requested permission.  This simplifies the multisignature flows.
+
+The --with-owner option, which requires --with-subaccounts, will also
+add accounts listed in the owner permissions of the different accounts.
+
+  `,
 	Args: cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
@@ -43,6 +57,7 @@ Pass --requested-permissions
 		if viper.GetBool("multisig-propose-cmd-request-producers") {
 			out, err := requestProducers(api)
 			errorCheck("recursing to get producers accounts", err)
+
 			for el := range out {
 				chunks := strings.Split(el, "@")
 				requested = append(requested, eos.PermissionLevel{
@@ -52,29 +67,29 @@ Pass --requested-permissions
 			}
 
 		} else {
-			requested, err = permissionsToPermissionLevels(viper.GetStringSlice("multisig-propose-cmd-requested-permissions"))
+			requested, err = permissionsToPermissionLevels(viper.GetStringSlice("multisig-propose-cmd-request"))
 			errorCheck("requested permissions", err)
 			if len(requested) == 0 {
-				errorCheck("--requested-permissions", errors.New("missing values"))
+				errorCheck("--request", errors.New("missing values"))
+			}
+		}
+
+		if viper.GetBool("multisig-propose-cmd-with-subaccounts") {
+			out := make(map[string]bool)
+			for _, req := range requested {
+				out, err = recurseAccounts(api, out, string(req.Actor), string(req.Permission), 0, 4)
+				if err != nil {
+					errorCheck("failed recursing", err)
+				}
 			}
 
-			if viper.GetBool("multisig-propose-cmd-with-subaccounts") {
-				out := make(map[string]bool)
-				for _, req := range requested {
-					out, err = recurseAccounts(api, out, string(req.Actor), string(req.Permission), 0, 4)
-					if err != nil {
-						errorCheck("failed recursing", err)
-					}
-				}
-
-				requested = []eos.PermissionLevel{}
-				for el := range out {
-					chunks := strings.Split(el, "@")
-					requested = append(requested, eos.PermissionLevel{
-						Actor:      eos.AccountName(chunks[0]),
-						Permission: eos.PermissionName(chunks[1]),
-					})
-				}
+			requested = []eos.PermissionLevel{}
+			for el := range out {
+				chunks := strings.Split(el, "@")
+				requested = append(requested, eos.PermissionLevel{
+					Actor:      eos.AccountName(chunks[0]),
+					Permission: eos.PermissionName(chunks[1]),
+				})
 			}
 		}
 
@@ -151,7 +166,7 @@ func recurseAccounts(api *eos.API, in map[string]bool, account string, permissio
 
 	curPerm := permissionByName(resp.Permissions, permission)
 	for {
-		if !viper.GetBool("multisig-propose-cmd-include-owner-permissions") && curPerm.PermName == "owner" {
+		if !viper.GetBool("multisig-propose-cmd-with-owner") && curPerm.PermName == "owner" {
 			break
 		}
 
@@ -184,12 +199,17 @@ func permissionByName(perms []eos.Permission, name string) eos.Permission {
 func init() {
 	msigCmd.AddCommand(msigProposeCmd)
 
-	msigProposeCmd.Flags().StringSlice("requested-permissions", []string{}, "Permissions requested, specify multiple times or separated by a comma.")
+	// --request
+	// --request-producers
+	// --with-subaccounts
+	// --with-owner
+
+	msigProposeCmd.Flags().StringSlice("request", []string{}, "Accounts and permissions requested. Comma-separated (or multiple --request) is supported, with 'account' or 'account@permission' (defaults to 'active' permission)")
 	msigProposeCmd.Flags().Bool("request-producers", false, "Request permissions from top 30 producers (not just 21 because of potential rotation during long periods of time)")
 	msigProposeCmd.Flags().Bool("with-subaccounts", false, "Recursively fetch subaccounts for signature (simplifies your life with multisig accounts)")
-	msigProposeCmd.Flags().Bool("include-owner-permissions", false, "Also include owner permissions when doing recursion (with either --with-subaccounts or --request-producers")
+	msigProposeCmd.Flags().Bool("with-owner", false, "Also include owner permissions when doing recursion. Requires --with-subaccounts")
 
-	for _, flag := range []string{"requested-permissions", "request-producers", "with-subaccounts", "include-owner-permissions"} {
+	for _, flag := range []string{"request", "request-producers", "with-subaccounts", "with-owner"} {
 		if err := viper.BindPFlag("multisig-propose-cmd-"+flag, msigProposeCmd.Flags().Lookup(flag)); err != nil {
 			panic(err)
 		}
