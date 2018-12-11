@@ -7,7 +7,7 @@ import (
 	eos "github.com/eoscanada/eos-go"
 )
 
-var reValidAccount = regexp.MustCompile(`[a-z12345]+`)
+var reValidAccount = regexp.MustCompile(`[a-z12345]*`)
 
 // ToAccountName converts a eos valid name string (in) into an eos-go
 // AccountName struct
@@ -17,8 +17,9 @@ func ToAccountName(in string) (out eos.AccountName, err error) {
 		return
 	}
 
-	if len(in) > 12 {
-		err = fmt.Errorf("%q too long, 12 characters allowed maximum", in)
+	val, _ := eos.StringToName(in)
+	if eos.NameToString(val) != in {
+		err = fmt.Errorf("invalid name, 13 characters maximum")
 		return
 	}
 
