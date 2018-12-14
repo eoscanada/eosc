@@ -130,14 +130,19 @@ func requestProducers(api *eos.API) (out map[string]bool, err error) {
 
 	out = make(map[string]bool)
 	for idx, p := range producers {
-		if idx > 29 {
+		if len(out) > 29 {
 			break
 		}
-		fmt.Printf("Recursing producer %d: %s\n", idx+1, p["owner"])
-		out, err = recurseAccounts(api, out, p["owner"].(string), "active", 0, 4)
-		if err != nil {
-			errorCheck("failed recursing", err)
+
+		newAcct := fmt.Sprintf("%s@active", p["owner"].(string))
+
+		if isActive, _ := p["is_active"].(float64); isActive != 1 {
+			fmt.Printf("Skipping inactive no. %d: %s\n", idx+1, newAcct)
+			continue
 		}
+
+		fmt.Printf("Adding no. %d: %s\n", idx+1, newAcct)
+		out[newAcct] = true
 	}
 
 	return
