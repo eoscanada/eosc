@@ -11,7 +11,7 @@ import (
 	"time"
 
 	yaml2json "github.com/bronze1man/go-yaml2json"
-	eos "github.com/eoscanada/eos-go"
+	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eos-go/sudo"
 	"github.com/eoscanada/eosc/cli"
@@ -116,8 +116,6 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eos.Action, actions []*eos.Action) {
 	api.Debug = viper.GetBool("global-debug")
 
-	optionallyPrepareWallet(api)
-
 	for _, act := range contextFreeActions {
 		act.Authorization = nil
 	}
@@ -172,12 +170,6 @@ func optionallySudoWrap(tx *eos.Transaction, opts *eos.TxOptions) *eos.Transacti
 	return tx
 }
 
-func optionallyPrepareWallet(api *eos.API) {
-	if !viper.GetBool("global-skip-sign") {
-		attachWallet(api)
-	}
-}
-
 func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api *eos.API) (signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction) {
 	if !viper.GetBool("global-skip-sign") {
 		textSignKeys := viper.GetStringSlice("global-offline-sign-key")
@@ -193,6 +185,8 @@ func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api
 				return signKeys, nil
 			})
 		}
+
+		attachWallet(api)
 
 		var err error
 		signedTx, packedTx, err = api.SignTransaction(tx, chainID, eos.CompressionNone)
