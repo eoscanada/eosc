@@ -156,8 +156,6 @@ func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eo
 
 	tx = optionallySudoWrap(tx, opts)
 
-	tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
-
 	signedTx, packedTx := optionallySignTransaction(tx, opts.ChainID, api)
 
 	optionallyPushTransaction(signedTx, packedTx, opts.ChainID, api)
@@ -188,10 +186,14 @@ func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api
 
 		attachWallet(api)
 
+		tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
+
 		var err error
 		signedTx, packedTx, err = api.SignTransaction(tx, chainID, eos.CompressionNone)
 		errorCheck("signing transaction", err)
 	} else {
+		tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
+
 		signedTx = eos.NewSignedTransaction(tx)
 	}
 	return signedTx, packedTx
