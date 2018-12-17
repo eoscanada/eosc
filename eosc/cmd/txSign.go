@@ -28,6 +28,7 @@ var txSignCmd = &cobra.Command{
 
 		api := getAPI()
 
+		optionallyPrepareWallet(api)
 		var chainID eos.SHA256Bytes
 		if infileChainID := gjson.Get(string(cnt), "chain_id").String(); infileChainID != "" {
 			chainID = toSHA256Bytes(infileChainID, fmt.Sprintf("chain_id field in %q", filename))
