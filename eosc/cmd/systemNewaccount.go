@@ -105,7 +105,11 @@ active:
 		errorCheck("--stake-net invalid", err)
 
 		doTransfer := viper.GetBool("system-newaccount-cmd-transfer")
-		actions = append(actions, system.NewDelegateBW(creator, newAccount, cpuStake, netStake, doTransfer))
+		if cpuStake.Amount != 0 || netStake.Amount != 0 {
+			actions = append(actions, system.NewDelegateBW(creator, newAccount, cpuStake, netStake, doTransfer))
+		} else if doTransfer {
+			errorCheck("--transfer invalid", fmt.Errorf("nothing was staked, so nothing to transfer"))
+		}
 
 		buyRAM := viper.GetString("system-newaccount-cmd-buy-ram")
 		if buyRAM != "" {
