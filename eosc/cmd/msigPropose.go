@@ -111,20 +111,48 @@ add accounts listed in the owner permissions of the different accounts.
 	},
 }
 
-func requestProducers(api *eos.API) (out map[string]bool, err error) {
-	response, err := api.GetTableRows(
-		eos.GetTableRowsRequest{
-			Scope: "eosio",
-			Code:  "eosio",
-			Table: "producers",
-			JSON:  true,
-			Limit: 5000,
-		},
-	)
-	errorCheck("get table rows", err)
+func getProducersTable(api *eos.API) (prods producers, err error) {
+	lowerBound := ""
+	for {
+		response, err := api.GetTableRows(
+			eos.GetTableRowsRequest{
+				Scope:      "eosio",
+				Code:       "eosio",
+				Table:      "producers",
+				JSON:       true,
+				LowerBound: lowerBound,
+				Limit:      5000,
+			},
+		)
+		if err != nil {
+			return nil, fmt.Errorf("get producers table: %s", err)
+		}
 
-	var producers producers
-	errorCheck("json unmarshaling producers list", json.Unmarshal(response.Rows, &producers))
+		var rows producers
+		json.Unmarshal(response.Rows, &rows)
+		if err != nil {
+			return nil, fmt.Errorf("json unmarshal: %s", err)
+		}
+
+		prods = append(prods, rows...)
+
+		if !response.More {
+			break
+		}
+
+		if len(rows) != 0 {
+			last := rows[len(rows)-1]
+			owner := last["owner"].(string)
+			val, _ := eos.StringToName(owner)
+			lowerBound = eos.NameToString(val + 1)
+		}
+	}
+	return
+}
+
+func requestProducers(api *eos.API) (out map[string]bool, err error) {
+	producers, err := getProducersTable(api)
+	errorCheck("get producers table", err)
 
 	sort.Slice(producers, producers.Less)
 
