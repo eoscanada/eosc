@@ -10,7 +10,6 @@ import (
 
 	"strconv"
 
-	"github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -34,27 +33,15 @@ func (p producers) Less(i, j int) bool {
 var run = func(cmd *cobra.Command, args []string) {
 	api := getAPI()
 
-	response, err := api.GetTableRows(
-		eos.GetTableRowsRequest{
-			Scope: "eosio",
-			Code:  "eosio",
-			Table: "producers",
-			JSON:  true,
-			Limit: 5000,
-		},
-	)
-	errorCheck("get table rows", err)
+	producers, err := getProducersTable(api)
+	errorCheck("get producers table", err)
 
 	if viper.GetBool("vote-list-cmd-json") {
-		data, err := json.MarshalIndent(response.Rows, "", "    ")
+		data, err := json.MarshalIndent(producers, "", "  ")
 		errorCheck("json marshal", err)
 
 		fmt.Println(string(data))
 	} else {
-		var producers producers
-		err := json.Unmarshal(response.Rows, &producers)
-		errorCheck("json marshaling", err)
-
 		if viper.GetBool("vote-list-cmd-sort") {
 			sort.Slice(producers, producers.Less)
 		}
