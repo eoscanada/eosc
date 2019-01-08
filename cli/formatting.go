@@ -24,6 +24,17 @@ func FormatBasicAccountInfo(account *eos.AccountResp, config *columnize.Config) 
 
 	return columnize.Format(output, config)
 }
+
+func FormatCurrencyStats(stats *eos.GetCurrencyStatsResp, config *columnize.Config) string {
+	output := []string{
+		fmt.Sprintf("supply: |%v", prettifyAsset(stats.Supply)),
+		fmt.Sprintf("max supply: |%v", prettifyAsset(stats.MaxSupply)),
+		fmt.Sprintf("issuer: | %v", stats.Issuer),
+	}
+
+	return columnize.Format(output, config)
+}
+
 func FormatPermissions(account *eos.AccountResp, config *columnize.Config) string {
 	output := formatNestedPermission([]string{"permissions:"}, account.Permissions, eos.PermissionName(""), "")
 	return columnize.Format(output, config)
