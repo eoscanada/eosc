@@ -28,7 +28,7 @@ func FormatBasicAccountInfo(account *eos.AccountResp, config *columnize.Config) 
 func FormatCurrencyStats(stats *eos.GetCurrencyStatsResp, config *columnize.Config) string {
 	output := []string{
 		fmt.Sprintf("supply: |%v", prettifyAsset(stats.Supply)),
-		fmt.Sprintf("max supply: |%v", prettifyAsset(stats.MaxSupply)),
+		fmt.Sprintf("max. supply: |%v", prettifyAsset(stats.MaxSupply)),
 		fmt.Sprintf("issuer: | %v", stats.Issuer),
 	}
 
