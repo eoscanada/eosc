@@ -34,12 +34,17 @@ func NewAnalyzer(verbose bool) *Analyzer {
 }
 
 func (a *Analyzer) AnalyzePacked(trx *eos.PackedTransaction) (err error) {
+	trxID, err := trx.ID()
+	if err != nil {
+		return err
+	}
+
 	a.Pln()
 	a.Pln("---------------------------------------------------------------------")
 	a.Pln("------------------------- PACKED TRANSACTION ------------------------")
 	a.Pln("---------------------------------------------------------------------")
 	a.Pln()
-	a.Pf("Transaction ID: %s\n", trx.ID())
+	a.Pf("Transaction ID: %s\n", trxID)
 	a.Pf("Signatures: %q\n", trx.Signatures)
 	a.Pf("Packed context free data length: %d\n", len(trx.PackedContextFreeData))
 	a.VerbDump(trx.PackedContextFreeData)
