@@ -83,8 +83,8 @@ func FormatMemory(account *eos.AccountResp, config *columnize.Config) string {
 		"memory:",
 		fmt.Sprintf("%squota: %s| used: %s",
 			indentPadding,
-			prettifyBytes(account.RAMQuota),
-			prettifyBytes(account.RAMUsage),
+			prettifyBytes(int64(account.RAMQuota)),
+			prettifyBytes(int64(account.RAMUsage)),
 		),
 	}
 
