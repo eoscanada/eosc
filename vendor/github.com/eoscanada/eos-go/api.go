@@ -503,8 +503,18 @@ func (api *API) GetTransactions(name AccountName) (out *TransactionsResp, err er
 	return
 }
 
+func (api *API) GetTableByScope(params GetTableByScopeRequest) (out *GetTableByScopeResp, err error) {
+	err = api.call("chain", "get_table_by_scope", params, &out)
+	return
+}
+
 func (api *API) GetTableRows(params GetTableRowsRequest) (out *GetTableRowsResp, err error) {
 	err = api.call("chain", "get_table_rows", params, &out)
+	return
+}
+
+func (api *API) GetRawABI(params GetRawABIRequest) (out *GetRawABIResp, err error) {
+	err = api.call("chain", "get_raw_abi", params, &out)
 	return
 }
 
@@ -524,6 +534,16 @@ func (api *API) GetCurrencyBalance(account AccountName, symbol string, code Acco
 		params["symbol"] = symbol
 	}
 	err = api.call("chain", "get_currency_balance", params, &out)
+	return
+}
+
+func (api *API) GetCurrencyStats(code AccountName, symbol string) (out *GetCurrencyStatsResp, err error) {
+	params := M{"code": code, "symbol": symbol}
+
+	outWrapper := make(map[string]*GetCurrencyStatsResp)
+	err = api.call("chain", "get_currency_stats", params, &outWrapper)
+	out = outWrapper[symbol]
+
 	return
 }
 
@@ -593,7 +613,9 @@ func (api *API) call(baseAPI string, endpoint string, body interface{}, out inte
 			fmt.Println(err)
 		}
 		fmt.Println("-------------------------------")
-		fmt.Println(string(responseDump))
+		fmt.Println(cnt.String())
+		fmt.Println("-------------------------------")
+		fmt.Printf("%q\n", responseDump)
 		fmt.Println("")
 	}
 

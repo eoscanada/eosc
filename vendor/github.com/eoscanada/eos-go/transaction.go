@@ -144,7 +144,6 @@ func (s *SignedTransaction) PackedTransactionAndCFD() ([]byte, []byte, error) {
 	return rawtrx, rawcfd, nil
 }
 
-
 func (s *SignedTransaction) Pack(compression CompressionType) (*PackedTransaction, error) {
 	rawtrx, rawcfd, err := s.PackedTransactionAndCFD()
 	if err != nil {
@@ -181,6 +180,7 @@ func (s *SignedTransaction) Pack(compression CompressionType) (*PackedTransactio
 		Compression:           compression,
 		PackedContextFreeData: rawcfd,
 		PackedTransaction:     rawtrx,
+		wasPackedLocally:      true,
 	}
 
 	return packed, nil
@@ -194,12 +194,31 @@ type PackedTransaction struct {
 	Compression           CompressionType `json:"compression"` // in C++, it's an enum, not sure how it Binary-marshals..
 	PackedContextFreeData HexBytes        `json:"packed_context_free_data"`
 	PackedTransaction     HexBytes        `json:"packed_trx"`
+
+	wasPackedLocally bool
 }
 
-func (p *PackedTransaction) ID() Checksum256 {
+// ID returns the hash of a transaction.
+func (p *PackedTransaction) ID() (Checksum256, error) {
 	h := sha256.New()
-	_, _ = h.Write(p.PackedTransaction)
-	return h.Sum(nil)
+
+	if p.wasPackedLocally {
+		_, _ = h.Write(p.PackedTransaction)
+		return h.Sum(nil), nil
+	}
+
+	signed, err := p.UnpackBare()
+	if err != nil {
+		return nil, err
+	}
+
+	repacked, err := signed.Pack(CompressionNone)
+	if err != nil {
+		return nil, err
+	}
+
+	_, _ = h.Write(repacked.PackedTransaction)
+	return h.Sum(nil), nil
 }
 
 // Unpack decodes the bytestream of the transaction, and attempts to

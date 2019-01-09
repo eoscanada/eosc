@@ -143,6 +143,11 @@ func (d *Decoder) Decode(v interface{}) (err error) {
 		n, err = d.ReadInt16()
 		rv.SetInt(int64(n))
 		return
+	case *int32:
+		var n int32
+		n, err = d.ReadInt32()
+		rv.SetInt(int64(n))
+		return
 	case *int64:
 		var n int64
 		n, err = d.ReadInt64()
@@ -813,9 +818,10 @@ func (d *Decoder) ReadActionData(action *Action) (err error) {
 
 	var decodeInto reflect.Type
 	if actionMap != nil {
+
 		objType := actionMap[action.Name]
-		decoderLog.Debug("read object", zap.String("type", objType.Name()))
 		if objType != nil {
+			decoderLog.Debug("read object", zap.String("type", objType.Name()))
 			decodeInto = objType
 		}
 	}

@@ -12,6 +12,7 @@ import (
 )
 
 type P2PMessage interface {
+	fmt.Stringer
 	GetType() P2PMessageType
 }
 
@@ -294,8 +295,14 @@ func (t *TransactionWithID) UnmarshalJSON(data []byte) error {
 		if err := json.Unmarshal(data, &packed); err != nil {
 			return err
 		}
+
+		id, err := packed.ID()
+		if err != nil {
+			return fmt.Errorf("get id: %s", err)
+		}
+
 		*t = TransactionWithID{
-			ID:     packed.ID(),
+			ID:     id,
 			Packed: &packed,
 		}
 
@@ -349,8 +356,13 @@ func (t *TransactionWithID) UnmarshalJSON(data []byte) error {
 			return err
 		}
 
+		id, err := packed.ID()
+		if err != nil {
+			return fmt.Errorf("get id: %s", err)
+		}
+
 		*t = TransactionWithID{
-			ID:     packed.ID(),
+			ID:     id,
 			Packed: &packed,
 		}
 	default:
@@ -437,4 +449,12 @@ type PackedTransactionMessage struct {
 
 func (m *PackedTransactionMessage) GetType() P2PMessageType {
 	return PackedTransactionMessageType
+}
+
+func (m PackedTransactionMessage) String() string {
+	signTrx, err := m.Unpack()
+	if err != nil {
+		return fmt.Sprintf("err trx msg unpack by %s", err.Error())
+	}
+	return signTrx.String()
 }
