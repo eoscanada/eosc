@@ -99,9 +99,9 @@ active:
 			errorCheck("missing argument", fmt.Errorf("--stake-net missing"))
 		}
 
-		cpuStake, err := eos.NewEOSAssetFromString(cpuStakeStr)
+		cpuStake, err := NewAssetDefaultEOS(cpuStakeStr)
 		errorCheck("--stake-cpu invalid", err)
-		netStake, err := eos.NewEOSAssetFromString(netStakeStr)
+		netStake, err := NewAssetDefaultEOS(netStakeStr)
 		errorCheck("--stake-net invalid", err)
 
 		doTransfer := viper.GetBool("system-newaccount-cmd-transfer")
@@ -113,7 +113,7 @@ active:
 
 		buyRAM := viper.GetString("system-newaccount-cmd-buy-ram")
 		if buyRAM != "" {
-			buyRAMAmount, err := eos.NewEOSAssetFromString(buyRAM)
+			buyRAMAmount, err := NewAssetDefaultEOS(buyRAM)
 			errorCheck("--buy-ram invalid", err)
 
 			actions = append(actions, system.NewBuyRAM(creator, newAccount, uint64(buyRAMAmount.Amount)))

@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -22,9 +21,9 @@ See also: the "system delegatebw" command.
 	Run: func(cmd *cobra.Command, args []string) {
 		from := toAccount(args[0], "from")
 		receiver := toAccount(args[1], "receiver")
-		netStake, err := eos.NewEOSAssetFromString(args[2])
+		netStake, err := NewAssetDefaultEOS(args[2])
 		errorCheck(`"network bw unstake qty" invalid`, err)
-		cpuStake, err := eos.NewEOSAssetFromString(args[3])
+		cpuStake, err := NewAssetDefaultEOS(args[3])
 		errorCheck(`"cpu bw unstake qty" invalid`, err)
 
 		api := getAPI()

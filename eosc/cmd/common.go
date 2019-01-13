@@ -340,3 +340,10 @@ func isStubABI(abi eos.ABI) bool {
 		abi.Structs == nil && abi.Tables == nil &&
 		abi.Types == nil
 }
+
+func NewAssetDefaultEOS(input string) (eos.Asset, error) {
+	if len(strings.Split(input, " ")) == 1 {
+		return eos.NewEOSAssetFromString(input)
+	}
+	return eos.NewAsset(input)
+}

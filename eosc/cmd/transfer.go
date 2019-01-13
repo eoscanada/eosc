@@ -3,7 +3,6 @@
 package cmd
 
 import (
-	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/token"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -18,13 +17,7 @@ var transferCmd = &cobra.Command{
 
 		from := toAccount(args[0], "from")
 		to := toAccount(args[1], "to")
-		var quantity eos.Asset
-		var err error
-		if contract == "eosio.token" {
-			quantity, err = eos.NewEOSAssetFromString(args[2])
-		} else {
-			quantity, err = eos.NewAsset(args[2])
-		}
+		quantity, err := NewAssetDefaultEOS(args[2])
 		errorCheck("invalid amount", err)
 		memo := viper.GetString("transfer-cmd-memo")
 

@@ -28,7 +28,7 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 		soldAccount := toAccount(args[0], "sold account")
 		buyerAccount := toAccount(args[1], "buyer account")
 		beneficiaryAccount := toAccount(args[2], "beneficiary account")
-		saleAmount, err := eos.NewEOSAssetFromString(args[3])
+		saleAmount, err := NewAssetDefaultEOS(args[3])
 		errorCheck(`sale "amount" invalid`, err)
 		proposalName := viper.GetString("tools-sell-account-cmd-proposal-name")
 		memo := viper.GetString("tools-sell-account-cmd-memo")

@@ -3,7 +3,6 @@
 package cmd
 
 import (
-	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -46,9 +45,9 @@ Alternatively, you can use the simplified:
 	Run: func(cmd *cobra.Command, args []string) {
 		from := toAccount(args[0], "from")
 		receiver := toAccount(args[1], "receiver")
-		netStake, err := eos.NewEOSAssetFromString(args[2])
+		netStake, err := NewAssetDefaultEOS(args[2])
 		errorCheck(`"network bw stake qty" invalid`, err)
-		cpuStake, err := eos.NewEOSAssetFromString(args[3])
+		cpuStake, err := NewAssetDefaultEOS(args[3])
 		errorCheck(`"cpu bw stake qty" invalid`, err)
 		transfer := viper.GetBool("system-delegatebw-cmd-transfer")
 
