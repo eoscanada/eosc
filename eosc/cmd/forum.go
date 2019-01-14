@@ -16,7 +16,7 @@ var forumCmd = &cobra.Command{
 func init() {
 	RootCmd.AddCommand(forumCmd)
 
-	forumCmd.PersistentFlags().String("target-contract", "eosforumrcpp", "Target account hosting the eosio.forum code")
+	forumCmd.PersistentFlags().String("target-contract", "eosio.forum", "Target account hosting the eosio.forum code")
 
 	for _, flag := range []string{"target-contract"} {
 		if err := viper.BindPFlag("forum-cmd-"+flag, forumCmd.PersistentFlags().Lookup(flag)); err != nil {

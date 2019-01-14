@@ -12,6 +12,8 @@ github.com/eoscanada/eos-go v0.0.0-20181123211430-2952bee48c0d h1:pcPxTsnKValczW
 github.com/eoscanada/eos-go v0.0.0-20181123211430-2952bee48c0d/go.mod h1:RKrm2XzZEZWxSMTRqH5QOyJ1fb/qKEjs2ix1aQl0sk4=
 github.com/eoscanada/eos-go v0.8.1 h1:SNTvTq2np7u/vW+OIJsJrJwL2GiACUmK6RH0izaNw8A=
 github.com/eoscanada/eos-go v0.8.1/go.mod h1:RKrm2XzZEZWxSMTRqH5QOyJ1fb/qKEjs2ix1aQl0sk4=
+github.com/eoscanada/eos-go v0.8.2 h1:pJ+nXzmit5u6A6uMgTxjGu1YEN4TV5YWgiZij0qhW0A=
+github.com/eoscanada/eos-go v0.8.2/go.mod h1:RKrm2XzZEZWxSMTRqH5QOyJ1fb/qKEjs2ix1aQl0sk4=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/golang/protobuf v0.0.0-20180710193413-0cb4f7325693/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
