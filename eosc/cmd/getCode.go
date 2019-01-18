@@ -62,11 +62,4 @@ func init() {
 
 	getCodeCmd.Flags().StringP("output-wasm", "", "", "Output WASM code to a file")
 	getCodeCmd.Flags().StringP("output-raw-abi", "", "", "Output raw ABI to a file - If you need the JSON ABI, use `eosc get abi`")
-
-	for _, flag := range []string{"output-wasm", "output-raw-abi"} {
-		if err := viper.BindPFlag("get-code-cmd-"+flag, getCodeCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
-
 }

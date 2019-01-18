@@ -36,10 +36,4 @@ func init() {
 
 	getBalanceCmd.Flags().StringP("contract", "", "eosio.token", "Account managing the token")
 	getBalanceCmd.Flags().StringP("symbol", "", "", "Only query this symbol. Try EOS")
-
-	for _, flag := range []string{"contract", "symbol"} {
-		if err := viper.BindPFlag("get-balance-cmd-"+flag, getBalanceCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

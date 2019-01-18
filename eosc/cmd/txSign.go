@@ -50,10 +50,4 @@ func init() {
 	txCmd.AddCommand(txSignCmd)
 
 	// txSignCmd.Flags().StringP("hash", "", "", "Hash of the proposition, as defined by the proposition itself")
-
-	// for _, flag := range []string{"hash"} {
-	// 	if err := viper.BindPFlag("tx-sign-cmd-"+flag, txSignCmd.Flags().Lookup(flag)); err != nil {
-	// 		panic(err)
-	// 	}
-	// }
 }

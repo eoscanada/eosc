@@ -49,10 +49,4 @@ func init() {
 	forumCmd.AddCommand(forumVoteCmd)
 
 	forumVoteCmd.Flags().String("json", "", "Optional JSON attached to the vote.")
-
-	for _, flag := range []string{"json"} {
-		if err := viper.BindPFlag("forum-vote-cmd-"+flag, forumVoteCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

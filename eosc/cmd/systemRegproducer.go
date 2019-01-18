@@ -31,11 +31,4 @@ func init() {
 	systemCmd.AddCommand(systemRegisterProducerCmd)
 
 	systemRegisterProducerCmd.Flags().IntP("location", "", 0, "Location number (reserved)")
-
-	for _, flag := range []string{"location"} {
-		if err := viper.BindPFlag("system-regproducer-cmd-"+flag, systemRegisterProducerCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
-
 }

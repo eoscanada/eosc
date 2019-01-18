@@ -31,10 +31,4 @@ func init() {
 	getCmd.AddCommand(getBlockCmd)
 
 	// getBlockCmd.Flags().BoolP("json", "", false, "return producers info in json")
-
-	// for _, flag := range []string{"json"} {
-	// 	if err := viper.BindPFlag("get-block-cmd-"+flag, getBlockCmd.Flags().Lookup(flag)); err != nil {
-	// 		panic(err)
-	// 	}
-	// }
 }

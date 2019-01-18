@@ -41,12 +41,6 @@ func init() {
 	toolsChainFreezeCmd.Flags().IntP("on-block-modulo", "", 0, "Execute --exec-cmd each time 'block_num % module' is zero.")
 	toolsChainFreezeCmd.Flags().StringP("on-actions", "", "", "Execute each time the given actions are present in a block. Format: contract1:action1,contract2:action2,...")
 	toolsChainFreezeCmd.Flags().StringP("exec-cmd", "", "", "Command to execute on matching blocks")
-
-	for _, flag := range []string{"peer1-p2p-address", "peer2-p2p-address", "exec-cmd", "on-block-modulo", "on-actions", "chain-id"} {
-		if err := viper.BindPFlag("tools-chain-freeze-cmd-"+flag, toolsChainFreezeCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }
 
 var chainFreezeHandler = p2p.HandlerFunc(func(envelope *p2p.Envelope) {

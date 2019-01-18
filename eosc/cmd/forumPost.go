@@ -60,11 +60,4 @@ func init() {
 	forumPostCmd.Flags().String("metadata", "", "Additional metadata. Must be JSON-encoded. If present, takes precedences over --type")
 	forumPostCmd.Flags().String("reply-to", "", "Account name to reply to")
 	forumPostCmd.Flags().String("reply-to-uuid", "", "UUID from a previous post from the --repy-to account.")
-
-	for _, flag := range []string{"certify", "type", "metadata", "reply-to", "reply-to-uuid"} {
-		if err := viper.BindPFlag("forum-post-cmd-"+flag, forumPostCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
-
 }

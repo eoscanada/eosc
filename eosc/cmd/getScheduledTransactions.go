@@ -36,10 +36,4 @@ func init() {
 
 	getScheduledTransactionsCmd.Flags().String("lower_bound", "", "The lower bound of the range. Can be a trx_id OR timestamp (as YYYY-MM-DDTHH:MM:SS).")
 	getScheduledTransactionsCmd.Flags().Uint32("limit", 100, "The maximum number of deferred transactions to extract at once.")
-
-	for _, flag := range []string{"lower_bound", "limit"} {
-		if err := viper.BindPFlag("get-scheduled-transactions-cmd-"+flag, getScheduledTransactionsCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

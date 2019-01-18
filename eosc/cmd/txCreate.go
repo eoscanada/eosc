@@ -72,16 +72,5 @@ func generateRandomNonce() []byte {
 func init() {
 	txCmd.AddCommand(txCreateCmd)
 
-	txCreateCmd.Flags().BoolP(
-		"force-unique",
-		"f",
-		false,
-		"force the transaction to be unique. this will consume extra bandwidth and remove any protections against accidently issuing the same transaction multiple times",
-	)
-
-	for _, flag := range []string{"force-unique"} {
-		if err := viper.BindPFlag("tx-create-cmd-"+flag, txCreateCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
+	txCreateCmd.Flags().BoolP("force-unique", "f", false, "force the transaction to be unique. this will consume extra bandwidth and remove any protections against accidently issuing the same transaction multiple times")
 }

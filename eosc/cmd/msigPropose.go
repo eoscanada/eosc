@@ -241,11 +241,4 @@ func init() {
 	msigProposeCmd.Flags().Bool("request-producers", false, "Request permissions from top 30 producers (not just 21 because of potential rotation during long periods of time)")
 	msigProposeCmd.Flags().Bool("with-subaccounts", false, "Recursively fetch subaccounts for signature (simplifies your life with multisig accounts)")
 	msigProposeCmd.Flags().Bool("with-owner", false, "Also include owner permissions when doing recursion. Requires --with-subaccounts")
-
-	for _, flag := range []string{"request", "request-producers", "with-subaccounts", "with-owner"} {
-		if err := viper.BindPFlag("multisig-propose-cmd-"+flag, msigProposeCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
-
 }

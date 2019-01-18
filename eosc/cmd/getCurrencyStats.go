@@ -42,10 +42,4 @@ var getCurrencyStatsCmd = &cobra.Command{
 func init() {
 	getCmd.AddCommand(getCurrencyStatsCmd)
 	getCurrencyStatsCmd.Flags().BoolP("json", "", false, "pass if you wish to see currency information printed as json")
-
-	for _, flag := range []string{"json"} {
-		if err := viper.BindPFlag("get-currency-stats-cmd-"+flag, getCurrencyStatsCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

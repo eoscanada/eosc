@@ -68,11 +68,4 @@ func init() {
 	msigCmd.AddCommand(msigReviewCmd)
 
 	msigReviewCmd.Flags().BoolP("dump", "", true, "Do verbose analysis, and dump more contents of transactions and actions.")
-
-	for _, flag := range []string{"dump"} {
-		if err := viper.BindPFlag("multisig-review-cmd-"+flag, msigReviewCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
-
 }

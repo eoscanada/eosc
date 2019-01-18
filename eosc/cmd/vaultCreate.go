@@ -120,10 +120,4 @@ func init() {
 	vaultCreateCmd.Flags().BoolP("import", "i", false, "Whether to import keys instead of creating them. This takes precedence over --keys, and private keys will be inputted on the command line.")
 	vaultCreateCmd.Flags().StringP("comment", "c", "", "Comment field in the vault's json file.")
 	vaultCreateCmd.Flags().StringP("vault-type", "t", "passphrase", "Vault type. One of: passphrase, kms-gcp")
-
-	for _, flag := range []string{"keys", "comment", "vault-type", "import"} {
-		if err := viper.BindPFlag("vault-create-cmd-"+flag, vaultCreateCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

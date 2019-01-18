@@ -60,10 +60,4 @@ func init() {
 
 	voteListProducersCmd.Flags().BoolP("sort", "s", false, "sort producers")
 	voteListProducersCmd.Flags().BoolP("json", "j", false, "return producers info in json")
-
-	for _, flag := range []string{"json", "sort"} {
-		if err := viper.BindPFlag("vote-list-cmd-"+flag, voteListProducersCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

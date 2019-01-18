@@ -51,11 +51,4 @@ func init() {
 	getTableCmd.Flags().String("encode-type", "", "The encoding type of key-type (i64 , i128 , float64, float128) only support decimal encoding e.g. 'dec.  i256 - supports both 'dec' and 'hex', ripemd160 and sha256 is 'hex' only.")
 	getTableCmd.Flags().Int("limit", 100, "Maximum number of rows to return.")
 	getTableCmd.Flags().Bool("output-binary", false, "Outputs the row-level data as hex-encoded binary instead of deserializing using the ABI")
-
-	for _, flag := range []string{"lower-bound", "upper-bound", "key-type", "index", "encode-type", "limit", "output-binary"} {
-		if err := viper.BindPFlag("get-table-cmd-"+flag, getTableCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
-
 }

@@ -39,12 +39,4 @@ var txPushCmd = &cobra.Command{
 
 func init() {
 	txCmd.AddCommand(txPushCmd)
-
-	// txPushCmd.Flags().StringP("hash", "", "", "Hash of the proposition, as defined by the proposition itself")
-
-	// for _, flag := range []string{"hash"} {
-	// 	if err := viper.BindPFlag("tx-push-cmd-"+flag, txPushCmd.Flags().Lookup(flag)); err != nil {
-	// 		panic(err)
-	// 	}
-	// }
 }

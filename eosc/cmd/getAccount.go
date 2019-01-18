@@ -67,10 +67,4 @@ func printAccount(account *eos.AccountResp) {
 func init() {
 	getCmd.AddCommand(getAccountCmd)
 	getAccountCmd.Flags().BoolP("json", "", false, "pass if you wish to see account printed as json")
-
-	for _, flag := range []string{"json"} {
-		if err := viper.BindPFlag("get-account-cmd-"+flag, getAccountCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

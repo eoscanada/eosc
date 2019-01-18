@@ -14,12 +14,4 @@ var txCmd = &cobra.Command{
 
 func init() {
 	RootCmd.AddCommand(txCmd)
-
-	//txCmd.PersistentFlags().StringP("target-contract", "", "eostxdapp", "Target account hosting the eosio.tx code")
-
-	// for _, flag := range []string{"target-contract"} {
-	// 	if err := viper.BindPFlag("tx-cmd-"+flag, txCmd.PersistentFlags().Lookup(flag)); err != nil {
-	// 		panic(err)
-	// 	}
-	// }
 }

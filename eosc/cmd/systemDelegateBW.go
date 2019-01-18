@@ -61,10 +61,4 @@ func init() {
 	systemCmd.AddCommand(systemDelegateBWCmd)
 
 	systemDelegateBWCmd.Flags().BoolP("transfer", "", false, "Transfer voting power and right to unstake EOS to receiver")
-
-	for _, flag := range []string{"transfer"} {
-		if err := viper.BindPFlag("system-delegatebw-cmd-"+flag, systemDelegateBWCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

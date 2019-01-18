@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 )
 
@@ -55,12 +56,6 @@ func init() {
 	RootCmd.PersistentFlags().IntP("expiration", "", 30, "Set time before transaction expires, in seconds. Defaults to 30 seconds.")
 	RootCmd.PersistentFlags().IntP("delay-sec", "", 0, "Set time to wait before transaction is executed, in seconds. Defaults to 0 second.")
 	RootCmd.PersistentFlags().BoolP("sudo-wrap", "", false, "Wrap the transaction in a eosio.sudo exec. Useful to BPs, with --write-transaction and --skip-sign to then submit as a multisig proposition.")
-
-	for _, flag := range []string{"debug", "vault-file", "api-url", "kms-gcp-keypath", "wallet-url", "permission", "http-header", "expiration", "delay-sec", "write-transaction", "skip-sign", "offline-head-block", "offline-chain-id", "offline-sign-key", "sudo-wrap"} {
-		if err := viper.BindPFlag("global-"+flag, RootCmd.PersistentFlags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }
 
 func initConfig() {
@@ -68,4 +63,27 @@ func initConfig() {
 	viper.AutomaticEnv()
 	replacer := strings.NewReplacer("-", "_")
 	viper.SetEnvKeyReplacer(replacer)
+
+	recurseViperCommands(RootCmd, nil)
+}
+
+func recurseViperCommands(root *cobra.Command, segments []string) {
+	// Stolen from: github.com/abourget/viperbind
+	var segmentPrefix string
+	if len(segments) > 0 {
+		segmentPrefix = strings.Join(segments, "-") + "-"
+	}
+
+	root.PersistentFlags().VisitAll(func(f *pflag.Flag) {
+		newVar := segmentPrefix + "global-" + f.Name
+		viper.BindPFlag(newVar, f)
+	})
+	root.Flags().VisitAll(func(f *pflag.Flag) {
+		newVar := segmentPrefix + "cmd-" + f.Name
+		viper.BindPFlag(newVar, f)
+	})
+
+	for _, cmd := range root.Commands() {
+		recurseViperCommands(cmd, append(segments, cmd.Name()))
+	}
 }

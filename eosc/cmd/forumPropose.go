@@ -61,10 +61,4 @@ func init() {
 	forumProposeCmd.Flags().String("content", "", "Markdown 'content' to be injected in the JSON (whether you propose a --json or not).")
 	forumProposeCmd.Flags().String("json", "", "Proposal JSON body.")
 	forumProposeCmd.Flags().String("type", "bps-proposal-v1", "The JSON schema of the proposal, set as a `type` in the JSON payload.")
-
-	for _, flag := range []string{"content", "json", "type"} {
-		if err := viper.BindPFlag("forum-propose-cmd-"+flag, forumProposeCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

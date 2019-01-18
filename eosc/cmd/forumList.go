@@ -96,9 +96,4 @@ func init() {
 
 	forumListCmd.Flags().String("from-proposer", "", "Filter proposals only from proposer.")
 	forumListCmd.Flags().Bool("json", false, "Output list as JSON")
-	for _, flag := range []string{"from-proposer", "json"} {
-		if err := viper.BindPFlag("forum-list-cmd-"+flag, forumListCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }

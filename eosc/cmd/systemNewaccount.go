@@ -143,11 +143,4 @@ func init() {
 	systemNewAccountCmd.Flags().StringP("buy-ram", "", "", "The amount of EOS to spend to buy RAM for the new account (at current EOS/RAM market price)")
 	systemNewAccountCmd.Flags().BoolP("transfer", "", false, "Transfer voting power and right to unstake EOS to receiver")
 	systemNewAccountCmd.Flags().BoolP("setpriv", "", false, "Make this account a privileged account (reserved to the 'eosio' system account)")
-
-	for _, flag := range []string{"stake-cpu", "stake-net", "buy-ram-kbytes", "buy-ram", "transfer", "auth-file", "auth-key", "setpriv"} {
-		if err := viper.BindPFlag("system-newaccount-cmd-"+flag, systemNewAccountCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
-
 }

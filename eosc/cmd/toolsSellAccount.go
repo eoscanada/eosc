@@ -101,12 +101,6 @@ func init() {
 	toolsSellAccountCmd.Flags().StringP("buyer-permission", "", "", "Permission required of the buyer (to authorized 'eosio.token::transfer')")
 	toolsSellAccountCmd.Flags().StringP("seller-permission", "", "", "Permission required of the seller (you, to authorize 'eosio::updateauth')")
 	toolsSellAccountCmd.Flags().DurationP("sale-expiration", "", 1*time.Hour, "Expire proposed transaction after this amount of time (30m, 1h, etc..)")
-
-	for _, flag := range []string{"memo", "seller-permission", "buyer-permission", "proposal-name", "sale-expiration"} {
-		if err := viper.BindPFlag("tools-sell-account-cmd-"+flag, toolsSellAccountCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }
 
 func sellAccountFindAuthority(data *eos.AccountResp, targetPerm string) (eos.Authority, error) {

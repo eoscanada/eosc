@@ -40,12 +40,6 @@ func init() {
 
 	vaultServeCmd.Flags().IntP("port", "", 6666, "Listen port")
 	vaultServeCmd.Flags().BoolP("auto-accept", "", false, "Whether to auto accept all signature requests, or to ask for a security code on the command line.")
-
-	for _, flag := range []string{"port", "auto-accept"} {
-		if err := viper.BindPFlag("vault-serve-cmd-"+flag, vaultServeCmd.Flags().Lookup(flag)); err != nil {
-			panic(err)
-		}
-	}
 }
 
 func listen(v *eosvault.Vault) {
