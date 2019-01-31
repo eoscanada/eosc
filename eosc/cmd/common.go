@@ -77,6 +77,9 @@ func getAPI() *eos.API {
 		}
 		api.Header.Add(headerArray[0], headerArray[1])
 	}
+
+	api.Debug = viper.GetBool("global-debug")
+
 	return api
 }
 
@@ -114,8 +117,6 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 }
 
 func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eos.Action, actions []*eos.Action) {
-	api.Debug = viper.GetBool("global-debug")
-
 	for _, act := range contextFreeActions {
 		act.Authorization = nil
 	}
