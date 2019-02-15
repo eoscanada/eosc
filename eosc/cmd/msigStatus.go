@@ -57,6 +57,10 @@ var msigStatusCmd = &cobra.Command{
 					fmt.Println("")
 					fmt.Println("    eosc multisig approve", proposer, proposalName, "[your_account]")
 					fmt.Println("")
+					fmt.Println("Execute with:")
+					fmt.Println("")
+					fmt.Println("    eosc multisig exec", proposer, proposalName, "[your_account]")
+					fmt.Println("")
 				}
 			}
 		}
