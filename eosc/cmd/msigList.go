@@ -5,6 +5,7 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	eos "github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
@@ -29,31 +30,47 @@ var msigListCmd = &cobra.Command{
 		)
 		errorCheck("get table row", err)
 
-		var approvalsInfo []struct {
-			ProposalName       eos.Name              `json:"proposal_name"`
-			RequestedApprovals []eos.PermissionLevel `json:"requested_approvals"`
-			ProvidedApprovals  []eos.PermissionLevel `json:"provided_approvals"`
-		}
-		err = response.JSONToStructs(&approvalsInfo)
+		var approvals []approvalRow
+		err = response.JSONToStructs(&approvals)
 		errorCheck("reading approvals_info list", err)
 
 		if printJSON, _ := cmd.Flags().GetBool("json"); printJSON == true {
-			data, err := json.MarshalIndent(approvalsInfo, "", "  ")
+			data, err := json.MarshalIndent(approvals, "", "  ")
 			errorCheck("json marshal", err)
 			fmt.Println(string(data))
 			return
 		}
 
-		for _, info := range approvalsInfo {
-			fmt.Println("Proposal name:", info.ProposalName)
-			fmt.Println("Requested approvals:", info.RequestedApprovals)
-			fmt.Println("Provided approvals:", info.ProvidedApprovals)
+		for _, info := range approvals {
+			info.Show()
 			fmt.Println()
 		}
-		if len(approvalsInfo) == 0 {
+		if len(approvals) == 0 {
 			errorCheck("No multisig proposal found", fmt.Errorf("not found"))
 		}
 	},
+}
+
+type approvalRow struct {
+	ProposalName       eos.Name              `json:"proposal_name"`
+	RequestedApprovals []eos.PermissionLevel `json:"requested_approvals"`
+	ProvidedApprovals  []eos.PermissionLevel `json:"provided_approvals"`
+}
+
+func (a approvalRow) Show() {
+	fmt.Println("Proposal name:", a.ProposalName)
+	fmt.Println("Requested approvals:")
+	fmt.Print(formatAuths(a.RequestedApprovals))
+	fmt.Println("Provided approvals:")
+	fmt.Print(formatAuths(a.ProvidedApprovals))
+}
+
+func formatAuths(perms []eos.PermissionLevel) string {
+	var out []string
+	for _, perm := range perms {
+		out = append(out, fmt.Sprintf("- %s@%s\n", perm.Actor, perm.Permission))
+	}
+	return strings.Join(out, "")
 }
 
 func init() {

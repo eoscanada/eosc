@@ -32,16 +32,12 @@ var msigStatusCmd = &cobra.Command{
 		)
 		errorCheck("get table row", err)
 
-		var approvalsInfo []struct {
-			ProposalName       eos.Name              `json:"proposal_name"`
-			RequestedApprovals []eos.PermissionLevel `json:"requested_approvals"`
-			ProvidedApprovals  []eos.PermissionLevel `json:"provided_approvals"`
-		}
-		err = response.JSONToStructs(&approvalsInfo)
+		var approvals []approvalRow
+		err = response.JSONToStructs(&approvals)
 		errorCheck("reading approvals_info", err)
 
 		var found bool
-		for _, info := range approvalsInfo {
+		for _, info := range approvals {
 			if info.ProposalName == proposalName {
 				found = true
 
@@ -51,10 +47,16 @@ var msigStatusCmd = &cobra.Command{
 					fmt.Println(string(data))
 				} else {
 					fmt.Println("Proposer:", proposer)
-					fmt.Println("Proposal name:", proposalName)
-					fmt.Println("Requested approvals:", info.RequestedApprovals)
-					fmt.Println("Provided approvals:", info.ProvidedApprovals)
-					fmt.Println()
+					info.Show()
+					fmt.Println("")
+					fmt.Println("Review with:")
+					fmt.Println("")
+					fmt.Println("    eosc multisig review", proposer, proposalName)
+					fmt.Println("")
+					fmt.Println("Approve with:")
+					fmt.Println("")
+					fmt.Println("    eosc multisig approve", proposer, proposalName, "[your_account]")
+					fmt.Println("")
 				}
 			}
 		}
