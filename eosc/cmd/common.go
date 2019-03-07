@@ -254,7 +254,10 @@ func transactionURL(chainID eos.SHA256Bytes, trxID string) string {
 		return fmt.Sprintf("https://eosq.app/tx/%s", trxID)
 	case "5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191":
 		return fmt.Sprintf("https://kylin.eosq.app/tx/%s", trxID)
+	case "e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473":
+		return fmt.Sprintf("https://jungle.eosq.app/tx/%s", trxID)
 	}
+
 	return trxID
 }
 
@@ -265,7 +268,10 @@ func blockURL(chainID eos.SHA256Bytes, blockID string) string {
 		return fmt.Sprintf("https://eosq.app/block/%s", blockID)
 	case "5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191":
 		return fmt.Sprintf("https://kylin.eosq.app/block/%s", blockID)
+	case "e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473":
+		return fmt.Sprintf("https://jungle.eosq.app/block/%s", blockID)
 	}
+
 	return blockID
 }
 
