@@ -162,7 +162,7 @@ func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eo
 
 	tx = optionallySudoWrap(tx, opts)
 
-	signedTx, packedTx := optionallySignTransaction(tx, opts.ChainID, api)
+	signedTx, packedTx := optionallySignTransaction(tx, opts.ChainID, api, true)
 
 	optionallyPushTransaction(signedTx, packedTx, opts.ChainID, api)
 }
@@ -174,7 +174,7 @@ func optionallySudoWrap(tx *eos.Transaction, opts *eos.TxOptions) *eos.Transacti
 	return tx
 }
 
-func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api *eos.API) (signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction) {
+func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api *eos.API, resetExpiration bool) (signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction) {
 	if !viper.GetBool("global-skip-sign") {
 		textSignKeys := viper.GetStringSlice("global-offline-sign-key")
 		if len(textSignKeys) > 0 {
@@ -192,7 +192,9 @@ func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api
 
 		attachWallet(api)
 
-		tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
+		if resetExpiration {
+			tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
+		}
 
 		var err error
 		signedTx, packedTx, err = api.SignTransaction(tx, chainID, eos.CompressionNone)

@@ -40,7 +40,7 @@ var txSignCmd = &cobra.Command{
 			chainID = resp.ChainID
 		}
 
-		signedTx, packedTx := optionallySignTransaction(tx, chainID, api)
+		signedTx, packedTx := optionallySignTransaction(tx, chainID, api, false)
 
 		optionallyPushTransaction(signedTx, packedTx, chainID, api)
 	},
