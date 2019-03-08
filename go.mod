@@ -4,7 +4,7 @@ require (
 	cloud.google.com/go v0.0.0-20180703203520-c23afc06f115
 	github.com/bronze1man/go-yaml2json v0.0.0-20150129175009-f6f64b738964
 	github.com/davecgh/go-spew v1.1.1
-	github.com/eoscanada/eos-go v0.8.2
+	github.com/eoscanada/eos-go v0.8.7
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/golang/protobuf v0.0.0-20180710193413-0cb4f7325693
 	github.com/hashicorp/hcl v1.0.0
@@ -27,7 +27,7 @@ require (
 	go.uber.org/atomic v1.3.2 // indirect
 	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.9.1 // indirect
-	golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9
+	golang.org/x/crypto v0.0.0-20190131182504-b8fe1690c613
 	golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e
 	golang.org/x/oauth2 v0.0.0-20181203162652-d668ce993890
 	golang.org/x/sys v0.0.0-20190108104531-7fbe1cd0fcc2
@@ -36,3 +36,5 @@ require (
 	google.golang.org/appengine v0.0.0-20150527042145-b667a5000b08
 	gopkg.in/yaml.v2 v2.2.2
 )
+
+replace github.com/eoscanada/eos-go => /Users/maoueh/work/src/github.com/eoscanada/eos-go
