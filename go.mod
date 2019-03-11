@@ -36,4 +36,3 @@ require (
 	google.golang.org/appengine v0.0.0-20150527042145-b667a5000b08
 	gopkg.in/yaml.v2 v2.2.2
 )
-
