@@ -24,7 +24,8 @@ to that code::action, you will need to authorize it with the
 associated permission.
 
 This is a way to delegate authority on your account in a granular way,
-down to the action level.
+down to the action level. You can use "*" as 'permission name' to link
+all actions of a given contract.
 
 EXAMPLE:
 
@@ -44,7 +45,10 @@ parent, still can sign transfers).
 		account := toAccount(args[0], "your account")
 		code := toAccount(args[1], "code account")
 		actionName := eos.ActionName(toName(args[2], "action name"))
-		permission := eos.PermissionName(toName(args[3], "permission name"))
+		var permission eos.PermissionName
+		if args[3] != "" && args[3] != "*" {
+			permission = eos.PermissionName(toName(args[3], "permission name"))
+		}
 
 		api := getAPI()
 
