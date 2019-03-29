@@ -37,7 +37,7 @@ This command auto-detects encoding and converts it to different encodings.
 			}
 		}
 
-		fromName, err := eos.StringToName(input)
+		fromName, err := eos.ExtendedStringToName(input)
 		if err == nil {
 			showFrom["name"] = fromName
 		}
