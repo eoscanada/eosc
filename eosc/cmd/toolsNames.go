@@ -40,7 +40,7 @@ This command auto-detects encoding and converts it to different encodings.
 
 		fromSymbol, err := eos.StringToSymbol(input)
 		if err == nil {
-			symbolUint, err := fromSymbol.ToName()
+			symbolUint, err := fromSymbol.ToUint64()
 			if err == nil {
 				showFrom["symbol"] = symbolUint
 			}
