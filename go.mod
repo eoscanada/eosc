@@ -4,7 +4,7 @@ require (
 	cloud.google.com/go v0.0.0-20180703203520-c23afc06f115
 	github.com/bronze1man/go-yaml2json v0.0.0-20150129175009-f6f64b738964
 	github.com/davecgh/go-spew v1.1.1
-	github.com/eoscanada/eos-go v0.8.11-0.20190403040359-f5b94e19bf31
+	github.com/eoscanada/eos-go v0.8.11
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/golang/protobuf v0.0.0-20180710193413-0cb4f7325693
 	github.com/hashicorp/hcl v1.0.0
