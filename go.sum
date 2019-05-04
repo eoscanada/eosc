@@ -14,6 +14,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/eoscanada/eos-go v0.8.13-0.20190502182317-d0d9ccf37033 h1:3NQjZvxcKPOwvnXW7QU1GXq8HleDneXrr/t33uKR6l8=
 github.com/eoscanada/eos-go v0.8.13-0.20190502182317-d0d9ccf37033/go.mod h1:RKrm2XzZEZWxSMTRqH5QOyJ1fb/qKEjs2ix1aQl0sk4=
+github.com/eoscanada/eos-go v0.8.13-0.20190504030125-b6639b1e2fec h1:x+JQv8qhdPG1p3MEEKbehydofyBYL41t32KUUG+ltss=
+github.com/eoscanada/eos-go v0.8.13-0.20190504030125-b6639b1e2fec/go.mod h1:RKrm2XzZEZWxSMTRqH5QOyJ1fb/qKEjs2ix1aQl0sk4=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/golang/protobuf v0.0.0-20180710193413-0cb4f7325693 h1:K6difC/2vCdJuMqKaj4tiNBQi7OAPC1S+547YeRqpAo=
