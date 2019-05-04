@@ -10,6 +10,7 @@ import (
 var rexDefundNet = &cobra.Command{
 	Use:   "defund-net [account] [loan number] [quantity]",
 	Short: "Remove EOS tokens set for renewal of a Network loan.",
+	Long:  "Remove EOS tokens set for renewal of a Network loan.",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")

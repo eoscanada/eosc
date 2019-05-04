@@ -9,7 +9,8 @@ import (
 
 var rexExec = &cobra.Command{
 	Use:   "exec [account] [max count]",
-	Short: "Perform maintenance on the REX contract (process expired loans or pending sell orders). [max count] needs to be low enough to allow the transaction to be executed within a block.",
+	Short: "Perform maintenance on the REX contract.",
+	Long:  "Perform maintenance on the REX contract (process expired loans or pending sell orders). [max count] needs to be low enough to allow the transaction to be executed within a block.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")

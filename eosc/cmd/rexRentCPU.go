@@ -9,7 +9,8 @@ import (
 
 var rexRentCPU = &cobra.Command{
 	Use:   "rent-cpu [payer] [receiver] [quantity] [loan fund]",
-	Short: "Rent CPU for the account [receiver]. If you don't want to set up an automatic renewal upon expiry, enter 0 for [loan fund]. Otherwise you can set up an amount now, or use `eosc rex fund-cpu` to provide tokens to renew the loan.",
+	Short: "Rent CPU for the account [receiver].",
+	Long:  "Rent CPU for the account [receiver]. If you don't want to set up an automatic renewal upon expiry, enter 0 for [loan fund]. Otherwise you can set up an amount now, or use `eosc rex fund-cpu` to provide tokens to renew the loan.",
 	Args:  cobra.ExactArgs(4),
 	Run: func(cmd *cobra.Command, args []string) {
 		payer := toAccount(args[0], "payer")

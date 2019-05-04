@@ -9,7 +9,8 @@ import (
 
 var rexDeposit = &cobra.Command{
 	Use:   "deposit [account] [quantity]",
-	Short: "Deposit EOS tokens into your REX fund, to be used to purchase REX tokens.",
+	Short: "Deposit EOS tokens into your REX fund.",
+	Long:  "Deposit EOS tokens into your REX fund, to be used to purchase REX tokens.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")

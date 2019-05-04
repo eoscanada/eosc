@@ -9,7 +9,8 @@ import (
 
 var rexClose = &cobra.Command{
 	Use:   "close [account]",
-	Short: "Free RAM from an account by removing its entry in the REX table. This action will fail if the account has any pending loans, refunds, or REX tokens.",
+	Short: "Removes all REX related entries from table.",
+	Long:  "Free RAM from an account by removing its entry in the REX table. This action will fail if the account has any pending loans, refunds, or REX tokens.",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")

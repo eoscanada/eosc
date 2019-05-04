@@ -9,7 +9,8 @@ import (
 
 var rexCancel = &cobra.Command{
 	Use:   "cancel [account]",
-	Short: "Cancels any unfilled sell orders for REX tokens.",
+	Short: "Cancels any unfilled sell orders.",
+	Long:  "Cancels any unfilled sell orders for REX tokens.",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")

@@ -9,7 +9,8 @@ import (
 
 var rexFundNet = &cobra.Command{
 	Use:   "fund-net [account] [loan number] [quantity]",
-	Short: "Set an amount of EOS tokens from your REX fund to be used to renew a Network loan upon expiry.",
+	Short: "Set EOS tokens to renew a Network loan upon expiry.",
+	Long:  "Set an amount of EOS tokens from your REX fund to be used to renew a Network loan upon expiry.",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")

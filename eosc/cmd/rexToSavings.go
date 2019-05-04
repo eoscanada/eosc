@@ -9,7 +9,8 @@ import (
 
 var rexToSavings = &cobra.Command{
 	Use:   "to-savings [account] [quantity]",
-	Short: "Deposit REX tokens into your savings bucket from your REX fund.",
+	Short: "Deposit REX tokens into your savings bucket.",
+	Long:  "Deposit REX tokens into your savings bucket from your REX fund.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")

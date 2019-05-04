@@ -9,7 +9,8 @@ import (
 
 var rexUnstakeTo = &cobra.Command{
 	Use:   "unstake-to [staker] [staked to] [net] [cpu]",
-	Short: "Use this action to utilize staked tokens to purchase REX tokens. [staker] is the owner of the tokens, [staked to] is the account who has access to those resources.",
+	Short: "Utilize staked tokens to purchase REX tokens.",
+	Long:  "Use this action to utilize staked tokens to purchase REX tokens. [staker] is the owner of the tokens, [staked to] is the account who has access to those resources.",
 	Args:  cobra.ExactArgs(4),
 	Run: func(cmd *cobra.Command, args []string) {
 		staker := toAccount(args[0], "staker")

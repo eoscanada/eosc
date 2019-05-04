@@ -9,7 +9,8 @@ import (
 
 var rexWithdraw = &cobra.Command{
 	Use:   "withdraw [account] [quantity]",
-	Short: "Withdraw EOS tokens from your REX fund to your liquid EOS balance.",
+	Short: "Withdraw EOS tokens from your REX fund.",
+	Long:  "Withdraw EOS tokens from your REX fund to your liquid EOS balance.",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")
