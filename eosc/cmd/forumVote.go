@@ -35,7 +35,7 @@ var forumVoteCmd = &cobra.Command{
 			errorCheck("vote value cannot exceed 255", fmt.Errorf("vote value too high: %d", voteValue))
 		}
 
-		json := viper.GetString("forum-cmd-target-json")
+		json := viper.GetString("forum-vote-cmd-json")
 
 		action := forum.NewVote(voter, proposalName, uint8(voteValue), json)
 		action.Account = targetAccount
