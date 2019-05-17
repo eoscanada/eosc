@@ -19,7 +19,22 @@ import (
 var txPushCmd = &cobra.Command{
 	Use:   "push [transaction.json | string]",
 	Short: "Push a signed transaction to the chain. Must be done online.",
-	Args:  cobra.ExactArgs(1),
+	Long: `
+The first argument interpretation is heuristics based, and depends on its
+content.
+
+If it's an existing file on disk, the first argument is assumed to be a
+filename containing a transaction in JSON format and is used right away.
+
+Otherwise, if the first argument looks like a JSON string (basic checks
+just enough to avoid ambiguity with a plain filename), then the input is
+considered a JSON transaction.
+
+Otherwise, if the argument is not deem being a valid JSON input, it's
+assumed to be a filename that is not present and a proper error message
+is displayed.
+	`,
+	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		cnt, err := readTransaction(args[0])
 		errorCheck("reading transaction", err)
