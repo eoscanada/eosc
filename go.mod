@@ -6,8 +6,8 @@ require (
 	github.com/Jeffail/gabs v1.2.0 // indirect
 	github.com/bronze1man/go-yaml2json v0.0.0-20150129175009-f6f64b738964
 	github.com/davecgh/go-spew v1.1.1
-	github.com/eoscanada/eos-go v0.8.13-0.20190504030125-b6639b1e2fec
-	github.com/golang/protobuf v0.0.0-20180710193413-0cb4f7325693 // indirect
+	github.com/eoscanada/eos-go v0.8.13
+	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/mailru/easyjson v0.0.0-20190403194419-1ea4449da983 // indirect
 	github.com/pborman/uuid v0.0.0-20180122190007-c65b2f87fee3
@@ -26,7 +26,6 @@ require (
 	golang.org/x/crypto v0.0.0-20190131182504-b8fe1690c613
 	golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e // indirect
 	golang.org/x/oauth2 v0.0.0-20181203162652-d668ce993890
-	golang.org/x/sync v0.0.0-20190423024810-112230192c58 // indirect
 	golang.org/x/sys v0.0.0-20190108104531-7fbe1cd0fcc2 // indirect
 	golang.org/x/text v0.3.1-0.20181227161524-e6919f6577db // indirect
 	google.golang.org/api v0.0.0-20180702000508-e0f3bfad2532
