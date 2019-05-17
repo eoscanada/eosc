@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"fmt"
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eos-go/system"
@@ -64,6 +65,10 @@ waits:
 			errorCheck("authority file invalid", err)
 		}
 
+		err = ValidateAuth(auth)
+		errorCheck("authority file invalid", err)
+
+
 		api := getAPI()
 
 		var updateAuthActionPermission = "active"
@@ -76,4 +81,41 @@ waits:
 
 func init() {
 	systemCmd.AddCommand(systemUpdateauthCmd)
+}
+
+func ValidateAuth( auth eos.Authority) error {
+	for idx,  account := range auth.Accounts {
+		if len(account.Permission.Permission) == 0 {
+			return fmt.Errorf("account #%d missing permission", idx)
+		}
+		if len(account.Permission.Actor) == 0 {
+			return fmt.Errorf("account #%d missing actor", idx)
+		}
+
+		if account.Weight == 0 {
+			return fmt.Errorf("account #%d missing weight", idx)
+		}
+	}
+
+	for idx, key := range auth.Keys {
+		if len(key.PublicKey.Content) == 0 {
+			return fmt.Errorf("key #%d missing publicKey", idx)
+		}
+
+		if key.Weight == 0 {
+			return fmt.Errorf("key #%d missing weight", idx)
+
+		}
+	}
+
+	for idx, wait := range auth.Waits {
+		if wait.WaitSec == 0 {
+			return fmt.Errorf("wait #%d cannot be 0", idx)
+		}
+
+		if wait.Weight == 0 {
+			return fmt.Errorf("wait #%d is missing weight", idx)
+		}
+	}
+	return nil
 }
