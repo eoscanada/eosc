@@ -31,6 +31,12 @@ func ToAccountName(in string) (out eos.AccountName, err error) {
 	return eos.AccountName(in), nil
 }
 
+// ToAsset converts a eos valid asset string (in) into an eos-go
+// Asset struct
+func ToAsset(in string) (out eos.Asset, err error) {
+	return eos.NewAsset(in)
+}
+
 // ToName converts a valid eos name string (in) into an eos-go
 // Name struct
 func ToName(in string) (out eos.Name, err error) {

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -93,6 +94,11 @@ func errorCheck(prefix string, err error) {
 		fmt.Printf("ERROR: %s: %s\n", prefix, err)
 		os.Exit(1)
 	}
+}
+
+func exitWitMessage(message string) {
+	fmt.Printf("ERROR: %s\n", message)
+	os.Exit(1)
 }
 
 func permissionToPermissionLevel(in string) (out eos.PermissionLevel, err error) {
@@ -313,6 +319,27 @@ func toAccount(in, field string) eos.AccountName {
 	return acct
 }
 
+func toAsset(symbol eos.Symbol, in, field string) eos.Asset {
+	asset, err := eos.NewAssetFromString(symbol, in)
+	errorCheck(fmt.Sprintf("invalid %s asset for %q", symbol.String(), field), err)
+
+	return asset
+}
+
+func toEOSAsset(in, field string) eos.Asset {
+	asset, err := eos.NewEOSAssetFromString(in)
+	errorCheck(fmt.Sprintf("invalid %s asset for %q", eos.EOSSymbol, field), err)
+
+	return asset
+}
+
+func toREXAsset(in, field string) eos.Asset {
+	asset, err := eos.NewREXAssetFromString(in)
+	errorCheck(fmt.Sprintf("invalid %s asset for %q", eos.REXSymbol, field), err)
+
+	return asset
+}
+
 func toName(in, field string) eos.Name {
 	name, err := cli.ToName(in)
 	if err != nil {
@@ -332,6 +359,20 @@ func toPermissionLevel(in, field string) eos.PermissionLevel {
 
 func toActionName(in, field string) eos.ActionName {
 	return eos.ActionName(toName(in, field))
+}
+
+func toUint16(in, field string) uint16 {
+	value, err := strconv.ParseUint(in, 10, 16)
+	errorCheck(fmt.Sprintf("invalid uint16 number for %q", field), err)
+
+	return uint16(value)
+}
+
+func toUint64(in, field string) uint64 {
+	value, err := strconv.ParseUint(in, 10, 64)
+	errorCheck(fmt.Sprintf("invalid uint64 number for %q", field), err)
+
+	return value
 }
 
 func toSHA256Bytes(in, field string) eos.SHA256Bytes {
