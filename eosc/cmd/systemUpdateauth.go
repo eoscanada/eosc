@@ -4,6 +4,8 @@ package cmd
 
 import (
 	"fmt"
+	"sort"
+
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eos-go/system"
@@ -65,9 +67,10 @@ waits:
 			errorCheck("authority file invalid", err)
 		}
 
+		sortAuth(auth)
+
 		err = ValidateAuth(auth)
 		errorCheck("authority file invalid", err)
-
 
 		api := getAPI()
 
@@ -83,8 +86,8 @@ func init() {
 	systemCmd.AddCommand(systemUpdateauthCmd)
 }
 
-func ValidateAuth( auth eos.Authority) error {
-	for idx,  account := range auth.Accounts {
+func ValidateAuth(auth eos.Authority) error {
+	for idx, account := range auth.Accounts {
 		if len(account.Permission.Permission) == 0 {
 			return fmt.Errorf("account #%d missing permission", idx)
 		}
@@ -118,4 +121,18 @@ func ValidateAuth( auth eos.Authority) error {
 		}
 	}
 	return nil
+}
+
+func sortAuth(auth eos.Authority) {
+	sort.Slice(auth.Keys, func(i, j int) bool {
+		return auth.Keys[i].PublicKey.String() < auth.Keys[j].PublicKey.String()
+	})
+	sort.Slice(auth.Accounts, func(i, j int) bool {
+		perm1 := auth.Accounts[i].Permission
+		perm2 := auth.Accounts[j].Permission
+		return perm1.Actor < perm2.Actor || perm1.Permission < perm2.Permission
+	})
+	sort.Slice(auth.Waits, func(i, j int) bool {
+		return auth.Waits[i].WaitSec < auth.Waits[j].WaitSec
+	})
 }
