@@ -34,17 +34,17 @@ var msigReviewCmd = &cobra.Command{
 		)
 		errorCheck("get table row", err)
 
-		var transactions []struct {
+		var proposals []struct {
 			ProposalName eos.Name     `json:"proposal_name"`
 			Transaction  eos.HexBytes `json:"packed_transaction"`
 		}
-		err = response.JSONToStructs(&transactions)
-		errorCheck("reading proposed transactions", err)
+		err = response.JSONToStructs(&proposals)
+		errorCheck("reading proposed proposals", err)
 
 		var tx *eos.Transaction
-		for _, txData := range transactions {
-			if txData.ProposalName == proposalName {
-				err := eos.UnmarshalBinary(txData.Transaction, &tx)
+		for _, proposalRow := range proposals {
+			if proposalRow.ProposalName == proposalName {
+				err := eos.UnmarshalBinary(proposalRow.Transaction, &tx)
 				errorCheck("unmarshalling packed transaction", err)
 
 				ana := analysis.NewAnalyzer(viper.GetBool("multisig-review-cmd-dump"))

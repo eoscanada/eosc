@@ -24,6 +24,38 @@ var msigListCmd = &cobra.Command{
 			eos.GetTableRowsRequest{
 				Code:  "eosio.msig",
 				Scope: string(proposer),
+				Table: "proposal",
+				JSON:  true,
+			},
+		)
+		errorCheck("get table row", err)
+
+		var proposals []proposalRow
+		err = response.JSONToStructs(&proposals)
+		errorCheck("reading proposal list", err)
+
+		if printJSON, _ := cmd.Flags().GetBool("json"); printJSON == true {
+			data, err := json.MarshalIndent(proposals, "", "  ")
+			errorCheck("json marshal", err)
+			fmt.Println(string(data))
+			return
+		}
+
+		if len(proposals) == 0 {
+			errorCheck("No multisig proposal found", fmt.Errorf("not found"))
+		} else {
+			fmt.Println("All active proposals")
+			fmt.Println("---------------------")
+			for _, proposal := range proposals {
+				fmt.Println("Proposal name:", proposal.ProposalName)
+			}
+			fmt.Println("---------------------")
+		}
+
+		response, err = api.GetTableRows(
+			eos.GetTableRowsRequest{
+				Code:  "eosio.msig",
+				Scope: string(proposer),
 				Table: "approvals",
 				JSON:  true,
 			},
@@ -32,7 +64,7 @@ var msigListCmd = &cobra.Command{
 
 		var approvals []approvalRow
 		err = response.JSONToStructs(&approvals)
-		errorCheck("reading approvals_info list", err)
+		errorCheck("reading approval_info list", err)
 
 		if printJSON, _ := cmd.Flags().GetBool("json"); printJSON == true {
 			data, err := json.MarshalIndent(approvals, "", "  ")
@@ -45,12 +77,13 @@ var msigListCmd = &cobra.Command{
 			info.Show()
 			fmt.Println()
 		}
-		if len(approvals) == 0 {
-			errorCheck("No multisig proposal found", fmt.Errorf("not found"))
-		}
 	},
 }
 
+type proposalRow struct {
+	ProposalName eos.Name     `json:"proposal_name"`
+	Transaction  eos.HexBytes `json:"packed_transaction"`
+}
 type approvalRow struct {
 	ProposalName       eos.Name              `json:"proposal_name"`
 	RequestedApprovals []eos.PermissionLevel `json:"requested_approvals"`
@@ -63,6 +96,7 @@ func (a approvalRow) Show() {
 	fmt.Print(formatAuths(a.RequestedApprovals))
 	fmt.Println("Provided approvals:")
 	fmt.Print(formatAuths(a.ProvidedApprovals))
+	fmt.Println("---------------------")
 }
 
 func formatAuths(perms []eos.PermissionLevel) string {
