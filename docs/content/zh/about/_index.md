@@ -1,20 +1,19 @@
 ---
-title: 关于 Hugo
-linktitle: 概览
-description: Hugo 的特色、规划、许可和动力。
-date: 2018-04-26
-publishdate: 2018-04-26
-lastmod: 2018-04-26
-categories: []
-keywords: []
+title: 关于
+linktitle: 关于
+description:
+date: 2018-09-05
+publishdate: 2018-09-05
+lastmod: 2018-09-05
+categories: [eosc,eos]
+keywords: [about eosc]
 menu:
   docs:
     parent: "about"
+    identifier: overview-about
     weight: 1
 weight: 1
-draft: false
-aliases: [/about-hugo/,/docs/]
-toc: false
+draft: true
+aliases: [/about-eos/,/docs/]
+toc: true
 ---
-
-Hugo 不是一般的静态网站生成器。
