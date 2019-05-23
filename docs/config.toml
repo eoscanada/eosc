@@ -232,6 +232,11 @@ anchor = "smart"
 	languageName = "中文"
 	weight = 2
 
+### LANGUAGE PARAMS ###
+
+[languages.zh.params]
+    tagline = "称霸所有的工具"
+
 
 ### LANGUAGE-SPECIFIC MENUS ###
 
