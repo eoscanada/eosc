@@ -309,36 +309,17 @@ anchor = "smart"
   identifier = "hosting-and-deployment"
   url = "/zh/hosting-and-deployment/"
 
-[[languages.zh.menu.docs]]
-  name = "贡献"
-  weight = 100
-  post = "break"
-  identifier = "contribute"
-  url = "/zh/contribute/"
-
 [[languages.zh.menu.global]]
   name = "新闻"
   weight = 1
   identifier = "news"
-  url = "/zh/news/"
+  url = "/news/"
 
 [[languages.zh.menu.global]]
   name = "文档"
   weight = 5
   identifier = "docs"
-  url = "/zh/documentation/"
-
-[[languages.zh.menu.global]]
-  name = "主题"
-  weight = 10
-  identifier = "themes"
-  url = "https://themes.gohugo.io/"
-
-[[languages.zh.menu.global]]
-  name = "作品展示"
-  weight = 20
-  identifier = "showcase"
-  url = "/zh/showcase/"
+  url = "/documentation/"
 
 # Anything with a weight > 100 gets an external icon
 [[languages.zh.menu.global]]
@@ -347,11 +328,4 @@ anchor = "smart"
   icon = true
   identifier = "community"
   post = "external"
-  url = "https://discourse.gohugo.io/"
-
-[[languages.zh.menu.global]]
-  name = "GitHub"
-  weight = 200
-  identifier = "github"
-  post = "external"
-  url = "https://github.com/gohugoio/hugo"
+  url = "https://t.me/eoscanada"
