@@ -235,79 +235,108 @@ anchor = "smart"
 
 ### LANGUAGE-SPECIFIC MENUS ###
 
-# Chinese menus
+# High level items
 
-[[languages.zh.menu.docs]]
-  name = "关于 Hugo"
+[[menu.docs]]
+  name = "关于 eosc"
   weight = 1
   identifier = "about"
-  url = "/zh/about/"
+  url = "/about/"
 
-[[languages.zh.menu.docs]]
-  name = "入门"
+[[menu.docs]]
+  name = "开始使用"
   weight = 5
   identifier = "getting-started"
-  url = "/zh/getting-started/"
+  url = "/getting-started/"
 
-[[languages.zh.menu.docs]]
-  name = "主题"
+[[menu.docs]]
+  name = "全局设置"
   weight = 15
-  identifier = "themes"
+  identifier = "global-settings"
   post = "break"
-  url = "/zh/themes/"
+  url = "/global-settings/"
 
-# Core languages.zh.menus
+# Core Menus
 
-[[languages.zh.menu.docs]]
-  name = "内容管理"
-  weight = 20
-  identifier = "content-management"
-  post = "expanded"
-  url = "/zh/content-management/"
+[[menu.docs]]
+	name = "eosc get"
+	weight = 20
+	identifier = "eosc-get-commands"
+	url = "/eosc-get-commands/"
+	title = "Commands"
 
-[[languages.zh.menu.docs]]
-  name = "模板"
-  weight = 25
-  identifier = "templates"
-  url = "/zh/templates/"
+[[menu.docs]]
+	name = "eosc vault"
+	weight = 30
+	identifier = "eosc-vault-commands"
+	url = "/eosc-vault-commands/"
 
-[[languages.zh.menu.docs]]
-  name = "函数"
-  weight = 30
-  identifier = "functions"
-  url = "/zh/functions/"
+[[menu.docs]]
+    name = "eosc system"
+    weight = 40
+    identifier = "eosc-system-commands"
+    url = "/eosc-system-commands/"
 
-[[languages.zh.menu.docs]]
-  name = "变量"
-  weight = 35
-  identifier = "variables"
-  url = "/zh/variables/"
+[[menu.docs]]
+    name = "eosc multisig"
+    weight = 50
+    identifier = "eosc-multisig-commands"
+    url = "/eosc-multisig-commands/"
 
-[[languages.zh.menu.docs]]
-  name = "CLI"
-  weight = 40
-  post = "break"
-  identifier = "commands"
-  url = "/commands/"
+[[menu.docs]]
+    name = "eosc forum"
+    weight = 60
+    identifier = "eosc-forum-commands"
+    url = "/eosc-forum-commands/"
+
+[[menu.docs]]
+    name = "eosc transfer"
+    weight = 65
+    identifier = "eosc-transfer-commands"
+    url = "/eosc-transfer-commands/"
+
+[[menu.docs]]
+    name = "eosc tx"
+    weight = 70
+    identifier = "eosc-tx-commands"
+    url = "/eosc-tx-commands/"
+
+[[menu.docs]]
+    name = "eosc vote"
+    weight = 90
+    identifier = "eosc-vote-commands"
+    url = "/eosc-vote-commands/"
+
+[[menu.docs]]
+    name = "eosc tools"
+    weight = 100
+    identifier = "eosc-tools-commands"
+    url = "/eosc-tools-commands/"
+    post = "break"
+
 
 # LOW LEVEL ITEMS
-[[languages.zh.menu.docs]]
-  name = "故障排除"
-  weight = 60
-  identifier = "troubleshooting"
-  url = "/zh/troubleshooting/"
 
-[[languages.zh.menu.docs]]
-  name = "工具"
-  weight = 70
-  identifier = "tools"
-  url = "/zh/tools/"
 
-[[languages.zh.menu.docs]]
-  name = "托管与部署"
-  weight = 80
-  identifier = "hosting-and-deployment"
-  url = "/zh/hosting-and-deployment/"
+[[menu.docs]]
+	name = "帮助"
+	weight = 200
+	identifier = "help"
+	url = "/help/"
+	post = "break"
+
+
+
+######## QUICKLINKS
+
+  [[menu.quicklinks]]
+	name = "Fundamentals"
+	weight = 1
+	identifier = "fundamentals"
+	url = "/tags/fundamentals/"
+
+
+######## GLOBAL ITEMS TO BE SHARED WITH THE HUGO SITES
 
 [[languages.zh.menu.global]]
   name = "新闻"
