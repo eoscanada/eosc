@@ -1,9 +1,9 @@
 ---
-title: Hugo 说明文档
-linktitle: Hugo
-description: Hugo is the world's fastest static website engine. It's written in Go (aka Golang) and developed by bep, spf13 and friends.
-date: 2017-02-01
-publishdate: 2017-02-01
+title: eosc 文档
+linktitle: eosc
+description: eosc 是 EOS.IO 区块链的多功能开源瑞士军刀。 它是用 Go 编写的，可以在所有操作系统上运行。
+date: 2018-09-01
+publishdate: 2018-09-01
 menu:
   main:
     parent: "section name"
@@ -14,8 +14,8 @@ slug:
 aliases: []
 toc: false
 layout: documentation-home
-isCJKLanguage: true
 ---
-Hugo 号称**世界上最快的静态网站引擎**。它是以 Go (即 Golang) 编程语言所写成，并由 [bep](https://github.com/bep)、[spf13](https://github.com/spf13) 和[朋友们](https://github.com/gohugoio/hugo/graphs/contributors) 共同开发。
 
-下面是我们说明文档中最常用和实用的章节：
+`eosc` 是 EOS.IO 区块链的多功能开源瑞士军刀。 它是用 Go 编写的，可以在所有操作系统上运行。是 [EOS Canada](https://www.eoscanada.com) 和它的朋友们 [friends](https://github.com/eoscanada/eosc/graphs/contributors) 一同开发的。
+
+以下是我们文档中一些最常见和最有用的页面。
