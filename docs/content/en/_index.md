@@ -24,4 +24,4 @@ sections:
 
 ---
 
-`eosc` is an open source swiss-army knife for the EOS.IO blockchain.
+`eosc` 是像一把瑞士军刀一样的 EOSIO 区块链开源工具。
