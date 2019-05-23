@@ -53,7 +53,7 @@ main a:hover {color:#ff5512; text-decoration:underline  ;}
     left:0;
     right:0;
     z-index:-1; /* needed to keep in the background */
-    background: url("../img/eosc-hero-photo-01.jpg") center center;
+    background: url("../img/eosc-hero-photo-02.jpg") center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
