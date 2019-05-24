@@ -1,8 +1,8 @@
 ---
-title: Full Support for a wide Range of Platforms
+title: 全面支持各个操作系统
 description:
 date: 2018-09-27
 weight: 40
 icon: "fas fa-plug fa-2x"
 ---
-Windows, MacOS, and Linux
+Windows、MacOS、以及 Linux
