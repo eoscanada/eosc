@@ -1,7 +1,7 @@
 ---
-title: eosc 0.7.9 Update
-linktitle: eosc 0.7.9 Update
-description: Features updated in eosc v0.7.9
+title: eosc 0.7.9 更新
+linktitle: eosc 0.7.9 更新
+description: eosc v0.7.9 功能更新
 date: 2018-09-27
 publishdate: 2018-09-06
 lastmod: 2018-09-27
