@@ -247,7 +247,7 @@ anchor = "smart"
   name = "新闻"
   weight = 1
   identifier = "news"
-  url = "/news/"
+  url = "/zh/news/"
 
 [[languages.zh.menu.global]]
   name = "文档"
