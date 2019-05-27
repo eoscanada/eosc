@@ -1,6 +1,6 @@
 ---
-title: "What's Been Added Since the Mainnet Launched"
-description: "A list of features added since launch of the mainnet up until eosc v0.7.8"
+title: "自主网上线后都添加了什么功能"
+description: "自主网发布到 eosc v0.7.8 期间新增的功能列表"
 categories: [blog]
 publishdate: 2018-09-05
 ---
