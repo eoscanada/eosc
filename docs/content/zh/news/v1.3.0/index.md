@@ -1,7 +1,7 @@
 ---
-title: eosc v1.3.0 Release
-linktitle: eosc v1.3.0 Release
-description: Release of eosc v1.3.0
+title: eosc v1.3.0 发布
+linktitle: eosc v1.3.0 
+description: eosc v1.3.0 更新发布
 date: 2019-05-22
 publishdate: 2019-05-22
 lastmod: 2019-05-22
