@@ -17,7 +17,7 @@
         <p>
           {{ .Params.description | markdownify | truncate 100 "…"}}
         </p>
-        <a  href="{{ .URL }}" class="ph3 ph4-l fw5 f7 f6-l db link grow tc v-mid bg-orange white ba b--blue ph3 pv2 br1 btn btn-default ">READ MORE</a>
+        <a  href="{{ .URL }}" class="ph3 ph4-l fw5 f7 f6-l db link grow tc v-mid bg-orange white ba b--blue ph3 pv2 br1 btn btn-default ">{{ .Site.Params.readmore }}</a>
 
       </div>
     {{ end }}

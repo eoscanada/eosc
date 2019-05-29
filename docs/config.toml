@@ -73,6 +73,7 @@ twitter = "GoHugoIO"
   logo = "eosc-logo-02.svg"
   logo_eos_canada = "logo-eos-canada.svg"
   tagline = "One tool to run them all"
+  readmore = "READ MORE"
 
   flex_box_interior_classes = "flex-auto w-100 w-40-l mr3 mb3 bg-white ba b--moon-gray nested-copy-line-height"
 
@@ -236,6 +237,7 @@ anchor = "smart"
 
 [languages.zh.params]
     tagline = "称霸所有的工具"
+    readmore = "阅读更多"
 
 
 ### LANGUAGE-SPECIFIC MENUS ###
