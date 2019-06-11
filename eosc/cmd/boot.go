@@ -14,7 +14,6 @@ var bootCmd = &cobra.Command{
 	Short: "Boot a fresh network, using the now famous eos-bios.",
 	Args:  cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-
 		api := getAPI()
 		attachWallet(api)
 
@@ -33,7 +32,8 @@ var bootCmd = &cobra.Command{
 
 		b.ReuseGenesis = viper.GetBool("boot-cmd-reuse-genesis")
 
-		errorCheck("failed eos-bios boot", b.Boot())
+		err := b.Boot()
+		errorCheck("failed eos-bios boot", err)
 	},
 }
 
