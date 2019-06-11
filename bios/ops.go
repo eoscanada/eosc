@@ -351,8 +351,6 @@ type OpSetProds struct {
 }
 
 func (op *OpSetProds) Actions(b *BIOS) (out []*eos.Action, err error) {
-	// We he can at least process the last few blocks, that wrap up
-	// and resigns the system accounts.
 
 	var prodKeys []system.ProducerKey
 
