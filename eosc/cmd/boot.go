@@ -12,6 +12,14 @@ import (
 var bootCmd = &cobra.Command{
 	Use:   "boot [boot_sequence.yaml]",
 	Short: "Boot a fresh network, using the now famous eos-bios.",
+Long: `Boot a fresh network, using the now famous eos-bios.
+
+Use one of the boot sequences in https://github.com/eoscanada/eosc/tree/master/bootseqs
+to setup a clean EOSIO blockchain, with the features you like.
+
+Use a base config over there, run your node, create a new Vault and use it
+to bootstrap your chain by running 'eosc boot'.
+`,
 	Args:  cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
