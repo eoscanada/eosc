@@ -3,6 +3,7 @@ package cmd
 import (
 	"path/filepath"
 
+	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eosc/bios"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
@@ -12,7 +13,7 @@ import (
 var bootCmd = &cobra.Command{
 	Use:   "boot [boot_sequence.yaml]",
 	Short: "Boot a fresh network, using the now famous eos-bios.",
-Long: `Boot a fresh network, using the now famous eos-bios.
+	Long: `Boot a fresh network, using the now famous eos-bios.
 
 Use one of the boot sequences in https://github.com/eoscanada/eosc/tree/master/bootseqs
 to setup a clean EOSIO blockchain, with the features you like.
@@ -20,7 +21,7 @@ to setup a clean EOSIO blockchain, with the features you like.
 Use a base config over there, run your node, create a new Vault and use it
 to bootstrap your chain by running 'eosc boot'.
 `,
-	Args:  cobra.MaximumNArgs(1),
+	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
 		attachWallet(api)
@@ -39,6 +40,15 @@ to bootstrap your chain by running 'eosc boot'.
 		}
 
 		b.ReuseGenesis = viper.GetBool("boot-cmd-reuse-genesis")
+
+		keyBag, ok := api.Signer.(*eos.KeyBag)
+		if ok {
+			if len(keyBag.Keys) != 0 {
+				key := keyBag.Keys[0]
+				b.EphemeralPrivateKey = key
+				b.EphemeralPublicKey = key.PublicKey()
+			}
+		}
 
 		err := b.Boot()
 		errorCheck("failed eos-bios boot", err)

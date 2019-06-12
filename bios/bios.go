@@ -155,6 +155,11 @@ func (b *BIOS) Boot() error {
 }
 
 func (b *BIOS) setEphemeralKeypair() error {
+	if b.EphemeralPrivateKey != nil {
+		b.logEphemeralKey("Using preset key")
+		return nil
+	}
+
 	if _, ok := b.BootSequence.Keys["ephemeral"]; ok {
 		cnt := b.BootSequence.Keys["ephemeral"]
 		privKey, err := ecc.NewPrivateKey(strings.TrimSpace(string(cnt)))
@@ -166,17 +171,7 @@ func (b *BIOS) setEphemeralKeypair() error {
 		b.EphemeralPublicKey = privKey.PublicKey()
 
 		b.logEphemeralKey("Using user provider custom ephemeral keys from boot sequence")
-	} else if _, ok := b.BootSequence.Keys["vault"]; ok {
-		cnt := b.BootSequence.Keys["vault"]
-		privKey, err := ecc.NewPrivateKey(strings.TrimSpace(string(cnt)))
-		if err != nil {
-			return fmt.Errorf("unable to correctly decode Vault's first public key %q: %s", cnt, err)
-		}
 
-		b.EphemeralPrivateKey = privKey
-		b.EphemeralPublicKey = privKey.PublicKey()
-
-		b.logEphemeralKey("Using first public key in Vault")
 	} else if b.ReuseGenesis {
 		genesisPrivateKey, err := readPrivKeyFromFile("genesis.key")
 		if err != nil {
@@ -187,6 +182,7 @@ func (b *BIOS) setEphemeralKeypair() error {
 		b.EphemeralPublicKey = genesisPrivateKey.PublicKey()
 
 		b.logEphemeralKey("REUSING previously generated ephemeral keys from genesis")
+
 	} else {
 		ephemeralPrivateKey, err := b.GenerateEphemeralPrivKey()
 		if err != nil {
