@@ -4,6 +4,7 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
+	"math"
 	"os"
 	"regexp"
 	"strconv"
@@ -78,7 +79,7 @@ func printName(input string) {
 	}
 
 	someFound := false
-	rows := []string{"| from \\ to | hex | hex_be | name | uint64 | symbol | symbol_code", "| --------- | --- | ------ | ---- | ------ | ------ | ----------- |"}
+	rows := []string{"| from \\ to | hex | hex_be | hex_rev_u32 | name | uint64 | symbol | symbol_code", "| --------- | --- | ------ | ----------- | ---- | ------ | ------ | ----------- |"}
 	for _, from := range []string{"hex", "hex_be", "name", "uint64", "symbol", "symbol_code"} {
 		val, found := showFrom[from]
 		if !found {
@@ -87,7 +88,7 @@ func printName(input string) {
 		someFound = true
 
 		row := []string{from}
-		for _, to := range []string{"hex", "hex_be", "name", "uint64", "symbol", "symbol_code"} {
+		for _, to := range []string{"hex", "hex_be", "hex_rev_u32", "name", "uint64", "symbol", "symbol_code"} {
 
 			cnt := make([]byte, 8)
 			switch to {
@@ -97,6 +98,15 @@ func printName(input string) {
 			case "hex_be":
 				binary.BigEndian.PutUint64(cnt, val)
 				row = append(row, hex.EncodeToString(cnt))
+
+			case "hex_rev_u32":
+				if val > math.MaxUint32 {
+					row = append(row, "-")
+				} else {
+					cnt4 := make([]byte, 4)
+					binary.BigEndian.PutUint32(cnt4, math.MaxUint32-uint32(val))
+					row = append(row, hex.EncodeToString(cnt4))
+				}
 
 			case "name":
 				row = append(row, eos.NameToString(val))
