@@ -17,15 +17,13 @@ var transferCmd = &cobra.Command{
 
 		from := toAccount(args[0], "from")
 		to := toAccount(args[1], "to")
-		quantity, err := NewAssetDefaultEOS(args[2])
-		errorCheck("invalid amount", err)
+		quantity := toAssetWithDefaultCoreSymbol(args[2], "quantity")
 		memo := viper.GetString("transfer-cmd-memo")
-
-		api := getAPI()
 
 		action := token.NewTransfer(from, to, quantity, memo)
 		action.Account = contract
-		pushEOSCActions(api, action)
+
+		pushEOSCActions(getAPI(), action)
 	},
 }
 

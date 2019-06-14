@@ -15,8 +15,8 @@ var rexRentCPU = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		payer := toAccount(args[0], "payer")
 		receiver := toAccount(args[1], "receiver")
-		quantity := toEOSAsset(args[2], "quantity")
-		loanFund := toEOSAsset(args[3], "loan fund")
+		quantity := toCoreAsset(args[2], "quantity")
+		loanFund := toCoreAsset(args[3], "loan fund")
 
 		pushEOSCActions(getAPI(), rex.NewRentCPU(
 			payer,

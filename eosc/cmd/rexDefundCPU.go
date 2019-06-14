@@ -15,7 +15,7 @@ var rexDefundCPU = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")
 		loanNumber := toUint64(args[1], "loan number")
-		quantity := toEOSAsset(args[2], "quantity")
+		quantity := toCoreAsset(args[2], "quantity")
 
 		pushEOSCActions(getAPI(), rex.NewDefundCPULoan(
 			account,

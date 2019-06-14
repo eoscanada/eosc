@@ -5,6 +5,8 @@ import (
 	"os"
 	"strings"
 
+	"go.uber.org/zap"
+
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
@@ -41,6 +43,7 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
+	RootCmd.PersistentFlags().StringP("core-symbol", "c", "", "Core symbol to use for all commands (default inferred from API if possible, 4,EOS otherwise)")
 	RootCmd.PersistentFlags().BoolP("debug", "", false, "Enables verbose API debug messages")
 	RootCmd.PersistentFlags().StringP("vault-file", "", "./eosc-vault.json", "Wallet file that contains encrypted key material")
 	RootCmd.PersistentFlags().StringSliceP("wallet-url", "", []string{}, "Base URL to wallet endpoint. You can pass this multiple times to use the multi-signer (will use each wallet to sign multi-sig transactions).")
@@ -65,6 +68,13 @@ func initConfig() {
 	viper.SetEnvKeyReplacer(replacer)
 
 	recurseViperCommands(RootCmd, nil)
+
+	if viper.GetBool("global-debug") {
+		zlog, err := zap.NewDevelopment()
+		if err == nil {
+			SetLogger(zlog)
+		}
+	}
 }
 
 func recurseViperCommands(root *cobra.Command, segments []string) {
