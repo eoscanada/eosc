@@ -15,8 +15,8 @@ var rexUnstakeTo = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		staker := toAccount(args[0], "staker")
 		stakedTo := toAccount(args[1], "staked to")
-		net := toEOSAsset(args[2], "net")
-		cpu := toEOSAsset(args[3], "cpu")
+		net := toCoreAsset(args[2], "net")
+		cpu := toCoreAsset(args[3], "cpu")
 
 		pushEOSCActions(getAPI(), rex.NewUnstakeToREX(
 			staker,

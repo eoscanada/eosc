@@ -14,7 +14,7 @@ var rexBuy = &cobra.Command{
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")
-		quantity := toEOSAsset(args[1], "quantity")
+		quantity := toCoreAsset(args[1], "quantity")
 
 		pushEOSCActions(getAPI(), rex.NewBuyREX(
 			account,

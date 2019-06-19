@@ -28,8 +28,7 @@ Read https://steemit.com/eos/@eos-canada/everything-you-need-to-know-about-names
 
 		bidder := toAccount(args[0], "bidder_account_name")
 		newname := toAccount(args[1], "premium_account_name")
-		bidAsset, err := NewAssetDefaultEOS(args[2])
-		errorCheck("bid amount invalid", err)
+		bidAsset := toCoreAsset(args[2], "bid quantity")
 
 		fmt.Printf("[%s] bidding for: %s , amount=%d precision=%d symbol=%s\n", bidder, newname, bidAsset.Amount, bidAsset.Symbol.Precision, bidAsset.Symbol.Symbol)
 

@@ -45,10 +45,8 @@ Alternatively, you can use the simplified:
 	Run: func(cmd *cobra.Command, args []string) {
 		from := toAccount(args[0], "from")
 		receiver := toAccount(args[1], "receiver")
-		netStake, err := NewAssetDefaultEOS(args[2])
-		errorCheck(`"network bw stake qty" invalid`, err)
-		cpuStake, err := NewAssetDefaultEOS(args[3])
-		errorCheck(`"cpu bw stake qty" invalid`, err)
+		netStake := toCoreAsset(args[2], "network bw stake qty")
+		cpuStake := toCoreAsset(args[3], "cpu bw stake qty")
 		transfer := viper.GetBool("system-delegatebw-cmd-transfer")
 
 		api := getAPI()

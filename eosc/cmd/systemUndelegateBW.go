@@ -21,14 +21,10 @@ See also: the "system delegatebw" command.
 	Run: func(cmd *cobra.Command, args []string) {
 		from := toAccount(args[0], "from")
 		receiver := toAccount(args[1], "receiver")
-		netStake, err := NewAssetDefaultEOS(args[2])
-		errorCheck(`"network bw unstake qty" invalid`, err)
-		cpuStake, err := NewAssetDefaultEOS(args[3])
-		errorCheck(`"cpu bw unstake qty" invalid`, err)
+		netStake := toCoreAsset(args[2], "network bw unstake qty")
+		cpuStake := toCoreAsset(args[3], "cpu bw unstake qty")
 
-		api := getAPI()
-
-		pushEOSCActions(api, system.NewUndelegateBW(from, receiver, cpuStake, netStake))
+		pushEOSCActions(getAPI(), system.NewUndelegateBW(from, receiver, cpuStake, netStake))
 	},
 }
 
