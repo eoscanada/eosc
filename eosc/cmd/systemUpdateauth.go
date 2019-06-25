@@ -130,7 +130,10 @@ func sortAuth(auth eos.Authority) {
 	sort.Slice(auth.Accounts, func(i, j int) bool {
 		perm1 := auth.Accounts[i].Permission
 		perm2 := auth.Accounts[j].Permission
-		return perm1.Actor < perm2.Actor || perm1.Permission < perm2.Permission
+		if perm1.Actor == perm2.Actor {
+			return perm1.Permission < perm2.Permission
+		}
+		return perm1.Actor < perm2.Actor
 	})
 	sort.Slice(auth.Waits, func(i, j int) bool {
 		return auth.Waits[i].WaitSec < auth.Waits[j].WaitSec
