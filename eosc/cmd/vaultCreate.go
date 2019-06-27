@@ -118,6 +118,6 @@ func init() {
 
 	vaultCreateCmd.Flags().IntP("keys", "k", 0, "Number of keypairs to create")
 	vaultCreateCmd.Flags().BoolP("import", "i", false, "Whether to import keys instead of creating them. This takes precedence over --keys, and private keys will be inputted on the command line.")
-	vaultCreateCmd.Flags().StringP("comment", "c", "", "Comment field in the vault's json file.")
+	vaultCreateCmd.Flags().StringP("comment", "", "", "Comment field in the vault's json file.")
 	vaultCreateCmd.Flags().StringP("vault-type", "t", "passphrase", "Vault type. One of: passphrase, kms-gcp")
 }
