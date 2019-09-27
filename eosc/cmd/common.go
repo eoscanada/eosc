@@ -11,8 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"go.uber.org/zap"
-
 	yaml2json "github.com/bronze1man/go-yaml2json"
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
@@ -87,39 +85,16 @@ func getAPI() *eos.API {
 	return api
 }
 
-var coreSymbolIsCached bool
 var coreSymbol eos.Symbol
 
 func getCoreSymbol() eos.Symbol {
-	if coreSymbolIsCached {
-		return coreSymbol
-	}
+	coreSymbol = eos.Symbol{Precision: 4, Symbol: "EOS"}
 
-	// In the event of a failure, we do not want to re-perform an API call,
-	// so let's record the fact that getCoreSymbol is cached right here.
-	// The init core symbol will take care of setting an approriate core
-	// symbol from global flag and reporting the error.
-	coreSymbolIsCached = true
-	if err := initCoreSymbol(); err != nil {
-		coreSymbol = eos.EOSSymbol
-		zlog.Debug(
-			"unable to retrieve core symbol from API, falling back to default",
-			zap.Error(err),
-			zap.Stringer("default", coreSymbol),
-		)
+	if viper.GetString("transfer-cmd-contract") == "bntbntbntbnt" {
+		coreSymbol = eos.Symbol{Precision: 10, Symbol: "BNT"}
 	}
 
 	return coreSymbol
-}
-
-func initCoreSymbol() error {
-	result := "1.2345 EOS"
-	asset, err := eos.NewAsset(result)
-	if err != nil {
-		zap.Error(err)
-	}
-	coreSymbol = asset.Symbol
-	return nil
 }
 
 func sanitizeAPIURL(input string) string {
