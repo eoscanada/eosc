@@ -20,7 +20,6 @@ import (
 	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
-	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 )
 
@@ -114,28 +113,11 @@ func getCoreSymbol() eos.Symbol {
 }
 
 func initCoreSymbol() error {
-	resp, err := getAPI().GetTableRows(eos.GetTableRowsRequest{
-		Code:  "eosio",
-		Scope: "eosio",
-		Table: "rammarket",
-		JSON:  true,
-	})
-
+	result := "1.2345 EOS"
+	asset, err := eos.NewAsset(result)
 	if err != nil {
-		return fmt.Errorf("unable to fetch table: %s", err)
+		zap.Error(err)
 	}
-
-	result := gjson.GetBytes(resp.Rows, "0.quote.balance")
-	if !result.Exists() {
-		return errors.New("table has not expected format")
-	}
-
-	asset, err := eos.NewAsset(result.String())
-	if !result.Exists() {
-		return fmt.Errorf("quote balance asset %q is not valid: %s", result.String(), err)
-	}
-
-	zlog.Debug("Retrieved core symbol from API, using it as default core symbol", zap.Stringer("symbol", asset.Symbol))
 	coreSymbol = asset.Symbol
 	return nil
 }
