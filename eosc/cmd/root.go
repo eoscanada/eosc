@@ -43,7 +43,8 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	RootCmd.PersistentFlags().StringP("core-symbol", "c", "", "Core symbol to use for all commands (default inferred from API if possible, 4,EOS otherwise)")
+	RootCmd.PersistentFlags().StringP("core-symbol", "c", "EOS", "Core symbol to use for all commands (default EOS)")
+	RootCmd.PersistentFlags().StringP("core-decimals", "s", "4", "Core symbol decimals (default 4)")
 	RootCmd.PersistentFlags().BoolP("debug", "", false, "Enables verbose API debug messages")
 	RootCmd.PersistentFlags().StringP("vault-file", "", "./eosc-vault.json", "Wallet file that contains encrypted key material")
 	RootCmd.PersistentFlags().StringSliceP("wallet-url", "", []string{}, "Base URL to wallet endpoint. You can pass this multiple times to use the multi-signer (will use each wallet to sign multi-sig transactions).")

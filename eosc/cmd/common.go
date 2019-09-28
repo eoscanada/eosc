@@ -85,16 +85,14 @@ func getAPI() *eos.API {
 	return api
 }
 
-var coreSymbol eos.Symbol
+var sym string
+var dec uint8
 
 func getCoreSymbol() eos.Symbol {
-	coreSymbol = eos.Symbol{Precision: 4, Symbol: "EOS"}
+	sym = viper.GetString("global-core-symbol")
+	dec = uint8(viper.GetInt("global-core-decimals"))
 
-	if viper.GetString("transfer-cmd-contract") == "bntbntbntbnt" {
-		coreSymbol = eos.Symbol{Precision: 10, Symbol: "BNT"}
-	}
-
-	return coreSymbol
+	return eos.Symbol{Precision: dec, Symbol: sym}
 }
 
 func sanitizeAPIURL(input string) string {
