@@ -36,5 +36,3 @@ require (
 	google.golang.org/appengine v0.0.0-20150527042145-b667a5000b08 // indirect
 	gopkg.in/olivere/elastic.v3 v3.0.75
 )
-
-go 1.13
