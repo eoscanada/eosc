@@ -7,7 +7,7 @@ require (
 	github.com/abourget/llerrgroup v0.0.0-20161118145731-75f536392d17
 	github.com/bronze1man/go-yaml2json v0.0.0-20150129175009-f6f64b738964
 	github.com/davecgh/go-spew v1.1.1
-	github.com/eoscanada/eos-go v0.8.14-0.20190614154328-0014a42badb5
+	github.com/eoscanada/eos-go v0.8.16-0.20190628070134-3da66e8f192f
 	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/mailru/easyjson v0.0.0-20190403194419-1ea4449da983 // indirect
@@ -36,3 +36,5 @@ require (
 	google.golang.org/appengine v0.0.0-20150527042145-b667a5000b08 // indirect
 	gopkg.in/olivere/elastic.v3 v3.0.75
 )
+
+go 1.13

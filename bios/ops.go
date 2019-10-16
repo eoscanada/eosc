@@ -24,6 +24,7 @@ var operationsRegistry = map[string]Operation{
 	"system.setpriv":             &OpSetPriv{},
 	"token.create":               &OpCreateToken{},
 	"token.issue":                &OpIssueToken{},
+	"token.transfer":             &OpTransferToken{},
 	"system.setprods":            &OpSetProds{},
 	"snapshot.create_accounts":   &OpSnapshotCreateAccounts{},
 	"snapshot.load_unregistered": &OpInjectUnregdSnapshot{},
@@ -204,6 +205,20 @@ type OpIssueToken struct {
 
 func (op *OpIssueToken) Actions(b *BIOS) (out []*eos.Action, err error) {
 	act := token.NewIssue(op.Account, op.Amount, op.Memo)
+	return append(out, act), nil
+}
+
+//
+
+type OpTransferToken struct {
+	From     eos.AccountName
+	To       eos.AccountName
+	Quantity eos.Asset
+	Memo     string
+}
+
+func (op *OpTransferToken) Actions(b *BIOS) (out []*eos.Action, err error) {
+	act := token.NewTransfer(op.From, op.To, op.Quantity, op.Memo)
 	return append(out, act), nil
 }
 
