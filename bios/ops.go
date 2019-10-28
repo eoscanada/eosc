@@ -376,7 +376,7 @@ func (op *OpSetProds) Actions(b *BIOS) (out []*eos.Action, err error) {
 		if key.BlockSigningKeyString == "" || key.BlockSigningKeyString == "ephemeral" {
 			prodKey.BlockSigningKey = b.EphemeralPublicKey
 		} else {
-			k, err := ecc.NewPublicKeyFromData([]byte(key.BlockSigningKeyString))
+			k, err := ecc.NewPublicKey(key.BlockSigningKeyString)
 			if err != nil {
 				panic(err)
 			}
