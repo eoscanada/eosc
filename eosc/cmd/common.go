@@ -11,8 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"go.uber.org/zap"
-
 	yaml2json "github.com/bronze1man/go-yaml2json"
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
@@ -20,7 +18,6 @@ import (
 	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"
-	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 )
 
@@ -88,56 +85,14 @@ func getAPI() *eos.API {
 	return api
 }
 
-var coreSymbolIsCached bool
-var coreSymbol eos.Symbol
+var sym string
+var dec uint8
 
 func getCoreSymbol() eos.Symbol {
-	if coreSymbolIsCached {
-		return coreSymbol
-	}
+	sym = viper.GetString("global-core-symbol")
+	dec = uint8(viper.GetInt("global-core-decimals"))
 
-	// In the event of a failure, we do not want to re-perform an API call,
-	// so let's record the fact that getCoreSymbol is cached right here.
-	// The init core symbol will take care of setting an approriate core
-	// symbol from global flag and reporting the error.
-	coreSymbolIsCached = true
-	if err := initCoreSymbol(); err != nil {
-		coreSymbol = eos.EOSSymbol
-		zlog.Debug(
-			"unable to retrieve core symbol from API, falling back to default",
-			zap.Error(err),
-			zap.Stringer("default", coreSymbol),
-		)
-	}
-
-	return coreSymbol
-}
-
-func initCoreSymbol() error {
-	resp, err := getAPI().GetTableRows(eos.GetTableRowsRequest{
-		Code:  "eosio",
-		Scope: "eosio",
-		Table: "rammarket",
-		JSON:  true,
-	})
-
-	if err != nil {
-		return fmt.Errorf("unable to fetch table: %s", err)
-	}
-
-	result := gjson.GetBytes(resp.Rows, "0.quote.balance")
-	if !result.Exists() {
-		return errors.New("table has not expected format")
-	}
-
-	asset, err := eos.NewAsset(result.String())
-	if !result.Exists() {
-		return fmt.Errorf("quote balance asset %q is not valid: %s", result.String(), err)
-	}
-
-	zlog.Debug("Retrieved core symbol from API, using it as default core symbol", zap.Stringer("symbol", asset.Symbol))
-	coreSymbol = asset.Symbol
-	return nil
+	return eos.Symbol{Precision: dec, Symbol: sym}
 }
 
 func sanitizeAPIURL(input string) string {
