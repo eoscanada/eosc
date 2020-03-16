@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/rex"
 	"github.com/spf13/cobra"
 )
@@ -16,7 +18,7 @@ var rexSell = &cobra.Command{
 		account := toAccount(args[0], "account")
 		quantity := toREXAsset(args[1], "quantity")
 
-		pushEOSCActions(getAPI(), rex.NewSellREX(
+		pushEOSCActions(context.Background(), getAPI(), rex.NewSellREX(
 			account,
 			quantity,
 		))

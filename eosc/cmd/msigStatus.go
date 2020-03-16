@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -21,6 +22,7 @@ var msigStatusCmd = &cobra.Command{
 		proposalName := toName(args[1], "proposal name")
 
 		response, err := api.GetTableRows(
+			context.Background(),
 			eos.GetTableRowsRequest{
 				Code:       "eosio.msig",
 				Scope:      string(proposer),

@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -16,7 +18,7 @@ var txCancelCmd = &cobra.Command{
 		transactionID := toSHA256Bytes(args[1], "transaction_id")
 
 		api := getAPI()
-		pushEOSCActions(api, system.NewCancelDelay(authority, transactionID))
+		pushEOSCActions(context.Background(), api, system.NewCancelDelay(authority, transactionID))
 	},
 }
 

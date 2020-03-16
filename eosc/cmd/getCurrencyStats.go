@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -19,7 +20,7 @@ var getCurrencyStatsCmd = &cobra.Command{
 		api := getAPI()
 
 		accountName := toAccount(args[0], "account name")
-		stats, err := api.GetCurrencyStats(accountName, args[1])
+		stats, err := api.GetCurrencyStats(context.Background(), accountName, args[1])
 		errorCheck("get currency-stats", err)
 
 		if viper.GetBool("get-currency-stats-cmd-json") == true {

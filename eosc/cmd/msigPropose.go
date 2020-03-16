@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -40,6 +41,7 @@ add accounts listed in the owner permissions of the different accounts.
   `,
 	Args: cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
+		ctx := context.Background()
 		api := getAPI()
 
 		proposer := toAccount(args[0], "proposer")
@@ -55,7 +57,7 @@ add accounts listed in the owner permissions of the different accounts.
 
 		var requested []eos.PermissionLevel
 		if viper.GetBool("multisig-propose-cmd-request-producers") {
-			out, err := requestProducers(api)
+			out, err := requestProducers(ctx, api)
 			errorCheck("recursing to get producers accounts", err)
 
 			for el := range out {
@@ -77,7 +79,7 @@ add accounts listed in the owner permissions of the different accounts.
 		if viper.GetBool("multisig-propose-cmd-with-subaccounts") {
 			out := make(map[string]bool)
 			for _, req := range requested {
-				out, err = recurseAccounts(api, out, string(req.Actor), string(req.Permission), 0, 4)
+				out, err = recurseAccounts(ctx, api, out, string(req.Actor), string(req.Permission), 0, 4)
 				if err != nil {
 					errorCheck("failed recursing", err)
 				}
@@ -105,16 +107,17 @@ add accounts listed in the owner permissions of the different accounts.
 			return el1.Permission < el2.Permission
 		})
 
-		pushEOSCActions(api,
+		pushEOSCActions(ctx, api,
 			msig.NewPropose(proposer, proposalName, requested, tx),
 		)
 	},
 }
 
-func getProducersTable(api *eos.API) (prods producers, err error) {
+func getProducersTable(ctx context.Context, api *eos.API) (prods producers, err error) {
 	lowerBound := ""
 	for {
 		response, err := api.GetTableRows(
+			ctx,
 			eos.GetTableRowsRequest{
 				Scope:      "eosio",
 				Code:       "eosio",
@@ -150,8 +153,8 @@ func getProducersTable(api *eos.API) (prods producers, err error) {
 	return
 }
 
-func requestProducers(api *eos.API) (out map[string]bool, err error) {
-	producers, err := getProducersTable(api)
+func requestProducers(ctx context.Context, api *eos.API) (out map[string]bool, err error) {
+	producers, err := getProducersTable(ctx, api)
 	errorCheck("get producers table", err)
 
 	sort.Slice(producers, producers.Less)
@@ -176,7 +179,7 @@ func requestProducers(api *eos.API) (out map[string]bool, err error) {
 	return
 }
 
-func recurseAccounts(api *eos.API, in map[string]bool, account string, permission string, level, maxLevels int) (out map[string]bool, err error) {
+func recurseAccounts(ctx context.Context, api *eos.API, in map[string]bool, account string, permission string, level, maxLevels int) (out map[string]bool, err error) {
 	out = in
 
 	newAcct := fmt.Sprintf("%s@%s", account, permission)
@@ -192,7 +195,7 @@ func recurseAccounts(api *eos.API, in map[string]bool, account string, permissio
 	}
 
 	//fmt.Println("Fetching account", account)
-	resp, err := api.GetAccount(eos.AccountName(account))
+	resp, err := api.GetAccount(ctx, eos.AccountName(account))
 	if err != nil {
 		return nil, err
 	}
@@ -208,7 +211,7 @@ func recurseAccounts(api *eos.API, in map[string]bool, account string, permissio
 		}
 
 		for _, acct := range curPerm.RequiredAuth.Accounts {
-			out, err = recurseAccounts(api, out, string(acct.Permission.Actor), string(acct.Permission.Permission), level+1, maxLevels)
+			out, err = recurseAccounts(ctx, api, out, string(acct.Permission.Actor), string(acct.Permission.Permission), level+1, maxLevels)
 			if err != nil {
 				return nil, err
 			}

@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/hex"
@@ -19,7 +20,7 @@ var getCodeCmd = &cobra.Command{
 		api := getAPI()
 
 		accountName := toAccount(args[0], "account name")
-		codeAndABI, err := api.GetRawCodeAndABI(accountName)
+		codeAndABI, err := api.GetRawCodeAndABI(context.Background(), accountName)
 		errorCheck("get code", err)
 
 		if codeAndABI.WASMasBase64 == "" {

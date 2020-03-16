@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -26,7 +27,7 @@ var msigApproveCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			msig.NewApprove(proposer, proposalName, requested),
 		)
 	},

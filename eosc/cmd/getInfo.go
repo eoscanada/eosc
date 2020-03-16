@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"encoding/json"
@@ -16,7 +17,7 @@ var getInfoCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
 
-		info, err := api.GetInfo()
+		info, err := api.GetInfo(context.Background())
 		errorCheck("get info", err)
 
 		data, err := json.MarshalIndent(info, "", "  ")

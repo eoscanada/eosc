@@ -2,6 +2,7 @@ package analysis
 
 import (
 	"bytes"
+	"context"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
@@ -192,7 +193,7 @@ func (a *Analyzer) analyzeAction(idx int, act *eos.Action) (err error) {
 		}
 
 	default:
-		data, err := a.API.ABIBinToJSON(act.Account, eos.Name(act.Name), act.ActionData.HexData)
+		data, err := a.API.ABIBinToJSON(context.Background(), act.Account, eos.Name(act.Name), act.ActionData.HexData)
 		if err != nil {
 			a.Pf("Couldn't decode ABI: %s\n", err)
 			a.Pf("Hex data: %s\n", hex.EncodeToString(act.ActionData.HexData))

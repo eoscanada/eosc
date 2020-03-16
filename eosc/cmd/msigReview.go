@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -23,6 +24,7 @@ var msigReviewCmd = &cobra.Command{
 		proposalName := toName(args[1], "proposal name")
 
 		response, err := api.GetTableRows(
+			context.Background(),
 			eos.GetTableRowsRequest{
 				Code:       "eosio.msig",
 				Scope:      string(proposer),

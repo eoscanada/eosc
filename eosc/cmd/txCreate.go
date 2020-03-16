@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"crypto/rand"
 	"encoding/hex"
 	"encoding/json"
@@ -19,6 +20,8 @@ var txCreateCmd = &cobra.Command{
 	Short: "Create a transaction with a single action",
 	Args:  cobra.ExactArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
+		ctx := context.Background()
+
 		contract := toAccount(args[0], "contract")
 		action := toActionName(args[1], "action")
 		payload := args[2]
@@ -30,7 +33,7 @@ var txCreateCmd = &cobra.Command{
 		errorCheck("[payload] is not valid JSON", err)
 
 		api := getAPI()
-		actionBinary, err := api.ABIJSONToBin(contract, eos.Name(action), dump)
+		actionBinary, err := api.ABIJSONToBin(ctx, contract, eos.Name(action), dump)
 		errorCheck("unable to retrieve action binary from JSON via API", err)
 
 		actions := []*eos.Action{
@@ -45,7 +48,7 @@ var txCreateCmd = &cobra.Command{
 			contextFreeActions = append(contextFreeActions, newNonceAction())
 		}
 
-		pushEOSCActionsAndContextFreeActions(api, contextFreeActions, actions)
+		pushEOSCActionsAndContextFreeActions(ctx, api, contextFreeActions, actions)
 	},
 }
 

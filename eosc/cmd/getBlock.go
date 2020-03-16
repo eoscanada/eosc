@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"encoding/json"
@@ -17,7 +18,7 @@ var getBlockCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
 
-		block, err := api.GetBlockByNumOrIDRaw(args[0])
+		block, err := api.GetBlockByNumOrIDRaw(context.Background(), args[0])
 		errorCheck("get block", err)
 
 		data, err := json.MarshalIndent(block, "", "  ")

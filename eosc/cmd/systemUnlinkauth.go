@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -19,7 +21,7 @@ This undoes the action of linkauth, please refer to the documentation for linkau
 		actionName := toActionName(args[2], "action name")
 
 		api := getAPI()
-		pushEOSCActions(api, system.NewUnlinkAuth(account, code, actionName))
+		pushEOSCActions(context.Background(), api, system.NewUnlinkAuth(account, code, actionName))
 	},
 }
 

@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -51,7 +53,7 @@ Alternatively, you can use the simplified:
 
 		api := getAPI()
 
-		pushEOSCActions(api, system.NewDelegateBW(from, receiver, cpuStake, netStake, transfer))
+		pushEOSCActions(context.Background(), api, system.NewDelegateBW(from, receiver, cpuStake, netStake, transfer))
 	},
 }
 

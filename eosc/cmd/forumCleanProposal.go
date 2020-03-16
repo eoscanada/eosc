@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/eoscanada/eos-go/forum"
@@ -26,7 +27,7 @@ var forumCleanProposalCmd = &cobra.Command{
 		action.Account = targetAccount
 
 		api := getAPI()
-		pushEOSCActions(api, action)
+		pushEOSCActions(context.Background(), api, action)
 	},
 }
 

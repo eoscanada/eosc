@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -18,6 +19,7 @@ var txSignCmd = &cobra.Command{
 	Short: "Sign a transaction produced by --write-transaction and submit it to the chain (unless --write-transaction is passed again).",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
+		ctx := context.Background()
 		filename := args[0]
 
 		cnt, err := ioutil.ReadFile(filename)
@@ -35,14 +37,14 @@ var txSignCmd = &cobra.Command{
 			chainID = toSHA256Bytes(cliChainID, "--offline-chain-id")
 		} else {
 			// getInfo
-			resp, err := api.GetInfo()
+			resp, err := api.GetInfo(ctx)
 			errorCheck("get info", err)
 			chainID = resp.ChainID
 		}
 
-		signedTx, packedTx := optionallySignTransaction(tx, chainID, api, false)
+		signedTx, packedTx := optionallySignTransaction(ctx, tx, chainID, api, false)
 
-		optionallyPushTransaction(signedTx, packedTx, chainID, api)
+		optionallyPushTransaction(ctx, signedTx, packedTx, chainID, api)
 	},
 }
 

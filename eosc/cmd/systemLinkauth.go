@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
@@ -52,7 +54,7 @@ parent, still can sign transfers).
 
 		api := getAPI()
 
-		pushEOSCActions(api, system.NewLinkAuth(account, code, actionName, permission))
+		pushEOSCActions(context.Background(), api, system.NewLinkAuth(account, code, actionName, permission))
 	},
 }
 

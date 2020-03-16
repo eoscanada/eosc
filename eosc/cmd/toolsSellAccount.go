@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"time"
@@ -24,6 +25,7 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 `,
 	Args: cobra.ExactArgs(4),
 	Run: func(cmd *cobra.Command, args []string) {
+		ctx := context.Background()
 
 		soldAccount := toAccount(args[0], "sold account")
 		buyerAccount := toAccount(args[1], "buyer account")
@@ -34,7 +36,7 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 
 		api := getAPI()
 
-		soldAccountData, err := api.GetAccount(soldAccount)
+		soldAccountData, err := api.GetAccount(ctx, soldAccount)
 		errorCheck("could not find sold account on chain: "+string(soldAccount), err)
 
 		if len(soldAccountData.Permissions) > 2 {
@@ -44,10 +46,10 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 			os.Exit(1)
 		}
 
-		buyerAccountData, err := api.GetAccount(buyerAccount)
+		buyerAccountData, err := api.GetAccount(ctx, buyerAccount)
 		errorCheck("could not find buyer's account on chain", err)
 
-		_, err = api.GetAccount(beneficiaryAccount)
+		_, err = api.GetAccount(ctx, beneficiaryAccount)
 		errorCheck("could not find beneficiary's account on chain", err)
 
 		buyerPermText := viper.GetString("tools-sell-account-cmd-buyer-permission")
@@ -69,7 +71,7 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 		targetActiveAuth, err := sellAccountFindAuthority(buyerAccountData, "active")
 		errorCheck("error finding buyer's owner permission", err)
 
-		infoResp, err := api.GetInfo()
+		infoResp, err := api.GetInfo(ctx)
 		errorCheck("couldn't get_info from chain", err)
 
 		tx := eos.NewTransaction([]*eos.Action{
@@ -87,7 +89,7 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 		fmt.Printf("  eosc multisig review %s %s", soldAccount, proposalName)
 		fmt.Println("")
 		msigPermissions := []eos.PermissionLevel{buyerPerm, myPerm, eos.PermissionLevel{Actor: soldAccount, Permission: eos.PermissionName("owner")}}
-		pushEOSCActions(api, msig.NewPropose(soldAccount, eos.Name(proposalName), msigPermissions, tx))
+		pushEOSCActions(ctx, api, msig.NewPropose(soldAccount, eos.Name(proposalName), msigPermissions, tx))
 
 	},
 }

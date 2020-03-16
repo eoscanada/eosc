@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	eos "github.com/eoscanada/eos-go"
@@ -13,10 +14,12 @@ var voteRecastCmd = &cobra.Command{
 	Short: "Recast your vote for the same producers or proxy.",
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
+		ctx := context.Background()
 		api := getAPI()
 		voterName := toAccount(args[0], "voter name")
 
 		response, err := api.GetTableRows(
+			ctx,
 			eos.GetTableRowsRequest{
 				Code:       "eosio",
 				Scope:      "eosio",
@@ -49,7 +52,7 @@ var voteRecastCmd = &cobra.Command{
 					}
 					fmt.Printf("%sVoter [%s] recasting vote for: %s\n", voterPrefix, voterName, producersList)
 				}
-				pushEOSCActions(api,
+				pushEOSCActions(ctx, api,
 					system.NewVoteProducer(
 						voterName,
 						info.Proxy,

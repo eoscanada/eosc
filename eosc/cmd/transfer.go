@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/token"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -23,7 +25,7 @@ var transferCmd = &cobra.Command{
 		action := token.NewTransfer(from, to, quantity, memo)
 		action.Account = contract
 
-		pushEOSCActions(getAPI(), action)
+		pushEOSCActions(context.Background(), getAPI(), action)
 	},
 }
 

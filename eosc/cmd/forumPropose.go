@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"errors"
 	"time"
 
@@ -51,7 +52,7 @@ var forumProposeCmd = &cobra.Command{
 		action.Account = targetAccount
 
 		api := getAPI()
-		pushEOSCActions(api, action)
+		pushEOSCActions(context.Background(), api, action)
 	},
 }
 

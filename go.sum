@@ -62,6 +62,8 @@ github.com/eoscanada/eos-go v0.8.17-0.20200115162744-95d41034f411 h1:m/xXUdfyhPf
 github.com/eoscanada/eos-go v0.8.17-0.20200115162744-95d41034f411/go.mod h1:xm6f43hsj422MU47YUqmxwXCFOoK825iAdvYaDSou3s=
 github.com/eoscanada/eos-go v0.9.0 h1:8Ko4/6lwn3KwbbDuaUB3p02OzbQVZVdxbp6noPChIkc=
 github.com/eoscanada/eos-go v0.9.0/go.mod h1:6RuJFiRU1figWZ39M33o2cERU2MdL6VllElYLHTZNeo=
+github.com/eoscanada/eos-go v0.9.1-0.20200227221642-1b19518201a1 h1:xZohJqmRbCFOdmdO8FnSMxMd33Q+ryVraPZWRJHq8YY=
+github.com/eoscanada/eos-go v0.9.1-0.20200227221642-1b19518201a1/go.mod h1:6RuJFiRU1figWZ39M33o2cERU2MdL6VllElYLHTZNeo=
 github.com/ethereum/go-ethereum v1.9.9/go.mod h1:a9TqabFudpDu1nucId+k9S8R9whYaHnGBLKFouA5EAo=
 github.com/fatih/color v1.3.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fjl/memsize v0.0.0-20180418122429-ca190fb6ffbc/go.mod h1:VvhXpOYNQvB+uIk2RvXzuaQtkQJzzIx6lSBe1xv7hi0=

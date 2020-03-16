@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -16,7 +18,7 @@ var systemClaimRewardsCmd = &cobra.Command{
 
 		owner := toAccount(args[0], "owner")
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewClaimRewards(owner),
 		)
 	},

@@ -109,7 +109,7 @@ func listen(v *eosvault.Vault) {
 			fmt.Println("- Auto-signing request")
 		}
 
-		signed, err := v.KeyBag.Sign(tx, chainID, requiredKeys...)
+		signed, err := v.KeyBag.Sign(r.Context(), tx, chainID, requiredKeys...)
 		for _, action := range signed.Transaction.Actions {
 			action.SetToServer(false)
 		}

@@ -1,6 +1,7 @@
 package bios
 
 import (
+	"context"
 	"encoding/hex"
 	"encoding/json"
 	"errors"
@@ -63,6 +64,7 @@ func (b *BIOS) Boot() error {
 		return err
 	}
 
+	ctx := context.Background()
 	pubKey = b.EphemeralPublicKey
 	privKey = b.EphemeralPrivateKey.String()
 
@@ -81,12 +83,12 @@ func (b *BIOS) Boot() error {
 	// Don't get `get_required_keys` from the blockchain, this adds
 	// latency.. and we KNOW the key you're going to ask :) It's the
 	// only key we're going to sign with anyway..
-	b.TargetNetAPI.SetCustomGetRequiredKeys(func(tx *eos.Transaction) (out []ecc.PublicKey, err error) {
+	b.TargetNetAPI.SetCustomGetRequiredKeys(func(ctx context.Context, tx *eos.Transaction) (out []ecc.PublicKey, err error) {
 		return append(out, pubKey), nil
 	})
 
 	// Store keys in wallet, to sign `SetCode` and friends..
-	if err := b.TargetNetAPI.Signer.ImportPrivateKey(privKey); err != nil {
+	if err := b.TargetNetAPI.Signer.ImportPrivateKey(ctx, privKey); err != nil {
 		return fmt.Errorf("ImportWIF: %s", err)
 	}
 
@@ -101,7 +103,7 @@ func (b *BIOS) Boot() error {
 	b.pingTargetNetwork()
 
 	b.Log.Println("In-memory keys:")
-	memkeys, _ := b.TargetNetAPI.Signer.AvailableKeys()
+	memkeys, _ := b.TargetNetAPI.Signer.AvailableKeys(ctx)
 	for _, key := range memkeys {
 		b.Log.Printf("- %s\n", key.String())
 	}
@@ -120,7 +122,7 @@ func (b *BIOS) Boot() error {
 		if len(acts) != 0 {
 			for idx, chunk := range ChunkifyActions(acts) {
 				err := Retry(25, time.Second, func() error {
-					_, err := b.TargetNetAPI.SignPushActions(chunk...)
+					_, err := b.TargetNetAPI.SignPushActions(ctx, chunk...)
 					if err != nil {
 						b.Log.Printf("r")
 						b.Log.Debugf("error pushing transaction for step %q, chunk %d: %s\n", step.Op, idx, err)
@@ -336,7 +338,7 @@ func (v ValidationErrors) Error() string {
 func (b *BIOS) pingTargetNetwork() {
 	b.Log.Printf("Pinging target node at %q...", b.TargetNetAPI.BaseURL)
 	for {
-		info, err := b.TargetNetAPI.GetInfo()
+		info, err := b.TargetNetAPI.GetInfo(context.Background())
 		if err != nil {
 			b.Log.Debugf("target node error: %s\n", err)
 			b.Log.Printf("e")
@@ -376,7 +378,7 @@ func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action
 	for {
 		time.Sleep(timeBetweenFetch)
 
-		m, err := b.TargetNetAPI.GetBlockByNum(uint32(blockHeight))
+		m, err := b.TargetNetAPI.GetBlockByNum(context.Background(), uint32(blockHeight))
 		if err != nil {
 			if gotSomeTx && !backOff {
 				backOff = true

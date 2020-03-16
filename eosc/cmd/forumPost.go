@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/eoscanada/eos-go"
@@ -48,7 +49,7 @@ var forumPostCmd = &cobra.Command{
 		action.Account = targetAccount
 
 		api := getAPI()
-		pushEOSCActions(api, action)
+		pushEOSCActions(context.Background(), api, action)
 	},
 }
 

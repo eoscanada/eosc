@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -50,7 +51,7 @@ is displayed.
 		packedTx, err := signedTx.Pack(eos.CompressionNone)
 		errorCheck("packing transaction", err)
 
-		pushTransaction(api, packedTx, eos.SHA256Bytes(hexChainID))
+		pushTransaction(context.Background(), api, packedTx, eos.SHA256Bytes(hexChainID))
 	},
 }
 

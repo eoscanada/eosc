@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	eos "github.com/eoscanada/eos-go"
@@ -16,6 +17,7 @@ var voteStatusCmd = &cobra.Command{
 		voterName := toAccount(args[0], "voter name")
 
 		response, err := api.GetTableRows(
+			context.Background(),
 			eos.GetTableRowsRequest{
 				Code:       "eosio",
 				Scope:      "eosio",

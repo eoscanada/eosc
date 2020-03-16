@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"sort"
 
@@ -28,7 +29,7 @@ var voteProducersCmd = &cobra.Command{
 		api := getAPI()
 
 		fmt.Printf("Voter [%s] voting for: %s\n", voterName, producerNames)
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewVoteProducer(
 				voterName,
 				"",

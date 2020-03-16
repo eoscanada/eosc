@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"encoding/json"
@@ -21,7 +22,7 @@ var getScheduledTransactionsCmd = &cobra.Command{
 		lowerBound := viper.GetString("get-scheduled-transactions-cmd-lower_bound")
 		limit := viper.GetInt32("get-scheduled-transactions-cmd-limit")
 
-		txs, err := api.GetScheduledTransactionsWithBounds(lowerBound, uint32(limit))
+		txs, err := api.GetScheduledTransactionsWithBounds(context.Background(), lowerBound, uint32(limit))
 		errorCheck("get scheduled transactions", err)
 
 		data, err := json.MarshalIndent(txs, "", "  ")

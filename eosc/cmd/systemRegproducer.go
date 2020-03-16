@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/eoscanada/eos-go/ecc"
@@ -21,7 +22,7 @@ var systemRegisterProducerCmd = &cobra.Command{
 		errorCheck(fmt.Sprintf("%q invalid public key", args[1]), err)
 		websiteURL := args[2]
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewRegProducer(accountName, publicKey, websiteURL, uint16(viper.GetInt("system-regproducer-cmd-location"))),
 		)
 	},

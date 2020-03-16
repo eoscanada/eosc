@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -19,6 +20,7 @@ var getTableCmd = &cobra.Command{
 		api := getAPI()
 
 		response, err := api.GetTableRows(
+			context.Background(),
 			eos.GetTableRowsRequest{
 				Code:       args[0],
 				Scope:      args[1],

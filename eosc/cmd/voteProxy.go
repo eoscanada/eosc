@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/eoscanada/eos-go/system"
@@ -19,7 +20,7 @@ var voteProxyCmd = &cobra.Command{
 
 		fmt.Printf("Voter [%s] voting for proxy: %s\n", voterName, proxyName)
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewVoteProducer(
 				voterName,
 				proxyName,

@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -15,7 +16,7 @@ var getABICmd = &cobra.Command{
 		api := getAPI()
 
 		accountName := toAccount(args[0], "account name")
-		abi, err := api.GetABI(accountName)
+		abi, err := api.GetABI(context.Background(), accountName)
 		errorCheck("get ABI", err)
 
 		if !isStubABI(abi.ABI) {

@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -14,7 +16,7 @@ var systemUnregisterProducerCmd = &cobra.Command{
 
 		accountName := toAccount(args[0], "account name")
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewUnregProducer(accountName),
 		)
 	},

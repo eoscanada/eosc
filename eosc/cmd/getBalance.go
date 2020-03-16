@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -19,7 +20,7 @@ var getBalanceCmd = &cobra.Command{
 		symbol := viper.GetString("get-balance-cmd-symbol")
 		tokenAccount := toAccount(viper.GetString("get-balance-cmd-contract"), "--contract")
 
-		balances, err := api.GetCurrencyBalance(account, symbol, tokenAccount)
+		balances, err := api.GetCurrencyBalance(context.Background(), account, symbol, tokenAccount)
 		if err != nil {
 			fmt.Printf("Error: get balance: %s\n", err)
 			os.Exit(1)

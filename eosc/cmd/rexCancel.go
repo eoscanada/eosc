@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/rex"
 	"github.com/spf13/cobra"
 )
@@ -15,7 +17,7 @@ var rexCancel = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		account := toAccount(args[0], "account")
 
-		pushEOSCActions(getAPI(), rex.NewCancelREXOrder(
+		pushEOSCActions(context.Background(), getAPI(), rex.NewCancelREXOrder(
 			account,
 		))
 	},

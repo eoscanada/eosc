@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -33,7 +34,7 @@ func (p producers) Less(i, j int) bool {
 var run = func(cmd *cobra.Command, args []string) {
 	api := getAPI()
 
-	producers, err := getProducersTable(api)
+	producers, err := getProducersTable(context.Background(), api)
 	errorCheck("get producers table", err)
 
 	if viper.GetBool("vote-list-cmd-json") {

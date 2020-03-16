@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/rex"
 	"github.com/spf13/cobra"
 )
@@ -16,7 +18,7 @@ var rexExec = &cobra.Command{
 		account := toAccount(args[0], "account")
 		maxCount := toUint16(args[1], "max count")
 
-		pushEOSCActions(getAPI(), rex.NewREXExec(
+		pushEOSCActions(context.Background(), getAPI(), rex.NewREXExec(
 			account,
 			maxCount,
 		))

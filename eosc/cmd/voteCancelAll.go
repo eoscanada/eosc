@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/eoscanada/eos-go"
@@ -19,7 +20,7 @@ var voteCancelAllCmd = &cobra.Command{
 
 		noProxy := eos.AccountName("")
 		var noVotes []eos.AccountName
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewVoteProducer(
 				voterName,
 				noProxy,

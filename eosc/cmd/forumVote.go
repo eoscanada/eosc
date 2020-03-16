@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"strconv"
 
@@ -41,7 +42,7 @@ var forumVoteCmd = &cobra.Command{
 		action.Account = targetAccount
 
 		api := getAPI()
-		pushEOSCActions(api, action)
+		pushEOSCActions(context.Background(), api, action)
 	},
 }
 

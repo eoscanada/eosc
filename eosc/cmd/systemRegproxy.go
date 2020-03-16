@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -12,7 +14,7 @@ var systemRegisterProxyCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		api := getAPI()
 		accountName := toAccount(args[0], "account name")
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewRegProxy(accountName, true),
 		)
 	},

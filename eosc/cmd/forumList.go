@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -16,6 +17,7 @@ var forumListCmd = &cobra.Command{
 	Short: "List forum proposals.",
 	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
+		ctx := context.Background()
 		api := getAPI()
 		targetAccount := toAccount(viper.GetString("forum-cmd-target-contract"), "--target-contract")
 
@@ -26,7 +28,7 @@ var forumListCmd = &cobra.Command{
 		var resp *eos.GetTableRowsResp
 		if proposerStr != "" {
 			proposer = toAccount(proposerStr, "--from-proposer")
-			resp, err = api.GetTableRows(eos.GetTableRowsRequest{
+			resp, err = api.GetTableRows(ctx, eos.GetTableRowsRequest{
 				Code:       string(targetAccount),
 				Scope:      string(targetAccount),
 				Table:      string("proposal"),
@@ -40,7 +42,7 @@ var forumListCmd = &cobra.Command{
 				errorCheck(fmt.Sprintf("unable to get list of proposals from proposer %q", proposer), err)
 			}
 		} else {
-			resp, err = api.GetTableRows(eos.GetTableRowsRequest{
+			resp, err = api.GetTableRows(ctx, eos.GetTableRowsRequest{
 				Code:  string(targetAccount),
 				Scope: string(targetAccount),
 				Table: string("proposal"),

@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"strconv"
 
@@ -19,7 +20,7 @@ var systemSellRAMCmd = &cobra.Command{
 		numBytes, err := strconv.ParseInt(args[1], 10, 64)
 		errorCheck(fmt.Sprintf("invalid number of bytes %q", args[1]), err)
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewSellRAM(accountName, uint64(numBytes)),
 		)
 	},

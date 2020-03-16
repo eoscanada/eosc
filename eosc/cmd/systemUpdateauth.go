@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"sort"
 
@@ -78,7 +79,18 @@ waits:
 		if parent == "" {
 			updateAuthActionPermission = "owner"
 		}
-		pushEOSCActions(api, system.NewUpdateAuth(account, eos.PermissionName(permissionName), eos.PermissionName(parent), auth, eos.PermissionName(updateAuthActionPermission)))
+
+		pushEOSCActions(
+			context.Background(),
+			api,
+			system.NewUpdateAuth(
+				account,
+				eos.PermissionName(permissionName),
+				eos.PermissionName(parent),
+				auth,
+				eos.PermissionName(updateAuthActionPermission),
+			),
+		)
 	},
 }
 

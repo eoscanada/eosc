@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -19,7 +21,7 @@ var systemSetcontractCmd = &cobra.Command{
 		actions, err := system.NewSetContract(accountName, wasmFile, abiFile)
 		errorCheck("loading files", err)
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			actions...,
 		)
 	},

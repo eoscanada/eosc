@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/msig"
 	"github.com/spf13/cobra"
 )
@@ -19,7 +21,7 @@ var msigExecCmd = &cobra.Command{
 		proposalName := toName(args[1], "proposal name")
 		executer := toAccount(args[2], "executer")
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			msig.NewExec(proposer, proposalName, executer),
 		)
 	},

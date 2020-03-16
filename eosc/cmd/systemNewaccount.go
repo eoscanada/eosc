@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -130,7 +131,7 @@ active:
 
 		api := getAPI()
 
-		pushEOSCActions(api, actions...)
+		pushEOSCActions(context.Background(), api, actions...)
 	},
 }
 

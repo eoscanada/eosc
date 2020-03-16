@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/rex"
 	"github.com/spf13/cobra"
 )
@@ -18,7 +20,7 @@ var rexUnstakeTo = &cobra.Command{
 		net := toCoreAsset(args[2], "net")
 		cpu := toCoreAsset(args[3], "cpu")
 
-		pushEOSCActions(getAPI(), rex.NewUnstakeToREX(
+		pushEOSCActions(context.Background(), getAPI(), rex.NewUnstakeToREX(
 			staker,
 			stakedTo,
 			net,

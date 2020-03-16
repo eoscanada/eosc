@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"io/ioutil"
 
@@ -36,7 +37,8 @@ Reference: https://github.com/greymass/producerjson
 			Owner eos.AccountName `json:"owner"`
 			JSON  string          `json:"json"`
 		}
-		pushEOSCActions(api, &eos.Action{
+
+		pushEOSCActions(context.Background(), api, &eos.Action{
 			Account: eos.AccountName(viper.GetString("tools-producerjson-cmd-target-contract")),
 			Name:    eos.ActionName("set"),
 			Authorization: []eos.PermissionLevel{

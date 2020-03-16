@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/msig"
 	"github.com/spf13/cobra"
 )
@@ -20,7 +22,7 @@ var msigUnapproveCmd = &cobra.Command{
 		requested, err := permissionToPermissionLevel(args[2])
 		errorCheck("requested permission", err)
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			msig.NewUnapprove(proposer, proposalName, requested),
 		)
 	},

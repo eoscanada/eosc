@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/rex"
 	"github.com/spf13/cobra"
 )
@@ -17,7 +19,7 @@ var rexDefundNet = &cobra.Command{
 		loanNumber := toUint64(args[1], "loan number")
 		quantity := toCoreAsset(args[2], "quantity")
 
-		pushEOSCActions(getAPI(), rex.NewDefundNetLoan(
+		pushEOSCActions(context.Background(), getAPI(), rex.NewDefundNetLoan(
 			account,
 			loanNumber,
 			quantity,

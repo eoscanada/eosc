@@ -3,6 +3,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"strconv"
 
@@ -29,7 +30,7 @@ var systemBuyRAMBytesCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewBuyRAMBytes(payer, receiver, uint32(numBytes)),
 		)
 	},

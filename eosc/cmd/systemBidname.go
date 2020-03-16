@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/eoscanada/eos-go/system"
@@ -32,7 +33,7 @@ Read https://steemit.com/eos/@eos-canada/everything-you-need-to-know-about-names
 
 		fmt.Printf("[%s] bidding for: %s , amount=%d precision=%d symbol=%s\n", bidder, newname, bidAsset.Amount, bidAsset.Symbol.Precision, bidAsset.Symbol.Symbol)
 
-		pushEOSCActions(api,
+		pushEOSCActions(context.Background(), api,
 			system.NewBidname(bidder, newname, bidAsset),
 		)
 	},

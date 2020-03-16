@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -21,7 +22,7 @@ var getAccountCmd = &cobra.Command{
 		api := getAPI()
 
 		accountName := toAccount(args[0], "account name")
-		account, err := api.GetAccount(accountName)
+		account, err := api.GetAccount(context.Background(), accountName)
 		errorCheck("get account", err)
 
 		if viper.GetBool("get-account-cmd-json") == true {

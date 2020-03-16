@@ -3,6 +3,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/forum"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -22,7 +24,7 @@ var forumUnVoteCmd = &cobra.Command{
 		action.Account = targetAccount
 
 		api := getAPI()
-		pushEOSCActions(api, action)
+		pushEOSCActions(context.Background(), api, action)
 	},
 }
 

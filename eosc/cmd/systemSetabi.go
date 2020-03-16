@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -18,7 +20,7 @@ var systemSetabiCmd = &cobra.Command{
 		action, err := system.NewSetABI(accountName, abiFile)
 		errorCheck("loading abi file", err)
 
-		pushEOSCActions(api, action)
+		pushEOSCActions(context.Background(), api, action)
 	},
 }
 

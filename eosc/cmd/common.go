@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"encoding/hex"
 	"encoding/json"
 	"errors"
@@ -114,7 +115,7 @@ func getCoreSymbol() eos.Symbol {
 }
 
 func initCoreSymbol() error {
-	resp, err := getAPI().GetTableRows(eos.GetTableRowsRequest{
+	resp, err := getAPI().GetTableRows(context.Background(), eos.GetTableRowsRequest{
 		Code:  "eosio",
 		Scope: "eosio",
 		Table: "rammarket",
@@ -178,11 +179,11 @@ func permissionsToPermissionLevels(in []string) (out []eos.PermissionLevel, err 
 	return
 }
 
-func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
-	pushEOSCActionsAndContextFreeActions(api, nil, actions)
+func pushEOSCActions(ctx context.Context, api *eos.API, actions ...*eos.Action) {
+	pushEOSCActionsAndContextFreeActions(ctx, api, nil, actions)
 }
 
-func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eos.Action, actions []*eos.Action) {
+func pushEOSCActionsAndContextFreeActions(ctx context.Context, api *eos.API, contextFreeActions []*eos.Action, actions []*eos.Action) {
 	for _, act := range contextFreeActions {
 		act.Authorization = nil
 	}
@@ -211,7 +212,7 @@ func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eo
 		opts.DelaySecs = uint32(delaySec)
 	}
 
-	if err := opts.FillFromChain(api); err != nil {
+	if err := opts.FillFromChain(ctx, api); err != nil {
 		fmt.Println("Error fetching tapos + chain_id from the chain (specify --offline flags for offline operations):", err)
 		os.Exit(1)
 	}
@@ -223,9 +224,9 @@ func pushEOSCActionsAndContextFreeActions(api *eos.API, contextFreeActions []*eo
 
 	tx = optionallySudoWrap(tx, opts)
 
-	signedTx, packedTx := optionallySignTransaction(tx, opts.ChainID, api, true)
+	signedTx, packedTx := optionallySignTransaction(ctx, tx, opts.ChainID, api, true)
 
-	optionallyPushTransaction(signedTx, packedTx, opts.ChainID, api)
+	optionallyPushTransaction(ctx, signedTx, packedTx, opts.ChainID, api)
 }
 
 func optionallySudoWrap(tx *eos.Transaction, opts *eos.TxOptions) *eos.Transaction {
@@ -235,7 +236,7 @@ func optionallySudoWrap(tx *eos.Transaction, opts *eos.TxOptions) *eos.Transacti
 	return tx
 }
 
-func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api *eos.API, resetExpiration bool) (signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction) {
+func optionallySignTransaction(ctx context.Context, tx *eos.Transaction, chainID eos.SHA256Bytes, api *eos.API, resetExpiration bool) (signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction) {
 	if !viper.GetBool("global-skip-sign") {
 		textSignKeys := viper.GetStringSlice("global-offline-sign-key")
 		if len(textSignKeys) > 0 {
@@ -246,7 +247,7 @@ func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api
 
 				signKeys = append(signKeys, pubKey)
 			}
-			api.SetCustomGetRequiredKeys(func(tx *eos.Transaction) ([]ecc.PublicKey, error) {
+			api.SetCustomGetRequiredKeys(func(ctx context.Context, tx *eos.Transaction) ([]ecc.PublicKey, error) {
 				return signKeys, nil
 			})
 		}
@@ -258,7 +259,7 @@ func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api
 		}
 
 		var err error
-		signedTx, packedTx, err = api.SignTransaction(tx, chainID, eos.CompressionNone)
+		signedTx, packedTx, err = api.SignTransaction(ctx, tx, chainID, eos.CompressionNone)
 		errorCheck("signing transaction", err)
 	} else {
 		tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
@@ -268,7 +269,7 @@ func optionallySignTransaction(tx *eos.Transaction, chainID eos.SHA256Bytes, api
 	return signedTx, packedTx
 }
 
-func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes, api *eos.API) {
+func optionallyPushTransaction(ctx context.Context, signedTx *eos.SignedTransaction, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes, api *eos.API) {
 	writeTrx := viper.GetString("global-write-transaction")
 
 	if writeTrx != "" {
@@ -289,12 +290,12 @@ func optionallyPushTransaction(signedTx *eos.SignedTransaction, packedTx *eos.Pa
 		}
 
 		// TODO: print the traces
-		pushTransaction(api, packedTx, chainID)
+		pushTransaction(ctx, api, packedTx, chainID)
 	}
 }
 
-func pushTransaction(api *eos.API, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes) {
-	resp, err := api.PushTransaction(packedTx)
+func pushTransaction(ctx context.Context, api *eos.API, packedTx *eos.PackedTransaction, chainID eos.SHA256Bytes) {
+	resp, err := api.PushTransaction(ctx, packedTx)
 	if err != nil {
 		if typedErr, ok := err.(eos.APIError); ok {
 			printError(typedErr)

@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -24,7 +26,7 @@ See also: the "system delegatebw" command.
 		netStake := toCoreAsset(args[2], "network bw unstake qty")
 		cpuStake := toCoreAsset(args[3], "cpu bw unstake qty")
 
-		pushEOSCActions(getAPI(), system.NewUndelegateBW(from, receiver, cpuStake, netStake))
+		pushEOSCActions(context.Background(), getAPI(), system.NewUndelegateBW(from, receiver, cpuStake, netStake))
 	},
 }
 

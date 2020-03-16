@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"context"
+
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"
 )
@@ -18,7 +20,7 @@ var systemSetcodeCmd = &cobra.Command{
 		action, err := system.NewSetCode(accountName, wasmFile)
 		errorCheck("loading wasm file", err)
 
-		pushEOSCActions(api, action)
+		pushEOSCActions(context.Background(), api, action)
 	},
 }
 
