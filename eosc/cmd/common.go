@@ -76,6 +76,12 @@ func getAPI() *eos.API {
 	httpHeaders := viper.GetStringSlice("global-http-header")
 	api := eos.New(sanitizeAPIURL(viper.GetString("global-api-url")))
 
+	for i := 0; i < 25; i++ {
+		if val := os.Getenv(fmt.Sprintf("EOSC_GLOBAL_HTTP_HEADER_%d", i)); val != "" {
+			httpHeaders = append(httpHeaders, val)
+		}
+	}
+
 	for _, header := range httpHeaders {
 		headerArray := strings.SplitN(header, ": ", 2)
 		if len(headerArray) != 2 || strings.Contains(headerArray[0], " ") {
