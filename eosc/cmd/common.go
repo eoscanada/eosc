@@ -76,6 +76,12 @@ func getAPI() *eos.API {
 	httpHeaders := viper.GetStringSlice("global-http-header")
 	api := eos.New(sanitizeAPIURL(viper.GetString("global-api-url")))
 
+	for i := 0; i < 25; i++ {
+		if val := os.Getenv(fmt.Sprintf("EOSC_GLOBAL_HTTP_HEADER_%d", i)); val != "" {
+			httpHeaders = append(httpHeaders, val)
+		}
+	}
+
 	for _, header := range httpHeaders {
 		headerArray := strings.SplitN(header, ": ", 2)
 		if len(headerArray) != 2 || strings.Contains(headerArray[0], " ") {
@@ -148,6 +154,9 @@ func sanitizeAPIURL(input string) string {
 func errorCheck(prefix string, err error) {
 	if err != nil {
 		fmt.Printf("ERROR: %s: %s\n", prefix, err)
+		if strings.HasSuffix(err.Error(), "connection refused") && strings.Contains(err.Error(), defaultAPIURL) {
+			fmt.Println("Have you selected a valid EOS HTTP endpoint ? You can use the --api-url flag or EOSC_GLOBAL_API_URL environment variable.")
+		}
 		os.Exit(1)
 	}
 }

@@ -1,6 +1,6 @@
-`eosc` command-line swiss-army-knife
--------------------------------
+# `eosc` command-line swiss-army-knife
 
+## Description
 [点击查看中文](./README-cn.md)
 
 `eosc` is a cross-platform (Windows, Mac and Linux) command-line tool
@@ -17,8 +17,7 @@ mainnet launch.  Source code for most operations is already available
 in this repository.
 
 
-Installation
-------------
+## Installation
 
 1. Install from https://github.com/eoscanada/eosc/releases
 
@@ -39,8 +38,7 @@ brew install eoscanada/tap/eosc
 ```
 
 
-Vote now!
----------
+## Getting started
 
 Once installed run:
 
@@ -50,36 +48,38 @@ eosc vault create --import
 
 to import your keys and follow instructions.
 
-Then run:
+Then set your environment variable to the API URL of your choice, optionally setting some HTTP headers:
 
 ```
-eosc vote --help
+export EOSC_GLOBAL_API_URL=https://your-favorite-endpoint
+
+export EOSC_GLOBAL_HTTP_HEADER_0="Authorization: bearer abcdef12323453452565676589"
+export EOSC_GLOBAL_HTTP_HEADER_1="Origin: https://something...
 ```
 
-and run something like this:
+Then you can run commands on the chain, ex:
 
 ```
-eosc vote producers [your account] [producer1] [producer2] [producer3]
+eosc get info
+eosc transfer fromaccnt toaccnt 0.0001 --memo "Sent with eosc"
 ```
 
-Make sure you have version `v0.7.0` or higher:
+## Environment variables
 
-```
-eosc version
-```
+* All global flags (those you get from eosc –help) can be set with the following pattern: EOSC_GLOBAL_FLAG_NAME. The most useful are:
+  * `EOSC_GLOBAL_WALLET_URL` -> `--wallet-url`
+  * `EOSC_GLOBAL_VAULT_FILE` -> `--vault-file`
 
-Read more below for details.
+* All (sub)command flags map to the following pattern: EOSC_COMMAND_SUBCOMMAND_CMD_FLAG_NAME (ex: `EOSC_FORUM_POST_CMD_REPLY_TO` -> `eosc forum post --reply-to=...`
+* `EOSC_GLOBAL_INSECURE_VAULT_PASSPHRASE` allows you to input the passphrase directly in an environment variable (useful for test automation, risky for most other uses)
+* `EOSC_GLOBAL_HTTP_HEADER_0` (available for indexes 0 to 25)
 
-
-eosc vault
-----------
+## eosc vault management
 
 The `eosc vault` is a simple yet powerful EOS wallet.
 
 
-
-Import keys in new wallet
-=========================
+### Import keys in new wallet
 
 You can **import externally generated private keys** with `vault create --import` call.
 
@@ -104,8 +104,7 @@ for cryptographic primitives used.
 
 
 
-New wallet with new keys
-========================
+### New wallet with new keys
 
 Create a new wallet with:
 
@@ -120,8 +119,7 @@ Wallet file "./eosc-vault.json" created. Here are your public keys:
 ```
 
 
-Add keys to an existing vault
-=============================
+### Add keys to an existing vault
 
 To add an externally generated private key to an existing vault, use:
 
@@ -140,43 +138,6 @@ Total keys writteN: 3
 
 The vault operations do zero network calls and can be done offline.
 The file is encrypted, can safely be archived and is future proof.
-
-Casting your votes
-------------------
-
-With an `eosc-vault.json`, you can vote:
-
-```
-$ eosc vote producers youraccount eoscanadacom someotherfavo riteproducer
-Enter passphrase to unlock vault:
-Voter [youraccount] voting for: [eoscanadacom]
-Done
-```
-
-This will sign your vote transaction locally, and submit the
-transaction to the network through the `https://mainnet.eoscanada.com`
-endpoint.  You can also point to some other endpoints that are on the
-main network with `-u` or `--api-url`.
-
-Find what your account is on https://eosq.app
-
-
-
-Cryptographic primitives used
------------------------------
-
-The cryptography used is NaCl
-([C implementation](https://tweetnacl.cr.yp.to/), [Javascript port](https://github.com/dchest/tweetnacl-js),
-[Go version, which we use](https://godoc.org/golang.org/x/crypto/nacl/secretbox)). And
-key derivation is [Argon2](https://en.wikipedia.org/wiki/Argon2),
-using the [Go library
-here](https://godoc.org/golang.org/x/crypto/argon2).
-
-You can inspect the crypto code in our codebase regarding the
-`passphrase` implementation: [it is 61 lines](./vault/passphrase.go),
-including blanks and comments.
-
-
 
 ## Offline transaction signature
 
@@ -344,9 +305,22 @@ need to stitch transaction files, or gather signatures into a single
 place.
 
 
+## Cryptographic primitives used
 
-FAQ
----
+The cryptography used is NaCl
+([C implementation](https://tweetnacl.cr.yp.to/), [Javascript port](https://github.com/dchest/tweetnacl-js),
+[Go version, which we use](https://godoc.org/golang.org/x/crypto/nacl/secretbox)). And
+key derivation is [Argon2](https://en.wikipedia.org/wiki/Argon2),
+using the [Go library
+here](https://godoc.org/golang.org/x/crypto/argon2).
+
+You can inspect the crypto code in our codebase regarding the
+`passphrase` implementation: [it is 61 lines](./vault/passphrase.go),
+including blanks and comments.
+
+
+
+## FAQ
 
 Q: Why not use `cleos` instead ?
 

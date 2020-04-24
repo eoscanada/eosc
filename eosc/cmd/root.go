@@ -15,6 +15,8 @@ import (
 // Version represents the eosc command version
 var Version string
 
+const defaultAPIURL = "http://localhost:8888"
+
 // RootCmd represents the eosc command
 var RootCmd = &cobra.Command{
 	Use:   "eosc",
@@ -47,7 +49,7 @@ func init() {
 	RootCmd.PersistentFlags().BoolP("debug", "", false, "Enables verbose API debug messages")
 	RootCmd.PersistentFlags().StringP("vault-file", "", "./eosc-vault.json", "Wallet file that contains encrypted key material")
 	RootCmd.PersistentFlags().StringSliceP("wallet-url", "", []string{}, "Base URL to wallet endpoint. You can pass this multiple times to use the multi-signer (will use each wallet to sign multi-sig transactions).")
-	RootCmd.PersistentFlags().StringP("api-url", "u", "https://mainnet.eoscanada.com", "API endpoint of eos.io blockchain node")
+	RootCmd.PersistentFlags().StringP("api-url", "u", defaultAPIURL, "API endpoint of eos.io blockchain node")
 	RootCmd.PersistentFlags().StringSliceP("permission", "p", []string{}, "Permission to sign transactions with. Optionally specify more than one, or separate by comma")
 	RootCmd.PersistentFlags().StringSliceP("http-header", "H", []string{}, "HTTP header to add to a request. Optionally repeat this option to specify multiple headers")
 	RootCmd.PersistentFlags().StringP("kms-gcp-keypath", "", "", "Path to the cryptoKeys within a keyRing on GCP")

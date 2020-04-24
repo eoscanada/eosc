@@ -30,6 +30,11 @@ go get -u -v github.com/eoscanada/eosc/eosc
 安装完成后运行下面命令来导入你的私钥:
 
 ```
+export EOSC_GLOBAL_API_URL=https://...
+
+# export EOSC_GLOBAL_HTTP_HEADER_0="Authorization: bearer abcdef12323453452565676589"
+# export EOSC_GLOBAL_HTTP_HEADER_1="Origin: https://...
+
 eosc vault create --import
 ```
 
@@ -42,6 +47,7 @@ eosc vote --help
 然后运行如下命令为你的候选者投票: 
 
 ```
+
 eosc vote producers [your account] [producer1] [producer2] [producer3]
 ```
 命令中参数依次为: [你的账户名] [你要投票的BP1] [你要投票的BP2] [你要投票的BP3] （你共可以为30个BP投票）
