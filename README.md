@@ -57,10 +57,15 @@ export EOSC_GLOBAL_HTTP_HEADER_0="Authorization: bearer abcdef123234534525656765
 export EOSC_GLOBAL_HTTP_HEADER_1="Origin: https://something...
 ```
 
-Then you can 
+Then you can run commands on the chain, ex:
+
+```
+eosc get info
+eosc transfer fromaccnt toaccnt 0.0001 --memo "Sent with eosc"
+```
 
 ## Environment variables
----------------------
+
 * All global flags (those you get from eosc –help) can be set with the following pattern: EOSC_GLOBAL_FLAG_NAME. The most useful are:
   * `EOSC_GLOBAL_WALLET_URL` -> `--wallet-url`
   * `EOSC_GLOBAL_VAULT_FILE` -> `--vault-file`
