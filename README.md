@@ -306,7 +306,6 @@ place.
 
 
 ## Cryptographic primitives used
------------------------------
 
 The cryptography used is NaCl
 ([C implementation](https://tweetnacl.cr.yp.to/), [Javascript port](https://github.com/dchest/tweetnacl-js),
