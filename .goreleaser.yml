@@ -24,8 +24,8 @@ builds:
   env:
   - CGO_ENABLED=0
   lang: go
-archive:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+archives:
+- name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
   replacements:
     "386": i386
     amd64: x86_64
@@ -45,12 +45,12 @@ archive:
   - README*
   - changelog*
   - CHANGELOG*
-nfpm:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
+nfpms:
+- name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
     }}v{{ .Arm }}{{ end }}'
   bindir: /usr/local/bin
-snapcraft:
-  name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
+snapcrafts:
+- name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm
     }}v{{ .Arm }}{{ end }}'
 snapshot:
   name_template: '{{ .Tag }}-next'
@@ -63,8 +63,8 @@ changelog:
     - '^test:'
   sort: asc
 dist: dist
-sign:
-  cmd: keybase
+signs:
+- cmd: keybase
   args:
   - sign
   - --infile
@@ -77,8 +77,8 @@ sign:
   artifacts: checksum
 env_files:
   github_token: ~/.config/goreleaser/github_token
-brew:
-  github:
+brews:
+- github:
     owner: eoscanada
     name: homebrew-tap
   homepage: "https://eosc.app/"
