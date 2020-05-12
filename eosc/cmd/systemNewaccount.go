@@ -45,6 +45,8 @@ active:
     weight: 1
 ---
 
+For use with any chain other than the EOS mainnet, add the flag `--contract [contract_name]`
+and be sure to add the correct symbol and precision (e.g. "1.0000 SYS") for the contract.
 `,
 	Args: cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
