@@ -11,12 +11,13 @@ import (
 	"strings"
 	"time"
 
+	"go.uber.org/zap"
+
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 )
 
 type BIOS struct {
-	Log       *Logger
 	CachePath string
 
 	TargetNetAPI       *eos.API
@@ -33,11 +34,10 @@ type BIOS struct {
 	EphemeralPublicKey  ecc.PublicKey
 }
 
-func NewBIOS(logger *Logger, cachePath string, targetAPI *eos.API) *BIOS {
+func NewBIOS(cachePath string, targetAPI *eos.API) *BIOS {
 	b := &BIOS{
 		CachePath:    cachePath,
 		TargetNetAPI: targetAPI,
-		Log:          logger,
 	}
 	return b
 }
@@ -53,7 +53,9 @@ func (b *BIOS) Boot() error {
 		return err
 	}
 
-	b.Log.Println("START BOOT SEQUENCE...")
+	zlog.Info("***************************************************************")
+	zlog.Info("START BOOT SEQUENCE...")
+	zlog.Info("***************************************************************")
 
 	var genesisData string
 	var pubKey ecc.PublicKey
@@ -102,17 +104,16 @@ func (b *BIOS) Boot() error {
 
 	b.pingTargetNetwork()
 
-	b.Log.Println("In-memory keys:")
+	zlog.Info("In-memory keys:")
 	memkeys, _ := b.TargetNetAPI.Signer.AvailableKeys(ctx)
 	for _, key := range memkeys {
-		b.Log.Printf("- %s\n", key.String())
+		zlog.Info("", zap.String("key", key.String()))
 	}
-	b.Log.Println("")
 
 	//eos.Debug = true
 
 	for _, step := range b.BootSequence.BootSequence {
-		b.Log.Printf("%s  [%s] ", step.Label, step.Op)
+		zlog.Info("action", zap.String("label", step.Label), zap.String("op", step.Op))
 
 		acts, err := step.Data.Actions(b)
 		if err != nil {
@@ -121,26 +122,26 @@ func (b *BIOS) Boot() error {
 
 		if len(acts) != 0 {
 			for idx, chunk := range ChunkifyActions(acts) {
+				for _, c := range chunk {
+					zlog.Info("processing chunk", zap.String("action", string(c.Name)))
+				}
 				err := Retry(25, time.Second, func() error {
 					_, err := b.TargetNetAPI.SignPushActions(ctx, chunk...)
 					if err != nil {
-						b.Log.Printf("r")
-						b.Log.Debugf("error pushing transaction for step %q, chunk %d: %s\n", step.Op, idx, err)
+						zlog.Error("error pushing transaction", zap.String("op", step.Op), zap.Int("idx", idx), zap.Error(err))
 						return fmt.Errorf("push actions for step %q, chunk %d: %s", step.Op, idx, err)
 					}
 					return nil
 				})
 				if err != nil {
-					b.Log.Printf(" failed\n")
+					zlog.Info(" failed")
 					return err
 				}
-				b.Log.Printf(".")
 			}
-			b.Log.Printf(" done\n")
 		}
 	}
 
-	b.Log.Println("Waiting 2 seconds for transactions to flush to blocks")
+	zlog.Info("Waiting 2 seconds for transactions to flush to blocks")
 	time.Sleep(2 * time.Second)
 
 	// FIXME: don't do chain validation here..
@@ -149,7 +150,7 @@ func (b *BIOS) Boot() error {
 		return fmt.Errorf("chain validation: %s", err)
 	}
 	if !isValid {
-		b.Log.Println("WARNING: chain invalid, destroying network if possible")
+		zlog.Info("WARNING: chain invalid, destroying network if possible")
 		os.Exit(0)
 	}
 
@@ -164,7 +165,7 @@ func (b *BIOS) setEphemeralKeypair() error {
 
 	if _, ok := b.BootSequence.Keys["ephemeral"]; ok {
 		cnt := b.BootSequence.Keys["ephemeral"]
-		privKey, err := ecc.NewPrivateKey(strings.TrimSpace(string(cnt)))
+		privKey, err := ecc.NewPrivateKey(strings.TrimSpace(cnt))
 		if err != nil {
 			return fmt.Errorf("unable to correctly decode ephemeral private key %q: %s", cnt, err)
 		}
@@ -204,7 +205,7 @@ func (b *BIOS) logEphemeralKey(tag string) {
 	pubKey := b.EphemeralPublicKey.String()
 	privKey := b.EphemeralPrivateKey.String()
 
-	b.Log.Printf("%s:\n\n\tPublic key: %s\n\tPrivate key: %s..%s\n\n", tag, pubKey, privKey[:4], privKey[len(privKey)-4:])
+	zlog.Info("ephemeral key", zap.String("tag", tag), zap.String("pub_key", pubKey), zap.String("priv_key_prefix", privKey[:4]), zap.String("priv_key", privKey[len(privKey)-4:]))
 }
 
 func (b *BIOS) RunChainValidation() (bool, error) {
@@ -241,24 +242,24 @@ func (b *BIOS) RunChainValidation() (bool, error) {
 
 	err := b.validateTargetNetwork(bootSeqMap, bootSeq)
 	if err != nil {
-		b.Log.Printf("BOOT SEQUENCE VALIDATION FAILED:\n%s", err)
+		zlog.Info("BOOT SEQUENCE VALIDATION FAILED:", zap.Error(err))
 		return false, nil
 	}
 
-	b.Log.Println("")
-	b.Log.Println("All good! Chain validation succeeded!")
-	b.Log.Println("")
+	zlog.Info("")
+	zlog.Info("All good! Chain validation succeeded!")
+	zlog.Info("")
 
 	return true, nil
 }
 
 func (b *BIOS) writeAllActionsToDisk() error {
 	if !b.WriteActions {
-		b.Log.Println("Not writing actions to 'actions.jsonl'. Activate with --write-actions")
+		zlog.Info("Not writing actions to 'actions.jsonl'. Activate with --write-actions")
 		return nil
 	}
 
-	b.Log.Println("Writing all actions to 'actions.jsonl'...")
+	zlog.Info("Writing all actions to 'actions.jsonl'...")
 	fl, err := os.Create("actions.jsonl")
 	if err != nil {
 		return err
@@ -336,19 +337,18 @@ func (v ValidationErrors) Error() string {
 }
 
 func (b *BIOS) pingTargetNetwork() {
-	b.Log.Printf("Pinging target node at %q...", b.TargetNetAPI.BaseURL)
+	zlog.Info("Pinging target node at ", zap.String("url", b.TargetNetAPI.BaseURL))
 	for {
 		info, err := b.TargetNetAPI.GetInfo(context.Background())
 		if err != nil {
-			b.Log.Debugf("target node error: %s\n", err)
-			b.Log.Printf("e")
+			zlog.Warn("target node", zap.Error(err))
 			time.Sleep(1 * time.Second)
 			continue
 		}
 
 		if info.HeadBlockNum < 2 {
-			b.Log.Debugln("target node: still no blocks in")
-			b.Log.Printf(".")
+			zlog.Info("target node: still no blocks in")
+			zlog.Info(".")
 			time.Sleep(1 * time.Second)
 			continue
 		}
@@ -356,7 +356,7 @@ func (b *BIOS) pingTargetNetwork() {
 		break
 	}
 
-	b.Log.Println(" touchdown!")
+	zlog.Info(" touchdown!")
 }
 
 func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action) (err error) {
@@ -366,7 +366,7 @@ func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action
 	b.pingTargetNetwork()
 
 	// TODO: wait for target network to be up, and responding...
-	b.Log.Println("Pulling blocks from chain until we gathered all actions to validate:")
+	zlog.Info("Pulling blocks from chain until we gathered all actions to validate:")
 	blockHeight := 1
 	actionsRead := 0
 	seenMap := map[string]bool{}
@@ -390,17 +390,14 @@ func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action
 				continue
 			}
 
-			b.Log.Debugln("Failed getting block num from target api:", err)
-			b.Log.Printf("e")
+			zlog.Warn("Failed getting block num from target api", zap.String("message", err.Error()))
 			time.Sleep(1 * time.Second)
 			continue
-		} else {
-			b.Log.Printf(".\n")
 		}
 
 		blockHeight++
 
-		b.Log.Printf("Receiving block height=%d producer=%s transactions=%d\n", m.BlockNumber(), m.Producer, len(m.Transactions))
+		zlog.Info("Receiving block", zap.Uint32("block_num", m.BlockNumber()), zap.String("producer", string(m.Producer)), zap.Int("trx_count", len(m.Transactions)))
 
 		if !gotSomeTx && len(m.Transactions) > 2 {
 			gotSomeTx = true
@@ -413,7 +410,7 @@ func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action
 		for _, receipt := range m.Transactions {
 			unpacked, err := receipt.Transaction.Packed.Unpack()
 			if err != nil {
-				b.Log.Println("WARNING: Unable to unpack transaction, won't be able to fully validate:", err)
+				zlog.Warn("Unable to unpack transaction, won't be able to fully validate", zap.Error(err))
 				return fmt.Errorf("unpack transaction failed")
 			}
 
@@ -421,7 +418,7 @@ func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action
 				act.SetToServer(false)
 				data, err := eos.MarshalBinary(act)
 				if err != nil {
-					b.Log.Printf("Error marshalling an action: %s\n", err)
+					zlog.Error("Error marshalling an action", zap.Error(err))
 					validationErrors = append(validationErrors, ValidationError{
 						Err:               err,
 						BlockNumber:       1, // extract from the block transactionmroot
@@ -435,7 +432,6 @@ func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action
 				}
 				key := sha2(data) // TODO: compute a hash here..
 
-				b.Log.Printf("- Validating action %d/%d [%s::%s]", actionsRead+1, expectedActionCount, act.Account, act.Name)
 				if _, ok := bootSeqMap[key]; !ok {
 					validationErrors = append(validationErrors, ValidationError{
 						Err:               errors.New("not found"),
@@ -446,10 +442,10 @@ func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action
 						ActionHexData:     hex.EncodeToString(act.HexData),
 						Index:             actionsRead,
 					})
-					b.Log.Printf(" INVALID ***************************** INVALID *************.\n")
+					zlog.Warn("INVALID action", zap.Int("action_read", actionsRead+1), zap.Int("expected_action_count", expectedActionCount), zap.String("account", string(act.Account)), zap.String("action", string(act.Name)))
 				} else {
 					seenMap[key] = true
-					b.Log.Printf(" valid.\n")
+					zlog.Info("validated action", zap.Int("action_read", actionsRead+1), zap.Int("expected_action_count", expectedActionCount), zap.String("account", string(act.Account)), zap.String("action", string(act.Name)))
 				}
 
 				actionsRead++
@@ -472,13 +468,13 @@ func (b *BIOS) validateTargetNetwork(bootSeqMap ActionMap, bootSeq []*eos.Action
 func (b *BIOS) flushMissingActions(seenMap map[string]bool, bootSeq []*eos.Action) {
 	fl, err := os.Create("missing_actions.jsonl")
 	if err != nil {
-		fmt.Println("Couldn't write to `missing_actions.jsonl`:", err)
+		zlog.Error("Couldn't write to `missing_actions.jsonl`:", zap.Error(err))
 		return
 	}
 	defer fl.Close()
 
 	// TODO: print all actions that are still MISSING to `missing_actions.jsonl`.
-	b.Log.Println("Flushing unseen transactions to `missing_actions.jsonl` up until this point.")
+	zlog.Info("Flushing unseen transactions to `missing_actions.jsonl` up until this point.")
 
 	for _, act := range bootSeq {
 		act.SetToServer(true)
@@ -495,19 +491,18 @@ func (b *BIOS) flushMissingActions(seenMap map[string]bool, bootSeq []*eos.Actio
 }
 
 func (b *BIOS) inputGenesisData() (genesis *GenesisJSON) {
-	b.Log.Println("")
-
+	zlog.Info("")
 	for {
-		b.Log.Printf("Please input the genesis data of the network you want to join: ")
+		zlog.Info("Please input the genesis data of the network you want to join: ")
 		genesisData, err := ScanSingleLine()
 		if err != nil {
-			b.Log.Println("error reading:", err)
+			zlog.Error("error reading:", zap.Error(err))
 			continue
 		}
 
 		err = json.Unmarshal([]byte(genesisData), &genesis)
 		if err != nil {
-			b.Log.Printf("Invalid genesis data: %s\n", err)
+			zlog.Error("Invalid genesis data", zap.Error(err))
 			continue
 		}
 
@@ -600,12 +595,12 @@ func readPrivKeyFromFile(filename string) (*ecc.PrivateKey, error) {
 func (b *BIOS) writeToFile(filename, content string) {
 	fl, err := os.OpenFile(filename, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0600)
 	if err != nil {
-		b.Log.Println("Unable to write to file", filename, err)
+		zlog.Info("Unable to write to file", zap.String("file_name", filename), zap.Error(err))
 		return
 	}
 	defer fl.Close()
 
 	fl.Write([]byte(content))
 
-	b.Log.Printf("Wrote file %q\n", filename)
+	zlog.Info("Wrote file", zap.String("file_name", filename))
 }

@@ -12,6 +12,8 @@ import (
 	"os"
 	"path/filepath"
 
+	"go.uber.org/zap"
+
 	"github.com/abourget/llerrgroup"
 )
 
@@ -65,18 +67,16 @@ func (b *BIOS) DownloadURL(ref string, hash string) error {
 		}
 	}
 
-	b.Log.Printf("Caching content from %q.\n", ref)
+	zlog.Info("Caching content.", zap.String("ref", ref))
 	if err := b.writeToCache(ref, cnt); err != nil {
 		return err
 	}
-
-	b.Log.Printf("- %q done\n", ref)
 
 	return nil
 }
 
 func (b *BIOS) downloadRef(ref string) ([]byte, error) {
-	b.Log.Printf("Downloading content from %q.\n", ref)
+	zlog.Info("Downloading content", zap.String("from", ref))
 	if _, err := os.Stat(ref); err == nil {
 		return b.downloadLocalFile(ref)
 	}

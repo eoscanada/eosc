@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"reflect"
 
+	"go.uber.org/zap"
+
 	eos "github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eos-go/system"
@@ -30,6 +32,8 @@ var operationsRegistry = map[string]Operation{
 	"snapshot.load_unregistered": &OpInjectUnregdSnapshot{},
 	"system.resign_accounts":     &OpResignAccounts{},
 	"system.create_voters":       &OpCreateVoters{},
+	"system.delegate_bw":         &OpDelegateBW{},
+	"system.buy_ram":             &OpBuyRam{},
 }
 
 type OperationType struct {
@@ -121,9 +125,10 @@ func (op *OpSetRAM) Actions(b *BIOS) (out []*eos.Action, err error) {
 //
 
 type OpNewAccount struct {
-	Creator    eos.AccountName
-	NewAccount eos.AccountName `json:"new_account"`
-	Pubkey     string
+	Creator        eos.AccountName
+	NewAccount     eos.AccountName `json:"new_account"`
+	Pubkey         string
+	RamEOSQuantity uint64 `json:"ram_eos_quantity"`
 }
 
 func (op *OpNewAccount) Actions(b *BIOS) (out []*eos.Action, err error) {
@@ -135,8 +140,46 @@ func (op *OpNewAccount) Actions(b *BIOS) (out []*eos.Action, err error) {
 			return nil, fmt.Errorf("reading pubkey: %s", err)
 		}
 	}
+	out = append(out, system.NewNewAccount(op.Creator, op.NewAccount, pubKey))
 
-	return append(out, system.NewNewAccount(op.Creator, op.NewAccount, pubKey)), nil
+	if op.RamEOSQuantity > 0 {
+		out = append(out, system.NewBuyRAM(op.Creator, op.NewAccount, op.RamEOSQuantity))
+	}
+
+	return out, nil
+}
+
+type OpDelegateBW struct {
+	From     eos.AccountName
+	To       eos.AccountName
+	StakeCPU int64 `json:"stake_cpu"`
+	StakeNet int64 `json:"stake_net"`
+	Transfer bool
+}
+
+func (op *OpDelegateBW) Actions(b *BIOS) (out []*eos.Action, err error) {
+	return append(out, system.NewDelegateBW(op.From, op.To, eos.NewEOSAsset(op.StakeCPU), eos.NewEOSAsset(op.StakeNet), op.Transfer)), nil
+}
+
+type OpBuyRam struct {
+	Payer       eos.AccountName
+	Receiver    eos.AccountName
+	EOSQuantity uint64 `json:"eos_quantity"`
+}
+
+func (op *OpBuyRam) Actions(b *BIOS) (out []*eos.Action, err error) {
+	return append(out, system.NewBuyRAM(op.Payer, op.Receiver, op.EOSQuantity)), nil
+}
+
+type OpTransfer struct {
+	From   eos.AccountName
+	to     eos.AccountName
+	Amount eos.Asset
+	Memo   string
+}
+
+func (op *OpTransfer) Actions(b *BIOS) (out []*eos.Action, err error) {
+	return append(out, token.NewTransfer(op.From, op.to, op.Amount, op.Memo)), nil
 }
 
 type OpCreateVoters struct {
@@ -162,9 +205,7 @@ func (op *OpCreateVoters) Actions(b *BIOS) (out []*eos.Action, err error) {
 		out = append(out, token.NewTransfer(op.Creator, voterName, eos.NewEOSAsset(1000000000), ""))
 		out = append(out, system.NewBuyRAMBytes(AN("eosio"), voterName, 8192)) // 8kb gift !
 		out = append(out, system.NewDelegateBW(AN("eosio"), voterName, eos.NewEOSAsset(10000), eos.NewEOSAsset(10000), true))
-
 	}
-
 	return
 }
 
@@ -183,8 +224,6 @@ func (op *OpSetPriv) Actions(b *BIOS) (out []*eos.Action, err error) {
 	return append(out, system.NewSetPriv(op.Account)), nil
 }
 
-//
-
 type OpCreateToken struct {
 	Account eos.AccountName `json:"account"`
 	Amount  eos.Asset       `json:"amount"`
@@ -194,8 +233,6 @@ func (op *OpCreateToken) Actions(b *BIOS) (out []*eos.Action, err error) {
 	act := token.NewCreate(op.Account, op.Amount)
 	return append(out, act), nil
 }
-
-//
 
 type OpIssueToken struct {
 	Account eos.AccountName
@@ -254,7 +291,7 @@ func (op *OpSnapshotCreateAccounts) Actions(b *BIOS) (out []*eos.Action, err err
 	for idx, hodler := range snapshotData {
 		if trunc := op.TestnetTruncateSnapshot; trunc != 0 {
 			if idx == trunc {
-				b.Log.Debugf("- DEBUG: truncated snapshot to %d rows\n", trunc)
+				zlog.Debug("truncated snapshot", zap.Int("at_row", trunc))
 				break
 			}
 		}
@@ -337,7 +374,7 @@ func (op *OpInjectUnregdSnapshot) Actions(b *BIOS) (out []*eos.Action, err error
 	for idx, hodler := range snapshotData {
 		if trunc := op.TestnetTruncateSnapshot; trunc != 0 {
 			if idx == trunc {
-				b.Log.Debugf("- DEBUG: truncated unreg'd snapshot to %d rows\n", trunc)
+				zlog.Debug("- DEBUG: truncated unreg'd snapshot", zap.Int("row", trunc))
 				break
 			}
 		}
@@ -411,7 +448,7 @@ type OpResignAccounts struct {
 
 func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 	if op.TestnetKeepAccounts {
-		b.Log.Debugln("DEBUG: Keeping system accounts around, for testing purposes.")
+		zlog.Debug("Keeping system accounts around, for testing purposes.")
 		return
 	}
 
