@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var systemSetcontractCmd = &cobra.Command{
+var SystemSetcontractCmd = &cobra.Command{
 	Use:   "setcontract [account name] [wasm file] [abi file]",
 	Short: "Set both code and ABI on an account.",
 	Args:  cobra.ExactArgs(3),
@@ -28,5 +28,5 @@ var systemSetcontractCmd = &cobra.Command{
 }
 
 func init() {
-	systemCmd.AddCommand(systemSetcontractCmd)
+	systemCmd.AddCommand(SystemSetcontractCmd)
 }
