@@ -15,7 +15,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-var txCreateCmd = &cobra.Command{
+var TxCreateCmd = &cobra.Command{
 	Use:   "create [contract] [action] [payload]",
 	Short: "Create a transaction with a single action",
 	Args:  cobra.ExactArgs(3),
@@ -73,7 +73,7 @@ func generateRandomNonce() []byte {
 }
 
 func init() {
-	txCmd.AddCommand(txCreateCmd)
+	txCmd.AddCommand(TxCreateCmd)
 
-	txCreateCmd.Flags().BoolP("force-unique", "f", false, "force the transaction to be unique. this will consume extra bandwidth and remove any protections against accidently issuing the same transaction multiple times")
+	TxCreateCmd.Flags().BoolP("force-unique", "f", false, "force the transaction to be unique. this will consume extra bandwidth and remove any protections against accidently issuing the same transaction multiple times")
 }

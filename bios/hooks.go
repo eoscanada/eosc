@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+
+	"go.uber.org/zap"
 )
 
 func (b *BIOS) DispatchBootNode(genesisJSON, publicKey, privateKey string) error {
@@ -16,7 +18,7 @@ func (b *BIOS) DispatchBootNode(genesisJSON, publicKey, privateKey string) error
 
 // dispatch to both exec calls, and remote web hooks.
 func (b *BIOS) dispatch(hookName string, args []string, f func() error) error {
-	b.Log.Printf("---- BEGIN HOOK %q ----\n", hookName)
+	zlog.Info("BEGIN", zap.String("hook", hookName))
 
 	executable := fmt.Sprintf("./%s.sh", hookName)
 
@@ -33,7 +35,7 @@ func (b *BIOS) dispatch(hookName string, args []string, f func() error) error {
 		return err
 	}
 
-	b.Log.Printf("---- END HOOK %q ----\n", hookName)
+	zlog.Info("ENDED", zap.String("hook", hookName))
 
 	return nil
 }

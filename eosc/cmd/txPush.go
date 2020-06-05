@@ -17,7 +17,7 @@ import (
 	"github.com/tidwall/gjson"
 )
 
-var txPushCmd = &cobra.Command{
+var TxPushCmd = &cobra.Command{
 	Use:   "push [transaction.json | string]",
 	Short: "Push a signed transaction to the chain. Must be done online.",
 	Long: `
@@ -83,5 +83,5 @@ func looksLikeTransactionJSON(input string) bool {
 }
 
 func init() {
-	txCmd.AddCommand(txPushCmd)
+	txCmd.AddCommand(TxPushCmd)
 }
