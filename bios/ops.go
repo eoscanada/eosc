@@ -34,6 +34,7 @@ var operationsRegistry = map[string]Operation{
 	"system.create_voters":       &OpCreateVoters{},
 	"system.delegate_bw":         &OpDelegateBW{},
 	"system.buy_ram":             &OpBuyRam{},
+	"system.buy_ram_bytes":       &OpBuyRamBytes{},
 }
 
 type OperationType struct {
@@ -125,10 +126,10 @@ func (op *OpSetRAM) Actions(b *BIOS) (out []*eos.Action, err error) {
 //
 
 type OpNewAccount struct {
-	Creator        eos.AccountName
-	NewAccount     eos.AccountName `json:"new_account"`
-	Pubkey         string
-	RamEOSQuantity uint64 `json:"ram_eos_quantity"`
+	Creator    eos.AccountName
+	NewAccount eos.AccountName `json:"new_account"`
+	Pubkey     string
+	RamBytes   uint32 `json:"ram_bytes"`
 }
 
 func (op *OpNewAccount) Actions(b *BIOS) (out []*eos.Action, err error) {
@@ -142,8 +143,8 @@ func (op *OpNewAccount) Actions(b *BIOS) (out []*eos.Action, err error) {
 	}
 	out = append(out, system.NewNewAccount(op.Creator, op.NewAccount, pubKey))
 
-	if op.RamEOSQuantity > 0 {
-		out = append(out, system.NewBuyRAM(op.Creator, op.NewAccount, op.RamEOSQuantity))
+	if op.RamBytes > 0 {
+		out = append(out, system.NewBuyRAMBytes(op.Creator, op.NewAccount, op.RamBytes))
 	}
 
 	return out, nil
@@ -169,6 +170,16 @@ type OpBuyRam struct {
 
 func (op *OpBuyRam) Actions(b *BIOS) (out []*eos.Action, err error) {
 	return append(out, system.NewBuyRAM(op.Payer, op.Receiver, op.EOSQuantity)), nil
+}
+
+type OpBuyRamBytes struct {
+	Payer    eos.AccountName
+	Receiver eos.AccountName
+	Bytes    uint32
+}
+
+func (op *OpBuyRamBytes) Actions(b *BIOS) (out []*eos.Action, err error) {
+	return append(out, system.NewBuyRAMBytes(op.Payer, op.Receiver, op.Bytes)), nil
 }
 
 type OpTransfer struct {
