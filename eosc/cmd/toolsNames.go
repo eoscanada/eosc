@@ -79,7 +79,9 @@ func printName(input string) {
 	}
 
 	someFound := false
-	rows := []string{"| from \\ to | hex | hex_be | hex_rev_u32 | name | uint64 | symbol | symbol_code", "| --------- | --- | ------ | ----------- | ---- | ------ | ------ | ----------- |"}
+	rows := []string{
+		"| from \\ to | hex | hex_be | hex_rev_u32 | name | uint64 | float64 | symbol | symbol_code",
+		"| --------- | --- | ------ | ----------- | ---- | ------ | ------- | ------ | ----------- |"}
 	for _, from := range []string{"hex", "hex_be", "name", "uint64", "symbol", "symbol_code"} {
 		val, found := showFrom[from]
 		if !found {
@@ -88,7 +90,7 @@ func printName(input string) {
 		someFound = true
 
 		row := []string{from}
-		for _, to := range []string{"hex", "hex_be", "hex_rev_u32", "name", "uint64", "symbol", "symbol_code"} {
+		for _, to := range []string{"hex", "hex_be", "hex_rev_u32", "name", "uint64", "float64", "symbol", "symbol_code"} {
 
 			cnt := make([]byte, 8)
 			switch to {
@@ -113,6 +115,14 @@ func printName(input string) {
 
 			case "uint64":
 				row = append(row, strconv.FormatUint(val, 10))
+
+			case "float64":
+				f := math.Float64frombits(val)
+				show := fmt.Sprintf("%f", f)
+				if len(show) > 12 {
+					show = show[:12] + "..."
+				}
+				row = append(row, show)
 
 			case "symbol":
 				row = append(row, symbOrDash(fmt.Sprintf("%d,%s", uint8(val&0xFF), eos.SymbolCode(val>>8).String())))
