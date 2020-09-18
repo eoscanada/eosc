@@ -5,11 +5,12 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"os"
 	"sort"
 
 	"github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eos-go/system"
+	"github.com/eoscanada/eosc/cli"
 	"github.com/spf13/cobra"
 )
 
@@ -18,14 +19,19 @@ var systemUpdateauthCmd = &cobra.Command{
 	Short: "Set or update a permission on an account. See --help for more details.",
 	Long: `Set or update a permission on an account.
 
-The [authority] field can be either a *public key* or a path to a YAML
-file.
+The [authority] field can be either:
+1. a simple public key (one sig required, one key)
+2. a short-form auth spec like: 3=EOSKey1...,EOSKey2...+2,account1,account2@perm+2
+3. a path to a YAML file (see example below)
 
-If you specify a public key, a simple 'authority' structure is built,
-with a threshold of 1, and a single key.
+Short-form syntax:
+* "3=" is optional, and changes the threshold from 1 (default) to 3
+* Comma-separated keys and accounts:
+  * A public key (EOSKey123...), with an optional "+2" weight (defaults to "+1")
+  * Account names, with optional "@permission" (defaults to "@active"), and
+    an optional "+2" weight (defaults to "+1")
 
-Otherwise, it should be a path to a YAML file.  Here is a sample YAML
-authority file:
+Sample YAML authority structure:
 
 ---
 threshold: 3
@@ -54,24 +60,21 @@ waits:
 		}
 		authParam := args[3]
 
-		var auth eos.Authority
-		authKey, err := ecc.NewPublicKey(authParam)
-		if err == nil {
-			auth = eos.Authority{
-				Threshold: 1,
-				Keys: []eos.KeyWeight{
-					{PublicKey: authKey, Weight: 1},
-				},
+		auth, err := cli.ParseShortFormAuth(authParam)
+		if err != nil {
+			exists := fileExists(authParam)
+			if !exists {
+				errorCheck("parsing authority", err)
 			}
-		} else {
+
 			err := loadYAMLOrJSONFile(authParam, &auth)
 			errorCheck("authority file invalid", err)
+
+			sortAuth(auth)
+
+			err = ValidateAuth(auth)
+			errorCheck("authority file invalid", err)
 		}
-
-		sortAuth(auth)
-
-		err = ValidateAuth(auth)
-		errorCheck("authority file invalid", err)
 
 		api := getAPI()
 
@@ -87,18 +90,26 @@ waits:
 				account,
 				eos.PermissionName(permissionName),
 				eos.PermissionName(parent),
-				auth,
+				*auth,
 				eos.PermissionName(updateAuthActionPermission),
 			),
 		)
 	},
 }
 
+func fileExists(filename string) bool {
+	_, err := os.Stat(filename)
+	if err == nil {
+		return true
+	}
+	return os.IsNotExist(err)
+}
+
 func init() {
 	systemCmd.AddCommand(systemUpdateauthCmd)
 }
 
-func ValidateAuth(auth eos.Authority) error {
+func ValidateAuth(auth *eos.Authority) error {
 	for idx, account := range auth.Accounts {
 		if len(account.Permission.Permission) == 0 {
 			return fmt.Errorf("account #%d missing permission", idx)
@@ -135,7 +146,7 @@ func ValidateAuth(auth eos.Authority) error {
 	return nil
 }
 
-func sortAuth(auth eos.Authority) {
+func sortAuth(auth *eos.Authority) {
 	sort.Slice(auth.Keys, func(i, j int) bool {
 		return auth.Keys[i].PublicKey.String() < auth.Keys[j].PublicKey.String()
 	})

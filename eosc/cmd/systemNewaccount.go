@@ -73,9 +73,9 @@ active:
 			err := loadYAMLOrJSONFile(authFile, &authStruct)
 			errorCheck("auth-file invalid", err)
 
-			err = ValidateAuth(authStruct.Active)
+			err = ValidateAuth(&authStruct.Active)
 			errorCheck("authority file invalid for @active", err)
-			err = ValidateAuth(authStruct.Owner)
+			err = ValidateAuth(&authStruct.Owner)
 			errorCheck("authority file invalid for @owner", err)
 
 			if authStruct.Owner.Threshold == 0 {
