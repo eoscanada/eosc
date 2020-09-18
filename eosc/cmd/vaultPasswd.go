@@ -11,9 +11,8 @@ import (
 	"github.com/spf13/viper"
 )
 
-// vaultPasswdCmd represents the serve command
 var vaultPasswdCmd = &cobra.Command{
-	Use:   "serve",
+	Use:   "passwd",
 	Short: "Change the passphrase on the vault",
 	Run: func(cmd *cobra.Command, args []string) {
 		v := mustGetWallet()
