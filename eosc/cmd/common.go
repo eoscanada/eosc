@@ -14,7 +14,6 @@ import (
 
 	"go.uber.org/zap"
 
-	yaml2json "github.com/bronze1man/go-yaml2json"
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/ecc"
 	"github.com/eoscanada/eos-go/sudo"
@@ -24,6 +23,40 @@ import (
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 )
+
+const shortFormAuthHelp = `
+- An optional threshold for the whole structure: "3=" (defauts to "1=")
+- Comma-separated permission levels:
+    - a public key
+      or:
+    - an account name, with optional "@permission" (defaults to "@active")
+  For each permission levels, an optional "+2" suffix (defaults to "+1")
+
+EXAMPLES
+
+An authority with a threshold of 1, gated by a single key with a
+weight of 1:
+
+    EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+
+An authority with a threshold of 1, gated by two accounts each with a weight of 1:
+
+    myaccount,youraccount
+
+An authority with a threshold of 2, gated by two accounts each with a weight of 1
+
+    2=myaccount,youraccount
+
+An authority with a threshold of 3, requiring admin (+2) and one of the two
+employees (each +1):
+
+    3=admin+2,employee1,employee2
+
+An authority with a threshold of 3, gated by a key with a weight of 2, an
+account with a weight of 3, and another account with a weight of 1:
+
+    3=EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV+2,myaccount@secureperm+3,youraccount
+`
 
 func mustGetWallet() *eosvault.Vault {
 	vault, err := setupWallet()
@@ -352,27 +385,6 @@ func printError(err eos.APIError) {
 	enc := json.NewEncoder(os.Stdout)
 	enc.SetIndent("", "  ")
 	enc.Encode(err)
-}
-
-func yamlUnmarshal(cnt []byte, v interface{}) error {
-	jsonCnt, err := yaml2json.Convert(cnt)
-	if err != nil {
-		return err
-	}
-
-	return json.Unmarshal(jsonCnt, v)
-}
-
-func loadYAMLOrJSONFile(filename string, v interface{}) error {
-	cnt, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return err
-	}
-
-	if strings.HasSuffix(strings.ToLower(filename), ".json") {
-		return json.Unmarshal(cnt, v)
-	}
-	return yamlUnmarshal(cnt, v)
 }
 
 func toAccount(in, field string) eos.AccountName {
