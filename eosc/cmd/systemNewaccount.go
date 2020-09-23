@@ -23,7 +23,7 @@ func init() {
 	systemNewAccountCmd.Flags().Int("buy-ram-kbytes", 8, "The amount of RAM kibibytes (KiB) to purchase for the new account.  Defaults to 8 KiB.")
 	systemNewAccountCmd.Flags().String("buy-ram", "", "The amount of EOS to spend to buy RAM for the new account (at current EOS/RAM market price)")
 
-	systemNewAccountCmd.Flags().StringSlice("add-actions", []string{"delegatebw", "buyram", "setpriv"}, "Action types to include in the generated transactions. Defaults to EOS Mainnet behavior. Options: 'delegatebw' (uses --stake-cpu, --stake-net and --transfer), 'buyram' (uses --buy-ram-kbytes or --buy-ram), setpriv (makes account privileged, only possible if creator is 'eosio')")
+	systemNewAccountCmd.Flags().StringSlice("additional-actions", []string{"delegatebw", "buyram", "setpriv"}, "Action types to include in the generated transactions. Defaults to EOS Mainnet behavior. Options: 'delegatebw' (uses --stake-cpu, --stake-net and --transfer), 'buyram' (uses --buy-ram-kbytes or --buy-ram), setpriv (makes account privileged, only possible if creator is 'eosio')")
 }
 
 var systemNewAccountCmd = &cobra.Command{
@@ -57,9 +57,9 @@ func systemNewaccountRun(cmd *cobra.Command, args []string) {
 	actions = append(actions, system.NewCustomNewAccount(creator, newAccount, *ownerAuth, *activeAuth))
 
 	addActions := map[string]bool{}
-	for _, act := range viper.GetStringSlice("system-newaccount-cmd-add-actions") {
+	for _, act := range viper.GetStringSlice("system-newaccount-cmd-additional-actions") {
 		if !(map[string]bool{"delegatebw": true, "buyram": true, "setpriv": true}[act]) {
-			errorCheck("invalid add-actions", fmt.Errorf("%q is not a valid action type", act))
+			errorCheck("invalid additional-actions", fmt.Errorf("%q is not a valid action type", act))
 		}
 		addActions[act] = true
 	}
