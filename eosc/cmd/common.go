@@ -273,7 +273,7 @@ func pushEOSCActionsAndContextFreeActions(ctx context.Context, api *eos.API, con
 
 func optionallySudoWrap(tx *eos.Transaction, opts *eos.TxOptions) *eos.Transaction {
 	if viper.GetBool("global-sudo-wrap") {
-		return eos.NewTransaction([]*eos.Action{sudo.NewExec(eos.AccountName("eosio"), *tx)}, opts)
+		return eos.NewTransaction([]*eos.Action{sudo.NewExec(eos.AccountName("eosio.wrap"), *tx)}, opts)
 	}
 	return tx
 }
