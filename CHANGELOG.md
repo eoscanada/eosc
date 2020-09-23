@@ -59,3 +59,5 @@ package of the `eosc` library.
 * The `--auth-key` and `--auth-file` flags of the `system newaccount` command were removed, and changed to positional arguemnts, using the short-form autority syntax. The auth file support is removed, as the short-form syntax absorbs all of its functionality, in a much more terse way.
 
 * The `--setpriv` flag on `system newaccount` was replaced by the `--additional-actions` option `setpriv`.
+
+* `--sudo-wrap` now properly uses `eosio.wrap` as authorizer (was `eosio` and didn't work properly).
