@@ -86,7 +86,7 @@ func ParseShortFormAuth(in string) (*eos.Authority, error) {
 			return nil, fmt.Errorf(`invalid expression %q, example: "EOSKey1...+2" or "account@perm+2"`, part)
 		}
 
-		fmt.Printf("match %q\n", match)
+		//fmt.Printf("match %q\n", match)
 
 		key := match[2]
 
