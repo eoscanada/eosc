@@ -4,9 +4,7 @@ package cmd
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 
 	eos "github.com/eoscanada/eos-go"
 	"github.com/spf13/cobra"
@@ -20,24 +18,15 @@ var txSignCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		ctx := context.Background()
-		filename := args[0]
-
-		var cnt []byte
-		if filename[0] == '{' {
-			cnt = []byte(filename)
-		} else {
-			var err error
-			cnt, err = ioutil.ReadFile(filename)
-			errorCheck("reading transaction file", err)
-		}
 
 		var tx *eos.Transaction
-		errorCheck("json unmarshal transaction", json.Unmarshal(cnt, &tx))
+		rawTx, err := transactionFromFileOrCLI(args[0], &tx)
+		errorCheck("reading transaction", err)
 
 		api := getAPI()
 
 		var chainID eos.SHA256Bytes
-		if infileChainID := gjson.Get(string(cnt), "chain_id").String(); infileChainID != "" {
+		if infileChainID := gjson.Get(string(rawTx), "chain_id").String(); infileChainID != "" {
 			chainID = toSHA256Bytes(infileChainID, fmt.Sprintf("chain_id field in source transaction"))
 		} else if cliChainID := viper.GetString("global-offline-chain-id"); cliChainID != "" {
 			chainID = toSHA256Bytes(cliChainID, "--offline-chain-id")

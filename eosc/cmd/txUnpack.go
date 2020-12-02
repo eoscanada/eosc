@@ -19,13 +19,10 @@ var txUnpackCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		ctx := context.Background()
-		filename := args[0]
-
-		cnt, err := ioutil.ReadFile(filename)
-		errorCheck("reading transaction file", err)
 
 		var tx *eos.SignedTransaction
-		errorCheck("json unmarshal transaction", json.Unmarshal(cnt, &tx))
+		rawTx, err := transactionFromFileOrCLI(args[0], &tx)
+		errorCheck("reading transaction", err)
 
 		api := getAPI()
 
@@ -36,10 +33,10 @@ var txUnpackCmd = &cobra.Command{
 			errorCheck("action unpack", txUnpackAction(ctx, api, act))
 		}
 
-		cnt, err = json.MarshalIndent(tx, "", "  ")
+		rawTx, err = json.MarshalIndent(tx, "", "  ")
 		errorCheck("marshalling signed transaction", err)
 
-		fmt.Println(string(cnt))
+		fmt.Println(string(rawTx))
 	},
 }
 
@@ -64,4 +61,25 @@ func txUnpackAction(ctx context.Context, api *eos.API, act *eos.Action) error {
 
 func init() {
 	txCmd.AddCommand(txUnpackCmd)
+}
+
+func transactionFromFileOrCLI(input string, into interface{}) (cnt []byte, err error) {
+	var filename string
+	if input[0] == '{' {
+		cnt = []byte(input)
+		filename = "stdin"
+	} else {
+		cnt, err = ioutil.ReadFile(input)
+		if err != nil {
+			return nil, fmt.Errorf("reading transaction file %q: %w", input, err)
+		}
+		filename = input
+	}
+
+	err = json.Unmarshal(cnt, into)
+	if err != nil {
+		return nil, fmt.Errorf("json unmarshal transaction from %s: %w", filename, err)
+	}
+
+	return
 }
