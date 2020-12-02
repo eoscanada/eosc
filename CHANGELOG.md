@@ -11,6 +11,8 @@ date.
 
 ### Added
 
+* Support for `eosc tx sign` to handle a transaction directly, as JSON on the command line, instead of using a file all the time.  Example: `eosc tx sign '{"expiration": "...", ...}'`
+
 * Added the `vault passwd` command, to change the passphrase on a
   passphrase-secured vault.
 

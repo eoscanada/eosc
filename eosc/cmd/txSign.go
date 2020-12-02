@@ -22,8 +22,14 @@ var txSignCmd = &cobra.Command{
 		ctx := context.Background()
 		filename := args[0]
 
-		cnt, err := ioutil.ReadFile(filename)
-		errorCheck("reading transaction file", err)
+		var cnt []byte
+		if filename[0] == '{' {
+			cnt = []byte(filename)
+		} else {
+			var err error
+			cnt, err = ioutil.ReadFile(filename)
+			errorCheck("reading transaction file", err)
+		}
 
 		var tx *eos.Transaction
 		errorCheck("json unmarshal transaction", json.Unmarshal(cnt, &tx))
@@ -32,7 +38,7 @@ var txSignCmd = &cobra.Command{
 
 		var chainID eos.SHA256Bytes
 		if infileChainID := gjson.Get(string(cnt), "chain_id").String(); infileChainID != "" {
-			chainID = toSHA256Bytes(infileChainID, fmt.Sprintf("chain_id field in %q", filename))
+			chainID = toSHA256Bytes(infileChainID, fmt.Sprintf("chain_id field in source transaction"))
 		} else if cliChainID := viper.GetString("global-offline-chain-id"); cliChainID != "" {
 			chainID = toSHA256Bytes(cliChainID, "--offline-chain-id")
 		} else {
