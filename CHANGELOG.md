@@ -11,6 +11,10 @@ date.
 
 ### Added
 
+* Added global `--allow-partial-signature` flag, which uses the `/v1/chain/get_accounts_by_authorizers`, and supports partial key matching of requested authorities.  This allows you to participate in a multi-sig that doesn't use the on-chain `eosio.msig` patterns.  Mind you, if the transaction is submitted, it might fail auth checks, unless you collect all signatures before.
+
+* Added `-` special case to `--write-transaction`, to output to standard output, as plain JSON.
+
 * Support for `eosc tx sign` and `eosc tx unpack` to handle a transaction from STDIN (passed on the command-line as JSON), instead of requiring use of a file on disk.  Example: `eosc tx unpack '{"expiration": "...", ...}'`
 
 * Added the `vault passwd` command, to change the passphrase on a

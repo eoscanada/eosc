@@ -58,6 +58,7 @@ func init() {
 	RootCmd.PersistentFlags().StringP("offline-chain-id", "", "", "Chain ID to sign transaction with. Use all --offline- options to sign transactions offline.")
 	RootCmd.PersistentFlags().StringSliceP("offline-sign-key", "", []string{}, "Public key to use to sign transaction. Must be in your vault or wallet. Use all --offline- options to sign transactions offline.")
 	RootCmd.PersistentFlags().BoolP("skip-sign", "", false, "Do not sign the transaction. Use with --write-transaction.")
+	RootCmd.PersistentFlags().BoolP("allow-partial-signature", "", false, "Allow signing with only a subset of the keys required by a transaction. NOTE: Without all required signatures, a transaction might fail authorization checks immediately.")
 	RootCmd.PersistentFlags().IntP("expiration", "", 30, "Set time before transaction expires, in seconds. Defaults to 30 seconds.")
 	RootCmd.PersistentFlags().IntP("delay-sec", "", 0, "Set time to wait before transaction is executed, in seconds. Defaults to 0 second.")
 	RootCmd.PersistentFlags().BoolP("sudo-wrap", "", false, "Wrap the transaction in a eosio.sudo exec. Useful to BPs, with --write-transaction and --skip-sign to then submit as a multisig proposition.")

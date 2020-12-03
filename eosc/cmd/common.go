@@ -123,7 +123,9 @@ func getAPI() *eos.API {
 		api.Header.Add(headerArray[0], headerArray[1])
 	}
 
-	api.UsePartialRequiredKeys()
+	if viper.GetBool("global-allow-partial-signature") {
+		api.UsePartialRequiredKeys()
+	}
 	api.Debug = viper.GetBool("global-debug")
 
 	return api
@@ -322,10 +324,14 @@ func optionallyPushTransaction(ctx context.Context, signedTx *eos.SignedTransact
 		annotatedCnt, err := sjson.Set(string(cnt), "chain_id", hex.EncodeToString(chainID))
 		errorCheck("adding chain_id", err)
 
-		err = ioutil.WriteFile(writeTrx, []byte(annotatedCnt), 0644)
-		errorCheck("writing output transaction", err)
+		if writeTrx != "-" {
+			err = ioutil.WriteFile(writeTrx, []byte(annotatedCnt), 0644)
+			errorCheck("writing output transaction", err)
 
-		fmt.Printf("Transaction written to %q\n", writeTrx)
+			fmt.Printf("Transaction written to %q\n", writeTrx)
+		} else {
+			os.Stdin.Write([]byte(annotatedCnt))
+		}
 	} else {
 		if packedTx == nil {
 			fmt.Println("A signed transaction is required if you want to broadcast it. Remove --skip-sign (or add --write-transaction ?)")
