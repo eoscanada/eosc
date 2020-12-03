@@ -23,7 +23,7 @@ func init() {
 	systemNewAccountCmd.Flags().Int("buy-ram-kbytes", 8, "The amount of RAM kibibytes (KiB) to purchase for the new account.  Defaults to 8 KiB.")
 	systemNewAccountCmd.Flags().String("buy-ram", "", "The amount of EOS to spend to buy RAM for the new account (at current EOS/RAM market price)")
 
-	systemNewAccountCmd.Flags().StringSlice("additional-actions", []string{"delegatebw", "buyram", "setpriv"}, "Action types to include in the generated transactions. Defaults to EOS Mainnet behavior. Options: 'delegatebw' (uses --stake-cpu, --stake-net and --transfer), 'buyram' (uses --buy-ram-kbytes or --buy-ram), setpriv (makes account privileged, only possible if creator is 'eosio')")
+	systemNewAccountCmd.Flags().StringSlice("additional-actions", []string{"delegatebw", "buyram"}, "Action types to include in the generated transactions. Defaults to EOS Mainnet behavior. Options: 'delegatebw' (uses --stake-cpu, --stake-net and --transfer), 'buyram' (uses --buy-ram-kbytes or --buy-ram), 'setpriv' (makes account privileged, only possible if creator is 'eosio')")
 }
 
 var systemNewAccountCmd = &cobra.Command{
