@@ -123,6 +123,7 @@ func getAPI() *eos.API {
 		api.Header.Add(headerArray[0], headerArray[1])
 	}
 
+	api.UsePartialRequiredKeys()
 	api.Debug = viper.GetBool("global-debug")
 
 	return api
