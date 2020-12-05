@@ -3,6 +3,7 @@ package cli
 import (
 	"bytes"
 	"fmt"
+	"math"
 	"strconv"
 	"text/tabwriter"
 
@@ -239,7 +240,7 @@ func prettifyTime(micro int64) string {
 }
 
 func prettifyAsset(w eos.Asset) string {
-	const unit = 10000
+	unit := math.Pow10(int(w.Precision))
 	formatting := fmt.Sprintf("%%.%df", w.Precision)
 	return rightAlignColumnize(fmt.Sprintf(formatting, float64(w.Amount)/float64(unit)), w.Symbol.Symbol)
 
