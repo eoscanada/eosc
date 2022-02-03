@@ -92,13 +92,13 @@ func FormatMemory(account *eos.AccountResp, config *columnize.Config) string {
 }
 
 func FormatNetworkBandwidth(account *eos.AccountResp, config *columnize.Config) string {
-	delegatedNet := account.TotalResources.NetWeight.Sub(account.SelfDelegatedBandwidth.NetWeight)
+	delegatedNet := account.TotalResources.PowerWeight.Sub(account.SelfDelegatedBandwidth.PowerWeight)
 
 	output := []string{
 		"net bandwidth:",
 		fmt.Sprintf("%sstaked:|%s|(total stake delegated from account to self)",
 			indentPadding,
-			prettifyAsset(account.SelfDelegatedBandwidth.NetWeight),
+			prettifyAsset(account.SelfDelegatedBandwidth.PowerWeight),
 		),
 		fmt.Sprintf("%sdelegated:|%s|(total stake delegated to account from others)",
 			indentPadding,
@@ -113,13 +113,13 @@ func FormatNetworkBandwidth(account *eos.AccountResp, config *columnize.Config) 
 }
 
 func FormatCPUBandwidth(account *eos.AccountResp, config *columnize.Config) string {
-	delegatedCPU := account.TotalResources.CPUWeight.Sub(account.SelfDelegatedBandwidth.CPUWeight)
+	delegatedCPU := account.TotalResources.PowerWeight.Sub(account.SelfDelegatedBandwidth.PowerWeight)
 
 	output := []string{
 		"cpu bandwidth:",
 		fmt.Sprintf("%sstaked:|%s|(total stake delegated from account to self)",
 			indentPadding,
-			prettifyAsset(account.SelfDelegatedBandwidth.CPUWeight),
+			prettifyAsset(account.SelfDelegatedBandwidth.PowerWeight),
 		),
 		fmt.Sprintf("%sdelegated:|%s|(total stake delegated to account from others)",
 			indentPadding,
@@ -135,7 +135,7 @@ func FormatCPUBandwidth(account *eos.AccountResp, config *columnize.Config) stri
 
 func FormatBalances(account *eos.AccountResp, config *columnize.Config) string {
 	if account.CoreLiquidBalance.Symbol.Symbol != "" {
-		totalStaked := account.SelfDelegatedBandwidth.NetWeight.Add(account.SelfDelegatedBandwidth.CPUWeight)
+		totalStaked := account.SelfDelegatedBandwidth.PowerWeight.Add(account.SelfDelegatedBandwidth.PowerWeight)
 		if totalStaked.Symbol != account.CoreLiquidBalance.Symbol {
 			totalStaked.Symbol = account.CoreLiquidBalance.Symbol
 		}
