@@ -17,7 +17,7 @@ require (
 	github.com/tidwall/gjson v1.3.2
 	github.com/tidwall/sjson v1.0.4
 	go.uber.org/zap v1.14.0
-	golang.org/x/crypto v0.0.0-20200406173513-056763e48d71
+	golang.org/x/crypto v0.1.0
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 	google.golang.org/api v0.7.0
 	gopkg.in/olivere/elastic.v3 v3.0.75
