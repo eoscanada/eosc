@@ -67,17 +67,17 @@ func mustGetWallet() *eosvault.Vault {
 func setupWallet() (*eosvault.Vault, error) {
 	walletFile := viper.GetString("global-vault-file")
 	if _, err := os.Stat(walletFile); err != nil {
-		return nil, fmt.Errorf("wallet file %q missing: %s", walletFile, err)
+		return nil, fmt.Errorf("wallet file %q missing: %w", walletFile, err)
 	}
 
 	vault, err := eosvault.NewVaultFromWalletFile(walletFile)
 	if err != nil {
-		return nil, fmt.Errorf("loading vault: %s", err)
+		return nil, fmt.Errorf("loading vault: %w", err)
 	}
 
 	boxer, err := eosvault.SecretBoxerForType(vault.SecretBoxWrap, viper.GetString("global-kms-gcp-keypath"))
 	if err != nil {
-		return nil, fmt.Errorf("secret boxer: %s", err)
+		return nil, fmt.Errorf("secret boxer: %w", err)
 	}
 
 	if err := vault.Open(boxer); err != nil {
@@ -165,7 +165,7 @@ func initCoreSymbol() error {
 	})
 
 	if err != nil {
-		return fmt.Errorf("unable to fetch table: %s", err)
+		return fmt.Errorf("unable to fetch table: %w", err)
 	}
 
 	result := gjson.GetBytes(resp.Rows, "0.quote.balance")
@@ -175,7 +175,7 @@ func initCoreSymbol() error {
 
 	asset, err := eos.NewAsset(result.String())
 	if !result.Exists() {
-		return fmt.Errorf("quote balance asset %q is not valid: %s", result.String(), err)
+		return fmt.Errorf("quote balance asset %q is not valid: %w", result.String(), err)
 	}
 
 	zlog.Debug("Retrieved core symbol from API, using it as default core symbol", zap.Stringer("symbol", asset.Symbol))
@@ -356,7 +356,7 @@ func pushTransaction(ctx context.Context, api *eos.API, packedTx *eos.PackedTran
 	fmt.Printf("\nTransaction submitted to the network.\n  %s\n", trxURL)
 	if resp.BlockID != "" {
 		blockURL := blockURL(chainID, resp.BlockID)
-		fmt.Printf("Server says transaction was included in block %d:\n  %s\n", resp.BlockNum, blockURL)
+		fmt.Printf("Server says transaction was included in block %d:\n  %s\n", resp.Processed.BlockNum, blockURL)
 	}
 }
 

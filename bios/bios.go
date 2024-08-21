@@ -89,15 +89,15 @@ func (b *BIOS) Boot() error {
 
 	// Store keys in wallet, to sign `SetCode` and friends..
 	if err := b.TargetNetAPI.Signer.ImportPrivateKey(ctx, privKey); err != nil {
-		return fmt.Errorf("ImportWIF: %s", err)
+		return fmt.Errorf("ImportWIF: %w", err)
 	}
 
 	if err := b.writeAllActionsToDisk(); err != nil {
-		return fmt.Errorf("writing actions to disk: %s", err)
+		return fmt.Errorf("writing actions to disk: %w", err)
 	}
 
 	if err := b.DispatchBootNode(genesisData, pubKey.String(), privKey); err != nil {
-		return fmt.Errorf("dispatch boot_node hook: %s", err)
+		return fmt.Errorf("dispatch boot_node hook: %w", err)
 	}
 
 	b.pingTargetNetwork()
@@ -116,7 +116,7 @@ func (b *BIOS) Boot() error {
 
 		acts, err := step.Data.Actions(b)
 		if err != nil {
-			return fmt.Errorf("getting actions for step %q: %s", step.Op, err)
+			return fmt.Errorf("getting actions for step %q: %w", step.Op, err)
 		}
 
 		if len(acts) != 0 {
@@ -126,7 +126,7 @@ func (b *BIOS) Boot() error {
 					if err != nil {
 						b.Log.Printf("r")
 						b.Log.Debugf("error pushing transaction for step %q, chunk %d: %s\n", step.Op, idx, err)
-						return fmt.Errorf("push actions for step %q, chunk %d: %s", step.Op, idx, err)
+						return fmt.Errorf("push actions for step %q, chunk %d: %w", step.Op, idx, err)
 					}
 					return nil
 				})
@@ -146,7 +146,7 @@ func (b *BIOS) Boot() error {
 	// FIXME: don't do chain validation here..
 	isValid, err := b.RunChainValidation()
 	if err != nil {
-		return fmt.Errorf("chain validation: %s", err)
+		return fmt.Errorf("chain validation: %w", err)
 	}
 	if !isValid {
 		b.Log.Println("WARNING: chain invalid, destroying network if possible")
@@ -166,7 +166,7 @@ func (b *BIOS) setEphemeralKeypair() error {
 		cnt := b.BootSequence.Keys["ephemeral"]
 		privKey, err := ecc.NewPrivateKey(strings.TrimSpace(string(cnt)))
 		if err != nil {
-			return fmt.Errorf("unable to correctly decode ephemeral private key %q: %s", cnt, err)
+			return fmt.Errorf("unable to correctly decode ephemeral private key %q: %w", cnt, err)
 		}
 
 		b.EphemeralPrivateKey = privKey
@@ -214,7 +214,7 @@ func (b *BIOS) RunChainValidation() (bool, error) {
 	for _, step := range b.BootSequence.BootSequence {
 		acts, err := step.Data.Actions(b)
 		if err != nil {
-			return false, fmt.Errorf("validating: getting actions for step %q: %s", step.Op, err)
+			return false, fmt.Errorf("validating: getting actions for step %q: %w", step.Op, err)
 		}
 
 		for _, stepAction := range acts {
@@ -225,7 +225,7 @@ func (b *BIOS) RunChainValidation() (bool, error) {
 			stepAction.SetToServer(true)
 			data, err := eos.MarshalBinary(stepAction)
 			if err != nil {
-				return false, fmt.Errorf("validating: binary marshalling: %s", err)
+				return false, fmt.Errorf("validating: binary marshalling: %w", err)
 			}
 			key := sha2(data)
 
@@ -268,7 +268,7 @@ func (b *BIOS) writeAllActionsToDisk() error {
 	for _, step := range b.BootSequence.BootSequence {
 		acts, err := step.Data.Actions(b)
 		if err != nil {
-			return fmt.Errorf("fetch step %q: %s", step.Op, err)
+			return fmt.Errorf("fetch step %q: %w", step.Op, err)
 		}
 
 		for _, stepAction := range acts {
@@ -279,7 +279,7 @@ func (b *BIOS) writeAllActionsToDisk() error {
 			stepAction.SetToServer(false)
 			data, err := json.Marshal(stepAction)
 			if err != nil {
-				return fmt.Errorf("binary marshalling: %s", err)
+				return fmt.Errorf("binary marshalling: %w", err)
 			}
 
 			_, err = fl.Write(data)

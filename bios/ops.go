@@ -59,7 +59,7 @@ func (o *OperationType) UnmarshalJSON(data []byte) error {
 	if len(opData.Data) != 0 {
 		err := json.Unmarshal(opData.Data, &obj)
 		if err != nil {
-			return fmt.Errorf("operation type %q invalid, error decoding: %s", opData.Op, err)
+			return fmt.Errorf("operation type %q invalid, error decoding: %w", opData.Op, err)
 		}
 	} //  else {
 	// 	_ = json.Unmarshal([]byte("{}"), &obj)
@@ -102,7 +102,7 @@ func (op *OpSetCode) Actions(b *BIOS) (out []*eos.Action, err error) {
 		b.FileNameFromCache(abiFileRef),
 	)
 	if err != nil {
-		return nil, fmt.Errorf("NewSetCodeTx %s: %s", op.ContractNameRef, err)
+		return nil, fmt.Errorf("NewSetCodeTx %s: %w", op.ContractNameRef, err)
 	}
 
 	return setCode.Actions, nil
@@ -132,7 +132,7 @@ func (op *OpNewAccount) Actions(b *BIOS) (out []*eos.Action, err error) {
 	if op.Pubkey != "ephemeral" {
 		pubKey, err = ecc.NewPublicKey(op.Pubkey)
 		if err != nil {
-			return nil, fmt.Errorf("reading pubkey: %s", err)
+			return nil, fmt.Errorf("reading pubkey: %w", err)
 		}
 	}
 
@@ -151,7 +151,7 @@ func (op *OpCreateVoters) Actions(b *BIOS) (out []*eos.Action, err error) {
 	if op.Pubkey != "ephemeral" {
 		pubKey, err = ecc.NewPublicKey(op.Pubkey)
 		if err != nil {
-			return nil, fmt.Errorf("reading pubkey: %s", err)
+			return nil, fmt.Errorf("reading pubkey: %w", err)
 		}
 	}
 
@@ -237,12 +237,12 @@ func (op *OpSnapshotCreateAccounts) Actions(b *BIOS) (out []*eos.Action, err err
 
 	rawSnapshot, err := b.ReadFromCache(snapshotFile)
 	if err != nil {
-		return nil, fmt.Errorf("reading snapshot file: %s", err)
+		return nil, fmt.Errorf("reading snapshot file: %w", err)
 	}
 
 	snapshotData, err := NewSnapshot(rawSnapshot)
 	if err != nil {
-		return nil, fmt.Errorf("loading snapshot csv: %s", err)
+		return nil, fmt.Errorf("loading snapshot csv: %w", err)
 	}
 
 	if len(snapshotData) == 0 {
@@ -322,12 +322,12 @@ func (op *OpInjectUnregdSnapshot) Actions(b *BIOS) (out []*eos.Action, err error
 
 	rawSnapshot, err := b.ReadFromCache(snapshotFile)
 	if err != nil {
-		return nil, fmt.Errorf("reading snapshot file: %s", err)
+		return nil, fmt.Errorf("reading snapshot file: %w", err)
 	}
 
 	snapshotData, err := NewUnregdSnapshot(rawSnapshot)
 	if err != nil {
-		return nil, fmt.Errorf("loading snapshot csv: %s", err)
+		return nil, fmt.Errorf("loading snapshot csv: %w", err)
 	}
 
 	if len(snapshotData) == 0 {
@@ -386,7 +386,7 @@ func (op *OpSetProds) Actions(b *BIOS) (out []*eos.Action, err error) {
 	}
 
 	if len(prodKeys) == 0 {
-		prodKeys = []system.ProducerKey{system.ProducerKey{
+		prodKeys = []system.ProducerKey{{
 			ProducerName:    AN("eosio"),
 			BlockSigningKey: b.EphemeralPublicKey,
 		}}
@@ -429,7 +429,7 @@ func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 			system.NewUpdateAuth(acct, PN("active"), PN("owner"), eos.Authority{
 				Threshold: 1,
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      AN("eosio"),
 							Permission: PN("active"),
@@ -441,7 +441,7 @@ func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 			system.NewUpdateAuth(acct, PN("owner"), PN(""), eos.Authority{
 				Threshold: 1,
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      AN("eosio"),
 							Permission: PN("active"),
@@ -458,7 +458,7 @@ func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 			system.NewUpdateAuth(systemAccount, PN("active"), PN("owner"), eos.Authority{
 				Threshold: 1,
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      prodsAccount,
 							Permission: PN("active"),
@@ -470,7 +470,7 @@ func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 			system.NewUpdateAuth(systemAccount, PN("owner"), PN(""), eos.Authority{
 				Threshold: 1,
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      prodsAccount,
 							Permission: PN("active"),

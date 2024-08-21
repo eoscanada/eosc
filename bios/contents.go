@@ -17,7 +17,7 @@ import (
 
 func (b *BIOS) DownloadReferences() error {
 	if err := b.ensureCacheExists(); err != nil {
-		return fmt.Errorf("error creating cache path: %s", err)
+		return fmt.Errorf("error creating cache path: %w", err)
 	}
 
 	eg := llerrgroup.New(10)
@@ -29,7 +29,7 @@ func (b *BIOS) DownloadReferences() error {
 		contentRef := contentRef
 		eg.Go(func() error {
 			if err := b.DownloadURL(contentRef.URL, contentRef.Hash); err != nil {
-				return fmt.Errorf("content %q: %s", contentRef.Name, err)
+				return fmt.Errorf("content %q: %w", contentRef.Name, err)
 			}
 			return nil
 		})
@@ -83,7 +83,7 @@ func (b *BIOS) downloadRef(ref string) ([]byte, error) {
 
 	destURL, err := url.Parse(ref)
 	if err != nil {
-		return nil, fmt.Errorf("ref %q is not a valid URL: %s", ref, err)
+		return nil, fmt.Errorf("ref %q is not a valid URL: %w", ref, err)
 	}
 
 	switch destURL.Scheme {

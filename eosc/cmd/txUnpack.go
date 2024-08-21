@@ -47,12 +47,12 @@ func txUnpackAction(ctx context.Context, api *eos.API, act *eos.Action) error {
 	}
 	bytes, err := hex.DecodeString(hexBytes)
 	if err != nil {
-		return fmt.Errorf("invalid hex bytes stream: %s", err)
+		return fmt.Errorf("invalid hex bytes stream: %w", err)
 	}
 
 	data, err := api.ABIBinToJSON(ctx, act.Account, eos.Name(act.Name), bytes)
 	if err != nil {
-		return fmt.Errorf("chain abi_bin_to_json: %s", err)
+		return fmt.Errorf("chain abi_bin_to_json: %w", err)
 	}
 
 	act.Data = data

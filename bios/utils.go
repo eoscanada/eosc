@@ -67,7 +67,7 @@ func Retry(attempts int, sleep time.Duration, callback func() error) (err error)
 
 		log.Println("retrying after error:", err)
 	}
-	return fmt.Errorf("after %d attempts, last error: %s", attempts, err)
+	return fmt.Errorf("after %d attempts, last error: %w", attempts, err)
 }
 
 func AccountToNodeID(acct eos.AccountName) int64 {

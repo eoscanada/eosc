@@ -65,7 +65,7 @@ func NewVaultFromSingleKey(privKey string) (*Vault, error) {
 	v := NewVault()
 	key, err := ecc.NewPrivateKey(privKey)
 	if err != nil {
-		return nil, fmt.Errorf("import private key: %s", err)
+		return nil, fmt.Errorf("import private key: %w", err)
 	}
 	v.KeyBag.Keys = append(v.KeyBag.Keys, key)
 	return v, nil

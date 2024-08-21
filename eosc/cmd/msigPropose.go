@@ -128,13 +128,13 @@ func getProducersTable(ctx context.Context, api *eos.API) (prods producers, err 
 			},
 		)
 		if err != nil {
-			return nil, fmt.Errorf("get producers table: %s", err)
+			return nil, fmt.Errorf("get producers table: %w", err)
 		}
 
 		var rows producers
 		json.Unmarshal(response.Rows, &rows)
 		if err != nil {
-			return nil, fmt.Errorf("json unmarshal: %s", err)
+			return nil, fmt.Errorf("json unmarshal: %w", err)
 		}
 
 		prods = append(prods, rows...)

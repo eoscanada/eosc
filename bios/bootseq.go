@@ -14,11 +14,11 @@ type BootSeq struct {
 func ReadBootSeq(filename string) (out *BootSeq, err error) {
 	rawBootSeq, err := ioutil.ReadFile(filename)
 	if err != nil {
-		return nil, fmt.Errorf("reading boot seq: %s", err)
+		return nil, fmt.Errorf("reading boot seq: %w", err)
 	}
 
 	if err := yamlUnmarshal(rawBootSeq, &out); err != nil {
-		return nil, fmt.Errorf("parsing boot seq yaml: %s", err)
+		return nil, fmt.Errorf("parsing boot seq yaml: %w", err)
 	}
 
 	return

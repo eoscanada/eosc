@@ -73,7 +73,7 @@ func readTransaction(argument string) ([]byte, error) {
 		return nil, fmt.Errorf("file %q does not exist", argument)
 	}
 
-	return nil, fmt.Errorf("unable to check file %q: %s", argument, err)
+	return nil, fmt.Errorf("unable to check file %q: %w", argument, err)
 }
 
 var jsonFieldRegexp = regexp.MustCompile(`".+"\s*:\s*".*"`)

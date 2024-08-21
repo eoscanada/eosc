@@ -1,11 +1,11 @@
 package vault
 
 import (
+	"errors"
 	"fmt"
 	"os"
 
 	"github.com/eoscanada/eosc/cli"
-	"github.com/pkg/errors"
 )
 
 type SecretBoxer interface {
@@ -35,6 +35,6 @@ func SecretBoxerForType(boxerType string, keypath string) (SecretBoxer, error) {
 
 		return NewPassphraseBoxer(password), nil
 	default:
-		return nil, fmt.Errorf("unknown secret boxer: %s", boxerType)
+		return nil, fmt.Errorf("unknown secret boxer %s", boxerType)
 	}
 }
