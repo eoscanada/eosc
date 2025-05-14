@@ -52,11 +52,12 @@ func ToName(in string) (out eos.Name, err error) {
 	return eos.Name(name), nil
 }
 
-var shortFormTopLevelRE = regexp.MustCompile(`((\d{1,3})\s*=\s*)?(.*)`)
-var shortFormKeyOrAccountRE = regexp.MustCompile(`\s*(([A-Za-z0-9]{48,64})|(([a-z1-5\.]{1,13})(@([a-z1-5\.]{1,13}))?))(\s*\+\s*(\d{1,3}))?\s*`)
+var (
+	shortFormTopLevelRE     = regexp.MustCompile(`((\d{1,3})\s*=\s*)?(.*)`)
+	shortFormKeyOrAccountRE = regexp.MustCompile(`\s*(([A-Za-z0-9]{48,64})|(([a-z1-5\.]{1,13})(@([a-z1-5\.]{1,13}))?))(\s*\+\s*(\d{1,3}))?\s*`)
+)
 
 func ParseShortFormAuth(in string) (*eos.Authority, error) {
-
 	match := shortFormTopLevelRE.FindStringSubmatch(in)
 	if match == nil {
 		return nil, fmt.Errorf(`invalid expression %q, example: "3=EOSKey1...,EOSKey2+2,account@perm+2"`, in)
@@ -86,7 +87,7 @@ func ParseShortFormAuth(in string) (*eos.Authority, error) {
 			return nil, fmt.Errorf(`invalid expression %q, example: "EOSKey1...+2" or "account@perm+2"`, part)
 		}
 
-		//fmt.Printf("match %q\n", match)
+		// fmt.Printf("match %q\n", match)
 
 		key := match[2]
 

@@ -26,7 +26,7 @@ func (b *BIOS) dispatch(hookName string, args []string, f func() error) error {
 	cmd.Stdin = os.Stdin
 	cmd.Env = os.Environ()
 
-	//fmt.Printf("  Executing hook: %q\n", cmd.Args)
+	// fmt.Printf("  Executing hook: %q\n", cmd.Args)
 
 	err := cmd.Run()
 	if err != nil {

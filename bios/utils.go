@@ -21,7 +21,7 @@ func ScanLinesUntilBlank() (out string, err error) {
 	for {
 		var text string
 		text, err = reader.ReadString('\n')
-		//fmt.Println("Read line", text)
+		// fmt.Println("Read line", text)
 		if err != nil {
 			return
 		}

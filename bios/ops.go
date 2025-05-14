@@ -342,7 +342,7 @@ func (op *OpInjectUnregdSnapshot) Actions(b *BIOS) (out []*eos.Action, err error
 			}
 		}
 
-		//system.NewDelegatedNewAccount(AN("eosio"), AN(hodler.AccountName), AN("eosio.unregd"))
+		// system.NewDelegatedNewAccount(AN("eosio"), AN(hodler.AccountName), AN("eosio.unregd"))
 
 		out = append(out,
 			unregd.NewAdd(hodler.EthereumAddress, hodler.Balance),
@@ -366,7 +366,6 @@ type OpSetProds struct {
 }
 
 func (op *OpSetProds) Actions(b *BIOS) (out []*eos.Action, err error) {
-
 	var prodKeys []system.ProducerKey
 
 	for _, key := range op.Prods {
@@ -386,7 +385,7 @@ func (op *OpSetProds) Actions(b *BIOS) (out []*eos.Action, err error) {
 	}
 
 	if len(prodKeys) == 0 {
-		prodKeys = []system.ProducerKey{system.ProducerKey{
+		prodKeys = []system.ProducerKey{{
 			ProducerName:    AN("eosio"),
 			BlockSigningKey: b.EphemeralPublicKey,
 		}}
@@ -429,7 +428,7 @@ func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 			system.NewUpdateAuth(acct, PN("active"), PN("owner"), eos.Authority{
 				Threshold: 1,
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      AN("eosio"),
 							Permission: PN("active"),
@@ -441,7 +440,7 @@ func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 			system.NewUpdateAuth(acct, PN("owner"), PN(""), eos.Authority{
 				Threshold: 1,
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      AN("eosio"),
 							Permission: PN("active"),
@@ -458,7 +457,7 @@ func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 			system.NewUpdateAuth(systemAccount, PN("active"), PN("owner"), eos.Authority{
 				Threshold: 1,
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      prodsAccount,
 							Permission: PN("active"),
@@ -470,7 +469,7 @@ func (op *OpResignAccounts) Actions(b *BIOS) (out []*eos.Action, err error) {
 			system.NewUpdateAuth(systemAccount, PN("owner"), PN(""), eos.Authority{
 				Threshold: 1,
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      prodsAccount,
 							Permission: PN("active"),

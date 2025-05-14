@@ -4,11 +4,10 @@ import (
 	"context"
 	"crypto/rand"
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"io"
 	"sync"
-
-	"encoding/json"
 
 	"golang.org/x/crypto/argon2"
 	"golang.org/x/crypto/nacl/secretbox"
@@ -42,7 +41,6 @@ func (b *KMSGCPBoxer) Seal(in []byte) (string, error) {
 	}
 
 	return base64.RawStdEncoding.EncodeToString(encrypted), nil
-
 }
 
 func (b *KMSGCPBoxer) Open(in string) ([]byte, error) {

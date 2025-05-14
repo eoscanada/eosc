@@ -74,8 +74,8 @@ func (a *Analyzer) AnalyzePacked(trx *eos.PackedTransaction) (err error) {
 func (a *Analyzer) AnalyzeSignedTransaction(sTx *eos.SignedTransaction) (err error) {
 	return a.AnalyzeTransaction(sTx.Transaction)
 }
-func (a *Analyzer) AnalyzeTransaction(tx *eos.Transaction) (err error) {
 
+func (a *Analyzer) AnalyzeTransaction(tx *eos.Transaction) (err error) {
 	a.Pln()
 	a.Pln("---------------------------------------------------------------------")
 	a.Pln("----------------------- TRANSACTION HEADER --------------------------")

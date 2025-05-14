@@ -109,7 +109,7 @@ func (b *BIOS) Boot() error {
 	}
 	b.Log.Println("")
 
-	//eos.Debug = true
+	// eos.Debug = true
 
 	for _, step := range b.BootSequence.BootSequence {
 		b.Log.Printf("%s  [%s] ", step.Label, step.Op)
@@ -598,7 +598,7 @@ func readPrivKeyFromFile(filename string) (*ecc.PrivateKey, error) {
 }
 
 func (b *BIOS) writeToFile(filename, content string) {
-	fl, err := os.OpenFile(filename, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0600)
+	fl, err := os.OpenFile(filename, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0o600)
 	if err != nil {
 		b.Log.Println("Unable to write to file", filename, err)
 		return

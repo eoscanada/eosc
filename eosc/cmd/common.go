@@ -131,8 +131,10 @@ func getAPI() *eos.API {
 	return api
 }
 
-var coreSymbolIsCached bool
-var coreSymbol eos.Symbol
+var (
+	coreSymbolIsCached bool
+	coreSymbol         eos.Symbol
+)
 
 func getCoreSymbol() eos.Symbol {
 	if coreSymbolIsCached {
@@ -163,7 +165,6 @@ func initCoreSymbol() error {
 		Table: "rammarket",
 		JSON:  true,
 	})
-
 	if err != nil {
 		return fmt.Errorf("unable to fetch table: %s", err)
 	}
@@ -209,7 +210,6 @@ func permissionToPermissionLevel(in string) (out eos.PermissionLevel, err error)
 func permissionsToPermissionLevels(in []string) (out []eos.PermissionLevel, err error) {
 	// loop all parameters
 	for _, singleArg := range in {
-
 		// if they specified "account@active,account2", handle that too..
 		for _, val := range strings.Split(singleArg, ",") {
 			level, err := permissionToPermissionLevel(strings.TrimSpace(val))
@@ -325,7 +325,7 @@ func optionallyPushTransaction(ctx context.Context, signedTx *eos.SignedTransact
 		errorCheck("adding chain_id", err)
 
 		if writeTrx != "-" {
-			err = ioutil.WriteFile(writeTrx, []byte(annotatedCnt), 0644)
+			err = ioutil.WriteFile(writeTrx, []byte(annotatedCnt), 0o644)
 			errorCheck("writing output transaction", err)
 
 			fmt.Printf("Transaction written to %q\n", writeTrx)

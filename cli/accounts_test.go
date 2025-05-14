@@ -25,14 +25,14 @@ func Test(t *testing.T) {
 				Threshold: uint32(3),
 				Waits:     []eos.WaitWeight{},
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      eos.AccountName("abourget"),
 							Permission: eos.PermissionName("perm"),
 						},
 						Weight: 3,
 					},
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      eos.AccountName("bob"),
 							Permission: eos.PermissionName("active"),
@@ -41,7 +41,7 @@ func Test(t *testing.T) {
 					},
 				},
 				Keys: []eos.KeyWeight{
-					eos.KeyWeight{
+					{
 						PublicKey: pubKey1,
 						Weight:    2,
 					},
@@ -55,14 +55,14 @@ func Test(t *testing.T) {
 				Threshold: uint32(3),
 				Waits:     []eos.WaitWeight{},
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      eos.AccountName("abourget"),
 							Permission: eos.PermissionName("perm"),
 						},
 						Weight: 3,
 					},
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      eos.AccountName("bob"),
 							Permission: eos.PermissionName("active"),
@@ -71,7 +71,7 @@ func Test(t *testing.T) {
 					},
 				},
 				Keys: []eos.KeyWeight{
-					eos.KeyWeight{
+					{
 						PublicKey: pubKey1,
 						Weight:    2,
 					},
@@ -85,7 +85,7 @@ func Test(t *testing.T) {
 				Threshold: uint32(1),
 				Waits:     []eos.WaitWeight{},
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      eos.AccountName("abourget"),
 							Permission: eos.PermissionName("active"),
@@ -104,7 +104,7 @@ func Test(t *testing.T) {
 				Waits:     []eos.WaitWeight{},
 				Accounts:  []eos.PermissionLevelWeight{},
 				Keys: []eos.KeyWeight{
-					eos.KeyWeight{
+					{
 						PublicKey: pubKey1,
 						Weight:    1,
 					},
@@ -119,11 +119,11 @@ func Test(t *testing.T) {
 				Waits:     []eos.WaitWeight{},
 				Accounts:  []eos.PermissionLevelWeight{},
 				Keys: []eos.KeyWeight{
-					eos.KeyWeight{
+					{
 						PublicKey: pubKey2,
 						Weight:    1,
 					},
-					eos.KeyWeight{
+					{
 						PublicKey: pubKey1,
 						Weight:    1,
 					},
@@ -137,14 +137,14 @@ func Test(t *testing.T) {
 				Threshold: uint32(1),
 				Waits:     []eos.WaitWeight{},
 				Accounts: []eos.PermissionLevelWeight{
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      eos.AccountName("alex"),
 							Permission: eos.PermissionName("active"),
 						},
 						Weight: 1,
 					},
-					eos.PermissionLevelWeight{
+					{
 						Permission: eos.PermissionLevel{
 							Actor:      eos.AccountName("bob"),
 							Permission: eos.PermissionName("active"),

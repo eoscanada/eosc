@@ -36,7 +36,7 @@ var getCodeCmd = &cobra.Command{
 		fmt.Println("Code hash: ", hex.EncodeToString(hash[:]))
 
 		if wasmFile := viper.GetString("get-code-cmd-output-wasm"); wasmFile != "" {
-			err = ioutil.WriteFile(wasmFile, wasm, 0644)
+			err = ioutil.WriteFile(wasmFile, wasm, 0o644)
 			errorCheck("writing file", err)
 			fmt.Printf("Wrote WASM to %q\n", wasmFile)
 		}
@@ -47,14 +47,13 @@ var getCodeCmd = &cobra.Command{
 
 				abi, err := base64.StdEncoding.DecodeString(normalizedABIBase64)
 				errorCheck("decode ABI base64", err)
-				err = ioutil.WriteFile(abiFile, abi, 0644)
+				err = ioutil.WriteFile(abiFile, abi, 0o644)
 				errorCheck("writing file", err)
 				fmt.Printf("Wrote ABI to %q\n", abiFile)
 			} else {
 				errorCheck("get code", fmt.Errorf("no ABI has been set for account %q", accountName))
 			}
 		}
-
 	},
 }
 

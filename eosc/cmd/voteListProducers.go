@@ -6,9 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-
 	"sort"
-
 	"strconv"
 
 	"github.com/spf13/cobra"

@@ -88,9 +88,8 @@ MAKE SURE TO INSPECT THE GENERATED MULTISIG TRANSACTION BEFORE APPROVING IT.
 		fmt.Println("Review this proposal with:")
 		fmt.Printf("  eosc multisig review %s %s", soldAccount, proposalName)
 		fmt.Println("")
-		msigPermissions := []eos.PermissionLevel{buyerPerm, myPerm, eos.PermissionLevel{Actor: soldAccount, Permission: eos.PermissionName("owner")}}
+		msigPermissions := []eos.PermissionLevel{buyerPerm, myPerm, {Actor: soldAccount, Permission: eos.PermissionName("owner")}}
 		pushEOSCActions(ctx, api, msig.NewPropose(soldAccount, eos.Name(proposalName), msigPermissions, tx))
-
 	},
 }
 

@@ -42,7 +42,7 @@ func (b *BIOS) DownloadReferences() error {
 }
 
 func (b *BIOS) ensureCacheExists() error {
-	return os.MkdirAll(b.CachePath, 0777)
+	return os.MkdirAll(b.CachePath, 0o777)
 }
 
 func (b *BIOS) DownloadURL(ref string, hash string) error {
@@ -134,7 +134,7 @@ func (b *BIOS) downloadHTTPURL(destURL *url.URL) ([]byte, error) {
 
 func (b *BIOS) writeToCache(ref string, content []byte) error {
 	fileName := replaceAllWeirdities(ref)
-	return ioutil.WriteFile(filepath.Join(b.CachePath, fileName), content, 0666)
+	return ioutil.WriteFile(filepath.Join(b.CachePath, fileName), content, 0o666)
 }
 
 func (b *BIOS) isInCache(ref string) bool {

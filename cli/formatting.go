@@ -39,6 +39,7 @@ func FormatPermissions(account *eos.AccountResp, config *columnize.Config) strin
 	output := formatNestedPermission([]string{"permissions:"}, account.Permissions, eos.PermissionName(""), "")
 	return columnize.Format(output, config)
 }
+
 func formatNestedPermission(in []string, permissions []eos.Permission, showChildsOf eos.PermissionName, indent string) (out []string) {
 	out = in
 	for _, perm := range permissions {
@@ -242,7 +243,6 @@ func prettifyAsset(w eos.Asset) string {
 	const unit = 10000
 	formatting := fmt.Sprintf("%%.%df", w.Precision)
 	return rightAlignColumnize(fmt.Sprintf(formatting, float64(w.Amount)/float64(unit)), w.Symbol.Symbol)
-
 }
 
 func prettifyAccounts(accounts []eos.AccountName, account *eos.AccountResp) []string {

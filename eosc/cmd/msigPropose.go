@@ -195,7 +195,7 @@ func recurseAccounts(ctx context.Context, api *eos.API, in map[string]bool, acco
 		return out, nil
 	}
 
-	//fmt.Println("Fetching account", account)
+	// fmt.Println("Fetching account", account)
 	resp, err := api.GetAccount(ctx, eos.AccountName(account))
 	if err != nil {
 		return nil, err

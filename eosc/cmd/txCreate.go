@@ -35,11 +35,12 @@ var txCreateCmd = &cobra.Command{
 		errorCheck("unable to retrieve action binary from JSON", err)
 
 		actions := []*eos.Action{
-			&eos.Action{
+			{
 				Account:    contract,
 				Name:       action,
 				ActionData: eos.NewActionDataFromHexData([]byte(actionBinary)),
-			}}
+			},
+		}
 
 		var contextFreeActions []*eos.Action
 		if forceUnique {
