@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"sort"
 	"strings"
 
@@ -48,7 +48,8 @@ add accounts listed in the owner permissions of the different accounts.
 		proposalName := toName(args[1], "proposal name")
 		transactionFileName := args[2]
 
-		cnt, err := ioutil.ReadFile(transactionFileName)
+		cnt, err := os.ReadFile(transactionFileName)
+
 		errorCheck("reading transaction file", err)
 
 		var tx *eos.Transaction
