@@ -39,7 +39,7 @@ func ToAccountName(in string) (out eos.AccountName, err error) {
 // ToAsset converts a eos valid asset string (in) into an eos-go
 // Asset struct
 func ToAsset(in string) (out eos.Asset, err error) {
-	return eos.NewAsset(in)
+	return eos.NewAssetFromString(in)
 }
 
 // ToName converts a valid eos name string (in) into an eos-go
