@@ -174,7 +174,7 @@ func initCoreSymbol() error {
 		return errors.New("table has not expected format")
 	}
 
-	asset, err := eos.NewAsset(result.String())
+	asset, err := eos.NewAssetFromString(result.String())
 	if !result.Exists() {
 		return fmt.Errorf("quote balance asset %q is not valid: %s", result.String(), err)
 	}
