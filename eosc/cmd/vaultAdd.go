@@ -16,7 +16,6 @@ var vaultAddCmd = &cobra.Command{
 	Use:   "add",
 	Short: "Add private keys to an existing vault taking input from the shell",
 	Run: func(cmd *cobra.Command, args []string) {
-
 		walletFile := viper.GetString("global-vault-file")
 
 		fmt.Println("Loading existing vault from file:", walletFile)

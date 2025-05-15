@@ -81,7 +81,8 @@ func printName(input string) {
 	someFound := false
 	rows := []string{
 		"| from \\ to | hex | hex_be | hex_rev_u32 | name | uint64 | float64 | symbol | symbol_code",
-		"| --------- | --- | ------ | ----------- | ---- | ------ | ------- | ------ | ----------- |"}
+		"| --------- | --- | ------ | ----------- | ---- | ------ | ------- | ------ | ----------- |",
+	}
 	for _, from := range []string{"hex", "hex_be", "name", "uint64", "symbol", "symbol_code"} {
 		val, found := showFrom[from]
 		if !found {

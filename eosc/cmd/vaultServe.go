@@ -44,7 +44,7 @@ func init() {
 
 func listen(v *eosvault.Vault) {
 	http.HandleFunc("/v1/wallet/get_public_keys", func(w http.ResponseWriter, r *http.Request) {
-		//fmt.Println("Service /v1/wallet/get_public_keys")
+		// fmt.Println("Service /v1/wallet/get_public_keys")
 
 		var out []string
 		for _, key := range v.KeyBag.Keys {

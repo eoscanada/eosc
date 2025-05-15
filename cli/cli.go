@@ -13,6 +13,7 @@ func GetDecryptPassphrase() (string, error) {
 
 	return passphrase, nil
 }
+
 func GetEncryptPassphrase() (string, error) {
 	passphrase, err := GetPassword("Enter passphrase to encrypt your vault: ")
 	if err != nil {
@@ -29,5 +30,4 @@ func GetEncryptPassphrase() (string, error) {
 		return "", errors.New("passphrase mismatch!")
 	}
 	return passphrase, nil
-
 }

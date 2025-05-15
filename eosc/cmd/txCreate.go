@@ -6,7 +6,6 @@ import (
 	"context"
 	"crypto/rand"
 	"encoding/hex"
-	"encoding/json"
 	"io"
 
 	eos "github.com/eoscanada/eos-go"
@@ -28,20 +27,20 @@ var txCreateCmd = &cobra.Command{
 
 		forceUnique := viper.GetBool("tx-create-cmd-force-unique")
 
-		var dump map[string]interface{}
-		err := json.Unmarshal([]byte(payload), &dump)
-		errorCheck("[payload] is not valid JSON", err)
-
 		api := getAPI()
-		actionBinary, err := api.ABIJSONToBin(ctx, contract, eos.Name(action), dump)
-		errorCheck("unable to retrieve action binary from JSON via API", err)
+		abi, err := api.GetABI(ctx, contract)
+		errorCheck("unable to get abi", err)
+
+		actionBinary, err := abi.ABI.EncodeAction(action, []byte(payload))
+		errorCheck("unable to retrieve action binary from JSON", err)
 
 		actions := []*eos.Action{
-			&eos.Action{
+			{
 				Account:    contract,
 				Name:       action,
 				ActionData: eos.NewActionDataFromHexData([]byte(actionBinary)),
-			}}
+			},
+		}
 
 		var contextFreeActions []*eos.Action
 		if forceUnique {

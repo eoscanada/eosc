@@ -41,7 +41,7 @@ The [authority] field is expressed using this short-form syntax:
 
 		api := getAPI()
 
-		var updateAuthActionPermission = "active"
+		updateAuthActionPermission := "active"
 		if parent == "" {
 			updateAuthActionPermission = "owner"
 		}
@@ -81,7 +81,6 @@ func ValidateAuth(auth *eos.Authority) error {
 
 		if key.Weight == 0 {
 			return fmt.Errorf("key #%d missing weight", idx)
-
 		}
 	}
 

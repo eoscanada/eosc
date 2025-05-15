@@ -342,7 +342,7 @@ func (op *OpInjectUnregdSnapshot) Actions(b *BIOS) (out []*eos.Action, err error
 			}
 		}
 
-		//system.NewDelegatedNewAccount(AN("eosio"), AN(hodler.AccountName), AN("eosio.unregd"))
+		// system.NewDelegatedNewAccount(AN("eosio"), AN(hodler.AccountName), AN("eosio.unregd"))
 
 		out = append(out,
 			unregd.NewAdd(hodler.EthereumAddress, hodler.Balance),
@@ -366,7 +366,6 @@ type OpSetProds struct {
 }
 
 func (op *OpSetProds) Actions(b *BIOS) (out []*eos.Action, err error) {
-
 	var prodKeys []system.ProducerKey
 
 	for _, key := range op.Prods {

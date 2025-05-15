@@ -15,7 +15,6 @@ var voteProducersCmd = &cobra.Command{
 	Short: "Cast your vote for 1 to 30 producers. View them with 'list-producers'.",
 	Args:  cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-
 		voterName := toAccount(args[0], "voter name")
 
 		producerStringNames := args[1:]

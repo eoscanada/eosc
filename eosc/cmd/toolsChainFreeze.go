@@ -1,12 +1,11 @@
 package cmd
 
 import (
+	"encoding/hex"
 	"fmt"
 	"os"
 	"os/exec"
 	"strings"
-
-	"encoding/hex"
 
 	"github.com/eoscanada/eos-go"
 	"github.com/eoscanada/eos-go/p2p"
@@ -18,7 +17,6 @@ var toolsChainFreezeCmd = &cobra.Command{
 	Use:   "chain-freeze",
 	Short: "Runs a p2p protocol-level proxy, and stop sync'ing the chain at the given block-num.",
 	Run: func(cmd *cobra.Command, args []string) {
-
 		chainID, err := hex.DecodeString(viper.GetString("tools-chain-freeze-cmd-chain-id"))
 		errorCheck("parsing chain id", err)
 		proxy := p2p.NewProxy(

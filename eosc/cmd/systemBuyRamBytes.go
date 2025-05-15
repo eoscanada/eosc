@@ -5,9 +5,8 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"strconv"
-
 	"os"
+	"strconv"
 
 	"github.com/eoscanada/eos-go/system"
 	"github.com/spf13/cobra"

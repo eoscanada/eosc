@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"sort"
 	"strings"
 
@@ -48,7 +48,8 @@ add accounts listed in the owner permissions of the different accounts.
 		proposalName := toName(args[1], "proposal name")
 		transactionFileName := args[2]
 
-		cnt, err := ioutil.ReadFile(transactionFileName)
+		cnt, err := os.ReadFile(transactionFileName)
+
 		errorCheck("reading transaction file", err)
 
 		var tx *eos.Transaction
@@ -194,7 +195,7 @@ func recurseAccounts(ctx context.Context, api *eos.API, in map[string]bool, acco
 		return out, nil
 	}
 
-	//fmt.Println("Fetching account", account)
+	// fmt.Println("Fetching account", account)
 	resp, err := api.GetAccount(ctx, eos.AccountName(account))
 	if err != nil {
 		return nil, err

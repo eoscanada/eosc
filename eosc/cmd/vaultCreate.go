@@ -41,7 +41,7 @@ You can then use this vault for the different eosc operations.`,
 			os.Exit(1)
 		}
 
-		var wrapType = viper.GetString("vault-create-cmd-vault-type")
+		wrapType := viper.GetString("vault-create-cmd-vault-type")
 		var boxer eosvault.SecretBoxer
 
 		kmsGCPKeypath := viper.GetString("global-kms-gcp-keypath")

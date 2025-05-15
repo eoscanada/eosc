@@ -49,7 +49,6 @@ Reference: https://github.com/greymass/producerjson
 				JSON:  string(packedCnt),
 			}),
 		})
-
 	},
 }
 
