@@ -22,7 +22,9 @@ for interacting with an EOS.IO blockchain.
 
 **or**
 
-2. Build from source with:
+2. Build from source vi github source with:
+
+Make sure you have the latest version of go. See [go release history](https://go.dev/doc/devel/release)
 
 ```bash
 go get -u -v github.com/eoscanada/eosc/eosc
@@ -30,7 +32,17 @@ go get -u -v github.com/eoscanada/eosc/eosc
 
 **or**
 
-3. If you are on **MacOS** and use **Homebrew**:
+3. Build from local source
+
+```bash
+cd eosc/eosc
+go build
+```
+
+
+**or**
+
+4. If you are on **MacOS** and use **Homebrew**:
 
 ```
 brew install eoscanada/tap/eosc

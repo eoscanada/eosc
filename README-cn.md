@@ -23,6 +23,12 @@
 go get -u -v github.com/eoscanada/eosc/eosc
 ```
 
+3. 源代码树位置是本地主机
+
+```bash
+cd eosc/eosc
+go build
+```
 
 投票!
 -----
@@ -44,7 +50,7 @@ eosc vault create --import
 eosc vote --help
 ```
 
-然后运行如下命令为你的候选者投票: 
+然后运行如下命令为你的候选者投票:
 
 ```
 
@@ -298,7 +304,7 @@ Above is a pretty-printed representation of the outputted file
 
 * `Transaction's reference block did not match.`: 这是说你的交易没有创建在你想推送的链上。
 
-* `expired transaction`: 你需要在原始 `--expiration` 的时间范围内完成整个循环。 
+* `expired transaction`: 你需要在原始 `--expiration` 的时间范围内完成整个循环。
 如果你给 `--expiration` 超过一个小时，那请注意你只能在到期的最后一小时内将交易提交到链上。
 
 
@@ -321,7 +327,7 @@ Above is a pretty-printed representation of the outputted file
 
 问题: 为什么不使用 `cleos` ?
 
-答案：`cleos` 使用 C++ 编写，由于依赖太多的工具链而很难被编译。`eosc` 
+答案：`cleos` 使用 C++ 编写，由于依赖太多的工具链而很难被编译。`eosc`
 可以在 Windows 上使用，而 `cleos` 却不可以。`eosc` 包含了一个内部钱包，
 可以很方便的用来签名交易，但 `cleos` 命令则需要借助 (`keosd`) 才可以实现对交易的签名，
 因此它很难使用。而 `eosc` 将 `cleos` 和 `keosd` 这两个工具整合为一个方便使用的命令行工具。
